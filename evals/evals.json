@@ -1,0 +1,53 @@
+{
+  "skill_name": "audit-orchestrator",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Audit the supplied ecommerce site. Its server HTML is complete, but test the rendered purchase path and report only directly observed problems.",
+      "expected_output": "A schema-valid report covering discoverability and rendered engagement without inventing conversion impact.",
+      "assertions": ["Renders representative landing and task pages", "Checks overlay, CTA destination, keyboard access, and focus", "Does not claim bounce or conversion loss", "Finishes within five minutes"]
+    },
+    {
+      "id": 2,
+      "prompt": "Audit a multi-location healthcare brand whose name is shared by unrelated organizations.",
+      "expected_output": "A report that tests entity ambiguity, location facts, independent corroboration, and on-site task continuity.",
+      "assertions": ["Uses dated exact-entity and material-claim searches", "Separates independent sources from first-party repetition", "Does not treat search absence alone as a high-severity defect"]
+    },
+    {
+      "id": 3,
+      "prompt": "Audit a SaaS documentation path at https://example.test/docs/start rather than replacing it with the homepage.",
+      "expected_output": "A path-preserving audit with representative same-site discovery and path-specific robots decisions.",
+      "assertions": ["Preserves /docs/start as the requested site", "Evaluates robots rules on sampled valuable paths", "Normalizes tracking parameters and avoids crawl traps"]
+    },
+    {
+      "id": 4,
+      "prompt": "Audit a publisher with a declared sitemap containing articles that are not linked from the homepage.",
+      "expected_output": "A bounded audit that consumes sitemap inventory and samples multiple content templates.",
+      "assertions": ["Fetches declared sitemap files", "Uses sitemap URLs for representative discovery", "Does not call a missing sitemap a defect"]
+    },
+    {
+      "id": 5,
+      "prompt": "Audit a multilingual consumer brand and distinguish locale differences from factual inconsistency.",
+      "expected_output": "A report that records locale coverage and avoids false consistency findings caused by legitimate regional variants.",
+      "assertions": ["Records material locales", "Distinguishes currency, location, and product variants", "States incomplete locale coverage"]
+    },
+    {
+      "id": 6,
+      "prompt": "Audit a site whose important pricing and eligibility facts appear only in images and PDFs.",
+      "expected_output": "Evidence-backed findings only where material facts lack equivalent readable HTML.",
+      "assertions": ["Excludes decorative media", "Checks nearby equivalent text", "Provides a verification-ready remediation"]
+    },
+    {
+      "id": 7,
+      "prompt": "Audit a healthy, accessible, server-rendered brand site and be conservative.",
+      "expected_output": "A low-noise report with no fabricated defects and at most three relevant proactive opportunities.",
+      "assertions": ["Does not report schema or sitemap absence automatically", "Uses not_checked for unavailable measurements", "Does not claim citation, ranking, or accessibility conformance"]
+    },
+    {
+      "id": 8,
+      "prompt": "Audit a slow site with redirects, non-HTML resources, and occasional server errors while respecting a five-minute deadline.",
+      "expected_output": "A partial but honest report that stays on-authority, skips non-HTML parsing, and discloses deadline-limited coverage.",
+      "assertions": ["Blocks cross-authority redirects before fetching them", "Bounds decoded response size", "Stops new collection before five minutes", "Reports partial coverage rather than converting failures into defects"]
+    }
+  ]
+}

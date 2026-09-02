@@ -1,0 +1,96 @@
+{
+  "site": "https://apple.com/",
+  "collected_at": "2026-09-02T08:55:23.765800+00:00",
+  "collector": "static",
+  "limits": {
+    "max_pages": 1,
+    "max_bytes_per_page": 2000000,
+    "rate_per_second": 2,
+    "robots_timeout_seconds": 8,
+    "page_timeout_seconds": 12
+  },
+  "robots": {
+    "url": "https://apple.com/robots.txt",
+    "status": 200,
+    "read_error": null,
+    "wildcard_allowed": true,
+    "ai_agent_allowed": {
+      "GPTBot": true,
+      "OAI-SearchBot": true,
+      "ChatGPT-User": true,
+      "ClaudeBot": true,
+      "Claude-User": true,
+      "Claude-SearchBot": true,
+      "PerplexityBot": true,
+      "Perplexity-User": true,
+      "Google-Extended": true,
+      "Applebot-Extended": true,
+      "meta-externalagent": true
+    }
+  },
+  "pages": [
+    {
+      "url": "https://apple.com/",
+      "final_url": "https://www.apple.com/",
+      "robots_allowed": true,
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "response_truncated": false,
+      "latency_ms": 735,
+      "title": "Apple",
+      "h1": [
+        "Apple"
+      ],
+      "word_count": 1054,
+      "text_length": 6353,
+      "landmarks": [
+        "aside",
+        "footer",
+        "main",
+        "nav"
+      ],
+      "meta_robots": "",
+      "meta_robot_directives": {
+        "robots": "",
+        "googlebot": "",
+        "bingbot": ""
+      },
+      "description": "Discover the innovative world of Apple and shop everything iPhone, iPad, Apple Watch, Mac, and Apple TV, plus explore accessories, entertainment, and expert device support.",
+      "canonical": [
+        "https://www.apple.com/"
+      ],
+      "links_count": 141,
+      "images": {
+        "count": 97,
+        "missing_alt": 0,
+        "empty_alt": 80
+      },
+      "jsonld": {
+        "blocks": 3,
+        "parse_errors": 0,
+        "types": [
+          "ContactPoint",
+          "Organization",
+          "SearchAction",
+          "WebPage",
+          "WebSite"
+        ]
+      },
+      "text_sample": "Apple Apple Apple Store Mac iPad iPhone Watch Vision AirPods TV & Home Entertainment Accessories Support 0 + Surprise and shine. Watch a special Apple Event online on 9/9 at 10 a.m. PT. Add to calendar College, sorted. Get a gift card from $100 to $150 * when you buy Mac or iPad with education savings. Shop iPhone Meet the latest iPhone lineup. Learn more Shop iPhone Mac mini Now with M6 and M5 Pro. Available starting 9.22 Learn more Pre-order MacBook Air Now supercharged by M5. Learn more Buy iPad Air Now supercharged by M4. Learn more Buy iPad Pro Advanced AI performance and game-changing capabilities. Learn more Buy Apple Trade In Get credit toward your next iPhone when you trade in an eligible device. 1 Get your estimate Apple Card Get up to 3% Daily Cash back with every purchase. Learn more Apply now Endless entertainment. Item 1 Item 2 Item 3 Item 4 Item 5 Item 6 Item 7 Item 8 Item 9 Stream now Comedy The hit comedy is back and Tedder than ever. Stream now Sci-Fi New season. F1 on Apple TV Every Grand Prix™, live and on demand—all in one place, all year long. Stream now Sci-Fi The truth lies in the past. MLS on Apple TV Watch every club, every match, live—all season long. Str"
+    }
+  ],
+  "errors": [],
+  "ai_probe": {
+    "status": "checked",
+    "agent": "GPTBot",
+    "http_status": 200,
+    "text_length": 6353,
+    "browser_text_length": 6353,
+    "text_ratio": 1.0,
+    "response_truncated": false
+  },
+  "coverage": {
+    "rendered": "not_checked: collector is static",
+    "off_site": "not_checked: requires search-capable agent"
+  }
+}

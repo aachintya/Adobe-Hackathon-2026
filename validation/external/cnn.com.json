@@ -1,0 +1,82 @@
+{
+  "site": "https://cnn.com/",
+  "collected_at": "2026-09-02T08:55:08.890157+00:00",
+  "collector": "static",
+  "limits": {
+    "max_pages": 1,
+    "max_bytes_per_page": 2000000,
+    "rate_per_second": 2,
+    "robots_timeout_seconds": 8,
+    "page_timeout_seconds": 12
+  },
+  "robots": {
+    "url": "https://cnn.com/robots.txt",
+    "status": 200,
+    "read_error": null,
+    "wildcard_allowed": true,
+    "ai_agent_allowed": {
+      "GPTBot": false,
+      "OAI-SearchBot": false,
+      "ChatGPT-User": false,
+      "ClaudeBot": false,
+      "Claude-User": false,
+      "Claude-SearchBot": false,
+      "PerplexityBot": false,
+      "Perplexity-User": false,
+      "Google-Extended": false,
+      "Applebot-Extended": false,
+      "meta-externalagent": true
+    }
+  },
+  "pages": [
+    {
+      "url": "https://cnn.com/",
+      "final_url": "https://edition.cnn.com/",
+      "robots_allowed": true,
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "response_truncated": true,
+      "latency_ms": 797,
+      "title": "Breaking News, Latest News and Videos | CNN",
+      "h1": [],
+      "word_count": 7,
+      "text_length": 43,
+      "landmarks": [],
+      "meta_robots": "",
+      "meta_robot_directives": {
+        "robots": "",
+        "googlebot": "",
+        "bingbot": ""
+      },
+      "description": "View the latest news and breaking news today for U.S., world, weather, entertainment, politics and health at CNN.com.",
+      "canonical": [
+        "https://www.cnn.com"
+      ],
+      "links_count": 0,
+      "images": {
+        "count": 0,
+        "missing_alt": 0,
+        "empty_alt": 0
+      },
+      "jsonld": {
+        "blocks": 1,
+        "parse_errors": 0,
+        "types": [
+          "NewsMediaOrganization",
+          "SearchAction",
+          "WebPage",
+          "WebSite"
+        ]
+      },
+      "text_sample": "Breaking News, Latest News and Videos | CNN"
+    }
+  ],
+  "errors": [],
+  "ai_probe": {
+    "status": "not_checked"
+  },
+  "coverage": {
+    "rendered": "not_checked: collector is static",
+    "off_site": "not_checked: requires search-capable agent"
+  }
+}

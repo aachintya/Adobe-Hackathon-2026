@@ -1,0 +1,91 @@
+{
+  "site": "https://wikipedia.org/",
+  "collected_at": "2026-09-02T08:55:32.755617+00:00",
+  "collector": "static",
+  "limits": {
+    "max_pages": 1,
+    "max_bytes_per_page": 2000000,
+    "rate_per_second": 2,
+    "robots_timeout_seconds": 8,
+    "page_timeout_seconds": 12
+  },
+  "robots": {
+    "url": "https://wikipedia.org/robots.txt",
+    "status": 200,
+    "read_error": null,
+    "wildcard_allowed": true,
+    "ai_agent_allowed": {
+      "GPTBot": true,
+      "OAI-SearchBot": true,
+      "ChatGPT-User": true,
+      "ClaudeBot": true,
+      "Claude-User": true,
+      "Claude-SearchBot": true,
+      "PerplexityBot": true,
+      "Perplexity-User": true,
+      "Google-Extended": true,
+      "Applebot-Extended": true,
+      "meta-externalagent": true
+    }
+  },
+  "pages": [
+    {
+      "url": "https://wikipedia.org/",
+      "final_url": "https://www.wikipedia.org/",
+      "robots_allowed": true,
+      "status": 200,
+      "content_type": "text/html",
+      "response_truncated": false,
+      "latency_ms": 640,
+      "title": "Wikipedia",
+      "h1": [
+        "",
+        "Wikipedia",
+        "",
+        "The Free Encyclopedia",
+        ""
+      ],
+      "word_count": 946,
+      "text_length": 6215,
+      "landmarks": [
+        "footer",
+        "main",
+        "nav"
+      ],
+      "meta_robots": "",
+      "meta_robot_directives": {
+        "robots": "",
+        "googlebot": "",
+        "bingbot": ""
+      },
+      "description": "Wikipedia is a free online encyclopedia, created and edited by volunteers around the world and hosted by the Wikimedia Foundation.",
+      "canonical": [],
+      "links_count": 376,
+      "images": {
+        "count": 1,
+        "missing_alt": 1,
+        "empty_alt": 0
+      },
+      "jsonld": {
+        "blocks": 0,
+        "parse_errors": 0,
+        "types": []
+      },
+      "text_sample": "Wikipedia Wikipedia The Free Encyclopedia English 7,189,000+ articles 日本語 1,503,000+ 記事 Deutsch 3.125.000+ Artikel Русский 2 103 000+ статей Français 2 761 000+ articles Español 2.116.000+ artículos 中文 1,537,000+ 条目 / 條目 Italiano 1.971.000+ voci Polski 1 696 000+ haseł Português 1.173.000+ artigos Search Wikipedia Afrikaans Shqip العربية Asturianu Azərbaycanca Български 閩南語 / Bân-lâm-gú বাংলা Беларуская Català Čeština Cymraeg Dansk Deutsch Eesti Ελληνικά English Español Esperanto Euskara فارسی Français Galego 한국어 Hausa Հայերեն हिन्दी Hrvatski Bahasa Indonesia Italiano עברית ქართული Ladin Latina Latviešu Lietuvių Magyar Македонски Malagasy मराठी مصرى Bahasa Melayu Bahaso Minangkabau မြန်မာဘာသာ Nederlands 日本語 Norsk (bokmål) Norsk (nynorsk) Нохчийн Oʻzbekcha / Ўзбекча Polski Português Қазақша / Qazaqşa / قازاقشا Română Simple English Sinugboanong Binisaya Slovenčina Slovenščina Српски / Srpski Srpskohrvatski / Српскохрватски Suomi Svenska Kiswahili தமிழ் Татарча / Tatarça తెలుగు ภาษาไทย Тоҷикӣ تۆرکجه Türkçe Українська اردو Tiếng Việt Winaray 中文 Русский 粵語 Search Read Wikipedia in your language 1,000,000+ articles العربية Deutsch English Español فارسی Français Italiano مصرى Nederlands "
+    }
+  ],
+  "errors": [],
+  "ai_probe": {
+    "status": "checked",
+    "agent": "GPTBot",
+    "http_status": 200,
+    "text_length": 6215,
+    "browser_text_length": 6215,
+    "text_ratio": 1.0,
+    "response_truncated": false
+  },
+  "coverage": {
+    "rendered": "not_checked: collector is static",
+    "off_site": "not_checked: requires search-capable agent"
+  }
+}

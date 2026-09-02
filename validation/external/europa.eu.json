@@ -1,0 +1,83 @@
+{
+  "site": "https://europa.eu/",
+  "collected_at": "2026-09-02T08:54:54.826832+00:00",
+  "collector": "static",
+  "limits": {
+    "max_pages": 1,
+    "max_bytes_per_page": 2000000,
+    "rate_per_second": 2,
+    "robots_timeout_seconds": 8,
+    "page_timeout_seconds": 12
+  },
+  "robots": {
+    "url": "https://europa.eu/robots.txt",
+    "status": 200,
+    "read_error": null,
+    "wildcard_allowed": true,
+    "ai_agent_allowed": {
+      "GPTBot": true,
+      "OAI-SearchBot": true,
+      "ChatGPT-User": true,
+      "ClaudeBot": true,
+      "Claude-User": true,
+      "Claude-SearchBot": true,
+      "PerplexityBot": true,
+      "Perplexity-User": true,
+      "Google-Extended": true,
+      "Applebot-Extended": true,
+      "meta-externalagent": true
+    }
+  },
+  "pages": [
+    {
+      "url": "https://europa.eu/",
+      "final_url": "https://european-union.europa.eu/select-language?destination=/node/1",
+      "robots_allowed": true,
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "response_truncated": false,
+      "latency_ms": 1781,
+      "title": "Language selection | European Union",
+      "h1": [],
+      "word_count": 65,
+      "text_length": 392,
+      "landmarks": [],
+      "meta_robots": "noindex follow",
+      "meta_robot_directives": {
+        "robots": "noindex follow",
+        "googlebot": "",
+        "bingbot": ""
+      },
+      "description": "Discover how the EU functions, its principles, priorities; find out about its history and member states; learn about its legal basis and your EU rights.",
+      "canonical": [
+        "https://european-union.europa.eu/index_en"
+      ],
+      "links_count": 27,
+      "images": {
+        "count": 1,
+        "missing_alt": 0,
+        "empty_alt": 0
+      },
+      "jsonld": {
+        "blocks": 0,
+        "parse_errors": 0,
+        "types": []
+      },
+      "text_sample": "Language selection | European Union Skip to main content EU official languages bg български es español cs čeština da dansk de Deutsch et eesti el ελληνικά en English fr français ga Gaeilge hr hrvatski it italiano lv latviešu lt lietuvių hu magyar mt Malti nl Nederlands pl polski pt português ro română sk slovenčina sl slovenščina fi suomi sv svenska Other languages ru русский uk yкраїнська"
+    }
+  ],
+  "errors": [],
+  "ai_probe": {
+    "status": "checked",
+    "agent": "GPTBot",
+    "http_status": 200,
+    "text_length": 392,
+    "browser_text_length": 392,
+    "text_ratio": 1.0,
+    "response_truncated": false
+  },
+  "coverage": {
+    "rendered": "not_checked: collector is static",
+    "off_site": "not_checked: requires search-capable agent"
+  }
+}

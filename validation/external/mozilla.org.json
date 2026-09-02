@@ -1,0 +1,89 @@
+{
+  "site": "https://mozilla.org/",
+  "collected_at": "2026-09-02T08:55:29.417739+00:00",
+  "collector": "static",
+  "limits": {
+    "max_pages": 1,
+    "max_bytes_per_page": 2000000,
+    "rate_per_second": 2,
+    "robots_timeout_seconds": 8,
+    "page_timeout_seconds": 12
+  },
+  "robots": {
+    "url": "https://mozilla.org/robots.txt",
+    "status": 200,
+    "read_error": null,
+    "wildcard_allowed": true,
+    "ai_agent_allowed": {
+      "GPTBot": true,
+      "OAI-SearchBot": true,
+      "ChatGPT-User": true,
+      "ClaudeBot": true,
+      "Claude-User": true,
+      "Claude-SearchBot": true,
+      "PerplexityBot": true,
+      "Perplexity-User": true,
+      "Google-Extended": true,
+      "Applebot-Extended": true,
+      "meta-externalagent": true
+    }
+  },
+  "pages": [
+    {
+      "url": "https://mozilla.org/",
+      "final_url": "https://www.mozilla.org/",
+      "robots_allowed": true,
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "response_truncated": false,
+      "latency_ms": 594,
+      "title": "Internet for people, not profit — Mozilla Global",
+      "h1": [
+        "Choose your language or locale to browse Mozilla.org"
+      ],
+      "word_count": 341,
+      "text_length": 2379,
+      "landmarks": [
+        "aside",
+        "footer",
+        "header",
+        "main",
+        "nav"
+      ],
+      "meta_robots": "",
+      "meta_robot_directives": {
+        "robots": "",
+        "googlebot": "",
+        "bingbot": ""
+      },
+      "description": "Mozilla is the not-for-profit behind the lightning fast Firefox browser. We put people over profit to give everyone more power online.",
+      "canonical": [],
+      "links_count": 135,
+      "images": {
+        "count": 12,
+        "missing_alt": 0,
+        "empty_alt": 10
+      },
+      "jsonld": {
+        "blocks": 0,
+        "parse_errors": 0,
+        "types": []
+      },
+      "text_sample": "Internet for people, not profit — Mozilla Global Help us improve your Mozilla experience In addition to Cookies necessary for this site to function, we’d like your permission to set some additional Cookies to better understand your browsing needs and improve your experience. Rest assured — we value your privacy. Accept All Additional Cookies Reject All Additional Cookies Cookie settings Menu Products Close Products menu Firefox browsers Mozilla VPN Mozilla Monitor Firefox Relay MDN Plus Thunderbird Solo 0DIN Tabstack All products About us Close About us menu Our Mission About Mozilla The Mozilla Manifesto Get Involved Blog Our Work Mozilla Foundation Mozilla.ai Mozilla Ventures Mozilla Advertising Mozilla Builders Mozilla New Products Choose your language or locale to browse Mozilla.org It is available in the following languages: Acholi عربي Asturianu Беларуская Български Brezhoneg Bosanski Català Maya Kaqchikel Čeština Cymraeg Dansk Deutsch Dolnoserbšćina Ελληνικά English (Canadian) English (British) English (US) Esperanto Español (de Argentina) Español (de Chile) Español (de España) Español (de México) Euskara suomi Français Frysk Gàidhlig Galego Avañe'ẽ עברית हिन्दी (भारत) Hrvat"
+    }
+  ],
+  "errors": [],
+  "ai_probe": {
+    "status": "checked",
+    "agent": "GPTBot",
+    "http_status": 200,
+    "text_length": 2379,
+    "browser_text_length": 2379,
+    "text_ratio": 1.0,
+    "response_truncated": false
+  },
+  "coverage": {
+    "rendered": "not_checked: collector is static",
+    "off_site": "not_checked: requires search-capable agent"
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.1",
+  "site": "https://example.test/",
+  "audited_at": "2026-09-02T00:00:00Z",
+  "executive_summary": {
+    "conclusion": "Crawler exclusion and homepage noindex are the immediate discovery blockers; the offer page then needs clearer orientation for arriving visitors.",
+    "top_action_ids": ["F-001", "F-002", "F-003"]
+  },
+  "summary": {"total_findings": 4, "critical": 0, "high": 2, "medium": 1, "low": 1},
+  "coverage": {
+    "pages_checked": 2,
+    "modes": ["static"],
+    "not_checked": [
+      "Rendered comparison was triggered by thin static content but no browser was available in the deterministic fixture.",
+      "Keyboard, focus, overlay, and contrast behavior require rendered interaction and were not checked.",
+      "Off-site entity corroboration was not checked for the synthetic fixture."
+    ]
+  },
+  "findings": [
+    {
+      "id": "F-001",
+      "title": "GPTBot is blocked at the site root",
+      "category": "discoverability",
+      "severity": "high",
+      "confidence": "high",
+      "evidence": {"observation": "robots.txt disallows / for GPTBot while the wildcard group allows /.", "affected": 1, "checked": 1, "urls": ["https://example.test/robots.txt"]},
+      "suggested_action": {"summary": "Review whether GPTBot exclusion is intentional and, if not, allow the valuable public paths intended for AI discovery.", "priority": "high", "effort": "low", "owner_hint": "Web platform or SEO", "mechanism": "Removes a verified crawler-specific access barrier without changing the wildcard policy.", "verification": "Fetch robots.txt again and confirm GPTBot can fetch each intended representative path."}
+    },
+    {
+      "id": "F-002",
+      "title": "The homepage carries a generic noindex directive",
+      "category": "discoverability",
+      "severity": "high",
+      "confidence": "high",
+      "evidence": {"observation": "The homepage contains meta name=robots content=noindex; 1 of 2 sampled pages is affected.", "affected": 1, "checked": 2, "urls": ["https://example.test/"]},
+      "suggested_action": {"summary": "Remove the homepage noindex directive if the page is intended for public discovery.", "priority": "high", "effort": "low", "owner_hint": "Web platform or SEO", "mechanism": "Restores page-level index eligibility for crawlers that honor the generic directive.", "verification": "Refetch the homepage and confirm the generic robots directive no longer contains noindex."}
+    },
+    {
+      "id": "F-003",
+      "title": "The offer page does not explain its purpose or next step",
+      "category": "engagement",
+      "severity": "medium",
+      "confidence": "high",
+      "evidence": {"observation": "The offer page uses the H1 'Experience it', generic copy ('Better. Faster. Different.'), and a 'Click here' link back to the homepage, so the destination and task are not predictable in context.", "affected": 1, "checked": 2, "urls": ["https://example.test/offer.html"]},
+      "suggested_action": {"summary": "Name the offering, intended audience, primary benefit, and explicit next step on the offer page.", "priority": "medium", "effort": "medium", "owner_hint": "Content design and product marketing", "mechanism": "Improves orientation and information scent using visible, answer-bearing copy.", "verification": "Confirm the H1 and opening copy identify the offer and that the primary link label predicts its destination."}
+    },
+    {
+      "id": "F-004",
+      "title": "A homepage image has no alternative text attribute",
+      "category": "engagement",
+      "severity": "low",
+      "confidence": "medium",
+      "evidence": {"observation": "The static homepage contains price.png without an alt attribute; relevance and rendered visibility could not be confirmed.", "affected": 1, "checked": 1, "urls": ["https://example.test/"]},
+      "suggested_action": {"summary": "If the image is visible and informative, provide an equivalent concise text alternative; otherwise mark it decorative.", "priority": "low", "effort": "low", "owner_hint": "Frontend and content design", "mechanism": "Preserves the image's information for non-visual extraction while avoiding noise for decorative media.", "verification": "Inspect the rendered image, then confirm an informative alt value or an explicit empty alt attribute as appropriate."}
+    }
+  ],
+  "proactive_opportunities": [
+    {
+      "id": "O-001",
+      "title": "Create a stable answer-bearing offer facts section",
+      "rationale": "The sampled offer is described with generic language, while no concise first-party block consolidates audience, scope, availability, and the primary next step.",
+      "priority": "medium",
+      "effort": "medium",
+      "owner_hint": "Product marketing and content design",
+      "mechanism": "A visible, internally linked facts section gives visitors and retrieval systems one unambiguous passage to interpret and quote.",
+      "verification": "Confirm the rendered and static page state the offer name, audience, core terms, availability, and next step in equivalent readable text."
+    }
+  ]
+}

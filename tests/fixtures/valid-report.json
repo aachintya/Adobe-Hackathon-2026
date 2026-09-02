@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.1",
+  "site": "https://example.test/",
+  "audited_at": "2026-09-02T00:00:00Z",
+  "executive_summary": {"conclusion": "A representative access issue should be addressed first.", "top_action_ids": ["F-001", "O-001"]},
+  "summary": {"total_findings": 1, "critical": 0, "high": 1, "medium": 0, "low": 0},
+  "coverage": {"pages_checked": 2, "modes": ["static"], "not_checked": ["rendered"]},
+  "findings": [{
+    "id": "F-001",
+    "title": "Representative high-confidence issue",
+    "category": "discoverability",
+    "severity": "high",
+    "confidence": "high",
+    "evidence": {"observation": "Direct observation", "affected": 2, "checked": 2, "urls": ["https://example.test/"]},
+    "suggested_action": {"summary": "Correct the issue", "priority": "high", "effort": "low", "owner_hint": "Web platform", "mechanism": "Restores access", "verification": "Repeat the check"}
+  }],
+  "proactive_opportunities": [{
+    "id": "O-001",
+    "title": "Publish an answer-bearing facts page",
+    "rationale": "The sampled site has factual product details but no stable page that consolidates them for retrieval.",
+    "priority": "medium",
+    "effort": "medium",
+    "owner_hint": "Content design",
+    "mechanism": "Creates a durable, quotable first-party source for material facts.",
+    "verification": "Confirm the page exposes current facts in visible HTML and is internally linked."
+  }]
+}

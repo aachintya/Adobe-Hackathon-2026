@@ -1,0 +1,16 @@
+{
+  "entity": {"name": "", "canonical_url": "", "identifiers": [], "same_as": []},
+  "claims": [
+    {
+      "claim_id": "C-001",
+      "subject": "",
+      "predicate": "",
+      "value": "",
+      "materiality": "high|medium|low",
+      "first_party_sources": [{"url": "", "observed_at": "", "published": null, "modified": null}],
+      "independent_sources": [{"url": "", "publisher": "", "observed_at": "", "supports": true}],
+      "conflicts": [],
+      "status": "supported|self_asserted|conflicted|stale|not_checked"
+    }
+  ]
+}

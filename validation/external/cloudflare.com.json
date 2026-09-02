@@ -1,0 +1,96 @@
+{
+  "site": "https://cloudflare.com/",
+  "collected_at": "2026-09-02T08:55:13.476040+00:00",
+  "collector": "static",
+  "limits": {
+    "max_pages": 1,
+    "max_bytes_per_page": 2000000,
+    "rate_per_second": 2,
+    "robots_timeout_seconds": 8,
+    "page_timeout_seconds": 12
+  },
+  "robots": {
+    "url": "https://cloudflare.com/robots.txt",
+    "status": 200,
+    "read_error": null,
+    "wildcard_allowed": true,
+    "ai_agent_allowed": {
+      "GPTBot": true,
+      "OAI-SearchBot": true,
+      "ChatGPT-User": true,
+      "ClaudeBot": true,
+      "Claude-User": true,
+      "Claude-SearchBot": true,
+      "PerplexityBot": true,
+      "Perplexity-User": true,
+      "Google-Extended": true,
+      "Applebot-Extended": true,
+      "meta-externalagent": true
+    }
+  },
+  "pages": [
+    {
+      "url": "https://cloudflare.com/",
+      "final_url": "https://www.cloudflare.com/",
+      "robots_allowed": true,
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "response_truncated": false,
+      "latency_ms": 891,
+      "title": "Cloudflare: Build for the agent era",
+      "h1": [
+        "Everything we learned from powering 20% of the Internet—yours by default",
+        "Build without boundaries"
+      ],
+      "word_count": 1231,
+      "text_length": 7727,
+      "landmarks": [
+        "footer",
+        "header",
+        "main",
+        "nav"
+      ],
+      "meta_robots": "",
+      "meta_robot_directives": {
+        "robots": "",
+        "googlebot": "",
+        "bingbot": ""
+      },
+      "description": "Welcome to Cloudflare - Powering the next generation of applications",
+      "canonical": [
+        "https://www.cloudflare.com/"
+      ],
+      "links_count": 72,
+      "images": {
+        "count": 66,
+        "missing_alt": 0,
+        "empty_alt": 1
+      },
+      "jsonld": {
+        "blocks": 3,
+        "parse_errors": 0,
+        "types": [
+          "Organization",
+          "SearchAction",
+          "WebPage",
+          "WebSite"
+        ]
+      },
+      "text_sample": "Cloudflare: Build for the agent era Products Solutions Resources Pricing Under attack? Under attack? Login Dashboard Contact sales Start building Dashboard Login Hero video off in Low preview — use High mode and refresh for full motion. Connect 2026 · The Agentic Conference of the Year · Oct 19-21 · Register Everything we learned from powering 20% of the Internet—yours by default One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure. Start building for free Region: Earth One smart network for workloads + security — close to users, close to data. Compute close to users reduces network latency. Smart Placement moves your Worker closer to your data for optimized end-to-end latency. 4.5x faster Faster for 95% of round trips by running Workers near your backend, not you. 95% of the world’s Internet-connected population is reached by Cloudflare within 50ms. 310B Daily cyber threats blocked. Run everywhere Security, connectivity, and code run in 335+ cities around the world, within 50ms of 95% of the world's population. Run anywhere Our network is close to your users, applications, and sites. It optimizes all your traffic from source t"
+    }
+  ],
+  "errors": [],
+  "ai_probe": {
+    "status": "checked",
+    "agent": "GPTBot",
+    "http_status": 200,
+    "text_length": 7727,
+    "browser_text_length": 7727,
+    "text_ratio": 1.0,
+    "response_truncated": false
+  },
+  "coverage": {
+    "rendered": "not_checked: collector is static",
+    "off_site": "not_checked: requires search-capable agent"
+  }
+}

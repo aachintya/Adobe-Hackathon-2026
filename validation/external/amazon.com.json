@@ -1,0 +1,75 @@
+{
+  "site": "https://amazon.com/",
+  "collected_at": "2026-09-02T08:55:06.931082+00:00",
+  "collector": "static",
+  "limits": {
+    "max_pages": 1,
+    "max_bytes_per_page": 2000000,
+    "rate_per_second": 2,
+    "robots_timeout_seconds": 8,
+    "page_timeout_seconds": 12
+  },
+  "robots": {
+    "url": "https://amazon.com/robots.txt",
+    "status": 200,
+    "read_error": null,
+    "wildcard_allowed": true,
+    "ai_agent_allowed": {
+      "GPTBot": false,
+      "OAI-SearchBot": false,
+      "ChatGPT-User": false,
+      "ClaudeBot": false,
+      "Claude-User": false,
+      "Claude-SearchBot": false,
+      "PerplexityBot": false,
+      "Perplexity-User": false,
+      "Google-Extended": false,
+      "Applebot-Extended": true,
+      "meta-externalagent": false
+    }
+  },
+  "pages": [
+    {
+      "url": "https://amazon.com/",
+      "final_url": "https://www.amazon.com/",
+      "robots_allowed": true,
+      "status": 202,
+      "content_type": "text/html; charset=UTF-8",
+      "response_truncated": false,
+      "latency_ms": 968,
+      "title": "",
+      "h1": [],
+      "word_count": 0,
+      "text_length": 0,
+      "landmarks": [],
+      "meta_robots": "",
+      "meta_robot_directives": {
+        "robots": "",
+        "googlebot": "",
+        "bingbot": ""
+      },
+      "description": "",
+      "canonical": [],
+      "links_count": 0,
+      "images": {
+        "count": 0,
+        "missing_alt": 0,
+        "empty_alt": 0
+      },
+      "jsonld": {
+        "blocks": 0,
+        "parse_errors": 0,
+        "types": []
+      },
+      "text_sample": ""
+    }
+  ],
+  "errors": [],
+  "ai_probe": {
+    "status": "not_checked"
+  },
+  "coverage": {
+    "rendered": "not_checked: collector is static",
+    "off_site": "not_checked: requires search-capable agent"
+  }
+}

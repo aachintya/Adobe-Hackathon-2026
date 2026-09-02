@@ -1,0 +1,83 @@
+{
+  "site": "https://acrobat.com/",
+  "collected_at": "2026-09-02T08:55:03.568673+00:00",
+  "collector": "static",
+  "limits": {
+    "max_pages": 1,
+    "max_bytes_per_page": 2000000,
+    "rate_per_second": 2,
+    "robots_timeout_seconds": 8,
+    "page_timeout_seconds": 12
+  },
+  "robots": {
+    "url": "https://acrobat.com/robots.txt",
+    "status": 200,
+    "read_error": null,
+    "wildcard_allowed": true,
+    "ai_agent_allowed": {
+      "GPTBot": true,
+      "OAI-SearchBot": true,
+      "ChatGPT-User": true,
+      "ClaudeBot": true,
+      "Claude-User": true,
+      "Claude-SearchBot": true,
+      "PerplexityBot": true,
+      "Perplexity-User": true,
+      "Google-Extended": true,
+      "Applebot-Extended": true,
+      "meta-externalagent": true
+    }
+  },
+  "pages": [
+    {
+      "url": "https://acrobat.com/",
+      "final_url": "https://acrobat.adobe.com/?x_api_client_id=acrobat_com",
+      "robots_allowed": true,
+      "status": 200,
+      "content_type": "text/html",
+      "response_truncated": false,
+      "latency_ms": 469,
+      "title": "Acrobat online sign in | Login to Acrobat | Adobe Acrobat",
+      "h1": [],
+      "word_count": 9,
+      "text_length": 57,
+      "landmarks": [],
+      "meta_robots": "",
+      "meta_robot_directives": {
+        "robots": "",
+        "googlebot": "",
+        "bingbot": ""
+      },
+      "description": "Adobe Acrobat online services let you work with PDFs in any browser. Create, convert, compress, edit, fill, sign, and share files. Sign in to get started.",
+      "canonical": [
+        "https://acrobat.adobe.com/"
+      ],
+      "links_count": 0,
+      "images": {
+        "count": 0,
+        "missing_alt": 0,
+        "empty_alt": 0
+      },
+      "jsonld": {
+        "blocks": 0,
+        "parse_errors": 0,
+        "types": []
+      },
+      "text_sample": "Acrobat online sign in | Login to Acrobat | Adobe Acrobat"
+    }
+  ],
+  "errors": [],
+  "ai_probe": {
+    "status": "checked",
+    "agent": "GPTBot",
+    "http_status": 200,
+    "text_length": 57,
+    "browser_text_length": 57,
+    "text_ratio": 1.0,
+    "response_truncated": false
+  },
+  "coverage": {
+    "rendered": "not_checked: collector is static",
+    "off_site": "not_checked: requires search-capable agent"
+  }
+}

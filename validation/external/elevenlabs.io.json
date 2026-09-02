@@ -1,0 +1,105 @@
+{
+  "site": "https://elevenlabs.io/",
+  "collected_at": "2026-09-02T08:54:59.756731+00:00",
+  "collector": "static",
+  "limits": {
+    "max_pages": 1,
+    "max_bytes_per_page": 2000000,
+    "rate_per_second": 2,
+    "robots_timeout_seconds": 8,
+    "page_timeout_seconds": 12
+  },
+  "robots": {
+    "url": "https://elevenlabs.io/robots.txt",
+    "status": 200,
+    "read_error": null,
+    "wildcard_allowed": true,
+    "ai_agent_allowed": {
+      "GPTBot": true,
+      "OAI-SearchBot": true,
+      "ChatGPT-User": true,
+      "ClaudeBot": true,
+      "Claude-User": true,
+      "Claude-SearchBot": true,
+      "PerplexityBot": true,
+      "Perplexity-User": true,
+      "Google-Extended": true,
+      "Applebot-Extended": true,
+      "meta-externalagent": true
+    }
+  },
+  "pages": [
+    {
+      "url": "https://elevenlabs.io/",
+      "final_url": "https://elevenlabs.io/",
+      "robots_allowed": true,
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "response_truncated": false,
+      "latency_ms": 1547,
+      "title": "Free AI Voice Generator & Voice Agents Platform | ElevenLabs",
+      "h1": [
+        "Bringing",
+        "technology to life"
+      ],
+      "word_count": 1486,
+      "text_length": 10470,
+      "landmarks": [
+        "article",
+        "footer",
+        "main",
+        "nav"
+      ],
+      "meta_robots": "",
+      "meta_robot_directives": {
+        "robots": "",
+        "googlebot": "",
+        "bingbot": ""
+      },
+      "description": "Create lifelike speech with our AI voice generator and voice agents platform. Access 5,000+ voices in 70+ languages with secure APIs and SDKs.",
+      "canonical": [
+        "https://elevenlabs.io"
+      ],
+      "links_count": 149,
+      "images": {
+        "count": 46,
+        "missing_alt": 37,
+        "empty_alt": 0
+      },
+      "jsonld": {
+        "blocks": 2,
+        "parse_errors": 0,
+        "types": [
+          "AggregateRating",
+          "Brand",
+          "BreadcrumbList",
+          "ImageObject",
+          "ListItem",
+          "Offer",
+          "Organization",
+          "Person",
+          "PostalAddress",
+          "PropertyValue",
+          "SoftwareApplication",
+          "WebPage",
+          "WebSite"
+        ]
+      },
+      "text_sample": "Free AI Voice Generator & Voice Agents Platform | ElevenLabs Skip to content Products Solutions Customers Resources Enterprise Pricing Log in Sign up Contact sales Log in Contact sales Sign up Bringing technology to life Sign up Contact sales Powering the best enterprises, creators, and developers. From ElevenAgents for customer experience, ElevenCreative for content creation, to the leading AI voice generator. ElevenCreative Creative ElevenAgents Agents ElevenAPI API AI Voice Generator Text to Speech Music Speech to Text Voice Cloning Dubbing Narration Expressive voices that bring audiobooks and podcasts to life. Advertisement Persuasive voices that drive action and brand recall. Characters Playful and engaging voices for cartoons or video games. Narration Expressive voices that bring audiobooks and podcasts to life. Conversational Natural voices perfect for informal scenarios. Social Media Trendy, attention-grabbing voices for short-form content. Sign up Trusted by leading developers and enterprises Read all stories Twilio The Walt Disney Studios KPN Stripe Telus Digital Cisco Epic Games Nvidia Revolut Meta Bertelsmann Square + ElevenLabs partnership deliveroo IBM Deutsche Teleko"
+    }
+  ],
+  "errors": [],
+  "ai_probe": {
+    "status": "checked",
+    "agent": "GPTBot",
+    "http_status": 200,
+    "text_length": 10470,
+    "browser_text_length": 10470,
+    "text_ratio": 1.0,
+    "response_truncated": false
+  },
+  "coverage": {
+    "rendered": "not_checked: collector is static",
+    "off_site": "not_checked: requires search-capable agent"
+  }
+}

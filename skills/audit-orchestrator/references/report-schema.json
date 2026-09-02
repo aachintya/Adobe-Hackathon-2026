@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "site", "audited_at", "executive_summary", "summary", "coverage", "findings", "proactive_opportunities"],
+  "properties": {
+    "schema_version": {"const": "1.1"},
+    "site": {"type": "string", "format": "uri", "pattern": "^https?://"},
+    "audited_at": {"type": "string", "format": "date-time"},
+    "executive_summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["conclusion", "top_action_ids"],
+      "properties": {
+        "conclusion": {"type": "string", "minLength": 1},
+        "top_action_ids": {"type": "array", "maxItems": 3, "uniqueItems": true, "items": {"type": "string", "pattern": "^(F|O)-[0-9]{3}$"}}
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["total_findings", "critical", "high", "medium", "low"],
+      "properties": {
+        "total_findings": {"type": "integer", "minimum": 0},
+        "critical": {"type": "integer", "minimum": 0},
+        "high": {"type": "integer", "minimum": 0},
+        "medium": {"type": "integer", "minimum": 0},
+        "low": {"type": "integer", "minimum": 0}
+      }
+    },
+    "coverage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["pages_checked", "modes", "not_checked"],
+      "properties": {
+        "pages_checked": {"type": "integer", "minimum": 0},
+        "modes": {"type": "array", "uniqueItems": true, "items": {"enum": ["static", "rendered", "off_site", "retrieval"]}},
+        "not_checked": {"type": "array", "items": {"type": "string", "minLength": 1}}
+      }
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "title", "category", "severity", "confidence", "evidence", "suggested_action"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^F-[0-9]{3}$"},
+          "title": {"type": "string", "minLength": 1},
+          "category": {"enum": ["discoverability", "engagement"]},
+          "severity": {"enum": ["critical", "high", "medium", "low"]},
+          "confidence": {"enum": ["high", "medium"]},
+          "evidence": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["observation", "affected", "checked", "urls"],
+            "properties": {
+              "observation": {"type": "string", "minLength": 1},
+              "affected": {"type": "integer", "minimum": 1},
+              "checked": {"type": "integer", "minimum": 1},
+              "urls": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "format": "uri", "pattern": "^https?://"}}
+            }
+          },
+          "suggested_action": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["summary", "priority", "effort", "owner_hint", "mechanism", "verification"],
+            "properties": {
+              "summary": {"type": "string", "minLength": 1},
+              "priority": {"enum": ["high", "medium", "low"]},
+              "effort": {"enum": ["low", "medium", "high"]},
+              "owner_hint": {"type": "string", "minLength": 1},
+              "mechanism": {"type": "string", "minLength": 1},
+              "verification": {"type": "string", "minLength": 1}
+            }
+          }
+        }
+      }
+    },
+    "proactive_opportunities": {
+      "type": "array",
+      "maxItems": 3,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "title", "rationale", "priority", "effort", "owner_hint", "mechanism", "verification"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^O-[0-9]{3}$"},
+          "title": {"type": "string", "minLength": 1},
+          "rationale": {"type": "string", "minLength": 1},
+          "priority": {"enum": ["high", "medium", "low"]},
+          "effort": {"enum": ["low", "medium", "high"]},
+          "owner_hint": {"type": "string", "minLength": 1},
+          "mechanism": {"type": "string", "minLength": 1},
+          "verification": {"type": "string", "minLength": 1}
+        }
+      }
+    }
+  }
+}
