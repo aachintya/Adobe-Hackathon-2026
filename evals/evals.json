@@ -3,51 +3,137 @@
   "evals": [
     {
       "id": 1,
-      "prompt": "Audit the supplied ecommerce site. Its server HTML is complete, but test the rendered purchase path and report only directly observed problems.",
+      "prompt": "Audit the supplied public website for AI discoverability and on-site engagement. Return one evidence-backed report with prioritized actions.",
       "expected_output": "A schema-valid report covering discoverability and rendered engagement without inventing conversion impact.",
-      "assertions": ["Renders representative landing and task pages", "Checks overlay, CTA destination, keyboard access, and focus", "Does not claim bounce or conversion loss", "Finishes within five minutes"]
+      "assertions": [
+        "Renders representative landing and task pages",
+        "Checks overlay, CTA destination, keyboard access, and focus",
+        "Does not claim bounce or conversion loss",
+        "Finishes within five minutes"
+      ],
+      "private_setup": "Audit the supplied ecommerce site. Its server HTML is complete, but test the rendered purchase path and report only directly observed problems."
     },
     {
       "id": 2,
-      "prompt": "Audit a multi-location healthcare brand whose name is shared by unrelated organizations.",
+      "prompt": "Audit the supplied public website for AI discoverability and on-site engagement. Return one evidence-backed report with prioritized actions.",
       "expected_output": "A report that tests entity ambiguity, location facts, independent corroboration, and on-site task continuity.",
-      "assertions": ["Uses dated exact-entity and material-claim searches", "Separates independent sources from first-party repetition", "Does not treat search absence alone as a high-severity defect"]
+      "assertions": [
+        "Uses dated exact-entity and material-claim searches",
+        "Separates independent sources from first-party repetition",
+        "Does not treat search absence alone as a high-severity defect"
+      ],
+      "private_setup": "Audit a multi-location healthcare brand whose name is shared by unrelated organizations."
     },
     {
       "id": 3,
-      "prompt": "Audit a SaaS documentation path at https://example.test/docs/start rather than replacing it with the homepage.",
+      "prompt": "Audit https://example.test/docs/start for AI discoverability and on-site engagement. Return one evidence-backed report.",
       "expected_output": "A path-preserving audit with representative same-site discovery and path-specific robots decisions.",
-      "assertions": ["Preserves /docs/start as the requested site", "Evaluates robots rules on sampled valuable paths", "Normalizes tracking parameters and avoids crawl traps"]
+      "assertions": [
+        "Preserves /docs/start as the requested site",
+        "Evaluates robots rules on sampled valuable paths",
+        "Normalizes tracking parameters and avoids crawl traps"
+      ],
+      "private_setup": "Audit a SaaS documentation path at https://example.test/docs/start rather than replacing it with the homepage."
     },
     {
       "id": 4,
-      "prompt": "Audit a publisher with a declared sitemap containing articles that are not linked from the homepage.",
+      "prompt": "Audit the supplied public website for AI discoverability and on-site engagement. Return one evidence-backed report with prioritized actions.",
       "expected_output": "A bounded audit that consumes sitemap inventory and samples multiple content templates.",
-      "assertions": ["Fetches declared sitemap files", "Uses sitemap URLs for representative discovery", "Does not call a missing sitemap a defect"]
+      "assertions": [
+        "Fetches declared sitemap files",
+        "Uses sitemap URLs for representative discovery",
+        "Does not call a missing sitemap a defect"
+      ],
+      "private_setup": "Audit a publisher with a declared sitemap containing articles that are not linked from the homepage."
     },
     {
       "id": 5,
-      "prompt": "Audit a multilingual consumer brand and distinguish locale differences from factual inconsistency.",
+      "prompt": "Audit the supplied public website for AI discoverability and on-site engagement. Return one evidence-backed report with prioritized actions.",
       "expected_output": "A report that records locale coverage and avoids false consistency findings caused by legitimate regional variants.",
-      "assertions": ["Records material locales", "Distinguishes currency, location, and product variants", "States incomplete locale coverage"]
+      "assertions": [
+        "Records material locales",
+        "Distinguishes currency, location, and product variants",
+        "States incomplete locale coverage"
+      ],
+      "private_setup": "Audit a multilingual consumer brand and distinguish locale differences from factual inconsistency."
     },
     {
       "id": 6,
-      "prompt": "Audit a site whose important pricing and eligibility facts appear only in images and PDFs.",
+      "prompt": "Audit the supplied public website for AI discoverability and on-site engagement. Return one evidence-backed report with prioritized actions.",
       "expected_output": "Evidence-backed findings only where material facts lack equivalent readable HTML.",
-      "assertions": ["Excludes decorative media", "Checks nearby equivalent text", "Provides a verification-ready remediation"]
+      "assertions": [
+        "Excludes decorative media",
+        "Checks nearby equivalent text",
+        "Provides a verification-ready remediation"
+      ],
+      "private_setup": "Audit a site whose important pricing and eligibility facts appear only in images and PDFs."
     },
     {
       "id": 7,
-      "prompt": "Audit a healthy, accessible, server-rendered brand site and be conservative.",
+      "prompt": "Audit the supplied public website for AI discoverability and on-site engagement. Return one evidence-backed report with prioritized actions.",
       "expected_output": "A low-noise report with no fabricated defects and at most three relevant proactive opportunities.",
-      "assertions": ["Does not report schema or sitemap absence automatically", "Uses not_checked for unavailable measurements", "Does not claim citation, ranking, or accessibility conformance"]
+      "assertions": [
+        "Does not report schema or sitemap absence automatically",
+        "Uses not_checked for unavailable measurements",
+        "Does not claim citation, ranking, or accessibility conformance"
+      ],
+      "private_setup": "Audit a healthy, accessible, server-rendered brand site and be conservative."
     },
     {
       "id": 8,
-      "prompt": "Audit a slow site with redirects, non-HTML resources, and occasional server errors while respecting a five-minute deadline.",
+      "prompt": "Audit the supplied public website for AI discoverability and on-site engagement. Return one evidence-backed report with prioritized actions.",
       "expected_output": "A partial but honest report that stays on-authority, skips non-HTML parsing, and discloses deadline-limited coverage.",
-      "assertions": ["Blocks cross-authority redirects before fetching them", "Bounds decoded response size", "Stops new collection before five minutes", "Reports partial coverage rather than converting failures into defects"]
+      "assertions": [
+        "Blocks cross-authority redirects before fetching them",
+        "Bounds decoded response size",
+        "Stops new collection before five minutes",
+        "Reports partial coverage rather than converting failures into defects"
+      ],
+      "private_setup": "Audit a slow site with redirects, non-HTML resources, and occasional server errors while respecting a five-minute deadline."
+    },
+    {
+      "id": 9,
+      "private_setup": "Healthy source-rendered public site allows OAI-SearchBot/Googlebot but blocks GPTBot and ClaudeBot; no llms.txt or JSON-LD.",
+      "prompt": "Audit the supplied public website.",
+      "expected_output": "No training-policy, llms.txt or absent-schema defect without a separate material problem.",
+      "assertions": [
+        "Separates training from search",
+        "Does not recommend opening training bots for search",
+        "Records actual visibility as not_measured"
+      ]
+    },
+    {
+      "id": 10,
+      "private_setup": "Well-structured product pages have plentiful text but omit one decision-critical constraint; the answer is in a later source passage on one linked page.",
+      "prompt": "Audit the supplied public website.",
+      "expected_output": "Question answerability is judged against relevant complete passages, not keyword or word-count scores.",
+      "assertions": [
+        "Uses 3-5 site-specific questions",
+        "Finds the answer beyond the first 1200 characters",
+        "Does not declare missing-in-sample before inspecting relevant linked evidence"
+      ]
+    },
+    {
+      "id": 11,
+      "private_setup": "Recorded answer runs include branded and unbranded prompts, one API failure, one independent article citation and a lookalike hostname.",
+      "prompt": "Use the supplied recorded assistant answers to assess website visibility alongside the site audit.",
+      "expected_output": "Correct per-cohort mention/citation denominators with raw answer provenance.",
+      "assertions": [
+        "Excludes failed runs from rate denominators",
+        "Keeps independent mentions separate from own-domain citations",
+        "Does not merge branded and unbranded outcomes"
+      ]
+    },
+    {
+      "id": 12,
+      "private_setup": "A public university page has clear eligibility, application instructions and region-specific links, with no public pricing or personalization features.",
+      "prompt": "Audit the supplied university website.",
+      "expected_output": "Questions and journeys match the actual visitor tasks and no SaaS-only requirements are imposed.",
+      "assertions": [
+        "Tests eligibility and application information",
+        "Does not demand a pricing table or personalized chatbot",
+        "Records only context visible in the website journey"
+      ]
     }
   ]
 }

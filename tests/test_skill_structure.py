@@ -17,7 +17,7 @@ def frontmatter(path):
 
 def main():
     manifest=json.loads((ROOT/"marketplace.json").read_text(encoding="utf-8")); skills=manifest.get("skills",[])
-    assert manifest.get("version")=="1.4.0" and skills and sum(bool(item.get("entrypoint")) for item in skills)==1
+    assert re.fullmatch(r"[0-9]+\.[0-9]+\.[0-9]+",manifest.get("version","")) and skills and sum(bool(item.get("entrypoint")) for item in skills)==1
     checked=[]
     for item in skills:
         folder=ROOT/item["path"]; document=folder/"SKILL.md"; assert folder.parent==ROOT/"skills" and document.is_file()

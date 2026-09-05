@@ -1,61 +1,46 @@
 # Brand AI Readiness Audit
 
-Adobe University Hackathon marketplace submission for **Speak to Agents: The New Language of Brand Visibility**. It audits a public website without changing it and returns one evidence-backed report.
+Adobe University Hackathon 2026, Round 3: **Speak to Agents: The New Language of Brand Visibility**. Version 2.0.0.
 
-[![Validate marketplace](https://github.com/aachintya/Adobe-Hackathon-2026/actions/workflows/validate.yml/badge.svg)](https://github.com/aachintya/Adobe-Hackathon-2026/actions/workflows/validate.yml)
+Submit this marketplace as a ZIP. The judging agent loads `marketplace.json` and invokes the single `audit-orchestrator` entrypoint with a website URL. It composes three focused skills into one evidence-backed JSON report:
 
-The `audit-orchestrator` entrypoint composes three focused skills:
+| Skill | Responsibility |
+|---|---|
+| `audit-orchestrator` (entrypoint) | Shared time/evidence budget, visitor questions, composition, prioritization and output validation |
+| `crawl-extract-audit` | Search access and indexing controls; readable facts; question answerability; structured-data contradictions |
+| `entity-trust-audit` | Entity identity, material fact consistency, current evidence and independent source comparison |
+| `engagement-context-audit` | Real visitor information routes, next steps, context continuity and observable task barriers |
 
-- `crawl-extract-audit`: access, indexability, static-vs-rendered extractability, structured data, fact quotability, and important facts trapped in media.
-- `entity-trust-audit`: entity identity, claim freshness, first-party consistency, and independent corroboration.
-- `engagement-context-audit`: orientation, information scent, dead ends, continuity, accessibility friction, and task completion paths.
+**Skills plus Python helpers are allowed.** Adobe's updated Round 3 handout explicitly permits optional `scripts/` and `references/`. The submission is a skill marketplace; its Python helpers support the host agent. No API keys, model weights, package installation, server or paid service is required. Python 3.10+ is optional; public fetch, browser and search tools are used by the agent as available. Missing capabilities are disclosed.
 
-## Run
+## Invoke the marketplace
 
-Invoke `skills/audit-orchestrator` with a public URL. The agent uses available browser/search tools and can run the bundled deterministic collector:
+Ask the judging/general agent:
+
+> Use the entrypoint in `skills/audit-orchestrator/SKILL.md` to audit https://example.com for AI discoverability and on-site engagement. Return the composed JSON report.
+
+The agent derives 3-5 relevant visitor questions, evaluates supporting facts, traces two safe public journeys, checks source credibility and returns prioritized fixes. It uses the same evidence across all skills. Paths resolve from the installed skill, so invocation does not depend on the working directory.
+
+## Run the optional Python fallback
+
+From the extracted marketplace root:
 
 ```text
-python skills/audit-orchestrator/scripts/collect_site.py https://example.com --output evidence.json
+python skills/audit-orchestrator/scripts/run_audit.py https://example.com --output-dir audit-output
+python tests/validate_report.py audit-output/report.json
 ```
 
-The entrypoint emits one JSON report conforming to `skills/audit-orchestrator/references/report-schema.json`. It includes an executive conclusion, prioritized finding actions, and evidence-linked proactive opportunities. It is recommend-only and preserves unavailable evidence as `coverage.not_checked` instead of inventing a failure. See `examples/problem-site-report.json` for a composed example.
+This writes `evidence.json` and a schema-valid **static baseline** `report.json`. It preserves page passages, link labels/destinations, structured-data values and scoped access controls. The host agent reviews and completes the baseline with question tests, trust reasoning and browser journeys. Python alone does not simulate a complete agent audit or measure live assistant citations.
 
-The collector preserves a supplied path, consumes bounded sitemap inventory, normalizes tracking URLs, evaluates named-agent policy per sampled path, rejects cross-authority redirects before fetching them, skips non-HTML parsing, bounds decoded responses, and stops new collection before the five-minute limit. When capabilities exist, the skill renders representative task pages and runs a compact off-site discovery baseline.
+The report includes Adobe's required findings, evidence, severity, suggested actions and summary, plus `assessment`, explicit coverage, an executive conclusion and relevant proactive opportunities. See [the composed synthetic example](examples/problem-site-report.json). Actual visibility remains `not_measured` unless recorded assistant answers support it; [the measurement protocol](skills/audit-orchestrator/references/retrieval-validation.md) explains the optional helper.
 
-## Validate
-
-Run the complete deterministic suite from this directory:
+## Verify and package
 
 ```text
 python tests/run_all.py
-```
-
-Build the contest-ready ZIP, with one `brand-ai-readiness-audit/` root and no generated cache files:
-
-```text
 python scripts/package_submission.py
 ```
 
-The verified archive is written to `dist/` and checked against Adobe's 50 MB limit, manifest, skill paths, and single-entrypoint rule.
+The ZIP is `dist/brand-ai-readiness-audit-v2.0.0-submission.zip`, containing one marketplace root. Tests include running its extracted Python fallback from an unrelated working directory with spaces in its path. Build scripts, validators and fixtures are included; caches, live crawl outputs, previous ZIPs and model weights are excluded. Both compressed and uncompressed sizes must stay below 50 MB.
 
-The suite checks healthy/problem collection, robots edge cases, report-contract failures, and outcome-level report quality. To score a new composed report against a maintained case:
-
-```text
-python tests/evaluate_report_quality.py REPORT.json tests/fixtures/problem-expectations.json
-```
-
-`evals/evals.json` contains eight forward-evaluation prompts spanning rendered engagement, entity ambiguity, path-specific audits, sitemap discovery, multilingual sites, media-locked facts, healthy-site false-positive control, and deadline/redirect safety. These cases are intended for blinded fresh-agent runs; the deterministic suite validates their coverage and all mechanics that can be checked without model judgment.
-
-See [`evals/README.md`](evals/README.md) for the blinded generalization protocol, metrics, capability-degradation matrix, and internal release gates. The project does not present the maintained example's synthetic score as proof of unseen-site performance.
-
-## Cascading design
-
-The audit spends its evidence budget in stages: robots/homepage/sitemap, then a diverse bounded crawl, then optional rendering for suspicious pages, then optional off-site corroboration for material claims. Each later stage is triggered only when it can resolve uncertainty. This keeps typical runs under five minutes while reducing false positives.
-
-## Safety defaults
-
-Public GET/HEAD only; no login, forms, mutation, bypass, or high-rate crawling. Robots directives are respected. Default cap: 20 pages, two requests per second, same-site URLs only.
-
-## Accessibility scope
-
-Accessibility is a directly observed engagement evidence lane, not a conformance certification. The audit reports task-relevant barriers it can verify and marks rendered interaction, focus, keyboard, overlay, or contrast checks as `not_checked` when those capabilities were not exercised.
+Collection defaults to 12 pages, 2 requests/second and 120 seconds. The skill shares a 280-second target across collection, browser, search and composition. It respects robots, uses its own crawler identity, follows only bounded public navigation and recommends changes without modifying live sites. See [design and Adobe requirement mapping](DESIGN.md) and [validation limits](VALIDATION.md).

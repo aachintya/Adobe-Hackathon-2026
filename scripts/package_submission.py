@@ -10,8 +10,8 @@ from zipfile import ZIP_DEFLATED, ZipFile
 
 ROOT = Path(__file__).resolve().parents[1]
 PACKAGE_ROOT = "brand-ai-readiness-audit"
-INCLUDED_FILES = ("marketplace.json", "README.md", "VALIDATION.md", "LICENSE")
-INCLUDED_DIRECTORIES = ("skills", "evals", "examples", "tests")
+INCLUDED_FILES = ("marketplace.json", "README.md", "VALIDATION.md", "DESIGN.md", "LICENSE")
+INCLUDED_DIRECTORIES = ("skills", "evals", "examples", "tests", "scripts")
 EXCLUDED_PARTS = {"__pycache__", ".pytest_cache"}
 EXCLUDED_SUFFIXES = {".pyc", ".pyo"}
 
@@ -31,6 +31,10 @@ def source_files() -> list[Path]:
 def verify_archive(path: Path) -> dict[str, object]:
     with ZipFile(path) as archive:
         names = archive.namelist()
+        if sum(item.file_size for item in archive.infolist()) > 50_000_000:
+            raise RuntimeError("Uncompressed package exceeds 50 MB")
+        if len(names) != len(set(names)) or any(".." in Path(name).parts for name in names):
+            raise RuntimeError("Duplicate or unsafe archive paths")
         prefix = f"{PACKAGE_ROOT}/"
         if not names or any(not name.startswith(prefix) for name in names):
             raise RuntimeError("Archive must contain exactly one marketplace root directory")
@@ -73,7 +77,7 @@ def main() -> None:
             archive.write(path, f"{PACKAGE_ROOT}/{relative}")
 
     result = verify_archive(output)
-    if output.stat().st_size > 50 * 1024 * 1024:
+    if output.stat().st_size > 50_000_000:
         raise RuntimeError("Archive exceeds Adobe's 50 MB limit")
     print(json.dumps({"result": "PASS", **result}, indent=2))
 

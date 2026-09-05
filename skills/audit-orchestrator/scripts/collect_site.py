@@ -1,180 +1,260 @@
 #!/usr/bin/env python3
-"""Bounded, read-only evidence collector. It reports observations, not findings."""
-import argparse, gzip, io, json, re, time
-from collections import deque
+"""Collect reusable source evidence, not an invented AI visibility score."""
+import argparse
+import gzip
+import io
+import json
+import re
+import time
 from datetime import datetime, timezone
-from html.parser import HTMLParser
 from urllib.error import HTTPError, URLError
 from urllib.parse import parse_qsl, urlencode, urljoin, urlparse, urlunparse, urldefrag
 from urllib.request import HTTPRedirectHandler, Request, build_opener
-from urllib.robotparser import RobotFileParser
 from xml.etree import ElementTree
 
-UA = "BrandAIReadinessAudit/1.1 (+read-only; respects robots.txt)"
-BROWSER_UA = "Mozilla/5.0 (compatible; BrandAIReadinessAudit/1.1; read-only)"
-AI_AGENTS = ["GPTBot", "OAI-SearchBot", "ChatGPT-User", "ClaudeBot", "Claude-User", "Claude-SearchBot", "PerplexityBot", "Perplexity-User", "Google-Extended", "Applebot-Extended", "meta-externalagent"]
+from page_evidence import PageParser, jsonld_types, page_fields
+from robots_policy import RobotsPolicy
+
+UA = "BrandAIReadinessAudit/2.0"
+AI_AGENTS = ["Googlebot", "bingbot", "OAI-SearchBot", "Claude-SearchBot", "PerplexityBot",
+             "GPTBot", "ChatGPT-User", "ClaudeBot", "Claude-User", "Perplexity-User",
+             "Google-Extended", "Applebot-Extended", "meta-externalagent"]
+AGENT_ROLES = {"search": ["Googlebot", "bingbot", "OAI-SearchBot", "Claude-SearchBot", "PerplexityBot"],
+               "training_or_other_control": ["GPTBot", "ClaudeBot", "Google-Extended", "Applebot-Extended", "meta-externalagent"],
+               "user_fetch": ["ChatGPT-User", "Claude-User", "Perplexity-User"]}
 TRACKING_KEYS = {"fbclid", "gclid", "dclid", "msclkid", "mc_cid", "mc_eid"}
 HTML_TYPES = {"text/html", "application/xhtml+xml"}
 
-class PageParser(HTMLParser):
-    def __init__(self):
-        super().__init__(); self.links=[]; self.text=[]; self.title=[]; self.h1=[]; self.jsonld=[]
-        self.meta=[]; self.canon=[]; self.img=[]; self.landmarks=[]; self._stack=[]; self._suppress=0; self._json=False; self._buf=[]
-    def handle_starttag(self, tag, attrs):
-        a=dict(attrs); self._stack.append(tag)
-        if tag in {"script","style","noscript","svg"}: self._suppress += 1
-        if tag in {"main","nav","header","footer","article","aside"}: self.landmarks.append(tag)
-        if tag=="a" and a.get("href"): self.links.append(a["href"])
-        if tag=="meta": self.meta.append(a)
-        if tag=="link" and "canonical" in a.get("rel","").lower(): self.canon.append(a.get("href",""))
-        if tag=="img": self.img.append({"src":a.get("src","") ,"alt":a.get("alt")})
-        if tag=="script" and "ld+json" in a.get("type","").lower(): self._json=True; self._buf=[]
-    def handle_endtag(self, tag):
-        if tag=="script" and self._json: self.jsonld.append("".join(self._buf)); self._json=False; self._buf=[]
-        if tag in {"script","style","noscript","svg"}: self._suppress=max(0,self._suppress-1)
-        if tag in self._stack:
-            while self._stack:
-                if self._stack.pop()==tag: break
-    def handle_data(self, data):
-        if self._json: self._buf.append(data)
-        elif not self._suppress:
-            value=" ".join(data.split())
-            if value: self.text.append(value)
-            if "title" in self._stack: self.title.append(value)
-            if "h1" in self._stack: self.h1.append(value)
-
-class SameAuthorityRedirect(HTTPRedirectHandler):
-    def __init__(self, host): super().__init__(); self.host=host.lower()
-    def redirect_request(self, request, fp, code, msg, headers, newurl):
-        if urlparse(newurl).netloc.lower()!=self.host:
-            raise HTTPError(request.full_url,code,"redirect left the audited authority",headers,fp)
-        return super().redirect_request(request,fp,code,msg,headers,newurl)
-
-def fetch(url, timeout=12, user_agent=BROWSER_UA, limit=2_000_000, accept="text/html,application/xhtml+xml,text/plain,application/xml,text/xml"):
-    request=Request(url,headers={"User-Agent":user_agent,"Accept":accept}); started=time.monotonic()
-    with build_opener(SameAuthorityRedirect(urlparse(url).netloc)).open(request,timeout=max(.1,timeout)) as response:
-        raw=response.read(limit+1); truncated=len(raw)>limit; raw=raw[:limit]
-        if response.headers.get("Content-Encoding","").lower()=="gzip":
-            with gzip.GzipFile(fileobj=io.BytesIO(raw)) as stream: decoded=stream.read(limit+1)
-            truncated=truncated or len(decoded)>limit; raw=decoded[:limit]
-        encoding=response.headers.get_content_charset() or "utf-8"
-        return response.geturl(),response.status,dict(response.headers.items()),raw.decode(encoding,"replace"),round((time.monotonic()-started)*1000),truncated
-
-def jsonld_types(value):
-    found=set()
-    def walk(item):
-        if isinstance(item,dict):
-            kind=item.get("@type")
-            if isinstance(kind,str): found.add(kind)
-            elif isinstance(kind,list): found.update(value for value in kind if isinstance(value,str))
-            for value in item.values(): walk(value)
-        elif isinstance(item,list):
-            for value in item: walk(value)
-    walk(value); return sorted(found)
-
-def normalize(base, href, host):
-    url=urldefrag(urljoin(base,href))[0]; parsed=urlparse(url)
-    if parsed.scheme not in {"http","https"} or parsed.netloc.lower()!=host: return None
-    if re.search(r"\.(?:jpg|jpeg|png|gif|svg|webp|zip|gz|pdf|mp4|mp3|woff2?)(?:$|\?)",url,re.I): return None
-    query=[]
-    for key,value in parse_qsl(parsed.query,keep_blank_values=True):
-        lower=key.lower()
-        if lower.startswith("utm_") or lower in TRACKING_KEYS: continue
-        query.append((key,value))
-    query.sort(); path=re.sub(r"/{2,}","/",parsed.path or "/")
-    return urlunparse((parsed.scheme.lower(),parsed.netloc.lower(),path,"",urlencode(query,doseq=True),""))
-
-def sitemap_urls(body, base, host, cap=200):
-    try: root=ElementTree.fromstring(body)
-    except ElementTree.ParseError: return []
-    found=[]
-    for element in root.iter():
-        if element.tag.lower().endswith("loc") and element.text:
-            candidate=normalize(base,element.text.strip(),host)
-            if candidate and candidate not in found:
-                found.append(candidate)
-                if len(found)>=cap: break
-    return found
 
 def header_value(headers, name):
-    return next((value for key,value in headers.items() if key.lower()==name.lower()),"")
+    return next((v for k, v in headers.items() if k.lower() == name.lower()), "")
 
-def remaining(deadline, maximum): return max(.1,min(maximum,deadline-time.monotonic()))
+
+def normalize(base, href, host):
+    url = urldefrag(urljoin(base, href))[0]; parsed = urlparse(url)
+    if parsed.scheme not in {"http", "https"} or parsed.netloc.lower() != host or parsed.username: return None
+    if re.search(r"\.(?:jpg|jpeg|png|gif|svg|webp|zip|gz|pdf|mp4|mp3|woff2?)(?:$|\?)", url, re.I): return None
+    query = [(k, v) for k, v in parse_qsl(parsed.query, keep_blank_values=True)
+             if not k.lower().startswith("utm_") and k.lower() not in TRACKING_KEYS]
+    return urlunparse((parsed.scheme.lower(), parsed.netloc.lower(), parsed.path or "/", "", urlencode(sorted(query)), ""))
+
+
+class DeadlineReached(Exception):
+    pass
+
+
+class SameAuthorityRedirect(HTTPRedirectHandler):
+    max_redirections = 5
+
+    def __init__(self, host, before_request, policy=None):
+        self.host, self.before_request, self.policy, self.chain = host, before_request, policy, []
+
+    def redirect_request(self, request, fp, code, msg, headers, newurl):
+        parsed = urlparse(newurl)
+        if parsed.scheme not in {"http", "https"} or parsed.netloc.lower() != self.host or parsed.username:
+            raise HTTPError(request.full_url, code, "redirect left the audited authority", headers, fp)
+        if self.policy and not self.policy.can_fetch(UA, newurl):
+            raise HTTPError(request.full_url, code, "redirect target blocked by collector robots policy", headers, fp)
+        self.before_request()
+        self.chain.append({"from": request.full_url, "to": newurl, "status": code})
+        return super().redirect_request(request, fp, code, msg, headers, newurl)
+
+
+class Client:
+    def __init__(self, origin, seconds):
+        self.host = urlparse(origin).netloc.lower()
+        self.deadline = time.monotonic() + seconds
+        self.next_request = 0.0
+        self.policy = None
+        self.requests = 0
+        self.interval = .5
+
+    def before_request(self):
+        delay = max(0, self.next_request - time.monotonic())
+        if time.monotonic() + delay >= self.deadline: raise DeadlineReached()
+        if delay: time.sleep(delay)
+        self.next_request = time.monotonic() + self.interval
+        self.requests += 1
+
+    def fetch(self, url, timeout=8, limit=2_000_000, policy=True):
+        self.before_request()
+        handler = SameAuthorityRedirect(self.host, self.before_request, self.policy if policy else None)
+        request = Request(url, headers={"User-Agent": UA, "Accept": "text/html,application/xhtml+xml,application/xml,text/plain"})
+        started = time.monotonic()
+        with build_opener(handler).open(request, timeout=max(.1, min(timeout, self.deadline - started))) as response:
+            chunks, size = [], 0
+            while size <= limit:
+                if time.monotonic() >= self.deadline: raise DeadlineReached()
+                chunk = response.read1(min(65536, limit + 1 - size))
+                if not chunk: break
+                chunks.append(chunk); size += len(chunk)
+            raw = b"".join(chunks); truncated = len(raw) > limit; raw = raw[:limit]
+            if response.headers.get("Content-Encoding", "").lower() == "gzip":
+                with gzip.GzipFile(fileobj=io.BytesIO(raw)) as stream: decoded = stream.read(limit + 1)
+                truncated = truncated or len(decoded) > limit; raw = decoded[:limit]
+            encoding = response.headers.get_content_charset() or "utf-8"
+            try: body = raw.decode(encoding, "replace")
+            except LookupError: body = raw.decode("utf-8", "replace")
+            headers = dict(response.headers.items())
+            headers["X-Robots-Tag"] = ", ".join(response.headers.get_all("X-Robots-Tag", []))
+            headers["X-Robots-Tag-Values"] = response.headers.get_all("X-Robots-Tag", [])
+            return {"final_url": response.geturl(), "status": response.status, "headers": headers, "body": body,
+                    "latency_ms": round((time.monotonic() - started) * 1000), "response_truncated": truncated,
+                    "redirects": handler.chain, "content_type": response.headers.get("Content-Type", "")}
+
+
+def sitemap_inventory(body, base, host, cap=200):
+    try: root = ElementTree.fromstring(body)
+    except ElementTree.ParseError: return [], False
+    is_index = root.tag.rsplit("}", 1)[-1].lower() == "sitemapindex"
+    found = []
+    for element in root.iter():
+        if element.tag.rsplit("}", 1)[-1].lower() == "loc" and element.text:
+            candidate = normalize(base, element.text.strip(), host)
+            if candidate and candidate not in found: found.append(candidate)
+            if len(found) >= cap: break
+    return found, is_index
+
+
+def sitemap_urls(body, base, host, cap=200):
+    return sitemap_inventory(body, base, host, cap)[0]
+
+
+def page_type(url):
+    path = urlparse(url).path.lower()
+    for category, pattern in [("decision", r"pricing|plans|compare"), ("offering", r"product|service|solution"),
+                              ("entity", r"about|company|team"), ("task", r"contact|support|help|docs|book"),
+                              ("proof", r"case-stud|customer|security"), ("article", r"blog|news|article")]:
+        if re.search(pattern, path): return category
+    return "home" if path == "/" else "other"
+
+
+def collect(url, max_pages=12, max_seconds=120):
+    max_pages, max_seconds = max(1, min(max_pages, 40)), max(5, min(max_seconds, 180))
+    supplied = url if "://" in url else "https://" + url
+    parsed = urlparse(supplied)
+    if parsed.scheme not in {"http", "https"} or not parsed.hostname or parsed.username:
+        raise ValueError("URL must be HTTP(S) without credentials")
+    origin = f"{parsed.scheme.lower()}://{parsed.netloc.lower()}/"; host = parsed.netloc.lower()
+    start = normalize(origin, supplied, host)
+    if not start: raise ValueError("Starting URL must be an HTML page, not a media/archive file")
+    client = Client(origin, max_seconds)
+    out = {"site": start, "origin": origin, "collected_at": datetime.now(timezone.utc).isoformat(),
+           "collector": "static", "collector_version": "2.0", "agent_roles": AGENT_ROLES,
+           "limits": {"max_pages": max_pages, "max_seconds": max_seconds, "rate_per_second": 2, "max_bytes_per_page": 2_000_000},
+           "robots": {}, "sitemaps": [], "pages": [], "errors": [],
+           "ai_probe": {"status": "not_checked", "reason": "No bot impersonation: local requests do not verify provider IP access."},
+           "coverage": {"rendered": "not_checked: collector is static", "off_site": "not_checked: requires search-capable agent",
+                        "actual_ai_visibility": "not_measured: requires recorded assistant answers and citations", "deadline_reached": False}}
+    def record_error(target, error):
+        item = {"url": target, "error": type(error).__name__, "detail": str(error)[:300]}
+        if isinstance(error, HTTPError): item["status"] = error.code
+        out["errors"].append(item)
+    robots_url = urljoin(origin, "robots.txt")
+    body, state, robots_error, status, metadata = "", "unreachable_network", None, None, {}
+    try:
+        response = client.fetch(robots_url, limit=512_000, policy=False)
+        body, status = response["body"], response["status"]
+        metadata = {k: response[k] for k in ("final_url", "content_type", "response_truncated", "redirects")}
+        if response["response_truncated"]:
+            # An omitted later Allow/group can reverse a decision; do not assert it.
+            state, robots_error = "truncated", "Robots response exceeded 500 KiB; policy incomplete"
+        else: state = "present" if re.search(r"(?im)^\s*user-agent\s*:", body) else "present_no_parseable_groups"
+    except HTTPError as error:
+        status = error.code
+        if 400 <= error.code <= 499: state = "unavailable_4xx"
+        else: state, robots_error = "unreachable_5xx" if error.code >= 500 else "redirect_unchecked", str(error)
+    except (URLError, OSError, ValueError, DeadlineReached) as error:
+        robots_error = f"{type(error).__name__}: {error}"
+    policy = RobotsPolicy(body); client.policy = policy
+    client.interval = max(.5, policy.crawl_delay(UA))
+    client.next_request += client.interval - .5
+    out["limits"]["effective_request_interval_seconds"] = client.interval
+    decisions = {agent: policy.decision(agent, start) if not robots_error else {"allowed": None, "matched_rule": None} for agent in AI_AGENTS}
+    hints = [line.split(":", 1)[1].strip() for line in body.splitlines() if line.lower().startswith("sitemap:")]
+    out["robots"] = {"url": robots_url, "status": status, "state": state, **metadata, "read_error": robots_error,
+                     "rules_text": body, "wildcard_allowed": policy.can_fetch("*", start) if not robots_error else None,
+                     "collector_allowed": policy.can_fetch(UA, start) if not robots_error else None,
+                     "ai_agent_allowed": {k: v["allowed"] for k, v in decisions.items()}, "decisions": decisions,
+                     "sitemap_hints": hints}
+    try:
+        if robots_error or not policy.can_fetch(UA, start):
+            out["coverage"]["crawl"] = "not_checked: robots policy unavailable or supplied path is blocked for this collector"
+        else:
+            # Fetch the actual requested page first. Expensive inventories must not consume its budget.
+            queue, seen, types = [start], set(), {}
+            inventory_pending, sitemaps_seen = list(hints or [urljoin(origin, "sitemap.xml")]), set()
+            while (queue or inventory_pending) and len(out["pages"]) < max_pages:
+                if time.monotonic() >= client.deadline: raise DeadlineReached()
+                if seen and inventory_pending and len(sitemaps_seen) < 3:
+                    sitemap = normalize(origin, inventory_pending.pop(0), host)
+                    if not sitemap or sitemap in sitemaps_seen or not policy.can_fetch(UA, sitemap): continue
+                    sitemaps_seen.add(sitemap)
+                    try:
+                        response = client.fetch(sitemap, limit=1_000_000)
+                        urls, is_index = sitemap_inventory(response["body"], response["final_url"], host)
+                        out["sitemaps"].append({"url": sitemap, "status": response["status"], "is_index": is_index,
+                                                "urls_discovered": len(urls), "response_truncated": response["response_truncated"]})
+                        if is_index: inventory_pending.extend(urls[:3])
+                        else: queue.extend(x for x in urls if x not in seen and x not in queue)
+                    except HTTPError as error:
+                        if sitemap in hints or error.code not in {404, 410}: record_error(sitemap, error)
+                    except (URLError, OSError, ValueError, EOFError) as error: record_error(sitemap, error)
+                if not queue:
+                    if len(sitemaps_seen) >= 3: break
+                    continue
+                if seen: queue.sort(key=lambda x: (types.get(page_type(x), 0), page_type(x) == "other"))
+                target = queue.pop(0)
+                if target in seen: continue
+                seen.add(target)
+                path_policy = {agent: policy.decision(agent, target) for agent in AI_AGENTS}
+                if not policy.can_fetch(UA, target):
+                    out["pages"].append({"url": target, "robots_allowed": False, "robots_ai_allowed": {k: v["allowed"] for k, v in path_policy.items()}})
+                    continue
+                try:
+                    response = client.fetch(target)
+                    page = {"url": target, "robots_allowed": True,
+                            **{k: response[k] for k in ("final_url", "status", "content_type", "latency_ms", "response_truncated", "redirects")},
+                            "robots_ai_allowed": {k: v["allowed"] for k, v in path_policy.items()},
+                            "robots_decisions": path_policy,
+                            "final_robots_ai_allowed": {a: policy.can_fetch(a, response["final_url"]) for a in AI_AGENTS},
+                            "x_robots_tag": header_value(response["headers"], "X-Robots-Tag"),
+                            "x_robots_tags": header_value(response["headers"], "X-Robots-Tag-Values"),
+                            "last_modified": header_value(response["headers"], "Last-Modified"), "sample_type": page_type(target)}
+                    if page["content_type"].split(";", 1)[0].strip().lower() not in HTML_TYPES:
+                        page["parse_status"] = "skipped_non_html"
+                    else:
+                        parser, fields = page_fields(response["body"])
+                        page.update(fields); page["parse_status"] = "parsed_html"
+                        for link in page["links"]: link["url"] = urljoin(response["final_url"], link["href"])
+                        for href in parser.links:
+                            candidate = normalize(response["final_url"], href, host)
+                            if candidate and candidate not in seen and candidate not in queue and len(queue) < max_pages * 10:
+                                queue.append(candidate)
+                    out["pages"].append(page)
+                    types[page_type(target)] = types.get(page_type(target), 0) + 1
+                except (HTTPError, URLError, OSError, ValueError, EOFError, RecursionError) as error: record_error(target, error)
+            out["coverage"]["sample_types"] = types
+    except DeadlineReached:
+        out["coverage"]["deadline_reached"] = True
+        out["coverage"]["crawl"] = "partial: collection budget reached; compose from saved evidence"
+    out["coverage"]["request_count"] = client.requests
+    out["coverage"]["elapsed_seconds"] = round(max_seconds - max(0, client.deadline - time.monotonic()), 2)
+    return out
+
 
 def main():
-    ap=argparse.ArgumentParser(); ap.add_argument("url"); ap.add_argument("--output",default="-"); ap.add_argument("--max-pages",type=int,default=20); ap.add_argument("--max-seconds",type=int,default=270)
-    args=ap.parse_args(); args.max_pages=max(1,min(args.max_pages,40)); args.max_seconds=max(15,min(args.max_seconds,295))
-    supplied=args.url if "://" in args.url else "https://"+args.url; parsed=urlparse(supplied)
-    if parsed.scheme not in {"http","https"} or not parsed.netloc: raise SystemExit("URL must be public HTTP(S)")
-    origin=f"{parsed.scheme.lower()}://{parsed.netloc.lower()}/"; host=parsed.netloc.lower(); start=normalize(origin,supplied,host) or origin; deadline=time.monotonic()+args.max_seconds
-    robots=urljoin(origin,"/robots.txt"); rp=RobotFileParser(); rp.set_url(robots)
-    robots_error=None; robots_status=None; robots_body=""; robots_final=None; robots_type=""; robots_truncated=False; robots_state="unreachable"
-    try:
-        robots_final,robots_status,headers,robots_body,_,robots_truncated=fetch(robots,timeout=remaining(deadline,8),user_agent=UA,limit=512_000,accept="text/plain")
-        if urlparse(robots_final).netloc.lower()!=host: raise ValueError("robots redirect left the audited authority")
-        robots_type=header_value(headers,"Content-Type"); rp.parse(robots_body.splitlines())
-        robots_state="present" if any(line.strip().lower().startswith("user-agent:") for line in robots_body.splitlines()) else "present_no_parseable_groups"
-    except HTTPError as error:
-        robots_status=error.code
-        if 400<=error.code<=499: robots_state="unavailable_4xx"; rp.parse([])
-        else: robots_state="unreachable_5xx"; robots_error=f"HTTP {error.code}"
-    except Exception as error: robots_state="unreachable_network"; robots_error=type(error).__name__+": "+str(error)[:160]
-    hints=[] if robots_error else [line.split(":",1)[1].strip() for line in robots_body.splitlines() if line.lower().startswith("sitemap:") and line.split(":",1)[1].strip()]
-    policies={agent:(rp.can_fetch(agent,start) if not robots_error else None) for agent in AI_AGENTS}; wildcard=rp.can_fetch("*",start) if not robots_error else None
-    out={"site":start,"origin":origin,"collected_at":datetime.now(timezone.utc).isoformat(),"collector":"static","collector_version":"1.1","limits":{"max_pages":args.max_pages,"max_seconds":args.max_seconds,"max_bytes_per_page":2_000_000,"rate_per_second":2,"robots_timeout_seconds":8,"page_timeout_seconds":12,"robots_parse_bytes":512_000},"robots":{"url":robots,"final_url":robots_final,"status":robots_status,"state":robots_state,"content_type":robots_type,"response_truncated":robots_truncated,"read_error":robots_error,"wildcard_allowed":wildcard,"ai_agent_allowed":policies,"sitemap_hints":hints},"sitemaps":[],"pages":[],"errors":[],"ai_probe":{"status":"not_checked"},"coverage":{"rendered":"not_checked: collector is static","off_site":"not_checked: requires search-capable agent","deadline_reached":False}}
-    if robots_error or wildcard is False: out["coverage"]["crawl"]="not_checked: robots policy unavailable or supplied path is blocked"
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("url"); parser.add_argument("--output", default="-")
+    parser.add_argument("--max-pages", type=int, default=12); parser.add_argument("--max-seconds", type=int, default=120)
+    args = parser.parse_args()
+    try: result = collect(args.url, args.max_pages, args.max_seconds)
+    except ValueError as error: parser.error(str(error))
+    payload = json.dumps(result, indent=2, ensure_ascii=False)
+    if args.output == "-": print(json.dumps(result, indent=2, ensure_ascii=True))
     else:
-        discovered=[]
-        for candidate in (hints or [urljoin(origin,"/sitemap.xml")])[:3]:
-            if time.monotonic()>=deadline: break
-            sitemap=normalize(origin,candidate,host)
-            if not sitemap or not rp.can_fetch("*",sitemap): continue
-            try:
-                final,status,headers,body,elapsed,truncated=fetch(sitemap,timeout=remaining(deadline,8),limit=1_000_000,accept="application/xml,text/xml,text/plain")
-                if urlparse(final).netloc.lower()!=host: raise ValueError("sitemap redirect left the audited authority")
-                urls=sitemap_urls(body,final,host); discovered.extend(urls)
-                out["sitemaps"].append({"url":sitemap,"final_url":final,"status":status,"content_type":header_value(headers,"Content-Type"),"response_truncated":truncated,"latency_ms":elapsed,"urls_discovered":len(urls)})
-            except HTTPError as error:
-                if sitemap in hints or error.code not in {404,410}: out["errors"].append({"url":sitemap,"error":"HTTPError","detail":str(error)[:300]})
-            except (URLError,TimeoutError,ValueError,OSError) as error: out["errors"].append({"url":sitemap,"error":type(error).__name__,"detail":str(error)[:300]})
-        queue=deque([start]+[url for url in discovered if url!=start]); seen=set()
-        while queue and len(out["pages"])<args.max_pages and time.monotonic()<deadline:
-            url=queue.popleft()
-            if url in seen: continue
-            seen.add(url)
-            if not rp.can_fetch("*",url): out["pages"].append({"url":url,"robots_allowed":False}); continue
-            try:
-                final,status,headers,html,elapsed,truncated=fetch(url,timeout=remaining(deadline,12))
-                if urlparse(final).netloc.lower()!=host: raise ValueError("page redirect left the audited authority")
-                content_type=header_value(headers,"Content-Type"); media_type=content_type.split(";",1)[0].strip().lower(); path_policies={agent:rp.can_fetch(agent,url) for agent in AI_AGENTS}
-                if media_type not in HTML_TYPES:
-                    out["pages"].append({"url":url,"final_url":final,"robots_allowed":True,"robots_ai_allowed":path_policies,"status":status,"content_type":content_type,"response_truncated":truncated,"latency_ms":elapsed,"parse_status":"skipped_non_html"}); continue
-                parser=PageParser(); parser.feed(html); metas={item.get("name",item.get("property","")).lower():item.get("content","") for item in parser.meta if item.get("name") or item.get("property")}
-                parsed_ld=[]; ld_errors=0
-                for block in parser.jsonld:
-                    try: parsed_ld.append(json.loads(block))
-                    except Exception: ld_errors+=1
-                words=re.findall(r"\b[\w'-]+\b"," ".join(parser.text))
-                page={"url":url,"final_url":final,"robots_allowed":True,"robots_ai_allowed":path_policies,"status":status,"content_type":content_type,"response_truncated":truncated,"latency_ms":elapsed,"parse_status":"parsed_html","title":" ".join(parser.title)[:300],"h1":parser.h1[:10],"word_count":len(words),"text_length":len(" ".join(parser.text)),"landmarks":sorted(set(parser.landmarks)),"meta_robots":metas.get("robots",""),"meta_robot_directives":{"robots":metas.get("robots",""),"googlebot":metas.get("googlebot",""),"bingbot":metas.get("bingbot","")},"description":metas.get("description",""),"canonical":parser.canon,"links_count":len(parser.links),"images":{"count":len(parser.img),"missing_alt":sum(item["alt"] is None for item in parser.img),"empty_alt":sum(item["alt"]=="" for item in parser.img)},"jsonld":{"blocks":len(parser.jsonld),"parse_errors":ld_errors,"types":jsonld_types(parsed_ld)},"text_sample":" ".join(parser.text)[:1200]}
-                out["pages"].append(page)
-                if url==start and policies.get("GPTBot") and time.monotonic()+.5<deadline:
-                    time.sleep(.5)
-                    try:
-                        bot_final,bot_status,_,bot_html,_,bot_truncated=fetch(url,timeout=remaining(deadline,12),user_agent="GPTBot/1.0")
-                        if urlparse(bot_final).netloc.lower()!=host: raise ValueError("GPTBot probe redirect left the audited authority")
-                        bot_parser=PageParser(); bot_parser.feed(bot_html); bot_len=len(" ".join(bot_parser.text)); ratio=(bot_len/page["text_length"]) if page["text_length"] else None
-                        out["ai_probe"]={"status":"checked","agent":"GPTBot","http_status":bot_status,"text_length":bot_len,"browser_text_length":page["text_length"],"text_ratio":round(ratio,3) if ratio is not None else None,"response_truncated":bot_truncated}
-                    except Exception as error: out["ai_probe"]={"status":"checked","agent":"GPTBot","error":type(error).__name__,"detail":str(error)[:200]}
-                for href in parser.links:
-                    candidate=normalize(final,href,host)
-                    if candidate and candidate not in seen and len(queue)<args.max_pages*8: queue.append(candidate)
-            except (HTTPError,URLError,TimeoutError,ValueError,OSError) as error: out["errors"].append({"url":url,"error":type(error).__name__,"detail":str(error)[:300]})
-            if time.monotonic()+.5<deadline: time.sleep(.5)
-        out["coverage"]["deadline_reached"]=bool(queue and time.monotonic()>=deadline)
-        if out["coverage"]["deadline_reached"]: out["coverage"]["crawl"]="partial: global collection deadline reached"
-    payload=json.dumps(out,indent=2,ensure_ascii=False)
-    if args.output=="-": print(payload)
-    else:
-        with open(args.output,"w",encoding="utf-8") as handle: handle.write(payload+"\n")
+        from pathlib import Path
+        Path(args.output).write_text(payload + "\n", encoding="utf-8")
 
-if __name__=="__main__": main()
+
+if __name__ == "__main__": main()

@@ -1,9 +1,9 @@
 # Crawl/extraction checks
 
-- Exclusion: evaluate wildcard and named-agent robots policies separately. Keep generic `robots`, `googlebot`, and `bingbot` meta directives separate; never let a bot-specific `noindex` become a site-wide `noindex`. Identify which valuable path/template is affected.
-- Robots retrieval: distinguish `present`, `present_no_parseable_groups`, `unavailable_4xx`, `unreachable_5xx`, and `unreachable_network`. A direct browser visit proving `/robots.txt` is readable is evidence of presence, but rules must still be parsed for each agent/path and compared with an actual permitted-agent fetch to detect server-side blocking.
+- Exclusion: evaluate search, training/control and user-fetch policies separately. Inspect both meta directives and `X-Robots-Tag`; preserve named engine scope, `noindex`, `nosnippet`, `max-snippet`, and `data-nosnippet` when observed. A restriction can be intentional; describe its consequence for the intended landing page without universally recommending removal.
+- Robots retrieval: distinguish present, no parseable groups, unavailable 4xx, unreachable 5xx/network and incomplete policy. Evaluate the longest matching rule, merge equally named groups, prefer Allow for ties and retain the matched rule. A local fetch does not test a provider's real crawler identity or IP.
 - Canonical: flag only invalid, conflicting, cross-entity, or systematic canonicalization that can remove valuable pages; self-canonical absence alone is not a defect.
-- Extractability: meaningful text excludes nav/footer/cookie boilerplate. Escalate render only below 80 words or with shell evidence; require missing material facts in static mode.
+- Extractability: meaningful text excludes navigation/footer/hidden boilerplate. Prioritize rendering when material answers are missing from static evidence or shell markers appear. Word count is a triage hint, not an answer-quality threshold. Inspect CSS-hidden, canvas or interactive content with a browser before judging it.
 - Quotability: sample material attributes. A defect needs an important answer stated only implicitly, split across UI fragments, or absent from readable HTML. Quote short evidence snippets.
 - JSON-LD/microdata: parse every block; compare names, URLs, dates, availability, prices, and identifiers to visible text. Unsupported or cosmetic schema recommendations are opportunities, not defects.
 - Media: inspect alt/transcript/equivalent nearby text. Decorative media is excluded.

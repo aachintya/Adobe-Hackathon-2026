@@ -13,6 +13,8 @@ Use a balanced set of controlled and public cases:
 
 Freeze the URL, collection time, capability set, and expected observations for each run. Do not reveal expected findings, suspected defects, or prior outputs to the auditing agent.
 
+`evals.json` now separates neutral `prompt` text from `private_setup`, `expected_output` and assertions. Only give the auditing agent the prompt, target URL and ordinary user-provided artifacts; keep setup and expected outcomes with the evaluator. The 12 cases include training/search separation, material answer passages, recorded-answer denominators and noncommercial visitor tasks.
+
 ## Execution
 
 1. Start a fresh agent session with this marketplace installed.
@@ -22,6 +24,8 @@ Freeze the URL, collection time, capability set, and expected observations for e
 5. Run `python tests/validate_report.py REPORT.json`.
 6. Repeat important cases three times to measure output stability.
 7. Have a reviewer who did not author the report match findings to the private ground truth.
+
+Require observed question tests and journey steps in the composed report. Assess missing-in-sample conclusions against actual inspected coverage. Do not require a finding in both categories on every site: verified passes and explicit untested lanes are valid outcomes. For citation measurement, preserve raw assistant answers and evaluate cohorts separately; a search-tool result is not a consumer assistant-answer test.
 
 ## Metrics
 

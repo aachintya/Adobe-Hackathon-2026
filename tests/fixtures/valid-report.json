@@ -1,27 +1,208 @@
 {
-  "schema_version": "1.1",
+  "schema_version": "1.2",
   "site": "https://example.test/",
   "audited_at": "2026-09-02T00:00:00Z",
-  "executive_summary": {"conclusion": "A representative access issue should be addressed first.", "top_action_ids": ["F-001", "O-001"]},
-  "summary": {"total_findings": 1, "critical": 0, "high": 1, "medium": 0, "low": 0},
-  "coverage": {"pages_checked": 2, "modes": ["static"], "not_checked": ["rendered"]},
-  "findings": [{
-    "id": "F-001",
-    "title": "Representative high-confidence issue",
-    "category": "discoverability",
-    "severity": "high",
-    "confidence": "high",
-    "evidence": {"observation": "Direct observation", "affected": 2, "checked": 2, "urls": ["https://example.test/"]},
-    "suggested_action": {"summary": "Correct the issue", "priority": "high", "effort": "low", "owner_hint": "Web platform", "mechanism": "Restores access", "verification": "Repeat the check"}
-  }],
-  "proactive_opportunities": [{
-    "id": "O-001",
-    "title": "Publish an answer-bearing facts page",
-    "rationale": "The sampled site has factual product details but no stable page that consolidates them for retrieval.",
-    "priority": "medium",
-    "effort": "medium",
-    "owner_hint": "Content design",
-    "mechanism": "Creates a durable, quotable first-party source for material facts.",
-    "verification": "Confirm the page exposes current facts in visible HTML and is internally linked."
-  }]
+  "executive_summary": {
+    "conclusion": "The homepage noindex restricts index eligibility. The offer page gives arriving visitors too little information to understand the offer or choose a next step. Actual AI visibility was not measured.",
+    "top_action_ids": [
+      "F-001",
+      "F-002"
+    ]
+  },
+  "summary": {
+    "total_findings": 2,
+    "critical": 0,
+    "high": 1,
+    "medium": 1,
+    "low": 0
+  },
+  "coverage": {
+    "pages_checked": 2,
+    "modes": [
+      "static"
+    ],
+    "not_checked": [
+      "Rendered comparison was triggered by thin static content but no browser was available in the deterministic fixture.",
+      "Keyboard, focus, overlay, and contrast behavior require rendered interaction and were not checked.",
+      "Off-site entity corroboration was not checked for the synthetic fixture.",
+      "The price.png image lacks an alt attribute, but materiality and visibility need rendered inspection before a finding. GPTBot exclusion is a training preference, not a search defect."
+    ]
+  },
+  "findings": [
+    {
+      "id": "F-001",
+      "title": "The homepage carries a generic noindex directive",
+      "category": "discoverability",
+      "severity": "high",
+      "confidence": "high",
+      "evidence": {
+        "observation": "The homepage contains meta name=robots content=noindex; 1 of 2 sampled pages is affected.",
+        "affected": 1,
+        "checked": 2,
+        "urls": [
+          "https://example.test/"
+        ]
+      },
+      "suggested_action": {
+        "summary": "Remove the homepage noindex directive if the page is intended for public discovery.",
+        "priority": "high",
+        "effort": "low",
+        "owner_hint": "Web platform or SEO",
+        "mechanism": "Restores page-level index eligibility for crawlers that honor the generic directive.",
+        "verification": "Refetch the homepage and confirm the generic robots directive no longer contains noindex."
+      }
+    },
+    {
+      "id": "F-002",
+      "title": "The offer page does not explain its purpose or next step",
+      "category": "engagement",
+      "severity": "medium",
+      "confidence": "high",
+      "evidence": {
+        "observation": "The offer page uses the H1 'Experience it', generic copy ('Better. Faster. Different.'), and a 'Click here' link back to the homepage, so the destination and task are not predictable in context.",
+        "affected": 1,
+        "checked": 2,
+        "urls": [
+          "https://example.test/offer.html"
+        ]
+      },
+      "suggested_action": {
+        "summary": "Name the offering, intended audience, primary benefit, and explicit next step on the offer page.",
+        "priority": "medium",
+        "effort": "medium",
+        "owner_hint": "Content design and product marketing",
+        "mechanism": "Improves orientation and information scent using visible, answer-bearing copy.",
+        "verification": "Confirm the H1 and opening copy identify the offer and that the primary link label predicts its destination."
+      }
+    }
+  ],
+  "proactive_opportunities": [
+    {
+      "id": "O-001",
+      "title": "Create a stable answer-bearing offer facts section",
+      "rationale": "The sampled offer is described with generic language, while no concise first-party block consolidates audience, scope, availability, and the primary next step.",
+      "priority": "medium",
+      "effort": "medium",
+      "owner_hint": "Product marketing and content design",
+      "mechanism": "A visible, internally linked facts section gives visitors and retrieval systems one unambiguous passage to interpret and quote.",
+      "verification": "Confirm the rendered and static page state the offer name, audience, core terms, availability, and next step in equivalent readable text."
+    }
+  ],
+  "assessment": {
+    "mode": "agent_composed",
+    "readiness": [
+      {
+        "stage": "access",
+        "status": "observed",
+        "detail": "Search policy permits OAI-SearchBot; GPTBot training is excluded. Generic homepage noindex was observed.",
+        "urls": [
+          "https://example.test/"
+        ]
+      },
+      {
+        "stage": "extraction",
+        "status": "observed",
+        "detail": "Two static HTML pages inspected; rendered content untested.",
+        "urls": [
+          "https://example.test/"
+        ]
+      },
+      {
+        "stage": "answerability",
+        "status": "observed",
+        "detail": "The offer copy does not identify the offering or audience in the inspected HTML.",
+        "urls": [
+          "https://example.test/"
+        ]
+      },
+      {
+        "stage": "corroboration",
+        "status": "not_checked",
+        "detail": "Off-site search unavailable for synthetic fixture.",
+        "urls": [
+          "https://example.test/"
+        ]
+      },
+      {
+        "stage": "engagement",
+        "status": "observed",
+        "detail": "Static links return to the homepage without a clear task destination; browser behavior untested.",
+        "urls": [
+          "https://example.test/"
+        ]
+      }
+    ],
+    "intent_tests": [
+      {
+        "question": "What is offered and who is it for?",
+        "required_elements": [
+          "offer name",
+          "audience"
+        ],
+        "status": "missing_in_sample",
+        "evidence": [
+          {
+            "url": "https://example.test/offer.html",
+            "quote": "Better. Faster. Different."
+          }
+        ],
+        "reason": "The inspected offer page does not identify either required element."
+      },
+      {
+        "question": "What is the next public step to learn about the offer?",
+        "required_elements": [
+          "descriptive route to detail"
+        ],
+        "status": "partial",
+        "evidence": [
+          {
+            "url": "https://example.test/offer.html",
+            "quote": "Click here"
+          }
+        ],
+        "reason": "The source link returns to the homepage; no distinct detail route was found in these two pages."
+      },
+      {
+        "question": "What are the offer terms?",
+        "required_elements": [
+          "terms or eligibility"
+        ],
+        "status": "not_checked",
+        "evidence": [
+          {
+            "url": "https://example.test/offer.html",
+            "quote": "Experience it"
+          }
+        ],
+        "reason": "Terms may be in rendered media; the static sample cannot establish absence."
+      }
+    ],
+    "journeys": [
+      {
+        "task": "Understand the offer from its landing page",
+        "starting_context": "Visitor is reading the offer page.",
+        "steps": [
+          {
+            "url": "https://example.test/offer.html",
+            "action": "Inspect opening copy and next-step link",
+            "observation": "Generic copy; Click here points back to the homepage."
+          }
+        ],
+        "status": "friction",
+        "reason": "Static information path gives no identifiable offering or detail destination; interactive behavior untested."
+      },
+      {
+        "task": "Read price details in the homepage image",
+        "starting_context": "Visitor is on homepage source HTML.",
+        "steps": [],
+        "status": "not_checked",
+        "reason": "Image content and visibility require browser/media inspection."
+      }
+    ],
+    "visibility": {
+      "status": "not_measured",
+      "detail": "Synthetic example; no assistant answer runs.",
+      "cohorts": []
+    }
+  }
 }

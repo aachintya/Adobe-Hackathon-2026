@@ -1,116 +1,99 @@
 #!/usr/bin/env python3
-"""Dependency-free contract checks for an emitted report JSON."""
-import argparse, json
-from datetime import datetime
+"""Dependency-free validation of the bundled schema subset and report semantics.
+
+This is deliberately not advertised as a general JSON Schema implementation.
+"""
+import argparse
+import json
+import re
+from datetime import datetime, timedelta
+from pathlib import Path
 from urllib.parse import urlparse
 
-SEV = {"critical", "high", "medium", "low"}
-CONF = {"high", "medium"}
-CATEGORY = {"discoverability", "engagement"}
-PRIORITY = {"high", "medium", "low"}
-EFFORT = {"low", "medium", "high"}
-MODES = {"static", "rendered", "off_site", "retrieval"}
-ROOT_FIELDS = {"schema_version", "site", "audited_at", "executive_summary", "summary", "coverage", "findings", "proactive_opportunities"}
+ROOT = Path(__file__).resolve().parents[1]
+SCHEMA = ROOT / "skills/audit-orchestrator/references/report-schema.json"
 
-def is_http_url(value):
-    if not isinstance(value, str): return False
-    parsed = urlparse(value)
-    return parsed.scheme in {"http", "https"} and bool(parsed.netloc)
 
-def is_nonempty(value): return isinstance(value, str) and bool(value.strip())
-def is_count(value, minimum=0): return isinstance(value, int) and not isinstance(value, bool) and value >= minimum
+def validate_shape(value, schema, path="$", errors=None):
+    errors = [] if errors is None else errors
+    kinds = {"object": lambda x: isinstance(x, dict), "array": lambda x: isinstance(x, list),
+             "string": lambda x: isinstance(x, str), "integer": lambda x: type(x) is int,
+             "number": lambda x: type(x) in {int, float}, "null": lambda x: x is None,
+             "boolean": lambda x: type(x) is bool}
+    expected = schema.get("type")
+    if expected and not any(kinds[k](value) for k in (expected if isinstance(expected, list) else [expected])):
+        errors.append(f"{path}: expected {expected}"); return errors
+    if "const" in schema and value != schema["const"]: errors.append(f"{path}: invalid constant")
+    if "enum" in schema and value not in schema["enum"]: errors.append(f"{path}: invalid value")
+    if isinstance(value, dict):
+        for key in schema.get("required", []):
+            if key not in value: errors.append(f"{path}.{key}: required")
+        properties = schema.get("properties", {})
+        if schema.get("additionalProperties") is False:
+            for key in value.keys() - properties.keys(): errors.append(f"{path}.{key}: unexpected field")
+        for key, child in value.items():
+            if key in properties: validate_shape(child, properties[key], f"{path}.{key}", errors)
+    elif isinstance(value, list):
+        if len(value) < schema.get("minItems", 0) or len(value) > schema.get("maxItems", float("inf")): errors.append(f"{path}: invalid array length")
+        if schema.get("uniqueItems") and len({json.dumps(x, sort_keys=True) for x in value}) != len(value): errors.append(f"{path}: duplicate values")
+        for index, child in enumerate(value): validate_shape(child, schema.get("items", {}), f"{path}[{index}]", errors)
+    elif isinstance(value, str):
+        if len(value.strip()) < schema.get("minLength", 0): errors.append(f"{path}: empty/short string")
+        if "pattern" in schema and not re.search(schema["pattern"], value): errors.append(f"{path}: invalid pattern")
+        if schema.get("format") == "uri":
+            try:
+                parsed = urlparse(value)
+                if parsed.scheme not in {"http", "https"} or not parsed.hostname or parsed.username: errors.append(f"{path}: invalid HTTP(S) URL")
+            except ValueError: errors.append(f"{path}: invalid URL")
+        if schema.get("format") == "date-time":
+            try:
+                stamp = datetime.fromisoformat(value.replace("Z", "+00:00"))
+                if stamp.utcoffset() != timedelta(0): errors.append(f"{path}: UTC timestamp required")
+            except ValueError: errors.append(f"{path}: invalid timestamp")
+    elif type(value) in {int, float}:
+        if not schema.get("minimum", -float("inf")) <= value <= schema.get("maximum", float("inf")): errors.append(f"{path}: number out of range")
+    return errors
+
+
+def validate(doc):
+    errors = validate_shape(doc, json.loads(SCHEMA.read_text(encoding="utf-8")))
+    if errors: return errors
+    findings, opportunities = doc["findings"], doc["proactive_opportunities"]
+    for prefix, items in (("F", findings), ("O", opportunities)):
+        if [x["id"] for x in items] != [f"{prefix}-{i:03d}" for i in range(1, len(items) + 1)]: errors.append(f"{prefix}: IDs must be sequential")
+    ids = {x["id"] for x in findings + opportunities}
+    if any(x not in ids for x in doc["executive_summary"]["top_action_ids"]): errors.append("unknown top action")
+    if doc["summary"]["total_findings"] != len(findings): errors.append("total count mismatch")
+    for severity in ("critical", "high", "medium", "low"):
+        if doc["summary"][severity] != sum(f["severity"] == severity for f in findings): errors.append(f"{severity} count mismatch")
+    for f in findings:
+        if f["evidence"]["affected"] > f["evidence"]["checked"]: errors.append(f"{f['id']}: affected exceeds checked")
+    assessment = doc["assessment"]
+    stages = [r["stage"] for r in assessment["readiness"]]
+    if sorted(stages) != sorted(["access", "extraction", "answerability", "corroboration", "engagement"]): errors.append("readiness must cover each of five stages exactly once")
+    for test in assessment["intent_tests"]:
+        if test["status"] != "not_checked" and not test["evidence"]: errors.append("question outcome needs evidence")
+        if not test["required_elements"]: errors.append("question needs required answer elements")
+    for journey in assessment["journeys"]:
+        if journey["status"] != "not_checked" and not journey["steps"]: errors.append("journey outcome needs observed steps")
+    visibility = assessment["visibility"]
+    measured = any(c["valid_runs"] for c in visibility["cohorts"])
+    if (visibility["status"] == "measured_sample") != measured: errors.append("visibility status disagrees with successful recorded runs")
+    for c in visibility["cohorts"]:
+        n = c["valid_runs"]
+        if c["distinct_prompts"] > n or c["mentioned_runs"] > n or c["cited_runs"] > n: errors.append("visibility numerator exceeds denominator")
+        if len(c["run_ids"]) != n + c["failed_runs"] + c["not_run"] or len(set(c["run_ids"])) != len(c["run_ids"]): errors.append("visibility run IDs/counts disagree")
+        for rate, numerator in (("mention_rate", "mentioned_runs"), ("citation_rate", "cited_runs")):
+            expected = c[numerator] / n if n else None
+            if c[rate] != expected: errors.append(f"visibility {rate} does not match recorded counts")
+    return errors
+
 
 def main():
-    ap = argparse.ArgumentParser(); ap.add_argument("report"); args = ap.parse_args()
-    with open(args.report, encoding="utf-8") as handle: doc = json.load(handle)
-    errors = []
-    missing, extra = ROOT_FIELDS - set(doc), set(doc) - ROOT_FIELDS
-    errors.extend(f"missing root field: {key}" for key in sorted(missing))
-    errors.extend(f"unexpected root field: {key}" for key in sorted(extra))
-    if doc.get("schema_version") != "1.1": errors.append("schema_version must be 1.1")
-    if not is_http_url(doc.get("site")): errors.append("site must be an HTTP(S) URL")
-    try:
-        stamp = doc.get("audited_at", "").replace("Z", "+00:00"); parsed_stamp = datetime.fromisoformat(stamp)
-        if parsed_stamp.tzinfo is None: errors.append("audited_at must include a timezone")
-    except (AttributeError, ValueError): errors.append("audited_at must be ISO-8601")
-
-    executive = doc.get("executive_summary", {})
-    if not isinstance(executive, dict) or set(executive) != {"conclusion", "top_action_ids"}:
-        errors.append("executive_summary fields do not match the contract"); executive = {}
-    if not is_nonempty(executive.get("conclusion")): errors.append("executive_summary.conclusion is empty")
-    top_actions = executive.get("top_action_ids")
-    if not isinstance(top_actions, list) or len(top_actions) > 3 or len(top_actions) != len(set(top_actions or [])):
-        errors.append("executive_summary.top_action_ids must contain at most three unique IDs")
-
-    summary = doc.get("summary", {})
-    summary_fields = {"total_findings", *SEV}
-    if not isinstance(summary, dict): errors.append("summary must be an object"); summary = {}
-    if set(summary) != summary_fields: errors.append("summary fields do not match the contract")
-    for key in summary_fields:
-        if not is_count(summary.get(key)): errors.append(f"summary.{key} must be a non-negative integer")
-
-    coverage = doc.get("coverage", {})
-    if not isinstance(coverage, dict) or set(coverage) != {"pages_checked", "modes", "not_checked"}:
-        errors.append("coverage fields do not match the contract"); coverage = {}
-    if not is_count(coverage.get("pages_checked")): errors.append("coverage.pages_checked must be a non-negative integer")
-    modes = coverage.get("modes")
-    if not isinstance(modes, list) or len(modes) != len(set(modes)) or any(mode not in MODES for mode in modes): errors.append("coverage.modes contains invalid or duplicate modes")
-    not_checked = coverage.get("not_checked")
-    if not isinstance(not_checked, list) or any(not is_nonempty(item) for item in not_checked): errors.append("coverage.not_checked must be a list of non-empty reasons")
-
-    findings = doc.get("findings", [])
-    if not isinstance(findings, list): errors.append("findings must be an array"); findings = []
-    ids = []
-    for index, finding in enumerate(findings, 1):
-        prefix = f"finding {index}"
-        if not isinstance(finding, dict): errors.append(f"{prefix} must be an object"); continue
-        required = {"id", "title", "category", "severity", "confidence", "evidence", "suggested_action"}
-        if set(finding) != required: errors.append(f"{prefix} fields do not match the contract")
-        ids.append(finding.get("id"))
-        if not is_nonempty(finding.get("title")): errors.append(f"{prefix} title is empty")
-        if finding.get("category") not in CATEGORY: errors.append(f"{prefix} invalid category")
-        if finding.get("severity") not in SEV: errors.append(f"{prefix} invalid severity")
-        if finding.get("confidence") not in CONF: errors.append(f"{prefix} invalid confidence")
-
-        evidence = finding.get("evidence", {})
-        evidence_fields = {"observation", "affected", "checked", "urls"}
-        if not isinstance(evidence, dict) or set(evidence) != evidence_fields: errors.append(f"{prefix} evidence fields do not match the contract"); evidence = {}
-        if not is_nonempty(evidence.get("observation")): errors.append(f"{prefix} evidence observation is empty")
-        affected, checked = evidence.get("affected"), evidence.get("checked")
-        if not is_count(affected, 1) or not is_count(checked, 1): errors.append(f"{prefix} evidence counts must be positive integers")
-        elif affected > checked: errors.append(f"{prefix} affected cannot exceed checked")
-        urls = evidence.get("urls")
-        if not isinstance(urls, list) or not urls or len(urls) != len(set(urls)) or any(not is_http_url(url) for url in urls): errors.append(f"{prefix} evidence URLs must be unique HTTP(S) URLs")
-
-        action = finding.get("suggested_action", {})
-        action_fields = {"summary", "priority", "effort", "owner_hint", "mechanism", "verification"}
-        if not isinstance(action, dict) or set(action) != action_fields: errors.append(f"{prefix} action fields do not match the contract"); action = {}
-        for key in ("summary", "owner_hint", "mechanism", "verification"):
-            if not is_nonempty(action.get(key)): errors.append(f"{prefix} action {key} is empty")
-        if action.get("priority") not in PRIORITY: errors.append(f"{prefix} invalid action priority")
-        if action.get("effort") not in EFFORT: errors.append(f"{prefix} invalid action effort")
-
-    expected_ids = [f"F-{index:03d}" for index in range(1, len(findings) + 1)]
-    if ids != expected_ids: errors.append("finding IDs are not stable sequential IDs")
-    counts = {severity: sum(item.get("severity") == severity for item in findings if isinstance(item, dict)) for severity in SEV}
-    if summary.get("total_findings") != len(findings) or any(summary.get(severity) != count for severity, count in counts.items()): errors.append("summary counts do not match findings")
-    opportunities = doc.get("proactive_opportunities")
-    opportunity_ids = []
-    if not isinstance(opportunities, list) or len(opportunities) > 3:
-        errors.append("proactive_opportunities must contain at most three objects"); opportunities = []
-    opportunity_fields = {"id", "title", "rationale", "priority", "effort", "owner_hint", "mechanism", "verification"}
-    for index, opportunity in enumerate(opportunities, 1):
-        prefix = f"opportunity {index}"
-        if not isinstance(opportunity, dict) or set(opportunity) != opportunity_fields:
-            errors.append(f"{prefix} fields do not match the contract"); continue
-        opportunity_ids.append(opportunity.get("id"))
-        for key in ("title", "rationale", "owner_hint", "mechanism", "verification"):
-            if not is_nonempty(opportunity.get(key)): errors.append(f"{prefix} {key} is empty")
-        if opportunity.get("priority") not in PRIORITY: errors.append(f"{prefix} invalid priority")
-        if opportunity.get("effort") not in EFFORT: errors.append(f"{prefix} invalid effort")
-    if opportunity_ids != [f"O-{index:03d}" for index in range(1, len(opportunity_ids) + 1)]: errors.append("opportunity IDs are not stable sequential IDs")
-    valid_action_ids = set(ids) | set(opportunity_ids)
-    if isinstance(top_actions, list) and any(action_id not in valid_action_ids for action_id in top_actions): errors.append("executive_summary.top_action_ids contains an unknown finding or opportunity ID")
+    parser = argparse.ArgumentParser(); parser.add_argument("report"); args = parser.parse_args()
+    try: errors = validate(json.loads(Path(args.report).read_text(encoding="utf-8")))
+    except (ValueError, OSError) as error: errors = [str(error)]
     print(json.dumps({"valid": not errors, "errors": errors}, indent=2)); raise SystemExit(bool(errors))
+
 
 if __name__ == "__main__": main()

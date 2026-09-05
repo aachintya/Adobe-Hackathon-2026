@@ -2,11 +2,34 @@
   "minimum_score": 90,
   "minimum_opportunities": 1,
   "expected_concepts": [
-    {"name": "crawler exclusion", "category": "discoverability", "terms": ["gptbot"]},
-    {"name": "page-level exclusion", "category": "discoverability", "terms": ["noindex"]},
-    {"name": "offer orientation", "category": "engagement", "terms": ["offer", "purpose", "predict"]},
-    {"name": "missing image alternative", "category": "engagement", "terms": ["alternative", "alt attribute"]}
+    {
+      "name": "page-level exclusion",
+      "category": "discoverability",
+      "terms": [
+        "noindex"
+      ]
+    },
+    {
+      "name": "offer orientation",
+      "category": "engagement",
+      "terms": [
+        "offer",
+        "purpose",
+        "predict"
+      ]
+    }
   ],
-  "required_not_checked_terms": ["rendered", "keyboard", "off-site"],
-  "forbidden_claims": ["will be cited", "will not be cited", "bounce rate", "conversion loss", "wcag compliant", "fully accessible"]
+  "required_not_checked_terms": [
+    "rendered",
+    "keyboard",
+    "off-site"
+  ],
+  "forbidden_claims": [
+    "will be cited",
+    "will not be cited",
+    "bounce rate",
+    "conversion loss",
+    "wcag compliant",
+    "fully accessible"
+  ]
 }

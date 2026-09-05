@@ -1,59 +1,28 @@
-# Validation record
+# Version 2.0.0 validation
 
-Validated on 2026-09-02 with Python 3.12. Candidate: v1.4.0.
+Validated locally on 2026-09-05 with Python 3.12.6. Run `python tests/run_all.py` to reproduce deterministic checks.
 
-## Structural checks
+## What is checked
 
-- `marketplace.json` parses as JSON.
-- All four listed skill directories contain `SKILL.md`.
-- Exactly one skill is marked `entrypoint`.
-- The report schema parses as JSON.
-- The collector compiles without syntax errors.
-- Every listed skill has valid required frontmatter and exactly one marketplace entrypoint is declared.
-- Every skill name matches its folder, descriptions satisfy Agent Skills limits, declared references resolve, and each entrypoint stays below the progressive-disclosure size guidance.
+- Four valid skill folders, resolved references, one marketplace entrypoint and a fixed JSON report schema.
+- Healthy/problem HTTP fixtures, robots status behavior, deep-path preservation, sitemap discovery, tracking URL normalization, non-HTML handling and redirects blocked before reaching another authority.
+- Material passages beyond the old 1,200-character preview, nested link labels, language, repeated metadata, hidden/navigation exclusion, JSON-LD values and parse errors.
+- Robots rule specificity, combined named groups, wildcards, Allow ties and percent encoding.
+- Training opt-out and absent schema produce no discovery finding on a healthy control. HTTP and meta indexing directives retain engine scope.
+- Actual answer metrics separate mentions from own-domain citations, reject lookalike domains, exclude failures, preserve unknown values and separate provider surfaces/branded intent.
+- Report validation rejects unsupported measurements and question/journey outcomes without evidence, as well as inconsistent counts and missing action fields.
+- The actual submission ZIP is built, extracted into a temporary directory with spaces, and its fallback and report validator run from an unrelated working directory without installation or API keys.
 
-## Behavioral simulations
+## Public-site smoke checks
 
-The local test harness served two sites over HTTP and ran the real collector.
+The portable fallback collected four HTML pages each from `https://plausible.io/` and `https://www.python.org/` on 2026-09-05. Each run took approximately eight seconds in this environment and produced a schema-valid report. The sample is deliberately small and proves only collection/report mechanics, not unseen-site detection accuracy or a five-minute bound for every website.
 
-1. Healthy fixture: discovered all three linked pages, parsed structured data, and returned no transport errors.
-2. Problem fixture: preserved direct evidence for `noindex`, detected the low static-text trigger that calls for rendered comparison, and retained rendered/off-site checks as `not_checked` when those capabilities were absent.
+The pages exposed useful material text even with interactive features. This supports testing actual answers before treating JavaScript or short/static content as an issue. See `validation/FIELD-NOTES-v2.md` in the development repository for the limited research observations; full live crawl outputs are not bundled in the submission ZIP.
 
-Result: PASS.
+## Honest limits
 
-## Generalization regressions
+No independent full agent benchmark was completed in Adobe's unpublished judging environment. No live ChatGPT/Claude/Gemini citation rates, causal visibility uplift, accessibility conformance, bounce or conversion results are claimed. The default report explicitly distinguishes static coverage from agent reasoning and actual answer measurement.
 
-The v1.4 collector suite verifies six previously uncovered invariants against local HTTP servers:
+The maintained synthetic example now excludes the old GPTBot training finding and unverified image relevance finding. Its quality checks are regression checks for that controlled case, not evidence of performance on unseen websites. Historical v1 benchmark documents in the development repository describe prior code and are not current release validation.
 
-1. A supplied deep path remains the audit starting point.
-2. Declared sitemap inventory is fetched and contributes otherwise undiscoverable pages.
-3. Tracking parameters are removed and remaining query parameters are deterministically ordered.
-4. Non-HTML responses are recorded but not parsed as pages.
-5. Cross-authority redirects are rejected before any request reaches the other authority.
-6. Named AI-agent robots decisions are preserved for each sampled path.
-
-The collector also has a global deadline of 270 seconds by default, capped at 295 seconds, so report composition can remain within Adobe's five-minute limit. Result: PASS.
-
-## Composed-report evaluation
-
-The outcome-level case represents the problem fixture. It validates a complete report for four expected evidence concepts: named-agent exclusion, page-level `noindex`, weak offer orientation/information scent, and a missing image alternative. It also requires explicit `not_checked` disclosure for rendered, keyboard, and off-site checks; an executive conclusion; coverage of both Adobe problem halves; an evidence-linked proactive opportunity; and rejection of unsupported citation, engagement-impact, or accessibility-conformance claims.
-
-The maintained example scored 100/100. Six negative contract mutations were correctly rejected: affected count above checked count, invalid timestamp, missing action owner, unsupported evidence mode, an unknown top-action ID, and an unstructured opportunity.
-
-## Forward-evaluation matrix
-
-`evals/evals.json` defines eight fresh-agent cases covering rendered engagement on complete server HTML, entity ambiguity and corroboration, deep-path preservation, sitemap-only inventory, multilingual variants, image/PDF-locked facts, healthy-site false-positive control, and slow/redirecting/non-HTML behavior. Each case has observable assertions and an expected outcome. The deterministic suite verifies that all dimensions remain present; honest model-level precision/recall still requires executing these prompts blindly in the target judging environment.
-
-Run the complete suite with `python tests/run_all.py`.
-
-## External benchmark
-
-A 12-site unseen benchmark was run against the prior day's CrawlIndex raw-observation dataset. Agreement was 100% across 132 named-agent robots decisions, 91.7% for JSON-LD presence, and 90.9% for the comparable thin-server-text cases. Lower exact-count agreement (66.7% for H1 and images) exposed sensitivity to time, user-agent, redirects, and locale. The exercise found and fixed bounded-timeout, agent-policy, meta-directive scoping, truncation, JSON-LD traversal, parser nesting, and sitemap-hint issues. See the separately supplied external validation report for method and limitations.
-
-Eight deterministic robots scenarios now pass: named-agent blocking, 401, 403, 404, 503, malformed rules, wildcard root blocking, and redirect-to-policy. These follow RFC 9309's distinction between unavailable 4xx and unreachable 5xx/network outcomes.
-
-A rendered production check showed why static and rendered evidence must remain separate: ElevenLabs exposed two H1 elements in fetched HTML but one visible rendered H1. The rendered page had 9,612 visible-text characters, semantic landmarks, and no missing image alternatives; three empty-name actions remained candidates requiring element-level relevance review. Acrobat redirected to an app surface with no visible body text in the selected browser, so that observation was retained as environment/route-specific rather than declared a defect.
-
-## What this proves - and does not prove
-
-It proves deterministic collection, bounded crawling, path/sitemap handling, redirect containment, response-type safety, signal preservation, manifest composition, output-contract enforcement, and uncertainty handling for the simulated cases. It does not by itself prove agent-written report precision on a population of unseen sites or ranking/citation outcomes in a particular AI assistant. The marketplace therefore includes a forward-evaluation matrix and reports mechanisms and observed evidence, not promises of citation or lower bounce rate.
+The forward-evaluation protocol in `evals/README.md` covers full agent reasoning and capability degradation. Run those cases in fresh sessions on frozen unseen sites before reporting generalization precision/recall.
