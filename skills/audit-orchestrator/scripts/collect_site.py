@@ -6,7 +6,9 @@ import io
 import json
 import re
 import time
+import zlib
 from datetime import datetime, timezone
+from http.client import HTTPException
 from urllib.error import HTTPError, URLError
 from urllib.parse import parse_qsl, urlencode, urljoin, urlparse, urlunparse, urldefrag
 from urllib.request import HTTPRedirectHandler, Request, build_opener
@@ -15,7 +17,7 @@ from xml.etree import ElementTree
 from page_evidence import PageParser, jsonld_types, page_fields
 from robots_policy import RobotsPolicy
 
-UA = "BrandAIReadinessAudit/2.0"
+UA = "BrandAIReadinessAudit"
 AI_AGENTS = ["Googlebot", "bingbot", "OAI-SearchBot", "Claude-SearchBot", "PerplexityBot",
              "GPTBot", "ChatGPT-User", "ClaudeBot", "Claude-User", "Perplexity-User",
              "Google-Extended", "Applebot-Extended", "meta-externalagent"]
@@ -30,13 +32,25 @@ def header_value(headers, name):
     return next((v for k, v in headers.items() if k.lower() == name.lower()), "")
 
 
+def resolve_link(base, href):
+    try:
+        url = urljoin(base, href)
+        parsed = urlparse(url)
+        parsed.port  # Validate invalid/out-of-range ports before requesting.
+        return url
+    except ValueError:
+        return None
+
+
 def normalize(base, href, host):
-    url = urldefrag(urljoin(base, href))[0]; parsed = urlparse(url)
-    if parsed.scheme not in {"http", "https"} or parsed.netloc.lower() != host or parsed.username: return None
+    resolved = resolve_link(base, href)
+    if resolved is None: return None
+    url = urldefrag(resolved)[0]; parsed = urlparse(url)
+    if parsed.scheme not in {"http", "https"} or parsed.netloc.lower() != host or parsed.username is not None: return None
     if re.search(r"\.(?:jpg|jpeg|png|gif|svg|webp|zip|gz|pdf|mp4|mp3|woff2?)(?:$|\?)", url, re.I): return None
     query = [(k, v) for k, v in parse_qsl(parsed.query, keep_blank_values=True)
              if not k.lower().startswith("utm_") and k.lower() not in TRACKING_KEYS]
-    return urlunparse((parsed.scheme.lower(), parsed.netloc.lower(), parsed.path or "/", "", urlencode(sorted(query)), ""))
+    return urlunparse((parsed.scheme.lower(), parsed.netloc.lower(), parsed.path or "/", parsed.params, urlencode(sorted(query)), ""))
 
 
 class DeadlineReached(Exception):
@@ -164,7 +178,7 @@ def collect(url, max_pages=12, max_seconds=120):
         status = error.code
         if 400 <= error.code <= 499: state = "unavailable_4xx"
         else: state, robots_error = "unreachable_5xx" if error.code >= 500 else "redirect_unchecked", str(error)
-    except (URLError, OSError, ValueError, DeadlineReached) as error:
+    except (URLError, OSError, ValueError, EOFError, HTTPException, zlib.error, DeadlineReached) as error:
         robots_error = f"{type(error).__name__}: {error}"
     policy = RobotsPolicy(body); client.policy = policy
     client.interval = max(.5, policy.crawl_delay(UA))
@@ -199,7 +213,7 @@ def collect(url, max_pages=12, max_seconds=120):
                         else: queue.extend(x for x in urls if x not in seen and x not in queue)
                     except HTTPError as error:
                         if sitemap in hints or error.code not in {404, 410}: record_error(sitemap, error)
-                    except (URLError, OSError, ValueError, EOFError) as error: record_error(sitemap, error)
+                    except (URLError, OSError, ValueError, EOFError, HTTPException, zlib.error) as error: record_error(sitemap, error)
                 if not queue:
                     if len(sitemaps_seen) >= 3: break
                     continue
@@ -226,14 +240,22 @@ def collect(url, max_pages=12, max_seconds=120):
                     else:
                         parser, fields = page_fields(response["body"])
                         page.update(fields); page["parse_status"] = "parsed_html"
-                        for link in page["links"]: link["url"] = urljoin(response["final_url"], link["href"])
+                        link_base = response["final_url"]
+                        if parser.base_href is not None:
+                            declared_base = resolve_link(link_base, parser.base_href)
+                            if declared_base and urlparse(declared_base).scheme in {"http", "https"}:
+                                link_base = declared_base
+                        page["link_base_url"] = link_base
+                        for link in page["links"]:
+                            link["url"] = resolve_link(link_base, link["href"])
+                            if link["url"] is None: link["resolution_error"] = "Malformed URL; not followed"
                         for href in parser.links:
-                            candidate = normalize(response["final_url"], href, host)
+                            candidate = normalize(link_base, href, host)
                             if candidate and candidate not in seen and candidate not in queue and len(queue) < max_pages * 10:
                                 queue.append(candidate)
                     out["pages"].append(page)
                     types[page_type(target)] = types.get(page_type(target), 0) + 1
-                except (HTTPError, URLError, OSError, ValueError, EOFError, RecursionError) as error: record_error(target, error)
+                except (HTTPError, URLError, OSError, ValueError, EOFError, HTTPException, zlib.error, RecursionError) as error: record_error(target, error)
             out["coverage"]["sample_types"] = types
     except DeadlineReached:
         out["coverage"]["deadline_reached"] = True

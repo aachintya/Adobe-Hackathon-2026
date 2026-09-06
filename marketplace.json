@@ -1,6 +1,5 @@
 {
   "name": "brand-ai-readiness-audit",
-  "version": "2.0.0",
   "description": "Question-led, evidence-backed audit of AI discoverability and visitor journeys, with portable Python helpers.",
   "skills": [
     {

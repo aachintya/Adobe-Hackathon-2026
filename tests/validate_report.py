@@ -69,6 +69,9 @@ def validate(doc):
     for f in findings:
         if f["evidence"]["affected"] > f["evidence"]["checked"]: errors.append(f"{f['id']}: affected exceeds checked")
     assessment = doc["assessment"]
+    if assessment["mode"] == "agent_composed":
+        if not 3 <= len(assessment["intent_tests"]) <= 5: errors.append("composed audit needs 3-5 question records, including not_checked outcomes")
+        if len(assessment["journeys"]) != 2: errors.append("composed audit needs two journey records, including not_checked outcomes")
     stages = [r["stage"] for r in assessment["readiness"]]
     if sorted(stages) != sorted(["access", "extraction", "answerability", "corroboration", "engagement"]): errors.append("readiness must cover each of five stages exactly once")
     for test in assessment["intent_tests"]:
@@ -79,8 +82,15 @@ def validate(doc):
     visibility = assessment["visibility"]
     measured = any(c["valid_runs"] for c in visibility["cohorts"])
     if (visibility["status"] == "measured_sample") != measured: errors.append("visibility status disagrees with successful recorded runs")
+    cohort_keys, run_ids = set(), set()
     for c in visibility["cohorts"]:
+        key = tuple(c[field] for field in ("provider", "surface", "model", "locale", "prompt_kind"))
+        if key in cohort_keys: errors.append("duplicate visibility cohort")
+        cohort_keys.add(key)
+        if run_ids.intersection(c["run_ids"]): errors.append("visibility run belongs to multiple cohorts")
+        run_ids.update(c["run_ids"])
         n = c["valid_runs"]
+        if n and not c["distinct_prompts"]: errors.append("successful visibility runs need a prompt")
         if c["distinct_prompts"] > n or c["mentioned_runs"] > n or c["cited_runs"] > n: errors.append("visibility numerator exceeds denominator")
         if len(c["run_ids"]) != n + c["failed_runs"] + c["not_run"] or len(set(c["run_ids"])) != len(c["run_ids"]): errors.append("visibility run IDs/counts disagree")
         for rate, numerator in (("mention_rate", "mentioned_runs"), ("citation_rate", "cited_runs")):

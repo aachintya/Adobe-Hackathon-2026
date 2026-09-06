@@ -54,7 +54,7 @@ def main():
     if not opportunity_ok: failures.append("Required proactive opportunity is missing")
 
     both_halves = {item.get("category") for item in findings} >= {"discoverability", "engagement"}
-    checks.append({"name": "both Adobe problem halves", "passed": both_halves, "weight": 10})
+    checks.append({"name": "discoverability and engagement coverage", "passed": both_halves, "weight": 10})
     if not both_halves: failures.append("Report does not cover both discoverability and engagement findings")
 
     available = sum(item["weight"] for item in checks)

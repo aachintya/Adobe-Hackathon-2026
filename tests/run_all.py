@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Run the Adobe submission's deterministic validation suite."""
+"""Run the audit package's deterministic validation suite."""
 import subprocess, sys
 from pathlib import Path
 
@@ -11,6 +11,7 @@ COMMANDS = [
     [sys.executable, str(ROOT / "tests" / "test_collector_generalization.py")],
     [sys.executable, str(ROOT / "tests" / "test_eval_suite.py")],
     [sys.executable, str(ROOT / "tests" / "test_practical_audit.py")],
+    [sys.executable, str(ROOT / "tests" / "test_edge_cases.py")],
     [sys.executable, str(ROOT / "tests" / "validate_report.py"), str(ROOT / "tests" / "fixtures" / "valid-report.json")],
     [sys.executable, str(ROOT / "tests" / "test_validator_failures.py")],
     [sys.executable, str(ROOT / "tests" / "evaluate_report_quality.py"), str(ROOT / "examples" / "problem-site-report.json")],

@@ -1,28 +1,33 @@
-# Version 2.0.0 validation
+# Validation
 
-Validated locally on 2026-09-05 with Python 3.12.6. Run `python tests/run_all.py` to reproduce deterministic checks.
+Run `python tests/run_all.py` to reproduce the deterministic checks. The suite validates all four skills, local HTTP fixtures, report semantics and the actual extracted ZIP.
 
-## What is checked
+Verified locally on 2026-09-05 with Python 3.12.6: the full suite passed, including 17 practical-audit tests and seven added edge-case tests. Four-page public collection checks on Plausible and Python.org completed in 7.56 and 8.36 seconds respectively, with no collection errors and valid reports.
 
-- Four valid skill folders, resolved references, one marketplace entrypoint and a fixed JSON report schema.
-- Healthy/problem HTTP fixtures, robots status behavior, deep-path preservation, sitemap discovery, tracking URL normalization, non-HTML handling and redirects blocked before reaching another authority.
-- Material passages beyond the old 1,200-character preview, nested link labels, language, repeated metadata, hidden/navigation exclusion, JSON-LD values and parse errors.
-- Robots rule specificity, combined named groups, wildcards, Allow ties and percent encoding.
-- Training opt-out and absent schema produce no discovery finding on a healthy control. HTTP and meta indexing directives retain engine scope.
-- Actual answer metrics separate mentions from own-domain citations, reject lookalike domains, exclude failures, preserve unknown values and separate provider surfaces/branded intent.
-- Report validation rejects unsupported measurements and question/journey outcomes without evidence, as well as inconsistent counts and missing action fields.
-- The actual submission ZIP is built, extracted into a temporary directory with spaces, and its fallback and report validator run from an unrelated working directory without installation or API keys.
+## Coverage
 
-## Public-site smoke checks
+- Skill frontmatter, reference paths, one marketplace entrypoint and the bundled report schema.
+- Healthy and problem fixtures; robots status behavior, rule specificity, merged groups, wildcards, Allow ties and percent encoding.
+- Deep paths, sitemap discovery, tracking parameter removal, content types and redirects blocked before reaching another authority.
+- Material passages, nested link labels, repeated metadata, hidden/navigation exclusion and structured-data parsing.
+- Separation of search and training controls; engine-specific indexing directives and repeated HTTP header scope.
+- Recorded-answer metrics, own-domain citation matching, failed-run exclusion and separate provider/prompt cohorts.
+- Evidence requirements, action fields, severity counts and honest measurement status.
+- Building and extracting the ZIP into a path with spaces, then running the fallback and report validator from an unrelated working directory without installation or credentials.
 
-The portable fallback collected four HTML pages each from `https://plausible.io/` and `https://www.python.org/` on 2026-09-05. Each run took approximately eight seconds in this environment and produced a schema-valid report. The sample is deliberately small and proves only collection/report mechanics, not unseen-site detection accuracy or a five-minute bound for every website.
+## Issues reproduced and corrected
 
-The pages exposed useful material text even with interactive features. This supports testing actual answers before treating JavaScript or short/static content as an issue. See `validation/FIELD-NOTES-v2.md` in the development repository for the limited research observations; full live crawl outputs are not bundled in the submission ZIP.
+- Valueless HTML attributes could crash extraction. They are handled as empty attribute values.
+- A malformed navigation URL could discard an otherwise readable page. Invalid links remain recorded and are skipped during navigation.
+- Relative links ignored the page's first `<base href>` and URL normalization dropped path parameters. Collection now preserves both.
+- Broken gzip robots responses and malformed chunked responses could terminate the audit. They now produce explicit unknown-policy or collection-error evidence.
+- Reports could claim `agent_composed` coverage without question or journey records. Validation now requires 3-5 question records and two journey records, allowing explicit `not_checked` outcomes.
+- One recorded answer could be counted in multiple visibility cohorts. Validation now rejects repeated run IDs across cohorts and duplicate cohorts.
 
-## Honest limits
+These cases are exercised in `tests/test_edge_cases.py` alongside the existing suite.
 
-No independent full agent benchmark was completed in Adobe's unpublished judging environment. No live ChatGPT/Claude/Gemini citation rates, causal visibility uplift, accessibility conformance, bounce or conversion results are claimed. The default report explicitly distinguishes static coverage from agent reasoning and actual answer measurement.
+## Limits
 
-The maintained synthetic example now excludes the old GPTBot training finding and unverified image relevance finding. Its quality checks are regression checks for that controlled case, not evidence of performance on unseen websites. Historical v1 benchmark documents in the development repository describe prior code and are not current release validation.
+Deterministic tests establish collection, reporting and packaging behavior. They do not establish unseen-site precision/recall, live assistant citation rates, causal visibility uplift, accessibility conformance or behavioral outcomes. Browser and search reasoning still need full agent evaluation using `evals/README.md`.
 
-The forward-evaluation protocol in `evals/README.md` covers full agent reasoning and capability degradation. Run those cases in fresh sessions on frozen unseen sites before reporting generalization precision/recall.
+The included example is a controlled synthetic case. Public-site smoke checks establish collection compatibility only, not detection accuracy or a runtime guarantee for every website.

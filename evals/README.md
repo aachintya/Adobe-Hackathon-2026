@@ -40,8 +40,8 @@ Record these values per case and in aggregate:
 - Schema-valid report rate, completion rate, and runtime.
 - Cross-run stability for core findings.
 
-Suggested internal release gates are at least 85% precision, 85% recall on high-severity issues, 95% evidence fidelity, 95% schema validity, zero false critical findings, no high/critical findings on healthy cases, and all typical runs below five minutes. These are project targets, not Adobe-published thresholds.
+Suggested quality targets are at least 85% precision, 85% recall on high-severity issues, 95% evidence fidelity, 95% schema validity, zero false critical findings, no high/critical findings on healthy cases, and all typical runs below five minutes. These are evaluation targets, not measured results.
 
 ## Iteration rule
 
-Change a skill when a failure repeats across cases or exposes a general mechanism. Do not encode a rule solely to make one evaluation site pass. After every change, rerun the complete frozen set and compare precision, recall, false positives, stability, and runtime with the previous version.
+Change a skill when a failure repeats across cases or exposes a general mechanism. Do not encode a rule solely to make one evaluation site pass. After every change, rerun the complete frozen set and compare precision, recall, false positives, stability, and runtime with the previous results.

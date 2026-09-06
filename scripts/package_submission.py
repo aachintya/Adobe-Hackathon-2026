@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build and verify the Adobe Round 3 submission ZIP."""
+"""Build and verify the standalone audit ZIP."""
 
 from __future__ import annotations
 
@@ -65,11 +65,9 @@ def verify_archive(path: Path) -> dict[str, object]:
 
 
 def main() -> None:
-    manifest = json.loads((ROOT / "marketplace.json").read_text(encoding="utf-8"))
-    version = manifest["version"]
     output_directory = ROOT / "dist"
     output_directory.mkdir(exist_ok=True)
-    output = output_directory / f"brand-ai-readiness-audit-v{version}-submission.zip"
+    output = output_directory / f"{PACKAGE_ROOT}.zip"
 
     with ZipFile(output, "w", compression=ZIP_DEFLATED, compresslevel=9) as archive:
         for path in source_files():
@@ -78,7 +76,7 @@ def main() -> None:
 
     result = verify_archive(output)
     if output.stat().st_size > 50_000_000:
-        raise RuntimeError("Archive exceeds Adobe's 50 MB limit")
+        raise RuntimeError("Archive exceeds the 50 MB package limit")
     print(json.dumps({"result": "PASS", **result}, indent=2))
 
 

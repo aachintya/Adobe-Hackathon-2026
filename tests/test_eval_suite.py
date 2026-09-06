@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate that forward evaluations cover the Adobe rubric's risky dimensions."""
+"""Validate that forward evaluations cover the audit's risky dimensions."""
 import json
 from pathlib import Path
 

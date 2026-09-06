@@ -1,6 +1,6 @@
 # External validation report
 
-Date: 2026-09-02 UTC/IST. Candidate: `brand-ai-readiness-audit` v1.2 working tree.
+Date: 2026-09-02 UTC/IST. Historical observations for `brand-ai-readiness-audit` at that date; these are not validation of the current implementation.
 
 ## Benchmark design
 
@@ -35,7 +35,7 @@ One large response (CNN) was excluded from the thin-text denominator after the r
 7. Sitemap declarations were not preserved. Fixed by extracting robots `Sitemap:` hints.
 8. Robots HTTP outcomes were not modeled according to RFC 9309. Fixed with explicit `present`, `present_no_parseable_groups`, `unavailable_4xx`, `unreachable_5xx`, and `unreachable_network` states and a 500 KiB parse floor.
 
-## Additional v1.2 tests
+## Additional tests
 
 Eight local HTTP scenarios pass: named-agent block, 401, 403, 404, 503, malformed rules, wildcard root block, and robots redirect. Direct `/robots.txt` access, final redirect URL, status, content type, truncation, sitemap hints, wildcard policy, and eleven named-agent policies are preserved independently.
 

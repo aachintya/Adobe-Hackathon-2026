@@ -25,11 +25,13 @@ class PageParser(HTMLParser):
         self.jsonld, self.meta, self.canon, self.img, self.landmarks = [], [], [], [], []
         self.passages, self.controls, self.hreflang = [], [], []
         self.lang = ""
+        self.base_href = None
         self._stack, self._counts, self._heading = [], {}, ""
         self._json, self._buf = False, []
 
     def handle_starttag(self, tag, attrs):
-        a = dict(attrs)
+        # HTMLParser represents a present attribute without a value as None.
+        a = {key: value if value is not None else "" for key, value in attrs}
         self._counts[tag] = self._counts.get(tag, 0) + 1
         selector = f"#{a['id']}" if a.get("id") else f"{tag} [source occurrence {self._counts[tag]}]"
         style = re.sub(r"\s+", "", a.get("style", "").lower())
@@ -38,6 +40,7 @@ class PageParser(HTMLParser):
                  "boilerplate": tag in BOILERPLATE or any(x["boilerplate"] for x in self._stack),
                  "heading": self._heading}
         if tag == "html": self.lang = a.get("lang", "")
+        if tag == "base" and "href" in a and self.base_href is None: self.base_href = a["href"]
         if tag in {"main", "nav", "header", "footer", "article", "aside"}: self.landmarks.append(tag)
         if tag == "meta": self.meta.append(a)
         if tag == "link":
@@ -130,6 +133,7 @@ def page_fields(html):
     text = " ".join(parser.text)
     return parser, {
         "title": " ".join(parser.title)[:300], "h1": parser.h1[:10], "language": parser.lang,
+        "base_href": parser.base_href,
         "hreflang": parser.hreflang[:30], "word_count": len(re.findall(r"\b[\w'-]+\b", text)), "text_length": len(text),
         "landmarks": sorted(set(parser.landmarks)), "meta_robots": ", ".join(meta.get("robots", [])),
         "meta_robot_directives": {k: ", ".join(meta.get(k, [])) for k in ("robots", "googlebot", "bingbot")},

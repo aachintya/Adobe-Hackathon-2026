@@ -8,7 +8,7 @@ Do not label these searches as observed ChatGPT/Claude/Gemini answers. A result 
 
 ## Optional actual answer measurement
 
-Only when a supported assistant surface is available within scope/budget, or the user supplies recorded runs, measure actual answers. Do not assume API credentials or create paid-service dependencies for the judging entrypoint. A search-enabled answer you compose while knowingly auditing the target is not an unbiased discovery test.
+Only when a supported assistant surface is available within scope/budget, or the user supplies recorded runs, measure actual answers. Do not assume API credentials or create paid-service dependencies for the entrypoint. A search-enabled answer you compose while knowingly auditing the target is not an unbiased discovery test.
 
 Freeze a small realistic prompt set before inspecting outcomes: include neutral category/constraint questions without the desired brand, plus separately labelled branded factual questions. Record fresh context, provider, actual surface (web product versus API), model or `unknown`, locale, UTC date, exact prompt, full response, citation URLs, and manually verified entity mention. For a fuller evaluation, repeat prompts in fresh sessions and report variability; the five-minute audit may only produce a clearly limited snapshot.
 

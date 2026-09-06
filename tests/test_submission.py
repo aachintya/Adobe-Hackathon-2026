@@ -19,12 +19,11 @@ class QuietHandler(SimpleHTTPRequestHandler):
 
 def main():
     subprocess.run([sys.executable, str(ROOT/'scripts/package_submission.py')], check=True, capture_output=True)
-    version = json.loads((ROOT/'marketplace.json').read_text())['version']
-    archive = ROOT/f'dist/brand-ai-readiness-audit-v{version}-submission.zip'
+    archive = ROOT/'dist/brand-ai-readiness-audit.zip'
     server = ThreadingHTTPServer(('127.0.0.1', 0), partial(QuietHandler, directory=str(ROOT/'tests/fixtures/good')))
     threading.Thread(target=server.serve_forever, daemon=True).start()
     try:
-        with tempfile.TemporaryDirectory(prefix='adobe zip test ') as directory:
+        with tempfile.TemporaryDirectory(prefix='audit zip test ') as directory:
             temp = Path(directory)
             with ZipFile(archive) as package: package.extractall(temp/'extracted marketplace')
             root = temp/'extracted marketplace/brand-ai-readiness-audit'

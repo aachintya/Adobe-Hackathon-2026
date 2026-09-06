@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Dependency-free Adobe marketplace and Agent Skills structure checks."""
+"""Dependency-free marketplace and Agent Skills structure checks."""
 import json, re
 from pathlib import Path
 
@@ -17,7 +17,7 @@ def frontmatter(path):
 
 def main():
     manifest=json.loads((ROOT/"marketplace.json").read_text(encoding="utf-8")); skills=manifest.get("skills",[])
-    assert re.fullmatch(r"[0-9]+\.[0-9]+\.[0-9]+",manifest.get("version","")) and skills and sum(bool(item.get("entrypoint")) for item in skills)==1
+    assert manifest.get("name") == "brand-ai-readiness-audit" and skills and sum(bool(item.get("entrypoint")) for item in skills)==1
     checked=[]
     for item in skills:
         folder=ROOT/item["path"]; document=folder/"SKILL.md"; assert folder.parent==ROOT/"skills" and document.is_file()
@@ -27,6 +27,6 @@ def main():
         assert len(text.splitlines())<500
         for reference in re.findall(r"\[[^]]+\]\(([^)]+)\)",text): assert (folder/reference).resolve().is_file(),f"broken reference {reference} in {document}"
         checked.append(name)
-    print(json.dumps({"result":"PASS","marketplace_version":manifest["version"],"skills":checked,"entrypoints":1},indent=2))
+    print(json.dumps({"result":"PASS","marketplace":manifest["name"],"skills":checked,"entrypoints":1},indent=2))
 
 if __name__=="__main__": main()

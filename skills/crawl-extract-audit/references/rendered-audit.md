@@ -20,7 +20,7 @@ On task-relevant public pages check:
 - keyboard reachability and visible focus for primary navigation and primary action;
 - overlays that obscure content or trap focus.
 
-Automated absence of errors never proves WCAG conformance. Contrast, focus behavior, and semantics should be marked `not_checked` unless actually measured. Report an accessibility issue only when the affected element is visible/task-relevant or repeated systematically. Accessibility here is an evidence lane within the Adobe hackathon audit, not a claim that the skill is a complete accessibility certification tool.
+Automated absence of errors never proves WCAG conformance. Contrast, focus behavior, and semantics should be marked `not_checked` unless actually measured. Report an accessibility issue only when the affected element is visible/task-relevant or repeated systematically. Accessibility checks cover observed task barriers and do not constitute accessibility certification.
 
 ## Evidence handoff
 
