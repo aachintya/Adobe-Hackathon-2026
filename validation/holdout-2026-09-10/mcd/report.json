@@ -1,0 +1,271 @@
+{
+  "schema_version": "1.2",
+  "site": "https://mcdonline.nic.in/portal/",
+  "audited_at": "2026-09-10T09:48:15Z",
+  "executive_summary": {
+    "conclusion": "MCD is publicly crawlable and its rendered portal exposes clear routes to property-tax, online-services, contact, and birth/death registration tasks. The main observed discoverability risk is URL hygiene: session identifiers and HTTP handoffs appear in first-party navigation, while task destinations are split across subdomains; actual assistant visibility was not measured.",
+    "top_action_ids": [
+      "F-001"
+    ]
+  },
+  "summary": {
+    "total_findings": 1,
+    "critical": 0,
+    "high": 0,
+    "medium": 1,
+    "low": 0
+  },
+  "coverage": {
+    "pages_checked": 6,
+    "modes": [
+      "static",
+      "rendered",
+      "off_site",
+      "retrieval"
+    ],
+    "not_checked": [
+      "Provider crawler access beyond public policy was not verified.",
+      "No actual assistant answer/citation runs, Search Console data, logs, analytics, or conversion data were available.",
+      "Keyboard-only, mobile breakpoint, performance, and form submission behavior were not tested.",
+      "Static collector reached its 45-second cap; two failed requests and capped landing-page extraction remain in evidence.json.",
+      "No authentication, OTP generation, payment, form submission, or complaint submission was performed."
+    ]
+  },
+  "assessment": {
+    "mode": "agent_composed",
+    "readiness": [
+      {
+        "stage": "access",
+        "status": "observed",
+        "detail": "Public robots endpoint returned 404 (unavailable policy, not a block); inspected pages allowed named crawler roles by absence of rules.",
+        "urls": [
+          "https://mcdonline.nic.in/robots.txt",
+          "https://mcdonline.nic.in/portal/"
+        ]
+      },
+      {
+        "stage": "extraction",
+        "status": "observed",
+        "detail": "Rendered landing and task pages exposed readable service labels, contact facts, fees, documents, login modes, and next-step links.",
+        "urls": [
+          "https://mcdonline.nic.in/portal/",
+          "https://mcdonline.nic.in/portal/mService",
+          "https://ptr.mcdonline.nic.in/ptrmcd/web/citizen/info",
+          "https://rbd.mcdonline.nic.in/rbd/web/citizen/info",
+          "https://mcdonline.nic.in/portal/contactUs"
+        ]
+      },
+      {
+        "stage": "answerability",
+        "status": "observed",
+        "detail": "Four representative public-information questions were tested against first-party pages; required elements are covered below.",
+        "urls": [
+          "https://mcdonline.nic.in/portal/",
+          "https://ptr.mcdonline.nic.in/ptrmcd/web/citizen/info",
+          "https://rbd.mcdonline.nic.in/rbd/web/citizen/info",
+          "https://mcdonline.nic.in/portal/contactUs"
+        ]
+      },
+      {
+        "stage": "corroboration",
+        "status": "observed",
+        "detail": "Exact-entity and task retrieval returned official MCD pages and task subdomains; no material contradiction was observed in the bounded sample.",
+        "urls": [
+          "https://mcdonline.nic.in/portal/",
+          "https://rbd.mcdonline.nic.in/rbd/web/citizen/info",
+          "https://csb.mcd.gov.in/csbedmc/rbd/"
+        ]
+      },
+      {
+        "stage": "engagement",
+        "status": "observed",
+        "detail": "Two safe rendered journeys reached public task endpoints without submitting forms; one exercised the birth/death service choice and retained visible guidance.",
+        "urls": [
+          "https://mcdonline.nic.in/portal/",
+          "https://mcdonline.nic.in/portal/mService",
+          "https://ptr.mcdonline.nic.in/ptrmcd/web/citizen/info",
+          "https://rbd.mcdonline.nic.in/rbd/web/citizen/info"
+        ]
+      }
+    ],
+    "intent_tests": [
+      {
+        "question": "What is MCD and whom/where does it serve?",
+        "required_elements": [
+          "unified municipal identity",
+          "Delhi service area",
+          "civic-service scope"
+        ],
+        "status": "answered",
+        "evidence": [
+          {
+            "url": "https://mcdonline.nic.in/portal/",
+            "quote": "The three existing civic bodies ... are re-unified into a single entity ... as Municipal Corporation of Delhi."
+          },
+          {
+            "url": "https://mcdonline.nic.in/portal/",
+            "quote": "providing civic services to approximately20 million citizens of Delhi ... sub-divided into 12 Zones"
+          }
+        ],
+        "reason": "Landing page states identity, audience, geography, and civic-service role."
+      },
+      {
+        "question": "How can a Delhi property owner start paying property tax, and what access modes are offered?",
+        "required_elements": [
+          "official property-tax entry point",
+          "citizen login route",
+          "available login/access modes",
+          "safe next step"
+        ],
+        "status": "answered",
+        "evidence": [
+          {
+            "url": "https://mcdonline.nic.in/portal/",
+            "quote": "PAY PROPERTY TAX"
+          },
+          {
+            "url": "https://ptr.mcdonline.nic.in/ptrmcd/web/citizen/info",
+            "quote": "Login Using Mobile & OTP, Email ID/Login-ID & Password, UPIC"
+          },
+          {
+            "url": "https://ptr.mcdonline.nic.in/ptrmcd/web/citizen/info",
+            "quote": "Property Tax Calculator"
+          }
+        ],
+        "reason": "Rendered destination provides public entry, calculator, and non-submitting login choices."
+      },
+      {
+        "question": "What does birth/death registration require, including timing-related fees and documents?",
+        "required_elements": [
+          "institution versus domiciliary route",
+          "late-fee bands",
+          "required documents",
+          "registration next steps"
+        ],
+        "status": "answered",
+        "evidence": [
+          {
+            "url": "https://rbd.mcdonline.nic.in/rbd/web/citizen/info",
+            "quote": "For Hospital/ Institutional Birth/ Death, Informant Doctor will register ... For Domiciliary Birth/ Death, Informant Citizen will register"
+          },
+          {
+            "url": "https://rbd.mcdonline.nic.in/rbd/web/citizen/info",
+            "quote": "Within 21 Days NIL ... After 1 year ... Rs 10/- only"
+          },
+          {
+            "url": "https://rbd.mcdonline.nic.in/rbd/web/citizen/info",
+            "quote": "UID of Informant and Father & Mother ... Cremation / Burial Ground Receipt"
+          }
+        ],
+        "reason": "Rendered RBD page supplies route distinction, fee table, document examples, and online guidance."
+      },
+      {
+        "question": "How can a visitor contact MCD for help?",
+        "required_elements": [
+          "telephone",
+          "email",
+          "head-quarter address"
+        ],
+        "status": "answered",
+        "evidence": [
+          {
+            "url": "https://mcdonline.nic.in/portal/contactUs",
+            "quote": "Call Center Number: 155305"
+          },
+          {
+            "url": "https://mcdonline.nic.in/portal/contactUs",
+            "quote": "mcd-ithelpdesk[at]mcd[dot]nic[dot]in"
+          },
+          {
+            "url": "https://mcdonline.nic.in/portal/contactUs",
+            "quote": "Dr. S.P.M. Civic Centre, Minto Road, New Delhi – 110002"
+          }
+        ],
+        "reason": "All requested contact elements are directly visible."
+      }
+    ],
+    "journeys": [
+      {
+        "task": "Start paying property tax",
+        "starting_context": "MCD portal landing page",
+        "steps": [
+          {
+            "url": "https://mcdonline.nic.in/portal/",
+            "action": "Selected rendered PAY PROPERTY TAX link",
+            "observation": "Link points to public PTR portal."
+          },
+          {
+            "url": "https://ptr.mcdonline.nic.in/ptrmcd/web/citizen/info",
+            "action": "Followed public destination without entering data",
+            "observation": "Reached Citizen - Portal with calculator, property search, login modes, sign-up, and help desk."
+          }
+        ],
+        "status": "completed",
+        "reason": "Reached public next-step endpoint; stopped before authentication or OTP."
+      },
+      {
+        "task": "Choose birth/death registration and understand the correct route",
+        "starting_context": "MCD Online Services page",
+        "steps": [
+          {
+            "url": "https://mcdonline.nic.in/portal/mService",
+            "action": "Selected visible Registration of Birth & Death (RBD) citizen service",
+            "observation": "Service card distinguishes citizen/hospital access from verification."
+          },
+          {
+            "url": "https://rbd.mcdonline.nic.in/rbd/web/citizen/info",
+            "action": "Followed public RBD destination and inspected visible service/type controls",
+            "observation": "RBD-Citizen and All are visible; page explains institutional versus domiciliary registration, zone constraint, fees, documents, and login."
+          }
+        ],
+        "status": "completed",
+        "reason": "Reached public registration guidance/login endpoint; stopped before selecting an event or submitting personal data."
+      }
+    ],
+    "visibility": {
+      "status": "not_measured",
+      "detail": "No unbiased assistant answer runs with recorded citations; search results are retrieval observations only.",
+      "cohorts": []
+    }
+  },
+  "findings": [
+    {
+      "id": "F-001",
+      "title": "Sessionized and mixed-protocol service links complicate canonical discovery",
+      "category": "discoverability",
+      "severity": "medium",
+      "confidence": "high",
+      "evidence": {
+        "observation": "Landing and service pages emitted first-party navigation URLs containing ;jsessionid=... and several key service links used http:// while the audited origin is HTTPS; rendered tax and RBD tasks hand off to separate subdomains. No canonical link was exposed in static records for sampled pages.",
+        "affected": 2,
+        "checked": 2,
+        "urls": [
+          "https://mcdonline.nic.in/portal/",
+          "https://mcdonline.nic.in/portal/mService",
+          "https://ptr.mcdonline.nic.in/ptrmcd/web/citizen/info",
+          "https://rbd.mcdonline.nic.in/rbd/web/citizen/info"
+        ]
+      },
+      "suggested_action": {
+        "summary": "Emit stable HTTPS, session-free canonical links for public task pages and redirect HTTP variants to HTTPS.",
+        "priority": "high",
+        "effort": "medium",
+        "owner_hint": "MCD portal platform/web operations",
+        "mechanism": "Stable URLs reduce crawl duplication and preserve link equity while keeping service handoffs explicit across subdomains.",
+        "verification": "Crawl landing and Online Services pages unauthenticated; confirm no session IDs in public hrefs, all public task links resolve to HTTPS, and each sampled page declares a self-consistent canonical URL."
+      }
+    }
+  ],
+  "proactive_opportunities": [
+    {
+      "id": "O-001",
+      "title": "Publish concise task summaries beside service cards",
+      "rationale": "Online Services lists many service names, while RBD demonstrates that eligibility, fee bands, documents, and next steps are decision-relevant.",
+      "priority": "medium",
+      "effort": "medium",
+      "owner_hint": "MCD citizen-services content team",
+      "mechanism": "Add one-sentence audience/eligibility and document/fee cues to high-demand service cards so visitors and answer systems can select the right route before a cross-domain handoff.",
+      "verification": "For property tax, RBD, complaints, and licenses, verify a first-time visitor can identify intended audience and next public step from the service listing without opening multiple unrelated links."
+    }
+  ]
+}

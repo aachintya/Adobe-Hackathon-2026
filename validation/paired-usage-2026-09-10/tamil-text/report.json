@@ -1,0 +1,81 @@
+{
+  "schema_version": "1.2",
+  "site": "https://www.tamiluniversity.ac.in/english/",
+  "audited_at": "2026-09-10T09:56:30Z",
+  "executive_summary": {
+    "conclusion": "The English landing page exposes strong first-party institutional and current-news facts, and the sampled contact and student-support pages are readable to a static collector. Important visitor tasks remain difficult to resolve because the homepage/title provides weak orientation and the linked Academic Fee destination contains no fee information in the inspected text; rendered behavior and actual assistant visibility were not measured.",
+    "top_action_ids": ["F-001", "F-002"]
+  },
+  "summary": {"total_findings": 2, "critical": 0, "high": 0, "medium": 2, "low": 0},
+  "coverage": {
+    "pages_checked": 5,
+    "modes": ["static", "off_site", "retrieval"],
+    "not_checked": ["Rendered browser journeys, responsive/accessibility behavior, headers and rendered DOM were unavailable by restriction.", "Actual assistant answers/citations were not measured.", "robots.txt returned 404 (unavailable 4xx); no provider-specific crawler access was established.", "PDF contents and external payment/application handoffs were not opened."]
+  },
+  "findings": [
+    {
+      "id": "F-001",
+      "title": "Landing-page title and opening orientation are generic",
+      "category": "engagement",
+      "severity": "medium",
+      "confidence": "high",
+      "evidence": {
+        "observation": "The supplied English landing page title is '~: Tamil University :~'; its opening text begins with a long undifferentiated news list before 'Welcome to Tamil University, Thanjavur'. The page does not state the primary visitor audiences or a concise route to admissions, programmes, research, or contact in the opening copy.",
+        "affected": 1,
+        "checked": 1,
+        "urls": ["https://www.tamiluniversity.ac.in/english/"]
+      },
+      "suggested_action": {
+        "summary": "Set a descriptive English title and add a concise above-the-fold orientation block with audience-specific links.",
+        "priority": "medium",
+        "effort": "low",
+        "owner_hint": "Web/content team",
+        "mechanism": "A clear entity-purpose-audience statement and explicit Admissions, Academic Programmes, Research, Student Support, and Contact links improve extraction and information scent.",
+        "verification": "Static fetch shows a descriptive title and opening summary, with named links to each primary visitor task before the news feed."
+      }
+    },
+    {
+      "id": "F-002",
+      "title": "Academic Fee route does not answer the fee question in sampled text",
+      "category": "discoverability",
+      "severity": "medium",
+      "confidence": "high",
+      "evidence": {
+        "observation": "The homepage exposes an 'Academic Fee' destination, but the inspected page contains only the heading 'Academic Fee' plus shared navigation/news text; no amount, programme scope, currency, effective period, or instructions are present in the extracted page text.",
+        "affected": 1,
+        "checked": 1,
+        "urls": ["https://www.tamiluniversity.ac.in/english/", "https://www.tamiluniversity.ac.in/english/news-events/academic-fee/"]
+      },
+      "suggested_action": {
+        "summary": "Publish current fee tables or a clearly labeled fee document on the Academic Fee page, with programme, student category, currency, effective session, and contact/next-step qualifiers.",
+        "priority": "medium",
+        "effort": "medium",
+        "owner_hint": "Admissions/finance content owner",
+        "mechanism": "Decision-critical fee facts in readable page text (and linked accessible documents where needed) let prospective students and retrieval systems answer cost questions without relying on an empty route.",
+        "verification": "For each listed programme/category, the page exposes amount, unit/currency, session/effective date, and a working next-step/contact route in static text."
+      }
+    }
+  ],
+  "proactive_opportunities": [],
+  "assessment": {
+    "mode": "agent_composed",
+    "readiness": [
+      {"stage": "access", "status": "observed", "detail": "Five same-authority HTML pages returned HTTP 200. robots.txt returned 404, so no explicit restrictions were observed; this does not prove provider access.", "urls": ["https://www.tamiluniversity.ac.in/english/", "https://www.tamiluniversity.ac.in/robots.txt"]},
+      {"stage": "extraction", "status": "observed", "detail": "Static text exposed institutional history, contact details, student-support programmes, news and navigation links. Rendered equivalence, media alternatives and headers were not checked.", "urls": ["https://www.tamiluniversity.ac.in/english/", "https://www.tamiluniversity.ac.in/english/contact-us/", "https://www.tamiluniversity.ac.in/english/education-2/student-support/"]},
+      {"stage": "answerability", "status": "restricted", "detail": "Institutional-purpose, contact and student-support questions are supported in sample; the Academic Fee route remains unresolved because no fee elements were found in its inspected text.", "urls": ["https://www.tamiluniversity.ac.in/english/", "https://www.tamiluniversity.ac.in/english/news-events/academic-fee/", "https://www.tamiluniversity.ac.in/english/contact-us/"]},
+      {"stage": "corroboration", "status": "observed", "detail": "Exact-entity search returned the audited official site and Tamil Nadu Raj Bhavan's state-university listing naming Tamil University, Thanjavur. No contradiction was observed in the bounded sample.", "urls": ["https://www.tamiluniversity.ac.in/english/", "https://tnrajbhavan.gov.in/univerisites-in-tamil-nadu/"]},
+      {"stage": "engagement", "status": "restricted", "detail": "Static links expose contact, Academic Fee, student support and admissions/news routes, but browser interaction, responsive layout and destination handoffs were not available in this restricted run.", "urls": ["https://www.tamiluniversity.ac.in/english/", "https://www.tamiluniversity.ac.in/english/contact-us/", "https://www.tamiluniversity.ac.in/english/education-2/student-support/"]}
+    ],
+    "intent_tests": [
+      {"question": "What is Tamil University and what does it focus on?", "required_elements": ["institution identity and location", "language/literature/culture focus", "founding or recognition context"], "status": "answered", "evidence": [{"url": "https://www.tamiluniversity.ac.in/english/", "quote": "Welcome to Tamil University, Thanjavur ... established ... for furthering the advancement of learning and research in Tamil language, literature and culture ... UGC ... recognized the University"}], "reason": "All required elements are stated in readable landing-page text."},
+      {"question": "How can a visitor contact the university about courses, research or support?", "required_elements": ["relevant contact purpose", "office/contact route", "telephone or email"], "status": "answered", "evidence": [{"url": "https://www.tamiluniversity.ac.in/english/contact-us/", "quote": "For any query and support for Tamil Language and culture, academic courses, research activities ... Our contact details are ... Admission Section Phone:04362 227089"}], "reason": "The page provides purpose-specific offices, phone numbers and email addresses."},
+      {"question": "What academic fee should a prospective student expect?", "required_elements": ["programme/category", "amount and currency/unit", "effective session or qualifier", "next step/contact"], "status": "partial", "evidence": [{"url": "https://www.tamiluniversity.ac.in/english/news-events/academic-fee/", "quote": "Academic Fee Academic Fee"}], "reason": "The relevant page is reachable and named, but the inspected text contains none of the required fee elements."},
+      {"question": "What student support is available after enrolment?", "required_elements": ["support types", "intended student audience", "specific examples or availability"], "status": "answered", "evidence": [{"url": "https://www.tamiluniversity.ac.in/english/education-2/student-support/", "quote": "Capability Enhancement and Development Schemes for Students ... Guidance Cell for Competitive Exams and Career Counselling ... Soft skill development ... Yoga and Meditation ... Personal Counselling"}], "reason": "The page names the student audience and multiple concrete support services with examples."}
+    ],
+    "journeys": [
+      {"task": "Prospective student checks fee information from the English homepage", "starting_context": "English homepage with a visible 'Academic Fee' route and current admission/news links.", "steps": [{"url": "https://www.tamiluniversity.ac.in/english/", "action": "Inspect homepage links and select the Academic Fee destination", "observation": "A same-authority Academic Fee link is exposed in the navigation/news area."}, {"url": "https://www.tamiluniversity.ac.in/english/news-events/academic-fee/", "action": "Read the destination page", "observation": "The static page heading is present, but no fee values or qualifiers appear in extracted text."}], "status": "friction", "reason": "The route reaches a public page but does not resolve the decision-critical fee task in inspected text; interactive/rendered behavior was not checked."},
+      {"task": "Visitor verifies support options and reaches a contact route", "starting_context": "English homepage for a student seeking support or course/research contact.", "steps": [{"url": "https://www.tamiluniversity.ac.in/english/education-2/student-support/", "action": "Open Student Support from the education navigation", "observation": "The page lists competitive-exam guidance, career counselling, soft skills, yoga and personal counselling."}, {"url": "https://www.tamiluniversity.ac.in/english/contact-us/", "action": "Open Contact Us for a next step", "observation": "The page provides admission, registrar, vice-chancellor and other office phone/email routes."}], "status": "not_checked", "reason": "Static destinations and content were inspected, but browser navigation, link activation and continuity could not be observed under the no-browser restriction."}
+    ],
+    "visibility": {"status": "not_measured", "detail": "No actual assistant answer runs or citation observations were recorded; bounded web retrieval is not an assistant-visibility measurement.", "cohorts": []}
+  }
+}

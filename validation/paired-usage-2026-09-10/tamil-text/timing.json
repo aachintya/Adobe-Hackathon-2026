@@ -1,0 +1,18 @@
+{
+  "observed_start_utc": "2026-09-10T09:55:27Z",
+  "observed_end_utc": "2026-09-10T09:57:54Z",
+  "elapsed_seconds": 147.484,
+  "timing_scope": "Skill reading, static evidence collection, bounded public text search, report composition, validator execution, and final artifact checks.",
+  "tool_availability": {
+    "python": {"available": true, "path": "<python3.12-executable>", "version": "3.12"},
+    "public_text_fetch": {"available": true, "via": "run_audit.py standard-library collector"},
+    "public_web_search": {"available": true, "via": "web search"},
+    "browser_automation": {"available": false, "reason": "Instruction-restricted no-browser environment"},
+    "screenshots": {"available": false, "reason": "Instruction-restricted no-browser environment"},
+    "playwright": {"available": false, "reason": "Prohibited by task"},
+    "selenium": {"available": false, "reason": "Prohibited by task"},
+    "rendered_browser_tools": {"available": false, "reason": "Prohibited by task"},
+    "filesystem_write": {"available": true},
+    "report_validator": {"available": true, "result": "valid"}
+  }
+}

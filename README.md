@@ -21,6 +21,8 @@ Ask the host agent:
 
 The agent derives 3-5 relevant visitor questions, evaluates supporting facts, traces two safe public journeys, checks source credibility and returns prioritized fixes. It uses the same evidence across all skills. Paths resolve from the installed skill, so invocation does not depend on the working directory.
 
+For a friend testing in Cursor or another file-capable agent, see [the manual setup and paired-test guide](evals/MANUAL-TESTING.md). It includes copy-paste prompts, browser/no-browser modes and an evidence-review checklist.
+
 ## Run the optional Python fallback
 
 From the extracted marketplace root:
@@ -58,4 +60,4 @@ python3 scripts/package_submission.py
 
 Submit `dist/brand-ai-readiness-audit.zip`. It contains one folder, `brand-ai-readiness-audit/`, with the manifest, skills, references, helpers, examples and validation tools. The package excludes caches, live crawl outputs and other archives. Both compressed and uncompressed sizes are checked against a 50 MB cap.
 
-Collection defaults to 12 pages, 2 requests/second and 120 seconds. The skill shares a 280-second target across collection, browser, search and composition. It respects robots, uses its own crawler identity and recommends changes without modifying live sites. See [design](DESIGN.md) and [validation](VALIDATION.md).
+Standalone collection defaults to 12 pages, 2 requests/second and 120 seconds. The timed skill starts with 5 pages and a 45-second collector cap, stops evidence gathering by 120 seconds, and targets 280 seconds through composition, validation and delivery. These are workflow budgets, not an end-to-end timeout enforced by the Python helper. It respects robots, uses its own crawler identity and recommends changes without modifying live sites. See [design](DESIGN.md) and [validation](VALIDATION.md).

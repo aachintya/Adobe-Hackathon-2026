@@ -4,6 +4,8 @@ For actual host-agent execution with public browser journeys and independently r
 
 The [September 10 portability follow-up](https://github.com/aachintya/Adobe-Hackathon-2026/blob/main/validation/PORTABILITY-2026-09-10.md) records the HTTP 308 fix, optional-tool behavior and the full suite passing on Python 3.12.14. The statements below describe the earlier validation revision.
 
+The subsequent [harder-site holdout](https://github.com/aachintya/Adobe-Hackathon-2026/blob/main/validation/HOLDOUT-2026-09-10.md) and [paired browser/no-browser tests](https://github.com/aachintya/Adobe-Hackathon-2026/blob/main/validation/PAIRED-USAGE-2026-09-10.md) preserve runtime overruns, unsupported findings and interrupted runs alongside corroborated observations. Three paired attempts completed, but the evidence review does not establish submission readiness or reliability on arbitrary websites. For independent reproduction, use [the manual testing guide](evals/MANUAL-TESTING.md).
+
 Run `python3 tests/run_all.py` (or your Python 3.10+ executable) to reproduce the deterministic checks. The suite validates all four skills, local HTTP fixtures, report semantics and the actual extracted ZIP.
 
 Verified locally on 2026-09-05 with Python 3.12.6: the full suite passed, including 17 practical-audit tests and seven added edge-case tests. Four-page public collection checks on Plausible and Python.org completed in 7.56 and 8.36 seconds respectively, with no collection errors and valid reports.

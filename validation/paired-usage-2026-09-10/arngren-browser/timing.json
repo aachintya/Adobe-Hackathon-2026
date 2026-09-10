@@ -1,0 +1,13 @@
+{
+  "observed_start_utc": "2026-09-10T09:58:46Z",
+  "observed_end_utc": "2026-09-10T10:01:56Z",
+  "elapsed_seconds": 190.0,
+  "tool_availability": {
+    "python": {"available": true, "interpreter": "<python3.12-executable>", "used": true},
+    "public_web_fetch": {"available": true, "used": true},
+    "public_web_search": {"available": true, "used": true, "queries": 2},
+    "browser": {"available": true, "provider": "Codex In-app Browser", "visible_mode": false, "rendered_inspection": true, "pages_rendered": 4},
+    "report_validator": {"available": true, "used": true, "valid": true}
+  },
+  "report_validation": {"status": "valid", "validated_at_utc": "2026-09-10T10:01:56Z"}
+}

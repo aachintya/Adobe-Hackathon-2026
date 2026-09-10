@@ -1,0 +1,81 @@
+{
+  "batch_date": "2026-09-10",
+  "parent_validation_scope": "Independent evaluator validation of unchanged saved outputs; not part of agent runtime",
+  "validation": [
+    {
+      "run": "tamil-browser",
+      "exit_code": 0,
+      "output": {
+        "valid": true,
+        "errors": []
+      }
+    },
+    {
+      "run": "tamil-text",
+      "exit_code": 0,
+      "output": {
+        "valid": true,
+        "errors": []
+      }
+    },
+    {
+      "run": "arngren-browser",
+      "exit_code": 0,
+      "output": {
+        "valid": true,
+        "errors": []
+      }
+    },
+    {
+      "run": "arngren-text",
+      "exit_code": 1,
+      "output": {
+        "valid": false,
+        "errors": [
+          "Extra data: line 1 column 9805 (char 9804)"
+        ]
+      }
+    }
+  ],
+  "timing_observations": [
+    {
+      "run": "tamil-browser",
+      "agent_start_utc": "2026-09-10T09:55:16Z",
+      "agent_report_clock_utc": "2026-09-10T09:58:42Z",
+      "agent_elapsed_seconds": 206,
+      "parent_observed_final_utc": "2026-09-10T09:59:19Z",
+      "start_to_parent_observed_final_upper_bound_seconds": 243
+    },
+    {
+      "run": "tamil-text",
+      "agent_start_utc": "2026-09-10T09:55:27Z",
+      "agent_report_clock_utc": "2026-09-10T09:57:54Z",
+      "agent_elapsed_seconds": 147.484,
+      "parent_observed_final_utc": "2026-09-10T09:58:25Z",
+      "start_to_parent_observed_final_upper_bound_seconds": 178
+    },
+    {
+      "run": "arngren-browser",
+      "agent_start_utc": "2026-09-10T09:58:46Z",
+      "agent_report_clock_utc": "2026-09-10T10:01:56Z",
+      "agent_elapsed_seconds": 190,
+      "parent_observed_final_utc": "2026-09-10T10:02:42Z",
+      "start_to_parent_observed_final_upper_bound_seconds": 236
+    },
+    {
+      "run": "arngren-text",
+      "agent_start_utc": null,
+      "agent_report_clock_utc": null,
+      "agent_elapsed_seconds": null,
+      "parent_observed_final_utc": null,
+      "status": "incomplete_usage_limit",
+      "timing_file_present": false
+    }
+  ],
+  "caveats": [
+    "Agent clocks are self-recorded and precede final delivery.",
+    "Parent observations include notification/observation delay, but start at agent execution, not original dispatch; they are not exact dispatch-to-delivery timings.",
+    "Text-mode tools were prohibited by instruction, not physically removed.",
+    "No timing pass is assigned to the interrupted attempt."
+  ]
+}
