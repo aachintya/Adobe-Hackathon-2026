@@ -1,6 +1,6 @@
 # Audit design
 
-The marketplace combines four skills around one shared evidence bundle. Python handles collection and validation; the host agent interprets the evidence and composes the report.
+The marketplace combines four skills around shared evidence. When execution is permitted, optional Python helpers handle source collection and report validation. The host agent interprets the evidence and composes the report; without Python it collects notes through available public fetch/browser tools and checks the report structure manually.
 
 ## Evaluation
 
@@ -16,6 +16,7 @@ No overall AI visibility score is inferred from HTML counts, markup, training co
 ## Implementation
 
 - Standard-library helpers keep the package portable. A browser-capable host agent supplies rendered review.
+- Capability declarations do not provision tools. Select the available collection path before starting; source fetch, search, browser interaction, execution, a trustworthy clock and writable output are separate capabilities. Return the report in chat if files cannot be written, and disclose any unavailable check.
 - Source extraction retains material passages, link labels and destinations, structured values and indexing directives. External CSS and JavaScript behavior require a browser.
 - Requests use a dedicated crawler identity, respect applicable robots rules and stay within bounded public navigation. Redirects to another authority are left for explicit agent review of the destination's policy and scope.
 - The Python report is a `static_baseline`. The agent completes answerability, trust and visitor-journey analysis and records unavailable checks explicitly.

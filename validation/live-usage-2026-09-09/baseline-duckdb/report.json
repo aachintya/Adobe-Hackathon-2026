@@ -1,0 +1,261 @@
+{
+  "schema_version": "1.2",
+  "site": "https://duckdb.org/",
+  "audited_at": "2026-09-08T10:46:33Z",
+  "executive_summary": {
+    "conclusion": "DuckDB clearly explains its analytical SQL role, open-source governance and current installation options. The observed obstacle is LTS Python installation continuity: the LTS documentation sends visitors back to the current release installer. Preserve the selected release in its installation link and show an LTS-specific command first. Twelve static pages, four rendered documents and four bounded searches support this assessment; sampled evidence includes extraction caps and eight collector HTTP 308 errors. Actual assistant citations, provider crawler access and behavioral outcomes were not measured.",
+    "top_action_ids": [
+      "F-001"
+    ]
+  },
+  "summary": {
+    "total_findings": 1,
+    "critical": 0,
+    "high": 0,
+    "medium": 1,
+    "low": 0
+  },
+  "coverage": {
+    "pages_checked": 16,
+    "modes": [
+      "static",
+      "rendered",
+      "off_site",
+      "retrieval"
+    ],
+    "not_checked": [
+      "Actual assistant answers/citations and provider crawler IP access were not measured; no visibility score or probability is inferred.",
+      "Mobile layout, keyboard navigation, visible focus, contrast, performance metrics and behavioral analytics were not checked within the shared audit budget.",
+      "Eight HTTP 308 collection errors are retained in evidence.json. Browser and web tools reached the installation and announcement destinations; other affected routes were not individually followed.",
+      "Six static pages have evidence_truncated=true; no absence claim relies on their omitted content.",
+      "Published robots restrictions for old documentation versions are retained as scoped policy observations; owner intent and indexing of canonical destinations were not independently inspected.",
+      "Search locale and per-query ordering are unknown; the four-query tool response merged results. Independent governance certification, transaction completion and all client/version combinations were not checked."
+    ]
+  },
+  "assessment": {
+    "mode": "agent_composed",
+    "readiness": [
+      {
+        "stage": "access",
+        "status": "observed",
+        "detail": "Robots returned 200 with Allow: / and restrictions on /docs/1.3, /docs/1.2, /docs/1.1, /docs/1.0 and /docs/0.10. Current and LTS task routes are allowed under the published wildcard rule for Googlebot, bingbot, OAI-SearchBot, Claude-SearchBot and PerplexityBot. Training and user-fetch roles were recorded separately; successful local GETs do not prove provider access. Eleven of twelve static pages have no observed indexing directive; /design is a noindex redirect stub with canonical /design/manual/, so the static candidate was not retained as a defect.",
+        "urls": [
+          "https://duckdb.org/robots.txt",
+          "https://duckdb.org/design",
+          "https://duckdb.org/install/"
+        ]
+      },
+      {
+        "stage": "extraction",
+        "status": "observed",
+        "detail": "Landing-page source and rendered copy agree on analytical database identity, data formats and MIT/Foundation positioning. The static installation extraction lacks selected-client command content while the rendered Python selection supplies it; the homepage source and Python documentation provide supporting instructions, so this was not treated as a missing-answer defect. Some documentation evidence is capped. No material structured-data contradiction was established.",
+        "urls": [
+          "https://duckdb.org/",
+          "https://duckdb.org/install/",
+          "https://duckdb.org/docs/current/clients/python/overview"
+        ]
+      },
+      {
+        "stage": "answerability",
+        "status": "observed",
+        "detail": "Four developer/data-analyst questions were frozen before supporting-page review and answered with inspected passages. This is task-specific answerability, not a prediction of assistant citations. The LTS-specific return-path problem is tracked separately as engagement friction.",
+        "urls": [
+          "https://duckdb.org/",
+          "https://duckdb.org/faq",
+          "https://duckdb.org/docs/current/clients/python/overview",
+          "https://duckdb.org/2026/09/02/try-duckdb-20-alpha.html"
+        ]
+      },
+      {
+        "stage": "corroboration",
+        "status": "observed",
+        "detail": "Four exact searches dated 2026-09-08 are preserved in ledger.md. Opened DuckLabs announcement agrees with DuckDB on MIT licensing and Foundation stewardship, but DuckLabs is an affiliated first-party source. An independently authored arXiv paper dated 2026-03-03 reports a local DuckDB/Parquet deployment, supporting the product-use description only. No material contradiction or entity collision was observed in these opened sources; acquisition completion was not verified.",
+        "urls": [
+          "https://duckdb.org/2026/08/26/ducklabs-to-join-aws.html",
+          "https://ducklabs.com/press/ducklabs-to-join-amazon-web-services/",
+          "https://arxiv.org/abs/2603.03126"
+        ]
+      },
+      {
+        "stage": "engagement",
+        "status": "observed",
+        "detail": "Own desktop in-app browser tab rendered the homepage, installer, current Python overview and LTS Python overview. Both Python/version choices have visible controls. Current Python installation and documentation journey completed; the LTS return link loses the selected version. No blocking overlay was observed in the inspected states; accessibility conformance was not tested.",
+        "urls": [
+          "https://duckdb.org/",
+          "https://duckdb.org/install/",
+          "https://duckdb.org/docs/current/clients/python/overview",
+          "https://duckdb.org/docs/lts/clients/python/overview"
+        ]
+      }
+    ],
+    "intent_tests": [
+      {
+        "question": "What does DuckDB do and who would use it?",
+        "required_elements": [
+          "Analytical SQL role",
+          "Deployment model",
+          "Common data formats or workload"
+        ],
+        "status": "answered",
+        "evidence": [
+          {
+            "url": "https://duckdb.org/",
+            "quote": "An analytical SQL database that can run in-process."
+          },
+          {
+            "url": "https://duckdb.org/why_duckdb",
+            "quote": "For the analytical use cases that DuckDB targets"
+          }
+        ],
+        "reason": "Homepage and Why DuckDB describe an analytical SQL database with in-process deployment and CSV, JSON, Parquet and Iceberg support, suitable for the inferred developers/data analysts."
+      },
+      {
+        "question": "Is DuckDB free and open source, and who governs it?",
+        "required_elements": [
+          "Cost/licence",
+          "Governing entity",
+          "Effect of recent ownership news"
+        ],
+        "status": "answered",
+        "evidence": [
+          {
+            "url": "https://duckdb.org/faq",
+            "quote": "there is no “enterprise version” of DuckDB."
+          },
+          {
+            "url": "https://duckdb.org/2026/08/26/ducklabs-to-join-aws.html",
+            "quote": "no changes for our projects’ roadmap, licensing, and governance model!"
+          }
+        ],
+        "reason": "Inspected opening FAQ passages establish free MIT-licensed software and distinguish the nonprofit Foundation from DuckLabs. The dated announcement says those arrangements remain as DuckLabs plans to join AWS; transaction completion is not asserted."
+      },
+      {
+        "question": "How do I install DuckDB for Python?",
+        "required_elements": [
+          "Package command",
+          "Supported Python version/constraints",
+          "Next documentation route"
+        ],
+        "status": "answered",
+        "evidence": [
+          {
+            "url": "https://duckdb.org/install/?environment=python&platform=macos",
+            "quote": "pip install duckdb"
+          },
+          {
+            "url": "https://duckdb.org/docs/current/clients/python/overview",
+            "quote": "DuckDB requires Python 3.9 or newer."
+          }
+        ],
+        "reason": "Rendered Python selection supplies the command, named documentation link and Windows prerequisite note; the destination supplies version requirements and a first-query example."
+      },
+      {
+        "question": "Which current stable release should I install, versus the advertised 2.0 alpha?",
+        "required_elements": [
+          "Stable version",
+          "Clearly labelled experimental version",
+          "Supporting release/install source"
+        ],
+        "status": "answered",
+        "evidence": [
+          {
+            "url": "https://duckdb.org/install/",
+            "quote": "1.5.5 (current)"
+          },
+          {
+            "url": "https://duckdb.org/2026/09/02/try-duckdb-20-alpha.html",
+            "quote": "DuckDB alpha clients are explicitly not production-ready"
+          }
+        ],
+        "reason": "Installer distinguishes current 1.5.5, LTS 1.4.5 and preview. Opened September 2 alpha announcement explicitly describes experimental clients and planned October release, without representing alpha as stable."
+      }
+    ],
+    "journeys": [
+      {
+        "task": "Get started with current DuckDB in Python",
+        "starting_context": "New developer/data analyst on https://duckdb.org/, using default desktop macOS browser context; no client selected.",
+        "steps": [
+          {
+            "url": "https://duckdb.org/",
+            "action": "Click Get DuckDB",
+            "observation": "Named primary link reaches DuckDB Installation."
+          },
+          {
+            "url": "https://duckdb.org/install/?platform=macos&environment=python",
+            "action": "Select Python",
+            "observation": "Python selected; 1.5.5 current selected; pip install duckdb and Client documentation page displayed."
+          },
+          {
+            "url": "https://duckdb.org/docs/current/clients/python/overview",
+            "action": "Click Client documentation page",
+            "observation": "Current Python API overview displays Python 3.9+ requirement and first SQL example."
+          }
+        ],
+        "status": "completed",
+        "reason": "Reached working public installation instructions and client-specific next-step documentation without executing commands."
+      },
+      {
+        "task": "Keep the Python LTS release selected while consulting installation documentation",
+        "starting_context": "Python user on current Python overview chooses the public installation link, then intentionally selects 1.4.5 LTS.",
+        "steps": [
+          {
+            "url": "https://duckdb.org/install/?environment=python&platform=macos",
+            "action": "Follow Python installation page from current Python overview",
+            "observation": "Python context retained; current version initially selected."
+          },
+          {
+            "url": "https://duckdb.org/install/?environment=python&platform=macos&version=lts",
+            "action": "Select 1.4.5 (LTS)",
+            "observation": "Command becomes pip install duckdb==1.4.5; documentation link changes to /docs/lts/clients/python/overview.html."
+          },
+          {
+            "url": "https://duckdb.org/docs/lts/clients/python/overview",
+            "action": "Follow Client documentation page",
+            "observation": "LTS badge and 1.4 version displayed, but Installation section uses unpinned command and an installation URL without version=lts."
+          },
+          {
+            "url": "https://duckdb.org/install/?environment=python&platform=macos",
+            "action": "Follow installation page link from the LTS overview",
+            "observation": "1.5.5 current selected, LTS unselected, pip install duckdb shown."
+          }
+        ],
+        "status": "friction",
+        "reason": "The expected LTS installation context is lost on return from its documentation. The user can manually reselect LTS, so this is medium friction, not a task-wide block."
+      }
+    ],
+    "visibility": {
+      "status": "not_measured",
+      "detail": "No independent assistant-answer runs were recorded. Search-tool retrieval and this informed audit are not assistant citation measurements.",
+      "cohorts": []
+    }
+  },
+  "findings": [
+    {
+      "id": "F-001",
+      "title": "LTS Python documentation resets the chosen installation version",
+      "category": "engagement",
+      "severity": "medium",
+      "confidence": "high",
+      "evidence": {
+        "observation": "Rendered journey: selecting 1.4.5 (LTS) at /install/?environment=python&platform=macos&version=lts displays 'pip install duckdb==1.4.5' and links to /docs/lts/clients/python/overview.html. That destination visibly identifies '1.4 LTS' but its Installation section shows 'pip install duckdb' and links to /install/?environment=python. Clicking that link reaches /install/?environment=python&platform=macos with 1.5.5 (current) selected and the unpinned command. One affected LTS return path among two Python release-context paths checked; current-release path works.",
+        "affected": 1,
+        "checked": 2,
+        "urls": [
+          "https://duckdb.org/install/?environment=python&platform=macos&version=lts",
+          "https://duckdb.org/docs/lts/clients/python/overview",
+          "https://duckdb.org/install/?environment=python&platform=macos",
+          "https://duckdb.org/docs/current/clients/python/overview"
+        ]
+      },
+      "suggested_action": {
+        "summary": "In the LTS Python overview, append version=lts to the installation link and present an explicitly LTS-pinned package command; label any current-release alternative.",
+        "priority": "medium",
+        "effort": "low",
+        "owner_hint": "DuckDB documentation and installation-page maintainers",
+        "mechanism": "Keeps the release choice the website already knows attached to the installation instructions, reducing the chance of installing a different release line.",
+        "verification": "Select Python and 1.4.5 LTS, follow Client documentation page, then its installation page link; the installer must still select LTS and display the LTS-pinned command. Confirm the ordinary current-release path still selects current. No installation is required for this check."
+      }
+    }
+  ],
+  "proactive_opportunities": []
+}

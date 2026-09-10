@@ -1,6 +1,10 @@
 # Validation
 
-Run `python tests/run_all.py` to reproduce the deterministic checks. The suite validates all four skills, local HTTP fixtures, report semantics and the actual extracted ZIP.
+For actual host-agent execution with public browser journeys and independently reviewed reports, see [the September 8–10 live usage evaluation](https://github.com/aachintya/Adobe-Hackathon-2026/blob/main/validation/LIVE-USAGE-2026-09-09.md). It separates observed behavioral results and runtime overruns from the older deterministic checks below. Detailed evaluation artifacts are kept in the repository rather than the submission ZIP.
+
+The [September 10 portability follow-up](https://github.com/aachintya/Adobe-Hackathon-2026/blob/main/validation/PORTABILITY-2026-09-10.md) records the HTTP 308 fix, optional-tool behavior and the full suite passing on Python 3.12.14. The statements below describe the earlier validation revision.
+
+Run `python3 tests/run_all.py` (or your Python 3.10+ executable) to reproduce the deterministic checks. The suite validates all four skills, local HTTP fixtures, report semantics and the actual extracted ZIP.
 
 Verified locally on 2026-09-05 with Python 3.12.6: the full suite passed, including 17 practical-audit tests and seven added edge-case tests. Four-page public collection checks on Plausible and Python.org completed in 7.56 and 8.36 seconds respectively, with no collection errors and valid reports.
 

@@ -71,7 +71,16 @@ class SameAuthorityRedirect(HTTPRedirectHandler):
             raise HTTPError(request.full_url, code, "redirect target blocked by collector robots policy", headers, fp)
         self.before_request()
         self.chain.append({"from": request.full_url, "to": newurl, "status": code})
-        return super().redirect_request(request, fp, code, msg, headers, newurl)
+        # Older urllib versions reject 308 even when its error hook is present.
+        # For GET/HEAD, reuse its supported 307 path; retain the actual
+        # status in the evidence and in the policy checks above.
+        redirect_code = 307 if code == 308 and request.get_method() in {"GET", "HEAD"} else code
+        return super().redirect_request(request, fp, redirect_code, msg, headers, newurl)
+
+    # Supply the missing hook on older urllib versions without bypassing its
+    # redirect-loop protection or our authority and robots checks.
+    def http_error_308(self, request, fp, code, msg, headers):
+        return self.http_error_302(request, fp, code, msg, headers)
 
 
 class Client:

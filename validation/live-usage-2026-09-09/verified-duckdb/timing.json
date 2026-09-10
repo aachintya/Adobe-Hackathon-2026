@@ -1,0 +1,41 @@
+{
+  "start_utc": "2026-09-09T17:43:34Z",
+  "start_epoch": 1788975814,
+  "report_validation_completed_utc": "2026-09-09T17:53:51Z",
+  "report_validation_completed_epoch": 1788976431,
+  "overall_end_utc": "2026-09-09T17:53:59Z",
+  "overall_end_epoch": 1788976439,
+  "elapsed_seconds": 625,
+  "elapsed_to_report_validation_seconds": 617,
+  "target_seconds": 280,
+  "overrun_seconds": 345,
+  "timing_note": "Overall end is the final clock observation immediately before serializing this timing artifact; the final artifact write and response occur afterward. Evidence gathering ended before the 180-second collection deadline; composition/tool-output processing and a rejected combined patch caused the overall overrun. No synthetic timing adjustment.",
+  "capabilities": {
+    "python": true,
+    "public_static_fetch": true,
+    "web_search": true,
+    "web_open": true,
+    "background_iab_browser": true,
+    "rendered_accessibility_tree": true,
+    "rendered_screenshot": true,
+    "actual_assistant_measurement": false
+  },
+  "execution": {
+    "collector": "run_audit.py https://duckdb.org/ --output-dir verified-duckdb --max-seconds 90",
+    "collector_reported_seconds": 14.65,
+    "collected_html_pages": 12,
+    "composed_unique_first_party_pages": 14,
+    "questions": 4,
+    "journeys": 2,
+    "non_default_combinations": 1,
+    "delegated": false,
+    "repository_modified": false,
+    "unit_tests_run": false
+  },
+  "validation": {
+    "command": "python3 <marketplace-root>/tests/validate_report.py <raw-evidence-root>/verified-duckdb/report.json",
+    "exit_code": 0,
+    "valid": true,
+    "errors": []
+  }
+}

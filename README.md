@@ -11,6 +11,8 @@ Audit a public website for AI discoverability and on-site engagement. Load `mark
 
 The skills use the host agent's public fetch, browser and search tools as available. Optional helpers use Python 3.10+ and its standard library. No API keys, package installation or service setup is required. Reports disclose missing capabilities.
 
+Commands below use `python3`; substitute your Python 3.10+ executable (for example, `py -3` on Windows) if it has another name.
+
 ## Invoke the marketplace
 
 Ask the host agent:
@@ -24,19 +26,34 @@ The agent derives 3-5 relevant visitor questions, evaluates supporting facts, tr
 From the extracted marketplace root:
 
 ```text
-python skills/audit-orchestrator/scripts/run_audit.py https://example.com --output-dir audit-output
-python tests/validate_report.py audit-output/report.json
+python3 skills/audit-orchestrator/scripts/run_audit.py https://example.com --output-dir audit-output
+python3 tests/validate_report.py audit-output/report.json
 ```
 
 This writes `evidence.json` and a schema-valid **static baseline** `report.json`. It preserves page passages, link labels/destinations, structured-data values and scoped access controls. The host agent reviews and completes the baseline with question tests, trust reasoning and browser journeys. Python alone does not simulate a complete agent audit or measure live assistant citations.
 
 The report includes findings, evidence, severity, suggested actions, coverage and an executive summary. See [the synthetic example](examples/problem-site-report.json). Actual visibility remains `not_measured` unless recorded assistant answers support it; [the measurement protocol](skills/audit-orchestrator/references/retrieval-validation.md) explains the optional helper.
 
+See [live usage evaluation](https://github.com/aachintya/Adobe-Hackathon-2026/blob/main/validation/LIVE-USAGE-2026-09-09.md) for real browser journeys, independent agent reports, observed misses, instruction improvements and measured coverage limits. Evaluation evidence stays in the repository and is excluded from the submission ZIP. Schema-valid static collection is not a completed agent audit.
+
+## Host environments
+
+| Browser | Python | Supported behavior |
+|---|---|---|
+| Yes | Yes | Source collection plus real browser journeys; off-site corroboration also needs search/fetch. |
+| No | Yes | Source audit and question analysis; rendered and interactive checks remain untested. |
+| Yes | No | Direct fetch/browser audit; no Python collection or automated report validation. |
+| No | No | Limited text-based audit if the host can fetch public pages; no interactive verification. |
+
+Python means Python 3.10+ with permission to execute; an installed but prohibited runtime is unavailable. All paths require reachable site evidence. Without network tools or supplied evidence, a live audit cannot run. Search, source HTML/headers, a clock or supplied UTC timestamp, and writable output each have separate capability requirements. The host can return the JSON report in chat when it cannot write files. See [the capability and fallback rules](skills/audit-orchestrator/references/tool-availability.md).
+
+These are supported execution paths, not a guarantee of identical coverage or of Adobe's judging environment. The handout permits bundled scripts but does not guarantee a browser, Python runtime, or particular model. The live evaluation records what was actually exercised; runtime and detection quality still depend on the host and site.
+
 ## Verify and package
 
 ```text
-python tests/run_all.py
-python scripts/package_submission.py
+python3 tests/run_all.py
+python3 scripts/package_submission.py
 ```
 
 Submit `dist/brand-ai-readiness-audit.zip`. It contains one folder, `brand-ai-readiness-audit/`, with the manifest, skills, references, helpers, examples and validation tools. The package excludes caches, live crawl outputs and other archives. Both compressed and uncompressed sizes are checked against a 50 MB cap.

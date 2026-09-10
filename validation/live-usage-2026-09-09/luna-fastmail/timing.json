@@ -1,0 +1,16 @@
+{
+  "start_epoch_utc": 1789012320.248251,
+  "start_utc": "2026-09-10T03:52:00.248251Z",
+  "session_reused_after": "GOV.UK case; same Luna medium auditor session, not a fresh independent session",
+  "report_validation_epoch_utc": 1789012410.186036,
+  "report_validation_utc": "2026-09-10T03:53:30.186036Z",
+  "final_epoch_utc": 1789012410.186036,
+  "final_utc": "2026-09-10T03:53:30.186036Z",
+  "actual_elapsed_seconds": 89.938,
+  "target_seconds": 280,
+  "gathering_stop_seconds": 180,
+  "tool_availability": {"python": true, "browser": false, "iab": false, "web_search": true, "filesystem": true},
+  "model": "gpt-5.6-luna",
+  "reasoning_effort": "medium",
+  "report_validation": {"command": "python3 Adobe-Hackathon-2026/tests/validate_report.py report.json", "valid": true, "errors": []}
+}

@@ -1,0 +1,236 @@
+{
+  "schema_version": "1.2",
+  "site": "https://www.gov.uk/renew-adult-passport",
+  "audited_at": "2026-09-08T10:46:25Z",
+  "executive_summary": {
+    "conclusion": "The sampled adult passport guidance is readable, publicly retrievable, and supports both tested visitor journeys. No verified discovery or task-completion barrier was found. The main localized uncertainty is a £16 paper-route reference on the linked processing-time page: the Check and Send guide establishes this as a separate service charge. Clarify that relationship first. Four intent tests were answered across relevant pages. Coverage is a bounded public sample, including four rendered documents; application submission, overseas flows, mobile/keyboard behavior, real crawler access, and actual assistant citations were not measured.",
+    "top_action_ids": [
+      "O-001"
+    ]
+  },
+  "summary": {
+    "total_findings": 0,
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0
+  },
+  "coverage": {
+    "pages_checked": 17,
+    "modes": [
+      "static",
+      "rendered",
+      "off_site",
+      "retrieval"
+    ],
+    "not_checked": [
+      "The static collector sampled 11 HTML documents and one Atom feed; it selected several general GOV.UK navigation pages. Agent review added relevant renewal, application-entry, fee, entity, Check and Send, and external editorial documents. Page count is 17 distinct inspected HTML documents, canonicalizing the processing-time redirect.",
+      "Two sitemap children and the general news-page extraction were capped. No content-absence conclusion is drawn from them; the target and processing-time evidence were untruncated.",
+      "Mobile layout, keyboard reachability, visible focus, contrast, performance metrics, and accessibility conformance were not tested.",
+      "The browser used its default viewport and locale; exact dimensions and locale were not recorded. Cookie banners remained present but did not prevent the tested link actions or reading.",
+      "No forms were completed or submitted. The application service was observed only at its public location question; subsequent application, identity, payment, overseas, child and urgent-service flows were not exercised.",
+      "No actual assistant-answer runs, provider crawler logs/IP access, Search Console settings, owner analytics, conversion, retention, or citation probability were measured.",
+      "Search locale was unknown. Four queries used one live search tool in a single bounded batch; pooled result ordering was not interpreted as per-query ranking."
+    ]
+  },
+  "findings": [],
+  "proactive_opportunities": [
+    {
+      "id": "O-001",
+      "title": "Clarify the separate Check and Send charge in processing-time guidance",
+      "rationale": "At https://www.gov.uk/government/organisations/hm-passport-office/about/about-our-services#how-to-apply, the paper-form route says an extra £16 without naming Check and Send. The renewal and fee pages distinguish the £102 online and £115.50 standard paper application fees, while https://www.gov.uk/how-the-post-office-check-and-send-service-works explicitly identifies £16 as the Check and Send charge. The supporting guide resolves the issue, so this is a localized clarification opportunity rather than a verified fee contradiction or blocked journey.",
+      "priority": "low",
+      "effort": "low",
+      "owner_hint": "HM Passport Office content owner for About our services",
+      "mechanism": "Name Check and Send and link its guide next to the £16 reference; distinguish the optional service charge from the paper passport application fee. This lets readers and retrieved passages preserve the correct fee context.",
+      "verification": "Review the How to apply paragraph in HTML and the rendered page. It should identify which service costs £16, state that the charge is additional to the relevant application fee, and link to the current Check and Send and passport fee guidance."
+    }
+  ],
+  "assessment": {
+    "mode": "agent_composed",
+    "readiness": [
+      {
+        "stage": "access",
+        "status": "observed",
+        "detail": "The collector received HTTP 200 for 11 of 11 sampled HTML documents. For the supplied path, robots.txt permits Googlebot, bingbot, OAI-SearchBot, Claude-SearchBot and PerplexityBot under the applicable wildcard group. Training/control and user-fetch decisions are separately preserved in evidence.json. The target has a self-canonical and no recorded robots/googlebot/bingbot meta restriction or X-Robots-Tag. The /print and /search/all policies were not treated as defects. Published policy and local GET success do not prove real provider access.",
+        "urls": [
+          "https://www.gov.uk/renew-adult-passport",
+          "https://www.gov.uk/robots.txt"
+        ]
+      },
+      {
+        "stage": "extraction",
+        "status": "observed",
+        "detail": "The target and processing-time page retain decision facts in untruncated source HTML and rendered accessibility text. The landing page's three JSON-LD blocks parse without errors and include the same current adult fees in Article/FAQ content. Readable facts include eligibility, fees, tracking and timing links. Old Article dateModified metadata alone was not treated as evidence that current guidance is stale; no missing-schema or word-count finding was created.",
+        "urls": [
+          "https://www.gov.uk/renew-adult-passport",
+          "https://www.gov.uk/government/organisations/hm-passport-office/about/about-our-services"
+        ]
+      },
+      {
+        "stage": "answerability",
+        "status": "observed",
+        "detail": "Four realistic UK adult-renewal question tests, with expected elements recorded before supporting-route review, were answered across the landing page, renewal guide, timing guidance and fee table. The fee context clarification is O-001; the supporting Check and Send guide prevents a false contradiction claim.",
+        "urls": [
+          "https://www.gov.uk/renew-adult-passport",
+          "https://www.gov.uk/renew-adult-passport/renew",
+          "https://www.gov.uk/government/organisations/hm-passport-office/about/about-our-services",
+          "https://www.gov.uk/passport-fees",
+          "https://www.gov.uk/how-the-post-office-check-and-send-service-works"
+        ]
+      },
+      {
+        "stage": "corroboration",
+        "status": "observed",
+        "detail": "On 2026-09-08, web.run queries were exactly: HM Passport Office; renew British adult passport online cost; UK passport renewal £102 £115.50 2026; UK passport renewal processing time 3 weeks September 2026. The pooled results returned first-party HM Passport Office identity and current fee guidance, plus MoneyWeek's renewal article updated 24 July 2026. Opened fee and editorial pages agree on standard UK adult fees (£102 online, £115.50 paper). MoneyWeek attributes guidance to GOV.UK, so this is independent publication carrying consistent claims, not independent operational measurement. No same-entity contradiction was established. Exact query and source records are in ledger.md.",
+        "urls": [
+          "https://www.gov.uk/government/organisations/hm-passport-office/about",
+          "https://www.gov.uk/passport-fees",
+          "https://moneyweek.com/spending-it/travel-holidays/uk-passport-renewal",
+          "https://www.gov.uk/how-the-post-office-check-and-send-service-works"
+        ]
+      },
+      {
+        "stage": "engagement",
+        "status": "observed",
+        "detail": "Two safe journeys reached their expected public destinations in a dedicated browser tab. Renew led to preparation guidance and the labeled Apply for a passport location question; the processing-time link reached guidance stating the usual period, timing start and exceptions. A cookie banner did not prevent either journey. Primary labels and application radio names were exposed in the accessibility tree. No site-selected personal context existed to test retention.",
+        "urls": [
+          "https://www.gov.uk/renew-adult-passport",
+          "https://www.gov.uk/renew-adult-passport/renew",
+          "https://www.passport.service.gov.uk/filter/overseas",
+          "https://www.gov.uk/government/organisations/hm-passport-office/about/about-our-services"
+        ]
+      }
+    ],
+    "intent_tests": [
+      {
+        "question": "Who can use the adult passport renewal service?",
+        "required_elements": [
+          "adult age threshold",
+          "renewal versus first passport",
+          "UK versus overseas route"
+        ],
+        "status": "answered",
+        "evidence": [
+          {
+            "url": "https://www.gov.uk/renew-adult-passport",
+            "quote": "aged 16 or over (or turning 16 in the next 3 weeks)"
+          },
+          {
+            "url": "https://www.gov.uk/renew-adult-passport/renew",
+            "quote": "your old passport"
+          }
+        ],
+        "reason": "The landing page specifies the adult threshold and links distinct child, first-adult-passport and overseas routes. The renewal guide requires the existing passport and distinguishes expired/insufficient validity, lost/damaged passports, and name changes. UK adult renewal is the inferred primary task."
+      },
+      {
+        "question": "What does an adult renewal cost online or on paper?",
+        "required_elements": [
+          "online standard adult fee",
+          "paper standard adult fee",
+          "currency and application context"
+        ],
+        "status": "answered",
+        "evidence": [
+          {
+            "url": "https://www.gov.uk/passport-fees",
+            "quote": "Adult (16 and over) standard 34-page passport | £102 | £115.50"
+          }
+        ],
+        "reason": "The fee table explicitly identifies standard adult UK online and paper prices in pounds; landing and renewal pages agree. Different overseas, frequent-traveller, urgent and Check and Send contexts are identified in linked guidance. O-001 addresses naming the additional service charge on one supporting page."
+      },
+      {
+        "question": "How long should a UK applicant allow, and where is urgent guidance?",
+        "required_elements": [
+          "routine processing guidance",
+          "conditions affecting timing",
+          "urgent-service route"
+        ],
+        "status": "answered",
+        "evidence": [
+          {
+            "url": "https://www.gov.uk/government/organisations/hm-passport-office/about/about-our-services",
+            "quote": "You’ll usually get your passport within 3 weeks."
+          },
+          {
+            "url": "https://www.gov.uk/government/organisations/hm-passport-office/about/about-our-services",
+            "quote": "The processing time starts from when we receive your documents."
+          }
+        ],
+        "reason": "The linked timing page explains that additional information or an interview may take longer, distinguishes overseas times, and links Online Premium/1 week Fast Track and compassionate urgent-travel advice. This is public guidance as observed, not an individual processing guarantee."
+      },
+      {
+        "question": "What is needed to renew and how do I begin?",
+        "required_elements": [
+          "old passport requirement",
+          "online next step",
+          "preparation requirements"
+        ],
+        "status": "answered",
+        "evidence": [
+          {
+            "url": "https://www.gov.uk/renew-adult-passport/renew",
+            "quote": "a digital photo"
+          },
+          {
+            "url": "https://www.gov.uk/renew-adult-passport/renew",
+            "quote": "a credit or debit card"
+          },
+          {
+            "url": "https://www.passport.service.gov.uk/filter/overseas",
+            "quote": "Do you live in the UK?"
+          }
+        ],
+        "reason": "Renewal instructions list passport and photo/payment preparation, including handling valid foreign passports. The Renew online action successfully reached the official public application filter. The audit stopped before answering or submitting the form."
+      }
+    ],
+    "journeys": [
+      {
+        "task": "Prepare for a standard adult renewal and reach the online application",
+        "starting_context": "A UK adult with an existing passport arrives at the supplied overview and wants the normal online route; no personal data or locale choice has been supplied.",
+        "steps": [
+          {
+            "url": "https://www.gov.uk/renew-adult-passport",
+            "action": "Read the overview; click Renew in Pages in this guide.",
+            "observation": "Fees and adult eligibility are readable; the Renew link reaches the expected renewal guide."
+          },
+          {
+            "url": "https://www.gov.uk/renew-adult-passport/renew",
+            "action": "Read Supporting documents and Renew online; click the Renew online action.",
+            "observation": "Passport, digital photo and payment preparation are listed; the online fee matches the overview."
+          },
+          {
+            "url": "https://www.passport.service.gov.uk/filter/overseas",
+            "action": "Observe the public destination and stop without answering the form.",
+            "observation": "Apply for a passport branding, HM Passport Office ownership, a Do you live in the UK? fieldset, named Yes/No radio choices and Continue are exposed. No authentication or submission was needed to reach this next step."
+          }
+        ],
+        "status": "completed",
+        "reason": "The public application next step was reached through the expected labels. Completion is limited to entry, not applying for or receiving a passport."
+      },
+      {
+        "task": "Check routine processing time before deciding whether to seek urgent guidance",
+        "starting_context": "A visitor at the supplied overview wants to know when the normal UK processing period starts and whether exceptions apply.",
+        "steps": [
+          {
+            "url": "https://www.gov.uk/renew-adult-passport",
+            "action": "Click Check how long it will take to get a passport.",
+            "observation": "The task-specific link points to HM Passport Office service guidance."
+          },
+          {
+            "url": "https://www.gov.uk/government/organisations/hm-passport-office/about/about-our-services",
+            "action": "Read Processing times in the UK, When your application processing time starts and the urgent-service signpost.",
+            "observation": "The requested link redirects to this canonical page. It states the usual three-week period, starts timing on receipt of documents, names additional-information/interview exceptions, and offers the urgent-service route."
+          }
+        ],
+        "status": "completed",
+        "reason": "The expected timing and next-step context were present. The urgent application itself was not entered; no form submission was required."
+      }
+    ],
+    "visibility": {
+      "status": "not_measured",
+      "detail": "No recorded unbiased assistant-answer runs were executed or supplied. Live web search results are retrieval observations only; no mention/citation rates or overall AI score are inferred.",
+      "cohorts": []
+    }
+  }
+}

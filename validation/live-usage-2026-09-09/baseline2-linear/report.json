@@ -1,0 +1,249 @@
+{
+  "schema_version": "1.2",
+  "site": "https://linear.app/",
+  "audited_at": "2026-09-08T15:47:03Z",
+  "executive_summary": {
+    "conclusion": "Linear explains its product-development offer, publishes readable costs and security guidance, and supports both tested public journeys. The main observed obstacle is icon-only plan availability in the pricing matrix: the tested text and accessibility representations omit these decision facts. Add explicit inclusion text first. Coverage includes 12 static pages, three rendered pages, one additional security document and bounded retrieval; two static extracts are capped. Independent security verification and actual assistant citations were not measured.",
+    "top_action_ids": [
+      "F-001"
+    ]
+  },
+  "summary": {
+    "total_findings": 1,
+    "critical": 0,
+    "high": 0,
+    "medium": 1,
+    "low": 0
+  },
+  "coverage": {
+    "pages_checked": 14,
+    "modes": [
+      "static",
+      "rendered",
+      "off_site",
+      "retrieval"
+    ],
+    "not_checked": [
+      "14 unique first-party URLs: 12 in evidence.json plus /contact/sales and /docs/security; external pages are excluded from this count.",
+      "Full-site completeness is not established. Static /about and /blog/styling-linear-for-the-future-stylex evidence is capped. About was additionally opened with web retrieval.",
+      "The collector recorded an HTTP 308 error for /blog; this collection error is not a website defect. Canonical destinations of legacy /blog articles were not individually re-fetched.",
+      "Mobile, keyboard traversal, visible focus, contrast, screen-reader software and performance metrics were not tested. Accessibility evidence is limited to DOM, accessibility tree and a pricing screenshot.",
+      "Forms, authentication, account creation and post-submission outcomes were not tested. No data was entered or submitted.",
+      "Real provider crawler access, owner Search Console settings, behavioral analytics and actual assistant citations were not measured.",
+      "Sequoia is an investor: external corroboration is interested, not independent product assurance. SOC 2 reports and independent certification evidence were not inspected.",
+      "Search locale was unknown. Five queries including one entity-source refinement are a bounded retrieval sample; no ranking or citation rate is inferred."
+    ]
+  },
+  "findings": [
+    {
+      "id": "F-001",
+      "title": "Pricing availability icons omit text equivalents for plan comparison",
+      "category": "discoverability",
+      "severity": "medium",
+      "confidence": "high",
+      "evidence": {
+        "observation": "At /pricing, the screenshot shows MCP access checkmarks in four plans and check/cross distinctions for Code Intelligence and Triage Intelligence. All 12 plan cells in these three inspected rows have empty DOM text, no aria-label, aria-labelledby or title, and aria-hidden=true on their SVG. Selector: [role=row] filtered by these row labels, then [data-plan]. The accessibility tree exposes row names without inclusion values. Untruncated static main_text likewise lists features without per-plan yes/no values. This is one affected page of one checked, with 12/12 sampled cells affected; it is not a site-wide claim. Readers using these text representations cannot resolve those matrix comparisons, although plan cards answer some related questions.",
+        "affected": 1,
+        "checked": 1,
+        "urls": [
+          "https://linear.app/pricing"
+        ]
+      },
+      "suggested_action": {
+        "summary": "Add truthful Included/Not included text to pricing comparison availability cells, retain decorative icons, and associate each cell with its feature and plan headings.",
+        "priority": "medium",
+        "effort": "low",
+        "owner_hint": "Marketing web engineering and accessibility owner",
+        "mechanism": "Explicit values preserve feature/plan relationships for text extraction and assistive reading without requiring icon-shape interpretation.",
+        "verification": "Confirm all 12 cells in the MCP access, Code Intelligence and Triage Intelligence rows expose inclusion values in source text and the rendered accessibility tree that agree with the visual matrix. Extend this check across all icon-only cells and verify row/column associations with an assistive reader."
+      }
+    }
+  ],
+  "proactive_opportunities": [],
+  "assessment": {
+    "mode": "agent_composed",
+    "readiness": [
+      {
+        "stage": "access",
+        "status": "observed",
+        "detail": "All 12 sampled HTML pages returned 200. Robots allows sampled paths for Googlebot, bingbot, OAI-SearchBot, Claude-SearchBot and PerplexityBot under the wildcard group. /api/ and /cdn-cgi/ are disallowed, with /api/og/ allowed. Training/control and user-fetch roles were evaluated separately and also allowed on sampled paths. No sampled noindex or restrictive X-Robots-Tag was observed. Sitemap returned 200 and exposed 200 URLs. These are public policy/local collection observations, not actual provider access.",
+        "urls": [
+          "https://linear.app/robots.txt",
+          "https://linear.app/sitemap.xml",
+          "https://linear.app/",
+          "https://linear.app/pricing"
+        ]
+      },
+      {
+        "stage": "extraction",
+        "status": "observed",
+        "detail": "Landing offer and default annual plan prices agree in static and rendered evidence. Pricing's one WebPage JSON-LD block parses and identifies the correct URL. No conflicting structured claim was observed; absent schema elsewhere is not a defect. F-001 captures missing plan-inclusion values in the tested text representations.",
+        "urls": [
+          "https://linear.app/",
+          "https://linear.app/pricing"
+        ]
+      },
+      {
+        "stage": "answerability",
+        "status": "observed",
+        "detail": "Four questions and required elements were frozen in ledger.md before destination inspection. All four are answered within offer, pricing, security and sales pages. The matrix finding is a separate feature/plan comparison limitation; no site-wide missing-answer claim is made.",
+        "urls": [
+          "https://linear.app/",
+          "https://linear.app/pricing",
+          "https://linear.app/docs/security",
+          "https://linear.app/contact/sales"
+        ]
+      },
+      {
+        "stage": "corroboration",
+        "status": "observed",
+        "detail": "Five exact queries and dated source observations are in ledger.md. Branded searches retrieved first-party pages; the neutral engineering-planning query returned category suppliers including Shortcut, whose page was opened. Sequoia's opened company profile links to linear.app and agrees with About on founding in 2019 and the three founders. Sequoia is an investor, so this is interested external corroboration, not independent evaluation. No material entity contradiction was established.",
+        "urls": [
+          "https://linear.app/about",
+          "https://sequoiacap.com/companies/linear",
+          "https://www.shortcut.com/product-planning/",
+          "https://linear.app/docs/security"
+        ]
+      },
+      {
+        "stage": "engagement",
+        "status": "observed",
+        "detail": "Landing, pricing and sales templates were rendered in an owned background IAB tab. Pricing navigation, billing toggle and Business Contact sales route worked. The sales form controls have accessible names and an email alternative. No blocking overlay was observed. Both journeys reached expected public destinations without submission; the matrix accessibility gap is merged into F-001.",
+        "urls": [
+          "https://linear.app/",
+          "https://linear.app/pricing",
+          "https://linear.app/contact/sales"
+        ]
+      }
+    ],
+    "intent_tests": [
+      {
+        "question": "What does Linear do and who is it for?",
+        "required_elements": [
+          "Offering",
+          "Audience",
+          "Principal workflow capabilities"
+        ],
+        "status": "answered",
+        "evidence": [
+          {
+            "url": "https://linear.app/",
+            "quote": "The product development system for teams and agents"
+          }
+        ],
+        "reason": "H1 and readable surrounding sections establish product-development teams and agents as the audience, with intake, planning, AI automation and code-review/shipping workflows. Static and rendered modes agree."
+      },
+      {
+        "question": "Can a small team start free and what does a paid plan cost?",
+        "required_elements": [
+          "Free limits",
+          "Paid unit price",
+          "Billing period"
+        ],
+        "status": "answered",
+        "evidence": [
+          {
+            "url": "https://linear.app/pricing",
+            "quote": "Unlimited members 2 teams 250 issues"
+          },
+          {
+            "url": "https://linear.app/pricing",
+            "quote": "$10 per user/month"
+          },
+          {
+            "url": "https://linear.app/pricing",
+            "quote": "Billed yearly"
+          }
+        ],
+        "reason": "The free card states $0 and member/team/issue limits. Basic is $10 and Business $16 per user/month billed annually. Disabling yearly billing visibly changes them to $12 and $18. Enterprise is custom and annual only. AI credits are separately signposted; usage charges were not modeled."
+      },
+      {
+        "question": "What security assurance and data location choices are stated?",
+        "required_elements": [
+          "Named assurance",
+          "Hosting or region choice",
+          "Documented limitation"
+        ],
+        "status": "answered",
+        "evidence": [
+          {
+            "url": "https://linear.app/docs/security",
+            "quote": "Linear is compliant with GDPR, SOC 2 Type II, and HIPAA."
+          },
+          {
+            "url": "https://linear.app/docs/security",
+            "quote": "This setting isn’t self-serve to change later."
+          }
+        ],
+        "reason": "Opened documentation states these assurance claims, Enterprise BAA conditions for HIPAA, US/EU storage selection at workspace creation and later self-service limits. It explicitly lists US-stored exceptions including account/workspace metadata, notification emails, analytics and crash-related information. Public answerability is established; certification verification is untested."
+      },
+      {
+        "question": "How can an evaluating team contact sales?",
+        "required_elements": [
+          "Visible route",
+          "Public next step",
+          "Stop before submission"
+        ],
+        "status": "answered",
+        "evidence": [
+          {
+            "url": "https://linear.app/pricing",
+            "quote": "Contact sales"
+          },
+          {
+            "url": "https://linear.app/contact/sales",
+            "quote": "Tell us how we can help"
+          },
+          {
+            "url": "https://linear.app/contact/sales",
+            "quote": "sales@linear.app"
+          }
+        ],
+        "reason": "Business Contact sales reaches /contact/sales. Full name, work email, company size and requirements have accessible names. Email provides another route. Nothing was entered or sent."
+      }
+    ],
+    "journeys": [
+      {
+        "task": "Understand the offer and compare free versus paid cost",
+        "starting_context": "A software product team arrives at https://linear.app/ with no account or selected plan and wants to assess affordability.",
+        "steps": [
+          {
+            "url": "https://linear.app/",
+            "action": "Read the landing page and click Pricing in site navigation.",
+            "observation": "H1 identifies offering and audience. Pricing points to /pricing and navigation succeeds."
+          },
+          {
+            "url": "https://linear.app/pricing",
+            "action": "Read plan cards and disable Billed yearly using basic-toggle.",
+            "observation": "Free limits are readable. Basic changes $10 to $12 and Business $16 to $18 per user/month; both yearly controls become unchecked."
+          }
+        ],
+        "status": "completed",
+        "reason": "The public affordability task is resolved. Feature-inclusion comparisons in the sampled matrix have the separate defect F-001."
+      },
+      {
+        "task": "Reach sales guidance from a paid plan",
+        "starting_context": "Visitor reviews the Business card on /pricing after comparing billing periods and wants plan advice.",
+        "steps": [
+          {
+            "url": "https://linear.app/pricing",
+            "action": "Click Contact sales in the Business card.",
+            "observation": "Link opens /contact/sales."
+          },
+          {
+            "url": "https://linear.app/contact/sales",
+            "action": "Inspect heading, field labels and email alternative without entering or submitting data.",
+            "observation": "Contact sales and Tell us how we can help identify the next step. Four controls have accessible names and sales@linear.app is available."
+          }
+        ],
+        "status": "completed",
+        "reason": "Expected public sales destination reached. No plan was committed in a transaction; no personalization requirement is inferred. Submission and response handling remain untested."
+      }
+    ],
+    "visibility": {
+      "status": "not_measured",
+      "detail": "No independent assistant-answer runs recorded. Search retrieval, public crawl policy and this auditor's composed answer do not measure assistant mention/citation probability.",
+      "cohorts": []
+    }
+  }
+}

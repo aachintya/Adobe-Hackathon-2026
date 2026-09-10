@@ -1,0 +1,17 @@
+{
+  "started_at": "2026-09-08T15:47:28Z",
+  "start_epoch": 1788882448,
+  "completed_at": "2026-09-08T15:52:52Z",
+  "end_epoch": 1788882772,
+  "elapsed_seconds": 324,
+  "target_seconds": 280,
+  "within_target": false,
+  "static_collection_seconds": 13.07,
+  "validation": {
+    "command": "python3 <marketplace-root>/tests/validate_report.py <raw-evidence-root>/baseline2-duckdb/report.json",
+    "exit_code": 0,
+    "valid": true,
+    "errors": []
+  },
+  "notes": "Actual end-to-end elapsed time retained. Composition and evidence review exceeded shared 280-second target. No unit/development tests run."
+}

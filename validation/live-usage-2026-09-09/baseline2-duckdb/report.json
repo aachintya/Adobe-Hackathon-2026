@@ -1,0 +1,265 @@
+{
+  "schema_version": "1.2",
+  "site": "https://duckdb.org/",
+  "audited_at": "2026-09-08T15:47:28Z",
+  "executive_summary": {
+    "conclusion": "No major obstacle to developer evaluation or onboarding was observed in the sample: all four representative questions were answered, and both public installation and Python onboarding journeys completed. The main observed weakness is unresolved template code in the client overview's metadata, which can obscure its version/support summary for consumers of that metadata. Fix that localized publishing issue first. Coverage includes 12 static pages, three rendered page templates, and four search queries; actual assistant citations, provider access, mobile behavior, and conversion outcomes were not measured.",
+    "top_action_ids": [
+      "F-001"
+    ]
+  },
+  "summary": {
+    "total_findings": 1,
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 1
+  },
+  "coverage": {
+    "pages_checked": 14,
+    "modes": [
+      "static",
+      "rendered",
+      "off_site",
+      "retrieval"
+    ],
+    "not_checked": [
+      "Site-page denominator is 14 distinct on-site paths: 12 collector pages plus Python API rendered page and design/manual opened through web retrieval; query variants of installation count as one page.",
+      "Static sampling capped at 12 pages. Six saved page records flag evidence_truncated; positive passages were used, but no missing-content conclusions were made.",
+      "Eight collector requests returned HTTP 308 errors. Browser navigation successfully followed /install and the Python .html URL; remaining redirect variants were not fully verified and are not findings.",
+      "Actual assistant answers/citations, provider crawler IP access, owner-only Search Console controls, and private analytics were not measured.",
+      "Mobile/responsive layout, keyboard reachability, visible focus, contrast, performance metrics, full accessibility conformance and all alternate installation clients/version options were not checked within this bounded audit.",
+      "Independent current governance verification was not completed; the opened project LICENSE is first-party even though hosted on GitHub. Independent research corroborates the entity's use as a query engine, not all product claims.",
+      "Browser used its default viewport (exact dimensions not recorded), locale unknown, with macOS detected by the installation page; no observed challenge blocked the two tested journeys."
+    ]
+  },
+  "findings": [
+    {
+      "id": "F-001",
+      "title": "Client overview metadata exposes unrendered version and support template code",
+      "category": "discoverability",
+      "severity": "low",
+      "confidence": "high",
+      "evidence": {
+        "observation": "Static response at /docs/current/clients/overview: both meta[name=description] and JSON-LD WebPage.description contain '{{ site.current_duckdb_version }}' and '{% include tooltip.html ... %}' in the client version/support summary. The same response's main-text table supplies concrete values such as 'C Core team Primary ... 1.5.5'. This is a localized metadata quality issue, not missing body content or a proven citation loss. One affected page among 12 inspected static pages; JSON-LD syntax itself parses successfully.",
+        "affected": 1,
+        "checked": 12,
+        "urls": [
+          "https://duckdb.org/docs/current/clients/overview"
+        ]
+      },
+      "suggested_action": {
+        "summary": "Generate the client overview's meta description and WebPage.description from resolved content, or set a concise explicit description that accurately summarizes clients and support tiers.",
+        "priority": "low",
+        "effort": "low",
+        "owner_hint": "DuckDB website build/documentation maintainer",
+        "mechanism": "Gives metadata consumers a readable client/version summary and prevents unresolved build tokens from appearing when a description is selected for an excerpt.",
+        "verification": "Fetch /docs/current/clients/overview after publishing; confirm meta[name=description] and JSON-LD WebPage.description contain no '{{' or '{%' tokens, agree with visible client support/version facts, and still parse as valid JSON."
+      }
+    }
+  ],
+  "proactive_opportunities": [],
+  "assessment": {
+    "mode": "agent_composed",
+    "readiness": [
+      {
+        "stage": "access",
+        "status": "observed",
+        "detail": "The collector received 200 HTML responses for 12 sampled pages. robots.txt has Allow: / and excludes legacy /docs/1.3, /1.2, /1.1, /1.0 and /0.10 paths. Its wildcard policy permits the sampled current paths for Googlebot, bingbot, OAI-SearchBot, Claude-SearchBot and PerplexityBot; training and user-fetch decisions are retained separately in evidence.json. No live provider-IP access was established. The only sampled noindex, /design, is a redirect utility page with canonical /design/manual/ and 'Redirecting…'; the destination opens as a readable design manual, so this candidate is not promoted to an acquisition defect. No meta/X-Robots indexing restriction was found on the other 11 pages.",
+        "urls": [
+          "https://duckdb.org/robots.txt",
+          "https://duckdb.org/",
+          "https://duckdb.org/install/",
+          "https://duckdb.org/design",
+          "https://duckdb.org/design/manual/"
+        ]
+      },
+      {
+        "stage": "extraction",
+        "status": "observed",
+        "detail": "Homepage purpose, supported data formats and MIT/free offer appear in source text and rendered accessibility text. Homepage SoftwareApplication JSON-LD price 0 and MIT license agree with visible copy; all parsed JSON-LD blocks in the 12-page sample have zero syntax errors. Client-overview descriptions contain unresolved build tokens (F-001), while its body resolves client versions. The static install main-text record omits the dynamic command, but rendered selection shows it and the homepage source also contains pip install duckdb; no site-wide extraction failure is established.",
+        "urls": [
+          "https://duckdb.org/",
+          "https://duckdb.org/install/",
+          "https://duckdb.org/docs/current/clients/overview",
+          "https://duckdb.org/docs/current/clients/python/overview"
+        ]
+      },
+      {
+        "stage": "answerability",
+        "status": "observed",
+        "detail": "Four question tests frozen in ledger.md after landing inspection and before task destinations are answered across the homepage, FAQ, installer and Python API page. Audience was inferred as developers/data analysts evaluating local analytical SQL. Current stable 1.5.5 is distinguished from LTS 1.4.5 and the separately promoted v2.0-alpha. Coverage supports these questions only, not every product constraint.",
+        "urls": [
+          "https://duckdb.org/",
+          "https://duckdb.org/faq",
+          "https://duckdb.org/install/",
+          "https://duckdb.org/docs/current/clients/python/overview"
+        ]
+      },
+      {
+        "stage": "corroboration",
+        "status": "observed",
+        "detail": "Four exact web queries were run on 2026-09-08, locale unknown: 'DuckDB'; 'embedded analytical SQL database query parquet python'; 'DuckDB current stable release 1.5.5 September 2026'; 'DuckDB MIT license independent Foundation'. The pooled results returned the target homepage, FAQ, installer, project LICENSE and release pages plus independent research. Opened GitHub release is labelled 'DuckDB v1.5.5 Bugfix Release' and 'Latest', agreeing with current first-party pages. The opened LICENSE names Stichting DuckDB Foundation and grants use free of charge; it is first-party confirmation. The independent GenDB preprint, submitted 2026-03-02 by Jiale Lao and Immanuel Trummer, explicitly includes DuckDB among query-engine comparisons. No material same-entity contradiction was observed. These are retrieval observations, not unbiased assistant citation runs; pooled results do not establish rank or per-query citation rates.",
+        "urls": [
+          "https://github.com/duckdb/duckdb/blob/main/LICENSE",
+          "https://github.com/duckdb/duckdb/releases/tag/v1.5.5",
+          "https://arxiv.org/abs/2603.02081",
+          "https://duckdb.org/faq",
+          "https://duckdb.org/install/"
+        ]
+      },
+      {
+        "stage": "engagement",
+        "status": "observed",
+        "detail": "Rendered homepage, installer and Python documentation were inspected using one hidden IAB tab. Two public tasks completed: reaching the macOS CLI installation command/current stable selector, then selecting Python and reaching Python-specific documentation with requirements and a first-query example. The client selection changed the URL and destination appropriately. No task-blocking overlay or dead end was observed; no installation, form submission or authentication was performed.",
+        "urls": [
+          "https://duckdb.org/",
+          "https://duckdb.org/install/?platform=macos&environment=cli",
+          "https://duckdb.org/install/?platform=macos&environment=python",
+          "https://duckdb.org/docs/current/clients/python/overview"
+        ]
+      }
+    ],
+    "intent_tests": [
+      {
+        "question": "What does DuckDB do, and who should use it?",
+        "required_elements": [
+          "Analytical SQL purpose",
+          "Deployment model",
+          "Representative data tasks"
+        ],
+        "status": "answered",
+        "evidence": [
+          {
+            "url": "https://duckdb.org/",
+            "quote": "An analytical SQL database that can run in-process."
+          },
+          {
+            "url": "https://duckdb.org/faq",
+            "quote": "DuckDB was designed with both data science and data engineering workloads in mind."
+          }
+        ],
+        "reason": "Homepage source/rendered text identifies analytical SQL and portable deployment; the opened FAQ supplies audience and data science/engineering examples. Homepage also identifies CSV, JSON, Parquet and Iceberg."
+      },
+      {
+        "question": "Is DuckDB free and what license/governance applies?",
+        "required_elements": [
+          "Cost",
+          "License",
+          "Governing entity"
+        ],
+        "status": "answered",
+        "evidence": [
+          {
+            "url": "https://duckdb.org/",
+            "quote": "Free & open-source"
+          },
+          {
+            "url": "https://duckdb.org/faq",
+            "quote": "there is no “enterprise version” of DuckDB."
+          },
+          {
+            "url": "https://github.com/duckdb/duckdb/blob/main/LICENSE",
+            "quote": "Copyright 2018-2026 Stichting DuckDB Foundation"
+          }
+        ],
+        "reason": "Homepage explicitly names MIT licensing and independent Foundation governance; FAQ explains free components and the roles of DuckDB, Foundation, DuckLabs and MotherDuck. Opened project license agrees. This is factual identification, not legal advice or independent certification of governance."
+      },
+      {
+        "question": "What version should a new user install today?",
+        "required_elements": [
+          "Current stable release",
+          "Distinction from alpha/development release"
+        ],
+        "status": "answered",
+        "evidence": [
+          {
+            "url": "https://duckdb.org/install/",
+            "quote": "1.5.5 (current)"
+          },
+          {
+            "url": "https://duckdb.org/install/",
+            "quote": "1.4.5 (LTS)"
+          },
+          {
+            "url": "https://github.com/duckdb/duckdb/releases/tag/v1.5.5",
+            "quote": "DuckDB v1.5.5 Bugfix Release"
+          }
+        ],
+        "reason": "Rendered installer explicitly describes stable and LTS choices and links preview nightly separately. Homepage's v2.0-alpha promotion is labelled alpha. Opened project release page labels 1.5.5 Latest; observed on 2026-09-08."
+      },
+      {
+        "question": "How can a Python user get started?",
+        "required_elements": [
+          "Installation command",
+          "Python requirements",
+          "First-query or documentation route"
+        ],
+        "status": "answered",
+        "evidence": [
+          {
+            "url": "https://duckdb.org/install/?platform=macos&environment=python",
+            "quote": "pip install duckdb"
+          },
+          {
+            "url": "https://duckdb.org/docs/current/clients/python/overview",
+            "quote": "DuckDB requires Python 3.9 or newer."
+          },
+          {
+            "url": "https://duckdb.org/docs/current/clients/python/overview",
+            "quote": "duckdb.sql"
+          }
+        ],
+        "reason": "Selecting Python reveals pip install duckdb and changes the client documentation destination to Python API. The rendered destination states requirements, stable version and a SELECT 42 example; it also provides file-reading and persistence examples."
+      }
+    ],
+    "journeys": [
+      {
+        "task": "Find the current stable macOS CLI installation instructions",
+        "starting_context": "New developer at the supplied https://duckdb.org/ landing page; browser environment detected as macOS; no client selected beforehand.",
+        "steps": [
+          {
+            "url": "https://duckdb.org/",
+            "action": "Inspect landing page and click Get DuckDB.",
+            "observation": "Primary action identifies an installation destination; click navigated successfully."
+          },
+          {
+            "url": "https://duckdb.org/install/?platform=macos&environment=cli",
+            "action": "Inspect resulting default CLI selection.",
+            "observation": "CLI selected, platform macOS, current 1.5.5 selected, LTS 1.4.5 offered; visible curl command and Client documentation page link. Preview/nightly route is explicitly separate."
+          }
+        ],
+        "status": "completed",
+        "reason": "Reached public installation instructions with appropriate platform and version context. Command was read only and not executed."
+      },
+      {
+        "task": "Switch installation client to Python and reach a first-query guide",
+        "starting_context": "Visitor on the installer with macOS/CLI selected, now choosing Python for analytical work.",
+        "steps": [
+          {
+            "url": "https://duckdb.org/install/?platform=macos&environment=cli",
+            "action": "Click Python radio option.",
+            "observation": "Selected client changed from CLI to Python."
+          },
+          {
+            "url": "https://duckdb.org/install/?platform=macos&environment=python",
+            "action": "Inspect command and click Client documentation page.",
+            "observation": "pip install duckdb displayed and documentation link updated to the Python overview."
+          },
+          {
+            "url": "https://duckdb.org/docs/current/clients/python/overview",
+            "action": "Inspect rendered destination.",
+            "observation": "Python API page states stable 1.5.5 and Python 3.9 or newer, and shows Basic API Usage with SELECT 42."
+          }
+        ],
+        "status": "completed",
+        "reason": "Python context carried from selector into a Python-specific destination containing the expected prerequisites and first-query guidance."
+      }
+    ],
+    "visibility": {
+      "status": "not_measured",
+      "detail": "No actual assistant answer runs were performed. Four web searches and opened source pages provide a bounded retrieval/corroboration baseline only; no mention or citation probability is inferred.",
+      "cohorts": []
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.2",
+  "site": "https://www.python.org/about/",
+  "audited_at": "2026-09-10T09:25:08Z",
+  "executive_summary": {"conclusion": "Source and search evidence describe Python, its learning and documentation routes, current release information, and the Python Software Foundation clearly. This no-runtime trial could not verify rendered behavior or interactive task completion.", "top_action_ids": []},
+  "summary": {"total_findings": 0, "critical": 0, "high": 0, "medium": 0, "low": 0},
+  "coverage": {"pages_checked": 4, "modes": ["static", "retrieval", "off_site"], "not_checked": ["Python execution was prohibited; no collector, helper, or validator ran.", "Browser automation was prohibited; rendered DOM, responsive layout, controls, overlays, keyboard focus, and interactive handoffs were not checked.", "HTTP headers, canonical tags, JSON-LD, and exact source response metadata were not exposed by the permitted fetch tool.", "No actual assistant answer runs were recorded; AI visibility remains not measured.", "Search was a bounded retrieval sample, not a ranking or citation measurement."]},
+  "assessment": {
+    "mode": "agent_composed",
+    "readiness": [
+      {"stage": "access", "status": "not_checked", "detail": "robots.txt was readable and showed wildcard restrictions only for /~guido/orlijn/ and /webstats/; named crawler policy was not independently evaluated without the collector.", "urls": ["https://www.python.org/robots.txt"]},
+      {"stage": "extraction", "status": "observed", "detail": "Permitted page text exposed clear descriptions, links, release status, and documentation routes.", "urls": ["https://www.python.org/about/", "https://www.python.org/downloads/", "https://docs.python.org/3/"]},
+      {"stage": "answerability", "status": "observed", "detail": "Four representative questions were answered from opened first-party pages and one corroborating first-party search result.", "urls": ["https://www.python.org/about/", "https://www.python.org/downloads/", "https://docs.python.org/3/", "https://www.python.org/psf/mission/"]},
+      {"stage": "corroboration", "status": "observed", "detail": "The PSF mission search result agrees with the first-party About/PSF description; current release and documentation pages are internally consistent.", "urls": ["https://www.python.org/psf/mission/", "https://www.python.org/about/", "https://www.python.org/downloads/"]},
+      {"stage": "engagement", "status": "not_checked", "detail": "Interactive journeys were prohibited; source links show plausible routes but do not establish successful UI behavior.", "urls": []}
+    ],
+    "intent_tests": [
+      {"question": "What is Python and who is it for?", "required_elements": ["language identity", "beginner or experienced audience", "use/application context"], "status": "answered", "evidence": [{"url": "https://www.python.org/about/", "quote": "Python can be easy to pick up whether you're a first time programmer or you're experienced with other languages."}], "reason": "The About page also lists web, database, scientific, education, and other application areas."},
+      {"question": "Where should a new or returning user start?", "required_elements": ["beginner route", "official documentation route"], "status": "answered", "evidence": [{"url": "https://www.python.org/about/", "quote": "The following pages are a useful first step"}, {"url": "https://docs.python.org/3/", "quote": "Tutorial; Library reference; Python setup and usage"}], "reason": "The About page links beginner guides and documentation; the documentation page exposes tutorial and setup routes."},
+      {"question": "What current Python release information is available?", "required_elements": ["active release status", "download route", "support context"], "status": "answered", "evidence": [{"url": "https://www.python.org/downloads/", "quote": "3.14 bugfix; 3.13 bugfix; 3.12 security; 3.11 security"}], "reason": "The official downloads page lists active release lines and links to downloads/release notes."},
+      {"question": "Who stewards Python and what is the mission?", "required_elements": ["stewarding organization", "mission statement"], "status": "answered", "evidence": [{"url": "https://www.python.org/psf/mission/", "quote": "The mission of the Python Software Foundation is to promote, protect, and advance the Python programming language"}], "reason": "The first-party PSF mission page identifies the organization behind Python and states its mission."}
+    ],
+    "journeys": [
+      {"task": "Understand Python, then reach official learning/documentation guidance", "starting_context": "https://www.python.org/about/", "steps": [], "status": "not_checked", "reason": "Browser automation prohibited; source links were visible in fetched text but click behavior and rendered destination were not exercised."},
+      {"task": "Check current release information, then reach download or release-note guidance", "starting_context": "https://www.python.org/downloads/", "steps": [], "status": "not_checked", "reason": "Browser automation prohibited; no safe interactive handoff or context retention was observed."}
+    ],
+    "visibility": {"status": "not_measured", "detail": "No recorded assistant answer runs.", "cohorts": []}
+  },
+  "findings": [],
+  "proactive_opportunities": []
+}

@@ -1,0 +1,16 @@
+Baseline commit: 3a68ea35c0f836bfa4ec45fb1e2dde18c194afc6
+Revised instruction files, SHA-256 at 2026-09-09 17:43 UTC:
+5731054b91132c853e95b18131546b88bdb09825faa94ccf3a081027b178fb9d  skills/audit-orchestrator/SKILL.md
+f2ab7f3ff7ab4e59739830f03f607ca54400f172c4ddf31c395749d38d918439  skills/audit-orchestrator/references/evidence-policy.md
+1e45b39c06ecd3e40f36b9b00cdaf8fa1851d82919b2c98bcb2e644942dbe6d2  skills/audit-orchestrator/references/retrieval-validation.md
+062311bea74bd39a8a5c7ab14575863a0f20a43671e81df3b6a956cd86cf4a85  skills/crawl-extract-audit/SKILL.md
+0e656b3409cc2e95f23015d15f1e95771e167c6990f8ec55a23a7cdd2e2ed0eb  skills/crawl-extract-audit/references/checks.md
+43c773f4b58ce272c3884726156fa8c5eb35333ad3f8f70d08ec5a03af985eff  skills/engagement-context-audit/SKILL.md
+a9081a62cb69710e9586fdb0bfbcb4e85dd718a8440f481285012b2a079fa33a  skills/engagement-context-audit/references/choice-and-handoff.md
+
+All composed verified-* and luna-* reports above used that frozen revision.
+Final instruction corrections at 2026-09-10 03:56 UTC, after the Luna reports were frozen:
+0ad47bc76b118394df888b4349b37f8c4e377f77055a3180b2894d8a78508260  skills/audit-orchestrator/SKILL.md
+e07491175820dace8365d2ba814f6434894ae9439c8d5c196110f433231585c7  skills/engagement-context-audit/SKILL.md
+8fc4bfc5b0da3e6c06c8e3183d6da055270b5c74665bd718525578acf19c6e97  skills/engagement-context-audit/references/choice-and-handoff.md
+Other four instruction files retain their prior hashes. Final-revision behavioral checks are only the two guided capability-recovery notes; both auditor browser inventories remained empty. No complete fresh end-to-end audit of this final revision is claimed.

@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Build the actual ZIP, extract to a path with spaces and run from an unrelated cwd."""
 import json
+import re
 import subprocess
 import sys
 import tempfile
@@ -37,8 +38,17 @@ def main():
             assert report['assessment']['visibility']['status'] == 'not_measured'
             assert (root/'scripts/package_submission.py').is_file()
             assert not list(root.rglob('*.zip'))
+            for document in root.rglob('*.md'):
+                for target in re.findall(r'\[[^]]+\]\(([^)]+)\)', document.read_text(encoding='utf-8')):
+                    target = target.strip('<>')
+                    if '://' in target or target.startswith('#'):
+                        continue
+                    destination = target.split('#', 1)[0]
+                    assert (document.parent/destination).exists(), f'Broken packaged link in {document.relative_to(root)}: {target}'
         print('PASS: extracted ZIP runs with no install/API key from a different cwd and preserves honest coverage')
-    finally: server.shutdown()
+    finally:
+        server.shutdown()
+        server.server_close()
 
 
 if __name__ == '__main__': main()

@@ -2,7 +2,7 @@
 
 ## Default audit: bounded retrieval and corroboration
 
-Within the shared 45-second search allocation, run 3-4 queries: exact entity name; one neutral category/task query without the brand; and 1-2 material factual lookups derived from the question tests. Record exact queries, date, tool, locale (or unknown), returned source URLs and short evidence quotes from opened sources. Compare same-entity claims with the site's current statements. Store this ledger in the output directory and summarize findings/readiness with supporting URLs and query details.
+Before the shared evidence deadline, use up to 45 seconds for 3-4 queries: exact entity name; one neutral category/task query without the brand; and 1-2 material factual lookups derived from the question tests. Shorten this stage if less time remains; record any unexecuted checks. Record exact queries, date, tool, locale (or unknown), returned source URLs and short evidence quotes from opened sources as you go. Compare same-entity claims with the site's current statements. Store this compact ledger in the output directory and summarize findings/readiness with supporting URLs and query details; do not postpone a lengthy transcription until after composing the report.
 
 Do not label these searches as observed ChatGPT/Claude/Gemini answers. A result in a search tool is a retrieval observation on that tool. Search absence is not a visibility defect, a noindex diagnosis, or proof of no independent support. A returned competitor is a lead to inspect, not evidence that its schema or word count caused it to win.
 

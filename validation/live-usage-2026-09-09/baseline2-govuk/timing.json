@@ -1,0 +1,17 @@
+{
+  "started_at": "2026-09-08T15:47:14Z",
+  "start_epoch": 1788882434,
+  "completed_at": "2026-09-08T15:52:42Z",
+  "end_epoch": 1788882762,
+  "elapsed_seconds": 328,
+  "target_seconds": 280,
+  "within_target": false,
+  "collector_elapsed_seconds": 14.86,
+  "validation": {
+    "command": "python3 <marketplace-root>/tests/validate_report.py <raw-evidence-root>/baseline2-govuk/report.json",
+    "exit_code": 0,
+    "valid": true,
+    "errors": []
+  },
+  "notes": "Report validation completed at 15:51:52 UTC, 278 seconds after start. Final ledger/timing authoring extended beyond target; actual elapsed preserved."
+}

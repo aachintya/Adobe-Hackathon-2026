@@ -8,6 +8,7 @@ COMMANDS = [
     [sys.executable, str(ROOT / "tests" / "test_skill_structure.py")],
     [sys.executable, str(ROOT / "tests" / "run_simulations.py")],
     [sys.executable, str(ROOT / "tests" / "test_robots_scenarios.py")],
+    [sys.executable, str(ROOT / "tests" / "test_redirects.py")],
     [sys.executable, str(ROOT / "tests" / "test_collector_generalization.py")],
     [sys.executable, str(ROOT / "tests" / "test_eval_suite.py")],
     [sys.executable, str(ROOT / "tests" / "test_practical_audit.py")],

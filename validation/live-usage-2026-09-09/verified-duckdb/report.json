@@ -1,0 +1,267 @@
+{
+  "schema_version": "1.2",
+  "site": "https://duckdb.org/",
+  "audited_at": "2026-09-09T17:43:34Z",
+  "executive_summary": {
+    "conclusion": "DuckDB clearly exposes its analytical database offer, license and current installation route. The main observed obstacle is localized to Python LTS onboarding: the LTS documentation uses an unpinned install command and its return link selects the current release. Align the versioned documentation and return link first. Four representative questions were answered and the default installation journey completed. Coverage comprises 12 source pages plus a rendered LTS Python page and a fetched release calendar; one non-default combination was exercised. Actual assistant citations, provider IP access and behavioral outcomes were not measured.",
+    "top_action_ids": [
+      "F-001"
+    ]
+  },
+  "summary": {
+    "total_findings": 1,
+    "critical": 0,
+    "high": 0,
+    "medium": 1,
+    "low": 0
+  },
+  "coverage": {
+    "pages_checked": 14,
+    "modes": [
+      "static",
+      "rendered",
+      "off_site",
+      "retrieval"
+    ],
+    "not_checked": [
+      "Assumed English-speaking developers and analysts evaluating local analytical SQL, with macOS auto-detected in the browser; search locale was unknown.",
+      "Only the landing page, installation page and LTS Python documentation were rendered, at the default desktop viewport (screenshot 1280 x 720). Other clients, operating systems, releases and mobile layouts were not exercised.",
+      "Keyboard reachability, visible focus, contrast, complete accessibility conformance and performance metrics were not checked.",
+      "Six collector page records have capped evidence; absence claims are not made from those records. Eight collector requests were recorded as HTTP 308 errors; these were not classified as website defects. The browser successfully followed Get DuckDB to installation.",
+      "Four web-search queries were executed in one batch with an aggregated result pool; per-query ranks were not exposed or inferred. Foundation and GitHub are associated first-party sources; Amazon is an interested transaction counterparty, not an independent endorsement. No exhaustive reputation audit was performed.",
+      "Actual assistant answers/citations, authenticated flows, package installation, provider IP access, owner analytics and Search Console controls were not measured.",
+      "The collector's noindex candidate at /design was discarded because the inspected page is an explicit redirect stub pointing to /design/manual/, not an acquisition page exclusion."
+    ]
+  },
+  "findings": [
+    {
+      "id": "F-001",
+      "title": "Python LTS documentation and its installation return route lose the selected release",
+      "category": "engagement",
+      "severity": "medium",
+      "confidence": "high",
+      "evidence": {
+        "observation": "Rendered reproduction: Home > Get DuckDB > Python > 1.4.5 (LTS) produced /install/?platform=macos&environment=python&version=lts and pip install duckdb==1.4.5. Client documentation page opened /docs/lts/clients/python/overview, visibly labelled 1.4 LTS, but its Installation section used pip install duckdb. The same section's installation page link led to /install/?environment=python&platform=macos with 1.5.5 (current) selected and the unpinned command. Manually selecting 1.4.5 (LTS) recovered the pinned command. One of one non-default version handoffs tested was affected; the two affected page contexts are the LTS Python documentation and the returned installer. The source-fetch view also exposes the unpinned command on the LTS page.",
+        "affected": 2,
+        "checked": 2,
+        "urls": [
+          "https://duckdb.org/install/?platform=macos&environment=python&version=lts",
+          "https://duckdb.org/docs/lts/clients/python/overview",
+          "https://duckdb.org/install/?environment=python&platform=macos"
+        ]
+      },
+      "suggested_action": {
+        "summary": "In the LTS Python Installation section, give the LTS-pinned command and include version=lts on its installation-page return link while retaining environment=python.",
+        "priority": "medium",
+        "effort": "low",
+        "owner_hint": "DuckDB documentation and website maintainers",
+        "mechanism": "Keeps a visitor's explicitly selected release consistent across instructions and the return to the installer, reducing the chance of following a different release's setup steps.",
+        "verification": "Select Python and 1.4.5 (LTS), follow Client documentation page, confirm its installation instruction targets the LTS release, then follow installation page and verify Python plus LTS remain selected with the LTS-pinned command. Check the current-release route still gives its intended command."
+      }
+    }
+  ],
+  "proactive_opportunities": [],
+  "assessment": {
+    "mode": "agent_composed",
+    "readiness": [
+      {
+        "stage": "access",
+        "status": "observed",
+        "detail": "robots.txt returned 200. Its wildcard Allow: / permits all 12 collected URLs for named Googlebot, bingbot, OAI-SearchBot, Claude-SearchBot and PerplexityBot policy checks; older /docs/1.3, /1.2, /1.1, /1.0 and /0.10 paths are disallowed. Training and user-fetch roles were recorded separately. No indexing/snippet restriction was observed on home or install. Policy permission is not verified provider access.",
+        "urls": [
+          "https://duckdb.org/robots.txt",
+          "https://duckdb.org/",
+          "https://duckdb.org/install/"
+        ]
+      },
+      {
+        "stage": "extraction",
+        "status": "observed",
+        "detail": "The home page's analytical SQL, in-process, file-format and license facts were available in both collected source text and rendered accessibility text. The untruncated source installer record contains selectors but no install command; the browser supplies the selected command, while the home page already supplies current install commands. No site-wide extraction failure is inferred. JSON-LD parsed without errors on the 12-page sample; home SoftwareApplication price 0 and MIT license agree with visible copy. Other structured values were not exhaustively checked.",
+        "urls": [
+          "https://duckdb.org/",
+          "https://duckdb.org/install/",
+          "https://duckdb.org/docs/lts/clients/python/overview"
+        ]
+      },
+      {
+        "stage": "answerability",
+        "status": "observed",
+        "detail": "All four questions, frozen after the landing-page inspection and before supporting-page judgment, have support for their required elements. The separate LTS continuity finding does not make the broader Python installation question unanswered.",
+        "urls": [
+          "https://duckdb.org/",
+          "https://duckdb.org/faq",
+          "https://duckdb.org/install/",
+          "https://duckdb.org/docs/lts/clients/python/overview",
+          "https://duckdb.org/release_calendar"
+        ]
+      },
+      {
+        "stage": "corroboration",
+        "status": "observed",
+        "detail": "The exact-entity, neutral task, current-release and governance queries returned the official site and related sources. Opened Foundation and GitHub pages agree on identity/license and product facts. Amazon's own acquisition announcement says the project remains under the independent Foundation and MIT license; this corroborates the transaction boundary from another entity but is an interested source. Wikipedia was opened as a lead and relies on the site's own sources for governance, so it was not treated as independent proof. No material contradiction was established in the checked claims.",
+        "urls": [
+          "https://duckdb.foundation/",
+          "https://github.com/duckdb/duckdb",
+          "https://www.aboutamazon.com/news/company-news/aws-ducklabs",
+          "https://en.wikipedia.org/wiki/DuckDB"
+        ]
+      },
+      {
+        "stage": "engagement",
+        "status": "observed",
+        "detail": "Get DuckDB successfully reached a usable default macOS CLI installation command. Python and LTS controls changed the instruction and destination correctly; the subsequent LTS documentation/return sequence had the scoped friction documented in F-001. No consent overlay or challenge prevented the observed tasks.",
+        "urls": [
+          "https://duckdb.org/",
+          "https://duckdb.org/install/",
+          "https://duckdb.org/docs/lts/clients/python/overview"
+        ]
+      }
+    ],
+    "intent_tests": [
+      {
+        "question": "What is DuckDB and who can use it for local analytical work?",
+        "required_elements": [
+          "analytical database and SQL",
+          "local/in-process deployment",
+          "relevant language or file integrations"
+        ],
+        "status": "answered",
+        "evidence": [
+          {
+            "url": "https://duckdb.org/",
+            "quote": "An analytical SQL database that can run in-process."
+          },
+          {
+            "url": "https://duckdb.org/faq",
+            "quote": "DuckDB was designed with both data science and data engineering workloads in mind."
+          },
+          {
+            "url": "https://duckdb.org/",
+            "quote": "CSV, JSON, Parquet, and Iceberg"
+          }
+        ],
+        "reason": "The landing page identifies analytical SQL, in-process deployment and relevant file formats; the inspected FAQ passage names data science and engineering audiences."
+      },
+      {
+        "question": "Is DuckDB free and open source, and who governs it?",
+        "required_elements": [
+          "cost/license",
+          "governance entity"
+        ],
+        "status": "answered",
+        "evidence": [
+          {
+            "url": "https://duckdb.org/faq",
+            "quote": "All components of DuckDB are available in the free version under this license"
+          },
+          {
+            "url": "https://duckdb.org/",
+            "quote": "MIT-licensed, governed by the independent DuckDB Foundation."
+          }
+        ],
+        "reason": "The quoted passages establish cost, license and governing entity, supported by the associated Foundation page."
+      },
+      {
+        "question": "What current stable version should a new user install?",
+        "required_elements": [
+          "stable version number",
+          "installation instruction"
+        ],
+        "status": "answered",
+        "evidence": [
+          {
+            "url": "https://duckdb.org/install/?platform=macos&environment=cli",
+            "quote": "1.5.5 (current)"
+          },
+          {
+            "url": "https://duckdb.org/install/?platform=macos&environment=cli",
+            "quote": "curl https://install.duckdb.org | bash"
+          },
+          {
+            "url": "https://duckdb.org/release_calendar",
+            "quote": "2026-07-22 | 1.5.5"
+          }
+        ],
+        "reason": "The rendered installer explicitly identifies current 1.5.5 and a macOS CLI instruction; the release calendar lists it as a past release and 1.5.6 as upcoming. No command was executed."
+      },
+      {
+        "question": "How does a Python user install and reach the matching client documentation?",
+        "required_elements": [
+          "Python install command",
+          "Python client documentation destination"
+        ],
+        "status": "answered",
+        "evidence": [
+          {
+            "url": "https://duckdb.org/install/?platform=macos&environment=python",
+            "quote": "pip install duckdb"
+          },
+          {
+            "url": "https://duckdb.org/docs/lts/clients/python/overview",
+            "quote": "Python API"
+          }
+        ],
+        "reason": "Selecting Python supplied its install command and a Python client documentation link. The link was followed after selecting LTS and reached Python API documentation. F-001 separately documents the version-specific instruction and return issue."
+      }
+    ],
+    "journeys": [
+      {
+        "task": "Understand the product and reach a current macOS CLI installation instruction",
+        "starting_context": "First-time developer or analyst at https://duckdb.org/; no explicit environment choice, macOS automatically detected.",
+        "steps": [
+          {
+            "url": "https://duckdb.org/",
+            "action": "Read product and license summary, then click Get DuckDB.",
+            "observation": "Core analytical database facts and a clearly named next step were present."
+          },
+          {
+            "url": "https://duckdb.org/install/?platform=macos&environment=cli",
+            "action": "Inspect settled default installation view.",
+            "observation": "CLI and 1.5.5 (current) selected; curl https://install.duckdb.org | bash displayed."
+          }
+        ],
+        "status": "completed",
+        "reason": "Reached the public instruction and stopped before downloading or running software."
+      },
+      {
+        "task": "Keep Python 1.4 LTS instructions consistent through documentation and return",
+        "starting_context": "Visitor requires Python and the offered 1.4.5 LTS release instead of the default current CLI release.",
+        "steps": [
+          {
+            "url": "https://duckdb.org/install/?platform=macos&environment=python",
+            "action": "Select Python.",
+            "observation": "Python selected; pip install duckdb shown and link changed to Python documentation."
+          },
+          {
+            "url": "https://duckdb.org/install/?platform=macos&environment=python&version=lts",
+            "action": "Select 1.4.5 (LTS), then click Client documentation page.",
+            "observation": "Pinned 1.4.5 command and an LTS documentation URL were present before navigation."
+          },
+          {
+            "url": "https://duckdb.org/docs/lts/clients/python/overview",
+            "action": "Inspect Installation and click installation page.",
+            "observation": "LTS label retained, but the install command was unpinned and the return link omitted version selection."
+          },
+          {
+            "url": "https://duckdb.org/install/?environment=python&platform=macos",
+            "action": "Inspect settled returned state.",
+            "observation": "Python retained; 1.5.5 (current) selected with an unpinned command."
+          },
+          {
+            "url": "https://duckdb.org/install/?environment=python&platform=macos&version=lts",
+            "action": "Manually select 1.4.5 (LTS) again.",
+            "observation": "Pinned 1.4.5 command restored."
+          }
+        ],
+        "status": "friction",
+        "reason": "The selected release was not preserved through material instructions and the return handoff; manual reselection is a working recovery. One combination checked."
+      }
+    ],
+    "visibility": {
+      "status": "not_measured",
+      "detail": "No unbiased assistant answer runs were recorded. Search-tool retrieval, local source access and browser journeys do not establish assistant mentions or citation rates.",
+      "cohorts": []
+    }
+  }
+}

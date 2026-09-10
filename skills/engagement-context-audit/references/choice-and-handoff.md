@@ -1,0 +1,13 @@
+# Test a choice through its handoff
+
+Use one material non-default choice in the second journey when a public task exposes it. Prefer a choice that changes the instruction, eligibility, included features or cost over cosmetic preferences. This is a bounded probe within the shared deadline, not a requirement to enumerate combinations.
+
+1. Record the visitor's constraint before interacting. Select the relevant public option without submitting a form, entering personal data, authenticating or altering the site.
+2. Record the selected label and its material result, such as versioned instructions, billing unit, region or feature availability. A changed control label alone does not establish that its result was applied; inspect the resulting facts or items. If applying it requires an out-of-scope submission, choose another safe public option or record the limit. A sort/view preference does not by itself test retention of a product, eligibility or format constraint. Keep the full observed URL, including functional query parameters.
+3. Follow the relevant detail/help/next-step link. Check the actual destination and whether it still serves that constraint. When an obvious return-to-task link exists, follow it within the remaining budget and check the resulting selection again.
+4. A missing query parameter is only a lead. State can be retained elsewhere, or the public next step may intentionally defer selection. Require a visible incompatible default/instruction or demonstrated unmet task before reporting context loss. Stop at an authenticated boundary; do not infer what happens after it.
+5. Record a working alternative or recovery control. A manual reselection usually supports a scoped medium/low friction finding rather than a high blocker. A disclosed change of scope is not a silent context-loss defect.
+
+For a question answered through a comparison table, preserve the relationship between row, column, value and qualifier. A checkmark, cross, colour or tooltip may be decision data. Inspect a few task-relevant cells in both the visible representation and text/accessibility representation before declaring the comparison readable. An empty accessibility snapshot alone needs confirmation against the DOM and visible state; a visible icon alone does not establish a missing text alternative. Account for nearby prose or linked documentation and scope any finding to the representation actually affected.
+
+Normal cookie choices, animation and loading are intermediate states. Resolve a safe consent choice or take one settled observation before calling a destination blocked. Directly opening a destination verifies content, but does not prove that its source link works. Never retry a disallowed route merely to force journey completion.

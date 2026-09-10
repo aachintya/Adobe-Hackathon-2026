@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.2",
+  "site": "https://www.gov.uk/renew-adult-passport",
+  "audited_at": "2026-09-10T03:49:30Z",
+  "executive_summary": {
+    "conclusion": "The inspected GOV.UK passport-renewal journey is clear and answerable for UK adult renewal: eligibility, current fees, timing links, supporting documents and online/paper next steps are stated, and the overseas route hands off to a dedicated public service. No material discoverability or engagement defect was directly observed. Coverage is a bounded sample; actual assistant citations, provider logs, analytics, and post-answer application behavior were not measured.",
+    "top_action_ids": []
+  },
+  "summary": {"total_findings": 0, "critical": 0, "high": 0, "medium": 0, "low": 0},
+  "coverage": {
+    "pages_checked": 13,
+    "modes": ["static", "rendered", "off_site", "retrieval"],
+    "not_checked": [
+      "Actual assistant answers/citations and provider crawler logs were not measured.",
+      "No application question was answered and no form, payment, authentication, or submission was attempted.",
+      "Keyboard focus behavior, mobile layout, performance metrics, and analytics were not measured.",
+      "Independent corroboration beyond the bounded retrieval sample was not pursued; search absence is not treated as a defect."
+    ]
+  },
+  "findings": [],
+  "proactive_opportunities": [],
+  "assessment": {
+    "mode": "agent_composed",
+    "readiness": [
+      {"stage": "access", "status": "observed", "detail": "robots.txt was available; wildcard access and named search/training/user-fetch crawler decisions allowed the audited path. This is policy evidence, not proof of provider access.", "urls": ["https://www.gov.uk/robots.txt"]},
+      {"stage": "extraction", "status": "observed", "detail": "Static and rendered text exposed the material renewal facts, headings, links, controls and accessible names on the overview and renewal pages.", "urls": ["https://www.gov.uk/renew-adult-passport", "https://www.gov.uk/renew-adult-passport/renew", "https://www.gov.uk/overseas-passports"]},
+      {"stage": "answerability", "status": "observed", "detail": "Four frozen, task-specific questions were answered or resolved by inspected first-party passages.", "urls": ["https://www.gov.uk/renew-adult-passport", "https://www.gov.uk/renew-adult-passport/renew", "https://www.gov.uk/government/organisations/hm-passport-office/about-our-services"]},
+      {"stage": "corroboration", "status": "observed", "detail": "Bounded retrieval returned the GOV.UK fee table, HM Passport Office timing page, the target renewal page, and independent contextual results; no material contradiction was observed in opened first-party evidence.", "urls": ["https://www.gov.uk/passport-fees", "https://www.gov.uk/government/organisations/hm-passport-office/about/about-our-services"]},
+      {"stage": "engagement", "status": "observed", "detail": "Two safe browser journeys reached public information/next-step destinations; the overseas route visibly handed off to a dedicated service and was stopped before answering its form question.", "urls": ["https://www.gov.uk/renew-adult-passport", "https://www.gov.uk/renew-adult-passport/renew", "https://www.gov.uk/overseas-passports", "https://www.passport.service.gov.uk/filter/overseas"]}
+    ],
+    "intent_tests": [
+      {"question": "Who can renew or replace an adult passport and what does it cost?", "required_elements": ["age 16 or over or turning 16 within 3 weeks", "online fee £102", "paper fee £115.50"], "status": "answered", "evidence": [{"url": "https://www.gov.uk/renew-adult-passport", "quote": "It costs £102 to renew or replace your passport if you apply online or £115.50 if you fill in a paper form. You must be aged 16 or over (or turning 16 in the next 3 weeks)"}], "reason": "All required eligibility and fee elements were visible in the overview."},
+      {"question": "What documents and prerequisites are needed for a standard renewal?", "required_elements": ["old passport", "valid passports from another country if held", "digital photo and payment card for online route"], "status": "answered", "evidence": [{"url": "https://www.gov.uk/renew-adult-passport/renew", "quote": "To renew your passport you’ll need: your old passport ... any valid passports you have from a different country"}, {"url": "https://www.gov.uk/renew-adult-passport/renew", "quote": "Use this service to renew your passport online. It costs £102. You’ll need: a digital photo, a credit or debit card, your passport"}], "reason": "Supporting-document and online prerequisite elements were stated with their relevant route."},
+      {"question": "How long might renewal take and what should I do if travel is urgent?", "required_elements": ["processing-time destination", "urgent Online Premium or 1 week Fast Track route", "warning not to book travel until valid passport"], "status": "answered", "evidence": [{"url": "https://www.gov.uk/renew-adult-passport", "quote": "Check how long it will take to get a passport before you apply. If you need a passport urgently, you can find out more about the Online Premium or 1 week Fast Track services."}, {"url": "https://www.gov.uk/renew-adult-passport", "quote": "Do not book travel until you have a valid passport"}], "reason": "The overview links timing and urgent-service guidance and includes the travel warning."},
+      {"question": "What is the next safe step for someone renewing from outside the UK?", "required_elements": ["overseas eligibility/context", "public start handoff", "no need to submit or authenticate during audit"], "status": "answered", "evidence": [{"url": "https://www.gov.uk/overseas-passports", "quote": "Get the forms, prices and application details you need if you’re a British national [and] you want to renew or apply for a British passport from overseas."}, {"url": "https://www.passport.service.gov.uk/filter/overseas", "quote": "Do you live in the UK?"}], "reason": "The GOV.UK page provides a Start now handoff to the dedicated public service, where the first routing question is visible; audit stopped before answering it."}
+    ],
+    "journeys": [
+      {"task": "Understand standard UK adult renewal and reach the online/paper next-step guidance", "starting_context": "Visitor lands on the supplied adult-passport renewal overview.", "steps": [{"url": "https://www.gov.uk/renew-adult-passport", "action": "Read overview and choose Renew in the guide contents", "observation": "Overview states eligibility, £102 online/£115.50 paper fees, timing/urgent links, tracking and delivery facts."}, {"url": "https://www.gov.uk/renew-adult-passport/renew", "action": "Follow Renew", "observation": "Renew page exposes supporting documents, online requirements and a Renew online button, plus paper-form route; no dead end observed."}], "status": "completed", "reason": "Reached a clear public next-step destination without entering data or submitting."},
+      {"task": "Use the non-default overseas constraint and verify its handoff", "starting_context": "Visitor needs to renew from outside the UK, a material route choice exposed on the overview.", "steps": [{"url": "https://www.gov.uk/renew-adult-passport", "action": "Follow the link for renewing outside the UK", "observation": "Link leads to Overseas British passport applications."}, {"url": "https://www.gov.uk/overseas-passports", "action": "Read overseas eligibility copy and select Start now", "observation": "Page names British nationals applying from overseas and offers Start now."}, {"url": "https://www.passport.service.gov.uk/filter/overseas", "action": "Inspect public handoff without answering its question", "observation": "Dedicated service displays Do you live in the UK? with Yes/No controls and Continue; cookies are visible, and the audit stopped before any application answer."}], "status": "completed", "reason": "The non-default route retained the overseas context through a dedicated service and exposed the next routing choice; no post-answer behavior was tested by design."}
+    ],
+    "visibility": {"status": "not_measured", "detail": "No unbiased actual assistant answer runs were recorded; retrieval results and local browser rendering are not assistant-citation measurements.", "cohorts": []}
+  }
+}
