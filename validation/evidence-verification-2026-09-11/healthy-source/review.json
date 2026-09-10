@@ -1,0 +1,124 @@
+{
+  "review_version": "1",
+  "observations": [],
+  "claims": {},
+  "answers": [
+    {
+      "test_index": 0,
+      "evidence_index": 0,
+      "ref": "page:0",
+      "field": "main_text"
+    },
+    {
+      "test_index": 1,
+      "evidence_index": 0,
+      "ref": "page:1",
+      "field": "main_text"
+    },
+    {
+      "test_index": 1,
+      "evidence_index": 1,
+      "ref": "page:1",
+      "field": "main_text"
+    },
+    {
+      "test_index": 2,
+      "evidence_index": 0,
+      "ref": "page:1",
+      "field": "main_text"
+    },
+    {
+      "test_index": 2,
+      "evidence_index": 1,
+      "ref": "page:2",
+      "field": "main_text"
+    }
+  ],
+  "journeys": [
+    {
+      "journey_index": 0,
+      "mode": "source",
+      "steps": [
+        {
+          "step_index": 0,
+          "ref": "page:0",
+          "assertions": [
+            {
+              "type": "field_equals",
+              "ref": "page:0",
+              "field": "links.3.href",
+              "value": "/classes/"
+            },
+            {
+              "type": "quote",
+              "ref": "page:0",
+              "field": "links.3.text",
+              "quote": "Choose a pottery class"
+            }
+          ]
+        },
+        {
+          "step_index": 1,
+          "ref": "page:1",
+          "assertions": [
+            {
+              "type": "field_equals",
+              "ref": "page:1",
+              "field": "status",
+              "value": 200
+            },
+            {
+              "type": "quote",
+              "ref": "page:1",
+              "field": "main_text",
+              "quote": "£45 per person for two hours, including clay, tools and firing."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "journey_index": 1,
+      "mode": "source",
+      "steps": [
+        {
+          "step_index": 0,
+          "ref": "page:1",
+          "assertions": [
+            {
+              "type": "field_equals",
+              "ref": "page:1",
+              "field": "links.3.href",
+              "value": "/visit/#booking"
+            },
+            {
+              "type": "quote",
+              "ref": "page:1",
+              "field": "main_text",
+              "quote": "Returning-maker session For makers who have completed a beginner workshop."
+            }
+          ]
+        },
+        {
+          "step_index": 1,
+          "ref": "page:2",
+          "assertions": [
+            {
+              "type": "field_equals",
+              "ref": "page:2",
+              "field": "status",
+              "value": 200
+            },
+            {
+              "type": "quote",
+              "ref": "page:2",
+              "field": "main_text",
+              "quote": "Your place is reserved only after confirmation."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "corroboration": []
+}

@@ -21,7 +21,7 @@ Freeze the URL, collection time, capability set, and expected observations for e
 2. Provide only the public URL and a neutral request to audit AI discoverability and on-site engagement.
 3. Allow no more than five minutes.
 4. Save the emitted report without editing it.
-5. Run `python tests/validate_report.py REPORT.json`.
+5. Run `python tests/validate_report.py REPORT.json --evidence EVIDENCE.json --review REVIEW.json` when those artifacts exist; otherwise run schema-only validation and record that narrower scope. Preserve the finalization receipt if produced, but measure actual request-to-delivery independently.
 6. Repeat important cases three times to measure output stability.
 7. Have a reviewer who did not author the report match findings to the private ground truth.
 

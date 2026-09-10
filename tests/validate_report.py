@@ -100,10 +100,29 @@ def validate(doc):
 
 
 def main():
-    parser = argparse.ArgumentParser(); parser.add_argument("report"); args = parser.parse_args()
-    try: errors = validate(json.loads(Path(args.report).read_text(encoding="utf-8")))
-    except (ValueError, OSError) as error: errors = [str(error)]
-    print(json.dumps({"valid": not errors, "errors": errors}, indent=2)); raise SystemExit(bool(errors))
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("report")
+    parser.add_argument("--evidence", help="Saved collector JSON; requires --review")
+    parser.add_argument("--review", help="Evidence review sidecar JSON; requires --evidence")
+    args = parser.parse_args()
+    scope = "schema_and_report_consistency"
+    errors = []
+    if bool(args.evidence) != bool(args.review):
+        errors.append("--evidence and --review are required together for evidence verification")
+    else:
+        try:
+            doc = json.loads(Path(args.report).read_text(encoding="utf-8"))
+            errors = validate(doc)
+            if args.evidence and not errors:
+                from report_evidence import validate_evidence
+                scope = "schema_and_evidence_consistency"
+                errors.extend(validate_evidence(doc,
+                    json.loads(Path(args.evidence).read_text(encoding="utf-8")),
+                    json.loads(Path(args.review).read_text(encoding="utf-8"))))
+        except (ValueError, OSError) as error:
+            errors = [str(error)]
+    print(json.dumps({"valid": not errors, "scope": scope, "errors": errors}, indent=2))
+    raise SystemExit(bool(errors))
 
 
 if __name__ == "__main__": main()

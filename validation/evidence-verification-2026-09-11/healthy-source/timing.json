@@ -1,0 +1,13 @@
+{
+  "started_at": "2026-09-10T20:10:57Z",
+  "artifact_work_completed_at": "2026-09-10T20:13:47.147868+00:00",
+  "artifact_work_elapsed_seconds": 170.147868,
+  "delivery_time_measured": false,
+  "finalization_attempts": 1,
+  "failed_attempts": 0,
+  "final_report_sha256": "4b3ef2e2fa47abdd883e81567d4e842a4eb2c3f7ef648d871eb5ab666bd18193",
+  "pages_checked": 3,
+  "findings": 0,
+  "intent_tests": 3,
+  "journeys": 2
+}

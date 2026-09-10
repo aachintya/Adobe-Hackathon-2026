@@ -1,0 +1,187 @@
+{
+  "schema_version": "1.2",
+  "site": "http://127.0.0.1:62296/",
+  "audited_at": "2026-09-10T20:13:18.709274+00:00",
+  "executive_summary": {
+    "conclusion": "Three inspected source pages clearly explain Willow Clay Studio’s classes, eligibility, prices and booking conditions, with no verified discoverability or source-route defects in this sample. Browser behavior, independent corroboration and actual assistant citations were not tested.",
+    "top_action_ids": []
+  },
+  "summary": {
+    "total_findings": 0,
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0
+  },
+  "coverage": {
+    "pages_checked": 3,
+    "modes": [
+      "static"
+    ],
+    "not_checked": [
+      "Rendered content, interactive controls, mobile layout, keyboard access, focus and overlays were not checked because browser access is unavailable.",
+      "External search and independent corroboration of the studio identity, address and accessibility claims were unavailable.",
+      "Email handling, live place availability, payment and booking confirmation were not tested; no contact was made.",
+      "Actual assistant answer/citation runs, indexing, provider IP access and behavioral metrics were not measured."
+    ]
+  },
+  "assessment": {
+    "mode": "agent_composed",
+    "readiness": [
+      {
+        "stage": "access",
+        "status": "observed",
+        "detail": "Published wildcard robots policy allows the inspected paths; all three source HTML pages returned 200 without captured noindex directives. This establishes observed source access and policy, not actual indexing or assistant citation.",
+        "urls": [
+          "http://127.0.0.1:62296/robots.txt",
+          "http://127.0.0.1:62296/",
+          "http://127.0.0.1:62296/classes/",
+          "http://127.0.0.1:62296/visit/"
+        ]
+      },
+      {
+        "stage": "extraction",
+        "status": "observed",
+        "detail": "Complete captured static text supplies class variants, prices, dates, prerequisites, cancellation and booking conditions; all three pages have meta descriptions. No rendered comparison was available.",
+        "urls": [
+          "http://127.0.0.1:62296/",
+          "http://127.0.0.1:62296/classes/",
+          "http://127.0.0.1:62296/visit/"
+        ]
+      },
+      {
+        "stage": "answerability",
+        "status": "observed",
+        "detail": "All three prospective-student questions are answered by the inspected first-party text; the site explicitly distinguishes a booking request from a confirmed place.",
+        "urls": [
+          "http://127.0.0.1:62296/",
+          "http://127.0.0.1:62296/classes/",
+          "http://127.0.0.1:62296/visit/"
+        ]
+      },
+      {
+        "stage": "corroboration",
+        "status": "not_checked",
+        "detail": "First-party descriptions identify Willow Clay Studio in Bristol consistently; independent sources could not be checked because external search is unavailable.",
+        "urls": []
+      },
+      {
+        "stage": "engagement",
+        "status": "observed",
+        "detail": "Two source information routes reach relevant class and booking instructions through labeled links. Browser interaction and email execution remain untested; the captured pages expose no class-selection control whose state could be exercised.",
+        "urls": [
+          "http://127.0.0.1:62296/",
+          "http://127.0.0.1:62296/classes/",
+          "http://127.0.0.1:62296/visit/"
+        ]
+      }
+    ],
+    "intent_tests": [
+      {
+        "question": "What does Willow Clay Studio offer, where is it, and who can attend?",
+        "required_elements": [
+          "offering",
+          "city",
+          "minimum age",
+          "experience audience"
+        ],
+        "status": "answered",
+        "evidence": [
+          {
+            "url": "http://127.0.0.1:62296/",
+            "quote": "We teach small-group pottery classes in Bristol for beginners and returning makers aged 16 and over."
+          }
+        ],
+        "reason": "The homepage directly names pottery classes in Bristol, beginners and returning makers, and the minimum age of 16."
+      },
+      {
+        "question": "What are the beginner workshop date, price, prerequisites and cancellation terms?",
+        "required_elements": [
+          "date and local time",
+          "price and duration",
+          "included materials",
+          "required experience or equipment",
+          "free cancellation deadline"
+        ],
+        "status": "answered",
+        "evidence": [
+          {
+            "url": "http://127.0.0.1:62296/classes/",
+            "quote": "Beginner workshop For first-time makers aged 16 and over. Sunday 20 September 2026, 10:00–12:00 Europe/London. £45 per person for two hours, including clay, tools and firing. No experience or equipment needed."
+          },
+          {
+            "url": "http://127.0.0.1:62296/classes/",
+            "quote": "Free cancellation until 48 hours before your session."
+          }
+        ],
+        "reason": "The beginner section states the 20 September session, local time zone, £45 two-hour price, included materials and lack of prerequisites; the same page gives the 48-hour cancellation deadline."
+      },
+      {
+        "question": "How can a returning maker request a place and know when it is reserved?",
+        "required_elements": [
+          "returning-maker prerequisite",
+          "contact channel",
+          "booking details to send",
+          "response and reservation conditions"
+        ],
+        "status": "answered",
+        "evidence": [
+          {
+            "url": "http://127.0.0.1:62296/classes/",
+            "quote": "Returning-maker session For makers who have completed a beginner workshop."
+          },
+          {
+            "url": "http://127.0.0.1:62296/visit/",
+            "quote": "Email hello@willow.example with your preferred class, date and number of participants. We reply within two working days to confirm availability and send payment instructions. Your place is reserved only after confirmation."
+          }
+        ],
+        "reason": "The returning-maker section requires a completed beginner workshop. Booking instructions specify the email address, requested details, two-working-day reply window, and confirmation condition."
+      }
+    ],
+    "journeys": [
+      {
+        "task": "Read the beginner workshop eligibility, date and price",
+        "starting_context": "A first-time pottery student aged at least 16 arrives at the homepage.",
+        "steps": [
+          {
+            "url": "http://127.0.0.1:62296/",
+            "action": "[source] Inspect the Choose a pottery class link and its destination.",
+            "observation": "The labeled link resolves to /classes/, which was fetched successfully."
+          },
+          {
+            "url": "http://127.0.0.1:62296/classes/",
+            "action": "[source] Read the beginner workshop section in the fetched class page.",
+            "observation": "The section states the age requirement, 20 September morning session, £45 price and included clay, tools and firing."
+          }
+        ],
+        "status": "completed",
+        "reason": "The source information route reaches the requested beginner details. Completion describes reading a fetched destination; browser clicking was not tested."
+      },
+      {
+        "task": "Find booking instructions for a returning-maker session",
+        "starting_context": "A returning maker compares the listed session and wants to request a place.",
+        "steps": [
+          {
+            "url": "http://127.0.0.1:62296/classes/",
+            "action": "[source] Inspect returning-maker prerequisites and the Contact us to request a place link.",
+            "observation": "The prerequisite is completion of a beginner workshop; the booking link points to /visit/#booking."
+          },
+          {
+            "url": "http://127.0.0.1:62296/visit/",
+            "action": "[source] Read the fetched visit page’s booking instructions.",
+            "observation": "The page supplies the email address, required class/date/participant details and confirmation process."
+          }
+        ],
+        "status": "completed",
+        "reason": "The public instructions are readable at the linked visit page. No email was sent; anchor scrolling, mail-client behavior and reservation completion are untested. No selectable class control was captured, so selected-state retention was not applicable to this source route."
+      }
+    ],
+    "visibility": {
+      "status": "not_measured",
+      "detail": "No recorded assistant answer runs; crawl checks are not citation measurements.",
+      "cohorts": []
+    }
+  },
+  "findings": [],
+  "proactive_opportunities": []
+}

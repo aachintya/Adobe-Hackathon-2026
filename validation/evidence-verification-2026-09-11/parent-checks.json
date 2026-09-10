@@ -1,0 +1,7 @@
+{
+  "report": true,
+  "evidence": true,
+  "review": true,
+  "entrypoint_sha256": "7b75aca073e241b620756725206f8171b62f5a67cfe9d7023bbbf1e5a77594af",
+  "current_validator_hashes_match_receipt": true
+}

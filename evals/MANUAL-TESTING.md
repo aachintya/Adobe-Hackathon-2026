@@ -48,7 +48,10 @@ Replace `TARGET_URL` and `OUTPUT_FOLDER` with a real public URL and a writable f
 Use skills/audit-orchestrator/SKILL.md in this workspace to audit TARGET_URL
 for AI discoverability and on-site engagement. Apply its referenced sibling
 skills and return the composed report, not just the Python static baseline.
-Save report.json in OUTPUT_FOLDER.
+Use OUTPUT_FOLDER for artifacts. Preserve the static baseline separately from
+draft-report.json. When the finalization helper is available, publish
+final-report.json with its evidence/review and receipt; otherwise return the
+manually checked report with explicit validation limits.
 
 Infer realistic visitor questions from the site. Use only permitted public,
 read-only inspection. Do not log in, submit forms, buy anything, send messages,
@@ -94,10 +97,10 @@ Optional additional runs: append `Do not execute Python or any other code; do no
 After preserving the original report, run the validator if you have Python:
 
 ```sh
-python3 tests/validate_report.py /absolute/path/to/output/report.json
+python3 tests/validate_report.py /absolute/path/to/output/final-report.json --evidence /absolute/path/to/output/evidence.json --review /absolute/path/to/output/review.json
 ```
 
-On Windows, substitute `py -3` and your Windows path. Validation performed by you after delivery is a separate evaluator check; do not claim the auditing agent performed it.
+On Windows, substitute `py -3` and your Windows path. For a manual/tool-only report without saved evidence/review, use its actual report filename and omit both flags; that checks schema and internal counts only. Validation performed by you after delivery is a separate evaluator check; do not claim the auditing agent performed it. A finalization receipt binds the checked files and records the finalization clock; retain your independent request-to-delivery stopwatch.
 
 Then do the checks that a JSON validator cannot do:
 
@@ -111,6 +114,6 @@ Then do the checks that a JSON validator cannot do:
 - Compare A and B: does A add real observed interaction evidence, while B honestly leaves it untested?
 - Was the report delivered in under 300 seconds? Was it still useful and evidence-backed?
 
-Keep a small record per run: revision/hash, URL, UTC date, host/model, permitted and actual tools, raw elapsed seconds, schema result, accepted/unsupported findings, missed observations and coverage limits. Preserve failed and interrupted runs. If you give corrective feedback, save the correction separately and label it guided rather than an independent pass.
+Keep a small record per run: revision/hash, URL, UTC date, host/model, permitted and actual tools, raw elapsed seconds, schema and evidence-check results, accepted/unsupported findings, missed observations and coverage limits. Preserve failed and interrupted runs, including drafts rejected by finalization. If you give corrective feedback, save the correction separately and label it guided rather than an independent pass.
 
 Do not read the project's earlier site results into the auditing conversation. Use different business types, languages and architectures, including healthy controls and less-polished sites. Appearance alone must not predetermine the expected findings. This is a reproducible approximation of the handout's requirements, not a claim to replicate Adobe's undisclosed host configuration.

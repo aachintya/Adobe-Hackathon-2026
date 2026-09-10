@@ -1,0 +1,54 @@
+{
+  "invocation_started_at": "2026-09-10T20:10:57Z",
+  "capabilities": {
+    "python": true,
+    "source_http": true,
+    "browser": false,
+    "external_search": false
+  },
+  "assumption": "Audit pottery-class information for prospective local beginners and returning makers aged 16 and over.",
+  "questions_before_judgment": [
+    {
+      "question": "What does Willow Clay Studio offer, where is it, and who can attend?",
+      "required_elements": [
+        "offering",
+        "city",
+        "minimum age",
+        "experience audience"
+      ]
+    },
+    {
+      "question": "What are the beginner workshop date, price, prerequisites and cancellation terms?",
+      "required_elements": [
+        "date and local time",
+        "price and duration",
+        "included materials",
+        "required experience or equipment",
+        "free cancellation deadline"
+      ]
+    },
+    {
+      "question": "How can a returning maker request a place and know when it is reserved?",
+      "required_elements": [
+        "returning-maker prerequisite",
+        "contact channel",
+        "booking details to send",
+        "response and reservation conditions"
+      ]
+    }
+  ],
+  "first_party_claim_review": {
+    "entity": "Willow Clay Studio",
+    "location": "Bristol",
+    "offering": "small-group pottery classes",
+    "eligibility": "ages 16 and over",
+    "claim_status": "first-party supported; external verification unavailable",
+    "sources": [
+      "http://127.0.0.1:62296/",
+      "http://127.0.0.1:62296/classes/",
+      "http://127.0.0.1:62296/visit/"
+    ],
+    "counterevidence_review": "Descriptions are present on all three pages. Missing JSON-LD and canonical tags alone are not defects. Both class variants supply eligibility, duration and price; booking confirmation limits are explicit. No material contradictory claims identified in the inspected sample."
+  },
+  "composition_completed_at": "2026-09-10T20:13:18.709501+00:00"
+}

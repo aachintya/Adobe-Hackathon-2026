@@ -1,0 +1,21 @@
+{
+  "command": [
+    "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+    "/Users/mitra/Documents/ChatGPT/adobe/Adobe-Hackathon-2026/skills/audit-orchestrator/scripts/finalize_report.py",
+    "--report",
+    "output/draft-report.json",
+    "--evidence",
+    "output/evidence.json",
+    "--review",
+    "output/review.json",
+    "--output",
+    "output/final-report.json",
+    "--started-at",
+    "2026-09-10T20:10:57Z"
+  ],
+  "returncode": 0,
+  "stdout": "{\n  \"finalized\": true,\n  \"output\": \"output/final-report.json\",\n  \"receipt\": \"output/final-report.json.receipt.json\",\n  \"elapsed_seconds\": 155.70982,\n  \"limits\": [\n    \"Validation checks structural and evidence consistency, not semantic truth.\",\n    \"Elapsed time ends at the observed finalization gate before publication; it excludes final receipt writing and host delivery.\",\n    \"The deadline is checked again during and immediately after publication; a failed check removes this invocation's output and receipt.\",\n    \"This command does not enforce or prove an end-to-end host delivery deadline, and cannot verify the supplied host-task start.\",\n    \"Report and receipt are individually atomic; consumers must require both files with matching report hashes.\"\n  ]\n}\n",
+  "stderr": "",
+  "finished_at": "2026-09-10T20:13:32.717061+00:00",
+  "elapsed_since_invocation_seconds": 155.717061
+}

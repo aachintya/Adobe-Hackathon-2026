@@ -1,0 +1,812 @@
+{
+  "site": "http://127.0.0.1:62296/",
+  "origin": "http://127.0.0.1:62296/",
+  "collected_at": "2026-09-10T20:11:22.093444+00:00",
+  "collector": "static",
+  "collector_version": "2.0",
+  "agent_roles": {
+    "search": [
+      "Googlebot",
+      "bingbot",
+      "OAI-SearchBot",
+      "Claude-SearchBot",
+      "PerplexityBot"
+    ],
+    "training_or_other_control": [
+      "GPTBot",
+      "ClaudeBot",
+      "Google-Extended",
+      "Applebot-Extended",
+      "meta-externalagent"
+    ],
+    "user_fetch": [
+      "ChatGPT-User",
+      "Claude-User",
+      "Perplexity-User"
+    ]
+  },
+  "limits": {
+    "max_pages": 5,
+    "max_seconds": 45,
+    "rate_per_second": 2,
+    "max_bytes_per_page": 2000000,
+    "effective_request_interval_seconds": 0.5
+  },
+  "robots": {
+    "url": "http://127.0.0.1:62296/robots.txt",
+    "status": 200,
+    "state": "present",
+    "final_url": "http://127.0.0.1:62296/robots.txt",
+    "content_type": "text/plain",
+    "response_truncated": false,
+    "redirects": [],
+    "read_error": null,
+    "rules_text": "User-agent: *\nAllow: /\n",
+    "wildcard_allowed": true,
+    "collector_allowed": true,
+    "ai_agent_allowed": {
+      "Googlebot": true,
+      "bingbot": true,
+      "OAI-SearchBot": true,
+      "Claude-SearchBot": true,
+      "PerplexityBot": true,
+      "GPTBot": true,
+      "ChatGPT-User": true,
+      "ClaudeBot": true,
+      "Claude-User": true,
+      "Perplexity-User": true,
+      "Google-Extended": true,
+      "Applebot-Extended": true,
+      "meta-externalagent": true
+    },
+    "decisions": {
+      "Googlebot": {
+        "allowed": true,
+        "matched_rule": "allow: /",
+        "group": "wildcard"
+      },
+      "bingbot": {
+        "allowed": true,
+        "matched_rule": "allow: /",
+        "group": "wildcard"
+      },
+      "OAI-SearchBot": {
+        "allowed": true,
+        "matched_rule": "allow: /",
+        "group": "wildcard"
+      },
+      "Claude-SearchBot": {
+        "allowed": true,
+        "matched_rule": "allow: /",
+        "group": "wildcard"
+      },
+      "PerplexityBot": {
+        "allowed": true,
+        "matched_rule": "allow: /",
+        "group": "wildcard"
+      },
+      "GPTBot": {
+        "allowed": true,
+        "matched_rule": "allow: /",
+        "group": "wildcard"
+      },
+      "ChatGPT-User": {
+        "allowed": true,
+        "matched_rule": "allow: /",
+        "group": "wildcard"
+      },
+      "ClaudeBot": {
+        "allowed": true,
+        "matched_rule": "allow: /",
+        "group": "wildcard"
+      },
+      "Claude-User": {
+        "allowed": true,
+        "matched_rule": "allow: /",
+        "group": "wildcard"
+      },
+      "Perplexity-User": {
+        "allowed": true,
+        "matched_rule": "allow: /",
+        "group": "wildcard"
+      },
+      "Google-Extended": {
+        "allowed": true,
+        "matched_rule": "allow: /",
+        "group": "wildcard"
+      },
+      "Applebot-Extended": {
+        "allowed": true,
+        "matched_rule": "allow: /",
+        "group": "wildcard"
+      },
+      "meta-externalagent": {
+        "allowed": true,
+        "matched_rule": "allow: /",
+        "group": "wildcard"
+      }
+    },
+    "sitemap_hints": []
+  },
+  "sitemaps": [],
+  "pages": [
+    {
+      "url": "http://127.0.0.1:62296/",
+      "robots_allowed": true,
+      "final_url": "http://127.0.0.1:62296/",
+      "status": 200,
+      "content_type": "text/html",
+      "latency_ms": 4,
+      "response_truncated": false,
+      "redirects": [],
+      "robots_ai_allowed": {
+        "Googlebot": true,
+        "bingbot": true,
+        "OAI-SearchBot": true,
+        "Claude-SearchBot": true,
+        "PerplexityBot": true,
+        "GPTBot": true,
+        "ChatGPT-User": true,
+        "ClaudeBot": true,
+        "Claude-User": true,
+        "Perplexity-User": true,
+        "Google-Extended": true,
+        "Applebot-Extended": true,
+        "meta-externalagent": true
+      },
+      "robots_decisions": {
+        "Googlebot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "bingbot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "OAI-SearchBot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "Claude-SearchBot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "PerplexityBot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "GPTBot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "ChatGPT-User": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "ClaudeBot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "Claude-User": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "Perplexity-User": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "Google-Extended": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "Applebot-Extended": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "meta-externalagent": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        }
+      },
+      "final_robots_ai_allowed": {
+        "Googlebot": true,
+        "bingbot": true,
+        "OAI-SearchBot": true,
+        "Claude-SearchBot": true,
+        "PerplexityBot": true,
+        "GPTBot": true,
+        "ChatGPT-User": true,
+        "ClaudeBot": true,
+        "Claude-User": true,
+        "Perplexity-User": true,
+        "Google-Extended": true,
+        "Applebot-Extended": true,
+        "meta-externalagent": true
+      },
+      "x_robots_tag": "",
+      "x_robots_tags": [],
+      "last_modified": "Thu, 10 Sep 2026 20:10:34 GMT",
+      "sample_type": "home",
+      "title": "Willow Clay Studio",
+      "h1": [
+        "Willow Clay Studio"
+      ],
+      "language": "en",
+      "base_href": null,
+      "hreflang": [],
+      "word_count": 52,
+      "text_length": 306,
+      "landmarks": [
+        "main",
+        "nav"
+      ],
+      "meta_robots": "",
+      "meta_robot_directives": {
+        "robots": "",
+        "googlebot": "",
+        "bingbot": ""
+      },
+      "description": "Small-group pottery classes in Bristol for adults and young people aged 16 and over.",
+      "canonical": [],
+      "links_count": 5,
+      "links": [
+        {
+          "href": "/",
+          "text": "Home",
+          "aria_label": "",
+          "selector": "a [source occurrence 1]",
+          "region": "navigation",
+          "url": "http://127.0.0.1:62296/"
+        },
+        {
+          "href": "/classes/",
+          "text": "Classes and prices",
+          "aria_label": "",
+          "selector": "a [source occurrence 2]",
+          "region": "navigation",
+          "url": "http://127.0.0.1:62296/classes/"
+        },
+        {
+          "href": "/visit/",
+          "text": "Visit and book",
+          "aria_label": "",
+          "selector": "a [source occurrence 3]",
+          "region": "navigation",
+          "url": "http://127.0.0.1:62296/visit/"
+        },
+        {
+          "href": "/classes/",
+          "text": "Choose a pottery class",
+          "aria_label": "",
+          "selector": "a [source occurrence 4]",
+          "region": "content",
+          "url": "http://127.0.0.1:62296/classes/"
+        },
+        {
+          "href": "/visit/",
+          "text": "Find our studio and contact us",
+          "aria_label": "",
+          "selector": "a [source occurrence 5]",
+          "region": "content",
+          "url": "http://127.0.0.1:62296/visit/"
+        }
+      ],
+      "controls": [],
+      "images": {
+        "count": 0,
+        "missing_alt": 0,
+        "empty_alt": 0,
+        "items": []
+      },
+      "jsonld": {
+        "blocks": 0,
+        "parse_errors": 0,
+        "errors": [],
+        "types": [],
+        "data": [],
+        "data_omitted": false
+      },
+      "text_sample": "Willow Clay Studio We teach small-group pottery classes in Bristol for beginners and returning makers aged 16 and over. All classes include clay, tools and firing. Find a class for your experience level and check its price before contacting us to book. Choose a pottery class Find our studio and contact us",
+      "main_text": "Willow Clay Studio We teach small-group pottery classes in Bristol for beginners and returning makers aged 16 and over. All classes include clay, tools and firing. Find a class for your experience level and check its price before contacting us to book. Choose a pottery class Find our studio and contact us",
+      "passages": [
+        {
+          "selector": "h1 [source occurrence 1]",
+          "heading": "",
+          "text": "Willow Clay Studio"
+        },
+        {
+          "selector": "p [source occurrence 1]",
+          "heading": "Willow Clay Studio",
+          "text": "We teach small-group pottery classes in Bristol for beginners and returning makers aged 16 and over. All classes include clay, tools and firing."
+        },
+        {
+          "selector": "p [source occurrence 2]",
+          "heading": "Willow Clay Studio",
+          "text": "Find a class for your experience level and check its price before contacting us to book."
+        }
+      ],
+      "evidence_truncated": false,
+      "extraction_note": "Source HTML including noscript fallback; excludes semantic navigation/footer, scripts and explicit inline hidden content. CSS and JavaScript-enabled visibility require a browser.",
+      "parse_status": "parsed_html",
+      "link_base_url": "http://127.0.0.1:62296/"
+    },
+    {
+      "url": "http://127.0.0.1:62296/classes/",
+      "robots_allowed": true,
+      "final_url": "http://127.0.0.1:62296/classes/",
+      "status": 200,
+      "content_type": "text/html",
+      "latency_ms": 4,
+      "response_truncated": false,
+      "redirects": [],
+      "robots_ai_allowed": {
+        "Googlebot": true,
+        "bingbot": true,
+        "OAI-SearchBot": true,
+        "Claude-SearchBot": true,
+        "PerplexityBot": true,
+        "GPTBot": true,
+        "ChatGPT-User": true,
+        "ClaudeBot": true,
+        "Claude-User": true,
+        "Perplexity-User": true,
+        "Google-Extended": true,
+        "Applebot-Extended": true,
+        "meta-externalagent": true
+      },
+      "robots_decisions": {
+        "Googlebot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "bingbot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "OAI-SearchBot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "Claude-SearchBot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "PerplexityBot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "GPTBot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "ChatGPT-User": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "ClaudeBot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "Claude-User": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "Perplexity-User": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "Google-Extended": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "Applebot-Extended": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "meta-externalagent": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        }
+      },
+      "final_robots_ai_allowed": {
+        "Googlebot": true,
+        "bingbot": true,
+        "OAI-SearchBot": true,
+        "Claude-SearchBot": true,
+        "PerplexityBot": true,
+        "GPTBot": true,
+        "ChatGPT-User": true,
+        "ClaudeBot": true,
+        "Claude-User": true,
+        "Perplexity-User": true,
+        "Google-Extended": true,
+        "Applebot-Extended": true,
+        "meta-externalagent": true
+      },
+      "x_robots_tag": "",
+      "x_robots_tags": [],
+      "last_modified": "Thu, 10 Sep 2026 20:10:34 GMT",
+      "sample_type": "other",
+      "title": "Pottery classes and prices | Willow Clay Studio",
+      "h1": [
+        "Classes and prices"
+      ],
+      "language": "en",
+      "base_href": null,
+      "hreflang": [],
+      "word_count": 95,
+      "text_length": 580,
+      "landmarks": [
+        "main",
+        "nav"
+      ],
+      "meta_robots": "",
+      "meta_robot_directives": {
+        "robots": "",
+        "googlebot": "",
+        "bingbot": ""
+      },
+      "description": "Compare beginner and returning-maker pottery classes, prices and included materials.",
+      "canonical": [],
+      "links_count": 4,
+      "links": [
+        {
+          "href": "/",
+          "text": "Home",
+          "aria_label": "",
+          "selector": "a [source occurrence 1]",
+          "region": "navigation",
+          "url": "http://127.0.0.1:62296/"
+        },
+        {
+          "href": "/classes/",
+          "text": "Classes and prices",
+          "aria_label": "",
+          "selector": "a [source occurrence 2]",
+          "region": "navigation",
+          "url": "http://127.0.0.1:62296/classes/"
+        },
+        {
+          "href": "/visit/",
+          "text": "Visit and book",
+          "aria_label": "",
+          "selector": "a [source occurrence 3]",
+          "region": "navigation",
+          "url": "http://127.0.0.1:62296/visit/"
+        },
+        {
+          "href": "/visit/#booking",
+          "text": "Contact us to request a place",
+          "aria_label": "",
+          "selector": "a [source occurrence 4]",
+          "region": "content",
+          "url": "http://127.0.0.1:62296/visit/#booking"
+        }
+      ],
+      "controls": [],
+      "images": {
+        "count": 0,
+        "missing_alt": 0,
+        "empty_alt": 0,
+        "items": []
+      },
+      "jsonld": {
+        "blocks": 0,
+        "parse_errors": 0,
+        "errors": [],
+        "types": [],
+        "data": [],
+        "data_omitted": false
+      },
+      "text_sample": "Classes and prices Beginner workshop For first-time makers aged 16 and over. Sunday 20 September 2026, 10:00–12:00 Europe/London. £45 per person for two hours, including clay, tools and firing. No experience or equipment needed. Returning-maker session For makers who have completed a beginner workshop. Sunday 20 September 2026, 14:00–16:00 Europe/London. £30 per person for two hours, including clay, tools and firing. Places are confirmed by email; the website does not show live availability. Free cancellation until 48 hours before your session. Contact us to request a place",
+      "main_text": "Classes and prices Beginner workshop For first-time makers aged 16 and over. Sunday 20 September 2026, 10:00–12:00 Europe/London. £45 per person for two hours, including clay, tools and firing. No experience or equipment needed. Returning-maker session For makers who have completed a beginner workshop. Sunday 20 September 2026, 14:00–16:00 Europe/London. £30 per person for two hours, including clay, tools and firing. Places are confirmed by email; the website does not show live availability. Free cancellation until 48 hours before your session. Contact us to request a place",
+      "passages": [
+        {
+          "selector": "h1 [source occurrence 1]",
+          "heading": "",
+          "text": "Classes and prices"
+        },
+        {
+          "selector": "h2 [source occurrence 1]",
+          "heading": "Classes and prices",
+          "text": "Beginner workshop"
+        },
+        {
+          "selector": "p [source occurrence 1]",
+          "heading": "Beginner workshop",
+          "text": "For first-time makers aged 16 and over. Sunday 20 September 2026, 10:00–12:00 Europe/London. £45 per person for two hours, including clay, tools and firing. No experience or equipment needed."
+        },
+        {
+          "selector": "h2 [source occurrence 2]",
+          "heading": "Beginner workshop",
+          "text": "Returning-maker session"
+        },
+        {
+          "selector": "p [source occurrence 2]",
+          "heading": "Returning-maker session",
+          "text": "For makers who have completed a beginner workshop. Sunday 20 September 2026, 14:00–16:00 Europe/London. £30 per person for two hours, including clay, tools and firing."
+        },
+        {
+          "selector": "p [source occurrence 3]",
+          "heading": "Returning-maker session",
+          "text": "Places are confirmed by email; the website does not show live availability. Free cancellation until 48 hours before your session."
+        }
+      ],
+      "evidence_truncated": false,
+      "extraction_note": "Source HTML including noscript fallback; excludes semantic navigation/footer, scripts and explicit inline hidden content. CSS and JavaScript-enabled visibility require a browser.",
+      "parse_status": "parsed_html",
+      "link_base_url": "http://127.0.0.1:62296/classes/"
+    },
+    {
+      "url": "http://127.0.0.1:62296/visit/",
+      "robots_allowed": true,
+      "final_url": "http://127.0.0.1:62296/visit/",
+      "status": 200,
+      "content_type": "text/html",
+      "latency_ms": 4,
+      "response_truncated": false,
+      "redirects": [],
+      "robots_ai_allowed": {
+        "Googlebot": true,
+        "bingbot": true,
+        "OAI-SearchBot": true,
+        "Claude-SearchBot": true,
+        "PerplexityBot": true,
+        "GPTBot": true,
+        "ChatGPT-User": true,
+        "ClaudeBot": true,
+        "Claude-User": true,
+        "Perplexity-User": true,
+        "Google-Extended": true,
+        "Applebot-Extended": true,
+        "meta-externalagent": true
+      },
+      "robots_decisions": {
+        "Googlebot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "bingbot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "OAI-SearchBot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "Claude-SearchBot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "PerplexityBot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "GPTBot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "ChatGPT-User": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "ClaudeBot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "Claude-User": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "Perplexity-User": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "Google-Extended": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "Applebot-Extended": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "meta-externalagent": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        }
+      },
+      "final_robots_ai_allowed": {
+        "Googlebot": true,
+        "bingbot": true,
+        "OAI-SearchBot": true,
+        "Claude-SearchBot": true,
+        "PerplexityBot": true,
+        "GPTBot": true,
+        "ChatGPT-User": true,
+        "ClaudeBot": true,
+        "Claude-User": true,
+        "Perplexity-User": true,
+        "Google-Extended": true,
+        "Applebot-Extended": true,
+        "meta-externalagent": true
+      },
+      "x_robots_tag": "",
+      "x_robots_tags": [],
+      "last_modified": "Thu, 10 Sep 2026 20:10:34 GMT",
+      "sample_type": "other",
+      "title": "Visit and book | Willow Clay Studio",
+      "h1": [
+        "Visit and book"
+      ],
+      "language": "en",
+      "base_href": null,
+      "hreflang": [],
+      "word_count": 81,
+      "text_length": 515,
+      "landmarks": [
+        "main",
+        "nav"
+      ],
+      "meta_robots": "",
+      "meta_robot_directives": {
+        "robots": "",
+        "googlebot": "",
+        "bingbot": ""
+      },
+      "description": "Studio address, access information and how to request a class booking.",
+      "canonical": [],
+      "links_count": 5,
+      "links": [
+        {
+          "href": "/",
+          "text": "Home",
+          "aria_label": "",
+          "selector": "a [source occurrence 1]",
+          "region": "navigation",
+          "url": "http://127.0.0.1:62296/"
+        },
+        {
+          "href": "/classes/",
+          "text": "Classes and prices",
+          "aria_label": "",
+          "selector": "a [source occurrence 2]",
+          "region": "navigation",
+          "url": "http://127.0.0.1:62296/classes/"
+        },
+        {
+          "href": "/visit/",
+          "text": "Visit and book",
+          "aria_label": "",
+          "selector": "a [source occurrence 3]",
+          "region": "navigation",
+          "url": "http://127.0.0.1:62296/visit/"
+        },
+        {
+          "href": "mailto:hello@willow.example",
+          "text": "Email a booking request",
+          "aria_label": "",
+          "selector": "a [source occurrence 4]",
+          "region": "content",
+          "url": "mailto:hello@willow.example"
+        },
+        {
+          "href": "/classes/",
+          "text": "Review classes and prices",
+          "aria_label": "",
+          "selector": "a [source occurrence 5]",
+          "region": "content",
+          "url": "http://127.0.0.1:62296/classes/"
+        }
+      ],
+      "controls": [],
+      "images": {
+        "count": 0,
+        "missing_alt": 0,
+        "empty_alt": 0,
+        "items": []
+      },
+      "jsonld": {
+        "blocks": 0,
+        "parse_errors": 0,
+        "errors": [],
+        "types": [],
+        "data": [],
+        "data_omitted": false
+      },
+      "text_sample": "Visit and book Willow Clay Studio, 18 Harbour Lane, Bristol BS1 4AA, United Kingdom. Step-free entrance and an accessible toilet are available. Sessions are for ages 16 and over. Request a booking Email hello@willow.example with your preferred class, date and number of participants. We reply within two working days to confirm availability and send payment instructions. Your place is reserved only after confirmation. Email a booking request For dates and prices, read our class details. Review classes and prices",
+      "main_text": "Visit and book Willow Clay Studio, 18 Harbour Lane, Bristol BS1 4AA, United Kingdom. Step-free entrance and an accessible toilet are available. Sessions are for ages 16 and over. Request a booking Email hello@willow.example with your preferred class, date and number of participants. We reply within two working days to confirm availability and send payment instructions. Your place is reserved only after confirmation. Email a booking request For dates and prices, read our class details. Review classes and prices",
+      "passages": [
+        {
+          "selector": "h1 [source occurrence 1]",
+          "heading": "",
+          "text": "Visit and book"
+        },
+        {
+          "selector": "p [source occurrence 1]",
+          "heading": "Visit and book",
+          "text": "Willow Clay Studio, 18 Harbour Lane, Bristol BS1 4AA, United Kingdom."
+        },
+        {
+          "selector": "p [source occurrence 2]",
+          "heading": "Visit and book",
+          "text": "Step-free entrance and an accessible toilet are available. Sessions are for ages 16 and over."
+        },
+        {
+          "selector": "h2 [source occurrence 1]",
+          "heading": "Visit and book",
+          "text": "Request a booking"
+        },
+        {
+          "selector": "p [source occurrence 3]",
+          "heading": "Request a booking",
+          "text": "Email hello@willow.example with your preferred class, date and number of participants. We reply within two working days to confirm availability and send payment instructions. Your place is reserved only after confirmation."
+        },
+        {
+          "selector": "p [source occurrence 4]",
+          "heading": "Request a booking",
+          "text": "For dates and prices, read our class details."
+        }
+      ],
+      "evidence_truncated": false,
+      "extraction_note": "Source HTML including noscript fallback; excludes semantic navigation/footer, scripts and explicit inline hidden content. CSS and JavaScript-enabled visibility require a browser.",
+      "parse_status": "parsed_html",
+      "link_base_url": "http://127.0.0.1:62296/visit/"
+    }
+  ],
+  "errors": [],
+  "ai_probe": {
+    "status": "not_checked",
+    "reason": "No bot impersonation: local requests do not verify provider IP access."
+  },
+  "coverage": {
+    "rendered": "not_checked: collector is static",
+    "off_site": "not_checked: requires search-capable agent",
+    "actual_ai_visibility": "not_measured: requires recorded assistant answers and citations",
+    "deadline_reached": false,
+    "sample_types": {
+      "home": 1,
+      "other": 2
+    },
+    "request_count": 5,
+    "elapsed_seconds": 2.02
+  }
+}

@@ -15,6 +15,8 @@ COMMANDS = [
     [sys.executable, str(ROOT / "tests" / "test_edge_cases.py")],
     [sys.executable, str(ROOT / "tests" / "validate_report.py"), str(ROOT / "tests" / "fixtures" / "valid-report.json")],
     [sys.executable, str(ROOT / "tests" / "test_validator_failures.py")],
+    [sys.executable, str(ROOT / "tests" / "test_report_evidence.py")],
+    [sys.executable, str(ROOT / "tests" / "test_finalize_report.py")],
     [sys.executable, str(ROOT / "tests" / "evaluate_report_quality.py"), str(ROOT / "examples" / "problem-site-report.json")],
     [sys.executable, str(ROOT / "tests" / "test_submission.py")]
 ]
