@@ -1,0 +1,25 @@
+{
+  "site": "https://locality-demo.example.test/",
+  "synthetic": true,
+  "note": "Controlled illustration, not a real website audit. Proposed text has not been published.",
+  "pages": [
+    {
+      "url": "https://locality-demo.example.test/before",
+      "final_url": "https://locality-demo.example.test/before",
+      "status": 200,
+      "parse_status": "parsed_html",
+      "response_truncated": false,
+      "evidence_truncated": false,
+      "main_text": "The plan costs $12 per user each month. Product background and general feature descriptions appear between the price and its conditions. Product background and general feature descriptions appear between the price and its conditions. Product background and general feature descriptions appear between the price and its conditions. Product background and general feature descriptions appear between the price and its conditions. Product background and general feature descriptions appear between the price and its conditions. Product background and general feature descriptions appear between the price and its conditions. Product background and general feature descriptions appear between the price and its conditions. Product background and general feature descriptions appear between the price and its conditions. Product background and general feature descriptions appear between the price and its conditions. Product background and general feature descriptions appear between the price and its conditions. Product background and general feature descriptions appear between the price and its conditions. Product background and general feature descriptions appear between the price and its conditions. Product background and general feature descriptions appear between the price and its conditions. Product background and general feature descriptions appear between the price and its conditions. Annual billing is required; taxes are extra."
+    },
+    {
+      "url": "https://locality-demo.example.test/proposed",
+      "final_url": "https://locality-demo.example.test/proposed",
+      "status": 200,
+      "parse_status": "parsed_html",
+      "response_truncated": false,
+      "evidence_truncated": false,
+      "main_text": "The plan costs $12 per user each month. Annual billing is required; taxes are extra."
+    }
+  ]
+}

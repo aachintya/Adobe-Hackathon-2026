@@ -1,0 +1,41 @@
+[
+  {
+    "site": "british-museum",
+    "original_finalization_seconds": 221.33103,
+    "input_hashes_match": {
+      "report": true,
+      "evidence": true,
+      "review": true
+    },
+    "validator_hashes_match_frozen_commit": {
+      "validate_report.py": true,
+      "report_evidence.py": true
+    }
+  },
+  {
+    "site": "framework",
+    "original_finalization_seconds": 239.583341,
+    "input_hashes_match": {
+      "report": true,
+      "evidence": true,
+      "review": true
+    },
+    "validator_hashes_match_frozen_commit": {
+      "validate_report.py": true,
+      "report_evidence.py": true
+    }
+  },
+  {
+    "site": "postgresql",
+    "original_finalization_seconds": 199.101211,
+    "input_hashes_match": {
+      "report": true,
+      "evidence": true,
+      "review": true
+    },
+    "validator_hashes_match_frozen_commit": {
+      "validate_report.py": true,
+      "report_evidence.py": true
+    }
+  }
+]

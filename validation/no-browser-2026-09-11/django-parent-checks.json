@@ -1,0 +1,10 @@
+{
+  "schema_errors": [],
+  "evidence_errors": [],
+  "receipt_hash_matches": {
+    "report": true,
+    "evidence": true,
+    "review": true
+  },
+  "semantic_review": "Affected versions requirement mapped to fixed release numbers; source separately lists affected branches. See parent narrative."
+}

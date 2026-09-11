@@ -208,6 +208,80 @@ class EvidenceReviewTests(unittest.TestCase):
         observation["status"] = 403
         self.assertRejected("verbatim excerpt from readable captured evidence")
 
+    def test_retrieval_excerpt_requires_unknown_status_and_is_not_a_page(self):
+        observation = host("host:search", "https://example.test/search-only", "retrieval", "page", None)
+        self.review["observations"].append(observation)
+        self.report["coverage"]["modes"].append("retrieval")
+        self.review["journeys"][0]["steps"][0]["ref"] = "host:search"
+        self.report["assessment"]["journeys"][0]["steps"][0].update(
+            url=observation["url"], action="[source] Read search excerpt")
+        self.assertRejected("journey 0: retrieval excerpts cannot establish completed or friction status")
+        self.report["assessment"]["journeys"][0]["status"] = "not_checked"
+        self.review["journeys"][0]["steps"][0]["assertions"] = [
+            {"type": "quote", "ref": "host:search", "field": "text", "quote": observation["text"]}]
+        self.assertEqual(self.errors(), [])
+        observation["status"] = 200
+        self.assertRejected("retrieval observations must use null HTTP status")
+        observation["status"] = None
+        observation["complete"] = True
+        self.assertRejected("retrieval observations must be incomplete excerpts")
+        observation["complete"] = False
+        observation["final_url"] = observation["url"]
+        landing = host("host:retrieval-landing", self.report["site"], "retrieval", "page", None)
+        landing["final_url"] = "https://www.example.test/"
+        self.review["observations"].extend([landing, host("host:www-page", "https://www.example.test/team")])
+        self.assertEqual(self.errors(), [])
+
+    def test_retrieval_excerpt_cannot_establish_completed_journey(self):
+        observation = host("host:search", "https://example.test/offer.html", "retrieval", "page", None)
+        self.review["observations"].append(observation)
+        self.report["coverage"]["modes"].append("retrieval")
+        self.report["assessment"]["journeys"][0]["steps"][0].update(
+            url="https://example.test/offer.html", action="[source] Read the excerpt")
+        self.review["journeys"][0]["steps"][0]["ref"] = "host:search"
+        self.assertRejected("retrieval excerpts cannot establish completed or friction status")
+
+    def test_retrieval_excerpt_cannot_be_corroboration(self):
+        observation = host("host:search", "https://institution.example/club", "retrieval", "external", None)
+        self.review["observations"].append(observation)
+        self.review["corroboration"] = [{"ref": "host:search", "field": "text", "quote": observation["text"]}]
+        self.report["coverage"]["modes"].append("retrieval")
+        self.report["assessment"]["readiness"][3]["status"] = "observed"
+        self.report["assessment"]["readiness"][3]["urls"] = [observation["url"]]
+        self.assertRejected("corroboration requires an external source observation with off_site mode")
+
+    def test_answered_test_requires_complete_element_mapping(self):
+        test = self.report["assessment"]["intent_tests"][0]
+        test["status"] = "answered"
+        self.review["answers"][0]["element_indices"] = [0, 1]
+        self.assertEqual(self.errors(), [])
+        self.review["answers"][0].pop("element_indices")
+        self.assertRejected("answered tests require element_indices")
+
+    def test_answered_element_mapping_rejects_invalid_or_incomplete_indices(self):
+        test = self.report["assessment"]["intent_tests"][0]
+        test["status"] = "answered"
+        self.review["answers"][0]["element_indices"] = [0, 0]
+        self.assertRejected("element_indices must be nonempty, unique, valid required-element indices")
+        self.review["answers"][0]["element_indices"] = [0]
+        self.assertRejected("element_indices must cover every required element")
+
+    def test_validation_does_not_mutate_review_for_element_coverage(self):
+        test = self.report["assessment"]["intent_tests"][0]
+        test["status"] = "answered"
+        self.review["answers"][0]["element_indices"] = [0, 1]
+        before = copy.deepcopy(self.review)
+        self.assertEqual(self.errors(), [])
+        self.assertEqual(self.review, before)
+
+    def test_answered_element_indices_reject_bool_string_out_of_range_and_empty(self):
+        test = self.report["assessment"]["intent_tests"][0]
+        test["status"] = "answered"
+        for indices in ([True, 1], ["0", 1], [2], []):
+            with self.subTest(indices=indices):
+                self.review["answers"][0]["element_indices"] = indices
+                self.assertRejected("element_indices must be nonempty, unique, valid required-element indices")
+
     def test_unknown_status_rendered_observation_supports_a_labeled_journey(self):
         observation = host(mode="rendered", status=None)
         self.review["observations"].append(observation)

@@ -60,7 +60,7 @@ class FinalizeReportTests(unittest.TestCase):
                                    for task in ("Find joining details", "Find the contact route")],
                       "visibility": {"status": "not_measured", "detail": "No actual assistant runs.", "cohorts": []}}}
         review = {"review_version": "1", "observations": [], "claims": {}, "journeys": [], "corroboration": [],
-                  "answers": [{"test_index": index, "evidence_index": 0, "ref": "page:0", "field": "main_text"}
+                  "answers": [{"test_index": index, "evidence_index": 0, "ref": "page:0", "field": "main_text", "element_indices": [0]}
                               for index in range(len(answers))]}
         for path, value in zip(self.paths, (report, evidence, review)):
             path.write_text(json.dumps(value, indent=2) + "\n", encoding="utf-8")

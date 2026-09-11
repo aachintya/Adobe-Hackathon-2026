@@ -38,6 +38,8 @@ For a composed audit, the agent saves `draft-report.json` and a compact `review.
 
 The report includes findings, evidence, severity, suggested actions, coverage and an executive summary. See [the synthetic example](examples/problem-site-report.json). Actual visibility remains `not_measured` unless recorded assistant answers support it; [the measurement protocol](skills/audit-orchestrator/references/retrieval-validation.md) explains the optional helper.
 
+An optional [answer-locality experiment](skills/audit-orchestrator/references/answer-locality.md) shows whether selected answer facts and their qualifiers fit together in short text windows. It runs offline on saved evidence and includes a reproducible synthetic before/proposed answer-card example. It measures exact-quote separation in words, not model tokens, semantic correctness or citation likelihood, and adds no mandatory work to the five-minute audit.
+
 See [live usage evaluation](https://github.com/aachintya/Adobe-Hackathon-2026/blob/main/validation/LIVE-USAGE-2026-09-09.md) for real browser journeys, independent agent reports, observed misses, instruction improvements and measured coverage limits. Evaluation evidence stays in the repository and is excluded from the submission ZIP. Schema-valid static collection is not a completed agent audit.
 
 ## Host environments

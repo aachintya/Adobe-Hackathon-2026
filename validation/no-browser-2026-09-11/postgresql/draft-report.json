@@ -1,0 +1,55 @@
+{
+  "schema_version": "1.2",
+  "site": "https://www.postgresql.org/",
+  "audited_at": "2026-09-11T05:25:45Z",
+  "executive_summary": {
+    "conclusion": "The sampled public pages are accessible to the named crawler policies and provide clear, quotable descriptions, documentation routes, downloads, and current release information. Interactive rendering, independent corroboration, and actual assistant visibility were not measured, so this audit does not infer citation performance or browser task friction.",
+    "top_action_ids": ["O-001"]
+  },
+  "summary": {"total_findings": 0, "critical": 0, "high": 0, "medium": 0, "low": 0},
+  "coverage": {
+    "pages_checked": 4,
+    "modes": ["static"],
+    "not_checked": [
+      "Rendered extraction and interactive engagement: no browser permitted.",
+      "Keyboard, focus, mobile layout, overlays, and context retention: no browser permitted.",
+      "Independent corroboration beyond bounded retrieval results: no additional external page opened.",
+      "Actual AI answers, provider access logs, Search Console settings, and behavioral analytics: not measured.",
+      "The sitemap response was truncated by the collector; absence claims about its remaining URLs are not made."
+    ]
+  },
+  "findings": [],
+  "proactive_opportunities": [
+    {
+      "id": "O-001",
+      "title": "Make supported-version choice and lifecycle guidance scannable on the download route",
+      "rationale": "The homepage announces six release lines and separately warns that PostgreSQL 14 stops receiving fixes on November 12, 2026; the downloads page then asks visitors to choose an operating-system family. A compact, linked support-status cue beside the version or download choice would help a new installer connect the release announcement with the production-safety qualifier.",
+      "priority": "medium",
+      "effort": "medium",
+      "owner_hint": "PostgreSQL web/content maintainers",
+      "mechanism": "Place current-supported and testing-only labels, plus a link to versioning policy, next to the version/download decision point so extracted answers preserve the version qualifier and next step.",
+      "verification": "On https://www.postgresql.org/download/ and the linked versioning policy, each listed release line has an unambiguous support or testing status and the status remains readable in source text."
+    }
+  ],
+  "assessment": {
+    "mode": "agent_composed",
+    "readiness": [
+      {"stage": "access", "status": "observed", "detail": "Homepage, About, Documentation, and Downloads returned HTTP 200. robots.txt permits the sampled paths for Googlebot, bingbot, OAI-SearchBot, Claude-SearchBot, and PerplexityBot; account/admin and other utility paths are disallowed by wildcard rules.", "urls": ["https://www.postgresql.org/", "https://www.postgresql.org/robots.txt"]},
+      {"stage": "extraction", "status": "observed", "detail": "Static source extraction captured headings and material passages describing PostgreSQL, documentation manuals, release lines, download packages, and testing-only builds.", "urls": ["https://www.postgresql.org/", "https://www.postgresql.org/about/", "https://www.postgresql.org/docs/", "https://www.postgresql.org/download/"]},
+      {"stage": "answerability", "status": "observed", "detail": "The sampled visitor questions are answerable from the inspected first-party pages, with the version-choice interaction left untested because no browser was permitted.", "urls": ["https://www.postgresql.org/", "https://www.postgresql.org/about/", "https://www.postgresql.org/docs/", "https://www.postgresql.org/download/"]},
+      {"stage": "corroboration", "status": "not_checked", "detail": "No independent corroborating source was opened within the audit window.", "urls": []},
+      {"stage": "engagement", "status": "not_checked", "detail": "Source links establish public information routes; rendered controls, responsive layout, and interactive choice retention were not checked without browser access.", "urls": ["https://www.postgresql.org/", "https://www.postgresql.org/docs/", "https://www.postgresql.org/download/"]}
+    ],
+    "intent_tests": [
+      {"question": "What is PostgreSQL and who is it for?", "required_elements": ["open-source object-relational database", "reliability or feature rationale", "developer or application use context"], "status": "answered", "evidence": [{"url": "https://www.postgresql.org/", "quote": "PostgreSQL is a powerful, open source object-relational database system with over 35 years of active development that has earned it a strong reputation for reliability, feature robustness, and performance."}, {"url": "https://www.postgresql.org/about/", "quote": "PostgreSQL is a powerful, open source object-relational database system that uses and extends the SQL language combined with many features that safely store and scale the most complicated data workloads."}], "reason": "The homepage and About page directly state the product category, open-source nature, capabilities, and workload context."},
+      {"question": "Where can a new visitor learn how to install and use PostgreSQL?", "required_elements": ["official documentation route", "current manual route", "installation guidance"], "status": "answered", "evidence": [{"url": "https://www.postgresql.org/", "quote": "official documentation"}, {"url": "https://www.postgresql.org/docs/", "quote": "You can view the manual for an older version"}, {"url": "https://www.postgresql.org/download/", "quote": "Instructions for building from source can be found in the documentation"}], "reason": "The site links the official documentation, exposes current and older manuals, and connects downloads to installation guidance."},
+      {"question": "Which releases are current and what version constraint should a production user know?", "required_elements": ["current release lines", "security or bug-fix context", "PostgreSQL 14 support end date", "production qualifier"], "status": "answered", "evidence": [{"url": "https://www.postgresql.org/", "quote": "released an update to all supported versions"}, {"url": "https://www.postgresql.org/", "quote": "PostgreSQL 14 will stop receiving fixes"}, {"url": "https://www.postgresql.org/download/", "quote": "testing purposes only"}], "reason": "The homepage states the release lines and PostgreSQL 14 date; Downloads supplies the beta/development production qualifier."},
+      {"question": "How does a visitor reach a platform-specific download?", "required_elements": ["download page", "operating-system family choice", "package or installer availability"], "status": "answered", "evidence": [{"url": "https://www.postgresql.org/download/", "quote": "PostgreSQL is available for download as ready-to-use packages or installers for various platforms, as well as a source code archive if you want to build it yourself."}, {"url": "https://www.postgresql.org/download/", "quote": "Select your operating system family: Linux macOS Windows BSD Solaris"}], "reason": "The Downloads page states package/installer availability and exposes the operating-system family route."}
+    ],
+    "journeys": [
+      {"task": "Understand the database and reach official installation information", "starting_context": "Homepage visitor who is new to PostgreSQL", "steps": [{"url": "https://www.postgresql.org/", "action": "[source] Follow the 'official documentation' link", "observation": "The homepage describes PostgreSQL and links to https://www.postgresql.org/docs/."}, {"url": "https://www.postgresql.org/docs/", "action": "[source] Open the documentation landing page", "observation": "The page exposes current, older, PDF, translated, and release-note manual routes."}], "status": "completed", "reason": "The source route reaches a public documentation destination; no form or authentication is involved."},
+      {"task": "Choose an operating-system download while preserving release suitability", "starting_context": "Visitor on the public Downloads page deciding between package/installer paths", "steps": [{"url": "https://www.postgresql.org/", "action": "[source] Follow 'Download'", "observation": "The homepage links to https://www.postgresql.org/download/."}, {"url": "https://www.postgresql.org/download/", "action": "[source] Inspect download choices", "observation": "The page lists Linux, macOS, Windows, BSD, Solaris, source, beta/RC, and development paths; interactive selection and handoff retention were not exercised."}], "status": "not_checked", "reason": "No browser was permitted, so the OS control, destination state, and retention of a non-default choice remain unobserved."}
+    ],
+    "visibility": {"status": "not_measured", "detail": "No assistant answer runs or provider citation observations were executed; bounded web retrieval is recorded as retrieval/off-site evidence only.", "cohorts": []}
+  }
+}

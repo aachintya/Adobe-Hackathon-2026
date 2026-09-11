@@ -1,0 +1,40 @@
+{
+  "recorded_at": "2026-09-11T05:27:05.352305+00:00",
+  "revision": "fc6958cf2aabbff930c49307c4e2b4dc3dcd1ce0",
+  "model": "gpt-5.6-luna",
+  "reasoning_effort": "medium",
+  "browser": "prohibited by prompt; not physically removed",
+  "targets": [
+    "https://www.britishmuseum.org/",
+    "https://frame.work/",
+    "https://www.postgresql.org/"
+  ],
+  "auditor_constraints": "Fresh no-history sessions; no previous outputs, implementation or development tests; no site-specific expected findings or coaching; original 280-second target and strict finalizer deadline; read-only public evidence.",
+  "parent_dispatch_note": "First dispatch was shortly after observed 2026-09-11T05:24:57Z; other two around 05:25Z. Exact per-run dispatch-to-delivery timestamps were not recorded.",
+  "source_sha256": {
+    "skills/audit-orchestrator/SKILL.md": "7b75aca073e241b620756725206f8171b62f5a67cfe9d7023bbbf1e5a77594af",
+    "skills/audit-orchestrator/references/ai-visibility-method.md": "d2460be99414b3f5f6f8afb09587d28ed0870fb27eda5b7a7e051baa14489dcd",
+    "skills/audit-orchestrator/references/evidence-policy.md": "ad975b50c043d43e2f724f4224db6fa374ebfd8d43a907ebb4b95bb5b722e5cd",
+    "skills/audit-orchestrator/references/report-schema.json": "8d8ef7c169d2ba2adb850998fec34935f8d1e716a760b9ff16fdba74f63f2ec5",
+    "skills/audit-orchestrator/references/report-verification.md": "0b8ddaa229521bedcc5edcb5ace97ceb4e7ef064d185b86f5b1b5780cefe8bda",
+    "skills/audit-orchestrator/references/retrieval-validation.md": "bae7ba06dc597ab21616bd43cec19e8a873b92e156ed776ed2e3fdb85d591e2c",
+    "skills/audit-orchestrator/references/severity.md": "c52451c29d7eb52d08f105c7b2a39c52ce27da14aa703c2383ba0818618424ea",
+    "skills/audit-orchestrator/references/tool-availability.md": "407999d2455db4cfd7c7acd5f6e13a8494ed86d760bf89a82341dbad84503127",
+    "skills/audit-orchestrator/scripts/collect_site.py": "3b36bae76b6996045a4a42bb36afa8dee1ad8eeb2a850bb62a585519a01f1f37",
+    "skills/audit-orchestrator/scripts/compare_evidence.py": "2e95a9a2dd34f8dff5d07f60d851ab827b246e548a31d64b8649539c1d0f7545",
+    "skills/audit-orchestrator/scripts/finalize_report.py": "a47cd2bb119ec74f52fe19ebe90d3c0e876eba5d141659b68ed2a6a846ffeb8e",
+    "skills/audit-orchestrator/scripts/measure_visibility.py": "82b78fbb7e9e59f460edb4e7363ecd8d9e135166a4214a3e93a69458d3ecebcb",
+    "skills/audit-orchestrator/scripts/page_evidence.py": "17721f0797ada4d9b8eebf8ece35dcbae66db743bdbb5391d2a183a34829df0b",
+    "skills/audit-orchestrator/scripts/robots_policy.py": "7c8368d0cbec584b9e6cdf850c300b879fcb265bee7039ebf03e8eb1da695fcf",
+    "skills/audit-orchestrator/scripts/run_audit.py": "92f173199a9cc3ef1209a3676c2ea3259dfbeb5fab1ce87602ea6ee40e9cde3d",
+    "skills/crawl-extract-audit/SKILL.md": "062311bea74bd39a8a5c7ab14575863a0f20a43671e81df3b6a956cd86cf4a85",
+    "skills/crawl-extract-audit/references/checks.md": "0e656b3409cc2e95f23015d15f1e95771e167c6990f8ec55a23a7cdd2e2ed0eb",
+    "skills/crawl-extract-audit/references/rendered-audit.md": "1c98961d4d2b5010bbd86421293901192d95518260da247178288a327120f10e",
+    "skills/engagement-context-audit/SKILL.md": "e07491175820dace8365d2ba814f6434894ae9439c8d5c196110f433231585c7",
+    "skills/engagement-context-audit/references/choice-and-handoff.md": "8fc4bfc5b0da3e6c06c8e3183d6da055270b5c74665bd718525578acf19c6e97",
+    "skills/engagement-context-audit/references/engagement-gates.md": "404b28b19803c4ebc9d340351f90c3a3713eced2be30d1234153a73c5c3a28de",
+    "skills/entity-trust-audit/SKILL.md": "4023437978ea184d135d195a0f956147ed9e0ea403790cd820100abbb9f57392",
+    "skills/entity-trust-audit/references/claim-ledger-schema.json": "b9338fb297a69f1ef6a118a8e5d367802cf1183604ab7bcb37f2695e28c0f7b1",
+    "skills/entity-trust-audit/references/trust-gates.md": "7ae6ab4616443acd9a54e669922d39afaadfdbc2986ef5e05e2eaf5ddad71a4b"
+  }
+}

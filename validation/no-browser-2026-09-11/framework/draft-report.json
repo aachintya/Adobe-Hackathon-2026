@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.2",
+  "site": "https://frame.work/",
+  "audited_at": "2026-09-11T05:26:42Z",
+  "executive_summary": {
+    "conclusion": "Framework's public text pages clearly describe its modular laptops and desktops, repairability, Linux support, and configuration paths. Static collection from the host was blocked by HTTP 403, so this review uses public text fetch observations for answerability and routes; rendered behavior, independent corroboration breadth, and actual assistant visibility remain unmeasured.",
+    "top_action_ids": ["O-001"]
+  },
+  "summary": {"total_findings": 0, "critical": 0, "high": 0, "medium": 0, "low": 0},
+  "coverage": {
+    "pages_checked": 3,
+    "modes": ["static", "off_site"],
+    "not_checked": [
+      "Rendered extraction and interactive engagement: browser automation is prohibited for this audit.",
+      "Keyboard, focus, mobile layout, overlays, performance, and context retention: browser automation is prohibited.",
+      "Static collector HTML pages: frame.work/ and sitemap.xml returned HTTP 403 to the bundled collector; public text fetch provided page excerpts instead.",
+      "Actual AI citations, provider IP access, Search Console settings, and behavioral analytics were not measured."
+    ]
+  },
+  "findings": [],
+  "proactive_opportunities": [
+    {
+      "id": "O-001",
+      "title": "Surface pre-order timing beside configuration CTAs",
+      "rationale": "The public configurator exposes material availability information, including a $1,199 starting pre-order and batch timing with sold-out labels, while the home page's primary Configure now links do not include that constraint in their surrounding copy.",
+      "priority": "low",
+      "effort": "low",
+      "owner_hint": "Commerce and product-page content owner",
+      "mechanism": "Add a concise availability/pre-order note or linked shipping-status summary adjacent to major Configure now CTAs, preserving the live configurator as the source of truth.",
+      "verification": "From the home page and Laptop 13 Pro page, confirm that a visitor can see or reach current pre-order timing before entering configuration, and verify the note matches the configurator's current batch state."
+    }
+  ],
+  "assessment": {
+    "mode": "agent_composed",
+    "readiness": [
+      {"stage": "access", "status": "observed", "detail": "The bundled collector received HTTP 403 for robots.txt and the home page; the 4xx robots response is treated as unavailable rather than a site defect. A public text fetch opened the supplied page and task destinations.", "urls": ["https://frame.work/robots.txt", "https://frame.work/"]},
+      {"stage": "extraction", "status": "observed", "detail": "Public text fetch exposed readable headings, product facts, qualifiers, navigation labels, and configuration content for the sampled pages; source HTML fields and rendered DOM were unavailable.", "urls": ["https://frame.work/", "https://frame.work/laptop13pro", "https://frame.work/products/laptop13pro-diy-intel-ultra-3/configuration/new"]},
+      {"stage": "answerability", "status": "observed", "detail": "Three representative buyer questions were checked against the home page, product detail page, and configurator excerpts.", "urls": ["https://frame.work/", "https://frame.work/laptop13pro", "https://frame.work/products/laptop13pro-diy-intel-ultra-3/configuration/new"]},
+      {"stage": "corroboration", "status": "observed", "detail": "Independent review search results were opened as off-site leads for repairability and price context; no material contradiction with the sampled first-party product description was retained as a finding.", "urls": ["https://www.tomshardware.com/laptops/framework-laptop-13-pro-review", "https://arstechnica.com/gadgets/2026/07/framework-laptop-13-pro-review-much-better-battery-much-worse-price/"]},
+      {"stage": "engagement", "status": "not_checked", "detail": "Source routes and public destination text were inspected, but interactive link activation, controls, choice retention, and rendered task completion were not checked under the no-browser constraint.", "urls": ["https://frame.work/", "https://frame.work/laptop13pro", "https://frame.work/products/laptop13pro-diy-intel-ultra-3/configuration/new"]}
+    ],
+    "intent_tests": [
+      {"question": "What does Framework sell, and who is its modular-computing offer for?", "required_elements": ["product categories", "modularity/repairability value", "intended audience or use context"], "status": "answered", "evidence": [{"url": "https://frame.work/", "quote": "We build high-performance products that are easy to repair, upgrade, and customize"}, {"url": "https://frame.work/laptop13pro", "quote": "The ultimate developer laptop"}], "reason": "The home page identifies laptops, desktops, parts and modules, and states the repair/upgrade/customization proposition; the product page supplies developer context."},
+      {"question": "What are the important technical and operating-system constraints for Framework Laptop 13 Pro?", "required_elements": ["processor/platform", "memory/storage ceiling or modularity", "supported operating systems"], "status": "answered", "evidence": [{"url": "https://frame.work/laptop13pro", "quote": "up to 64GB of LPCAMM2 LPDDR5X memory, and support for up to 8TB of PCIe Gen 5.0 NVMe storage"}, {"url": "https://frame.work/laptop13pro", "quote": "Available with Ubuntu pre-loaded and certified out of the box, or bring your own OS"}], "reason": "The product page states the Intel Core Ultra Series 3 platform, memory/storage limits, Ubuntu certification, and Windows/Linux options."},
+      {"question": "How can a buyer configure or order a Laptop 13 Pro, and what availability constraint should they expect?", "required_elements": ["DIY versus pre-built choices", "starting price or deposit condition", "pre-order/batch availability"], "status": "answered", "evidence": [{"url": "https://frame.work/laptop13pro", "quote": "DIY Edition Bring your own memory, storage, and operating system"}, {"url": "https://frame.work/products/laptop13pro-diy-intel-ultra-3/configuration/new", "quote": "Pre-order Intel Core Ultra Series 3 Starting at $1,199.00"}, {"url": "https://frame.work/products/laptop13pro-diy-intel-ultra-3/configuration/new", "quote": "Batch 22 Ships Dec"}], "reason": "The public product and configurator pages cover edition choices, starting price, deposit language, and batch timing; timing is live and should be rechecked before purchase."}
+    ],
+    "journeys": [
+      {"task": "Understand the flagship developer laptop and reach its configuration path", "starting_context": "Public Framework home page", "steps": [{"url": "https://frame.work/", "action": "[source] Follow the Laptop 13 Pro Learn more link", "observation": "The home page labels the product as the ultimate developer laptop and links to /laptop13pro."}, {"url": "https://frame.work/laptop13pro", "action": "[source] Follow Configure now", "observation": "The product page links to the public DIY configurator."}], "status": "not_checked", "reason": "The source route and destination were observed through public text fetch, but browser activation and rendered completion were not checked."},
+      {"task": "Choose a DIY/pre-order configuration and inspect availability information", "starting_context": "Framework Laptop 13 Pro product detail page", "steps": [{"url": "https://frame.work/laptop13pro", "action": "[source] Inspect the DIY Edition and Pre-built choice labels", "observation": "The page presents DIY and pre-built routes and explains the OS distinction."}, {"url": "https://frame.work/products/laptop13pro-diy-intel-ultra-3/configuration/new", "action": "[source] Open the DIY configuration destination", "observation": "The configurator exposes processor choices, starting price, deposit/refund text, and batch availability."}], "status": "not_checked", "reason": "No safe rendered control interaction or choice-retention check was possible under the no-browser constraint."}
+    ],
+    "visibility": {"status": "not_measured", "detail": "No recorded assistant answer runs or citation observations; public search and page fetch evidence only establish source availability and answerability.", "cohorts": []}
+  }
+}

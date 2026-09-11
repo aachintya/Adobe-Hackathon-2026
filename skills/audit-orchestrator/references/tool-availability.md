@@ -17,6 +17,8 @@ Use public fetch to inspect the supplied page and origin's robots policy before 
 
 Record HTTP headers, source HTML, canonical tags and structured-data values only when the tool actually exposes them. A search snippet or cleaned page-text response cannot establish absent schema, an absent header, or a source/rendering gap. A browser's rendered DOM is not the original response HTML. Mark unavailable technical checks `not_checked`; do not invent the missing collector fields.
 
+Search excerpts are retrieval observations, not inspected live pages: exclude them from `pages_checked`, leave HTTP status unknown, and do not call them opened external corroboration. An opened page-text result counts as inspection but still cannot establish source HTML fields or a status the tool did not expose. Retain useful snippets when direct access fails without upgrading their evidentiary scope.
+
 ## Execution and output
 
 - Use the helper only with Python 3.10+ and permission to execute it. It needs only the standard library. Resolve the actual interpreter name (`python3`, `python`, or `py -3` on Windows); examples use `python3`. If execution is prohibited, do not attempt it, install a runtime, or switch to another language to bypass the restriction.
@@ -28,7 +30,7 @@ Record HTTP headers, source HTML, canonical tags and structured-data values only
 
 ## Manual report check when the validator cannot run
 
-Read `report-schema.json` and use its exact enum values, not the host's tool names. In particular, `coverage.modes` accepts only `static`, `rendered`, `off_site`, and `retrieval`: public web fetching/search can be described as `retrieval`; use `static` for inspected source evidence, `rendered` only for actual browser observations, and `off_site` for checked external sources. Values such as `web_fetch` or `web_search` are not valid report modes.
+Read `report-schema.json` and use its exact enum values, not the host's tool names. In particular, `coverage.modes` accepts only `static`, `rendered`, `off_site`, and `retrieval`: use `retrieval` for search excerpts, `static` for inspected first-party source or opened page-text evidence, `rendered` only for actual browser observations, and `off_site` for opened external sources. An opened page-text observation still does not prove access to its original HTML. Values such as `web_fetch` or `web_search` are not valid report modes.
 
 Check required fields and nested objects against the schema, then verify each enum, finding/action ID, summary total and severity count. `answered` requires evidence for every required element; unobserved journeys use `not_checked`. Report this as manual review, never as a successful validator execution.
 

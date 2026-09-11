@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.2",
+  "site": "https://www.britishmuseum.org/",
+  "audited_at": "2026-09-11T05:28:02Z",
+  "executive_summary": {
+    "conclusion": "Public retrieval evidence exposes clear, task-relevant facts about the Museum, visit planning, and collection search. Direct static collection was restricted by observed HTTP 403 responses, so rendered behavior, independent corroboration, and interactive journey completion remain untested.",
+    "top_action_ids": []
+  },
+  "summary": {
+    "total_findings": 0,
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0
+  },
+  "coverage": {
+    "pages_checked": 4,
+    "modes": ["static", "retrieval"],
+    "not_checked": [
+      "Rendered inspection and interactive controls: prohibited browser automation and no browser lane.",
+      "Independent off-site corroboration: no independent source was opened within the evidence window.",
+      "Actual assistant visibility/citation measurement: no assistant runs were recorded.",
+      "Static page extraction: collector received HTTP 403 for the homepage and sitemap; no complete first-party page record was captured."
+    ]
+  },
+  "findings": [],
+  "proactive_opportunities": [],
+  "assessment": {
+    "mode": "agent_composed",
+    "readiness": [
+      {"stage": "access", "status": "restricted", "detail": "robots.txt was retrieved with status 200 and permits the named search crawlers on the tested homepage path, but the collector received HTTP 403 for the homepage and sitemap from its static fetch lane.", "urls": ["https://www.britishmuseum.org/robots.txt", "https://www.britishmuseum.org/", "https://www.britishmuseum.org/sitemap.xml"]},
+      {"stage": "extraction", "status": "observed", "detail": "Search retrieval excerpts expose readable statements for entry, opening hours, collection scope, and collection-search instructions; complete source HTML extraction was unavailable.", "urls": ["https://www.britishmuseum.org/", "https://www.britishmuseum.org/Visit", "https://www.britishmuseum.org/collection/collection-online/guide", "https://www.britishmuseum.org/collection/search"]},
+      {"stage": "answerability", "status": "observed", "detail": "Three site-specific public visitor questions have directly relevant retrieval evidence with required elements represented in the excerpts.", "urls": ["https://www.britishmuseum.org/", "https://www.britishmuseum.org/Visit", "https://www.britishmuseum.org/collection/collection-online/guide"]},
+      {"stage": "corroboration", "status": "not_checked", "detail": "Search was limited to first-party British Museum results; no independent source was opened to corroborate identity or material claims.", "urls": []},
+      {"stage": "engagement", "status": "not_checked", "detail": "Source routes were identified in retrieval excerpts, but safe link traversal and interactive context continuity could not be observed without a browser lane.", "urls": ["https://www.britishmuseum.org/Visit", "https://www.britishmuseum.org/collection/search"]}
+    ],
+    "intent_tests": [
+      {"question": "What is the British Museum and what can a visitor explore?", "required_elements": ["entity identity", "collection scope", "public exploration route"], "status": "answered", "evidence": [{"url": "https://www.britishmuseum.org/", "quote": "Discover two million years of human history and culture"}, {"url": "https://www.britishmuseum.org/collection/collection-online/guide", "quote": "Collection online allows access to almost five million objects in more than two million records."}], "reason": "The retrieved excerpts identify the Museum, its historical and cultural scope, and the Collection online route with its approximate record count."},
+      {"question": "How can someone plan an in-person visit, including entry and hours?", "required_elements": ["entry cost or ticket requirement", "opening hours", "location or access route"], "status": "answered", "evidence": [{"url": "https://www.britishmuseum.org/Visit", "quote": "Free entry"}, {"url": "https://www.britishmuseum.org/Visit", "quote": "Daily: 10.00–17.00 (Fridays: 20.30)"}, {"url": "https://www.britishmuseum.org/Visit", "quote": "Great Russell Street, London WC1B 3DG"}], "reason": "The visit excerpt states free entry, daily and Friday hours, and the physical address; ticket-booking guidance is also present in the retrieved result."},
+      {"question": "How can a visitor search the online collection and understand the result scope?", "required_elements": ["search input or query route", "search guidance", "scope of available records"], "status": "answered", "evidence": [{"url": "https://www.britishmuseum.org/collection/collection-online/guide", "quote": "Start typing in the search box."}, {"url": "https://www.britishmuseum.org/collection/collection-online/guide", "quote": "If you type 'gold' and select 'Search all fields by keyword: gold'"}, {"url": "https://www.britishmuseum.org/collection/search", "quote": "2,684,834 Results"}], "reason": "The guide excerpt explains how to start and refine a search, and the collection results excerpt exposes a concrete result-count context."}
+    ],
+    "journeys": [
+      {"task": "Plan a museum visit from the public landing page", "starting_context": "A prospective visitor needs entry, hours, location, and planning guidance.", "steps": [{"url": "https://www.britishmuseum.org/", "action": "[source] Identify the visit planning route in the retrieved landing-page excerpt.", "observation": "The excerpt exposes a Visit/Plan your visit route and states free entry and opening hours."}, {"url": "https://www.britishmuseum.org/Visit", "action": "[source] Follow the public visit destination identified in retrieval evidence.", "observation": "The retrieved Visit page excerpt contains ticket information, opening hours, location, galleries, access, facilities, and getting-here sections."}], "status": "not_checked", "reason": "The route and destination content are present in retrieval evidence, but the direct destination response and link interaction were not observed because direct fetches returned 403 and browser automation was prohibited."},
+      {"task": "Explore the online collection and reach search guidance", "starting_context": "A remote visitor wants to find an object or topic in the Museum's online collection.", "steps": [{"url": "https://www.britishmuseum.org/", "action": "[source] Identify the Explore the collection route.", "observation": "The landing-page retrieval excerpt presents Explore the collection and links to collection exploration."}, {"url": "https://www.britishmuseum.org/collection/collection-online/guide", "action": "[source] Open the collection-search guide route.", "observation": "The guide excerpt explains query entry, suggestions, filters, and the need to check gallery pages for on-display status."}], "status": "not_checked", "reason": "This is a source route only; no rendered search control, selected query, or destination handoff could be exercised within the no-browser audit."}
+    ],
+    "visibility": {"status": "not_measured", "detail": "No assistant answer or citation runs were recorded; retrieval snippets are evidence of public indexed text only.", "cohorts": []}
+  }
+}

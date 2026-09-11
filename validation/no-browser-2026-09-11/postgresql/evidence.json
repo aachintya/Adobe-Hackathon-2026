@@ -1,0 +1,4150 @@
+{
+  "site": "https://www.postgresql.org/",
+  "origin": "https://www.postgresql.org/",
+  "collected_at": "2026-09-11T05:26:00.562513+00:00",
+  "collector": "static",
+  "collector_version": "2.0",
+  "agent_roles": {
+    "search": [
+      "Googlebot",
+      "bingbot",
+      "OAI-SearchBot",
+      "Claude-SearchBot",
+      "PerplexityBot"
+    ],
+    "training_or_other_control": [
+      "GPTBot",
+      "ClaudeBot",
+      "Google-Extended",
+      "Applebot-Extended",
+      "meta-externalagent"
+    ],
+    "user_fetch": [
+      "ChatGPT-User",
+      "Claude-User",
+      "Perplexity-User"
+    ]
+  },
+  "limits": {
+    "max_pages": 5,
+    "max_seconds": 45,
+    "rate_per_second": 2,
+    "max_bytes_per_page": 2000000,
+    "effective_request_interval_seconds": 0.5
+  },
+  "robots": {
+    "url": "https://www.postgresql.org/robots.txt",
+    "status": 200,
+    "state": "present",
+    "final_url": "https://www.postgresql.org/robots.txt",
+    "content_type": "text/plain; charset=UTF-8",
+    "response_truncated": false,
+    "redirects": [],
+    "read_error": null,
+    "rules_text": "User-agent: *\nDisallow: /admin/\nDisallow: /account/\nDisallow: /docs/devel/\nDisallow: /list/\nDisallow: /search/\nDisallow: /message-id/raw/\nDisallow: /message-id/flat/\nDisallow: /message-id/resend/\nDisallow: /message-id/mbox/\n\nSitemap: https://www.postgresql.org/sitemap.xml\n",
+    "wildcard_allowed": true,
+    "collector_allowed": true,
+    "ai_agent_allowed": {
+      "Googlebot": true,
+      "bingbot": true,
+      "OAI-SearchBot": true,
+      "Claude-SearchBot": true,
+      "PerplexityBot": true,
+      "GPTBot": true,
+      "ChatGPT-User": true,
+      "ClaudeBot": true,
+      "Claude-User": true,
+      "Perplexity-User": true,
+      "Google-Extended": true,
+      "Applebot-Extended": true,
+      "meta-externalagent": true
+    },
+    "decisions": {
+      "Googlebot": {
+        "allowed": true,
+        "matched_rule": null,
+        "group": "wildcard"
+      },
+      "bingbot": {
+        "allowed": true,
+        "matched_rule": null,
+        "group": "wildcard"
+      },
+      "OAI-SearchBot": {
+        "allowed": true,
+        "matched_rule": null,
+        "group": "wildcard"
+      },
+      "Claude-SearchBot": {
+        "allowed": true,
+        "matched_rule": null,
+        "group": "wildcard"
+      },
+      "PerplexityBot": {
+        "allowed": true,
+        "matched_rule": null,
+        "group": "wildcard"
+      },
+      "GPTBot": {
+        "allowed": true,
+        "matched_rule": null,
+        "group": "wildcard"
+      },
+      "ChatGPT-User": {
+        "allowed": true,
+        "matched_rule": null,
+        "group": "wildcard"
+      },
+      "ClaudeBot": {
+        "allowed": true,
+        "matched_rule": null,
+        "group": "wildcard"
+      },
+      "Claude-User": {
+        "allowed": true,
+        "matched_rule": null,
+        "group": "wildcard"
+      },
+      "Perplexity-User": {
+        "allowed": true,
+        "matched_rule": null,
+        "group": "wildcard"
+      },
+      "Google-Extended": {
+        "allowed": true,
+        "matched_rule": null,
+        "group": "wildcard"
+      },
+      "Applebot-Extended": {
+        "allowed": true,
+        "matched_rule": null,
+        "group": "wildcard"
+      },
+      "meta-externalagent": {
+        "allowed": true,
+        "matched_rule": null,
+        "group": "wildcard"
+      }
+    },
+    "sitemap_hints": [
+      "https://www.postgresql.org/sitemap.xml"
+    ]
+  },
+  "sitemaps": [
+    {
+      "url": "https://www.postgresql.org/sitemap.xml",
+      "status": 200,
+      "is_index": false,
+      "urls_discovered": 0,
+      "response_truncated": true
+    }
+  ],
+  "pages": [
+    {
+      "url": "https://www.postgresql.org/",
+      "robots_allowed": true,
+      "final_url": "https://www.postgresql.org/",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "latency_ms": 1204,
+      "response_truncated": false,
+      "redirects": [],
+      "robots_ai_allowed": {
+        "Googlebot": true,
+        "bingbot": true,
+        "OAI-SearchBot": true,
+        "Claude-SearchBot": true,
+        "PerplexityBot": true,
+        "GPTBot": true,
+        "ChatGPT-User": true,
+        "ClaudeBot": true,
+        "Claude-User": true,
+        "Perplexity-User": true,
+        "Google-Extended": true,
+        "Applebot-Extended": true,
+        "meta-externalagent": true
+      },
+      "robots_decisions": {
+        "Googlebot": {
+          "allowed": true,
+          "matched_rule": null,
+          "group": "wildcard"
+        },
+        "bingbot": {
+          "allowed": true,
+          "matched_rule": null,
+          "group": "wildcard"
+        },
+        "OAI-SearchBot": {
+          "allowed": true,
+          "matched_rule": null,
+          "group": "wildcard"
+        },
+        "Claude-SearchBot": {
+          "allowed": true,
+          "matched_rule": null,
+          "group": "wildcard"
+        },
+        "PerplexityBot": {
+          "allowed": true,
+          "matched_rule": null,
+          "group": "wildcard"
+        },
+        "GPTBot": {
+          "allowed": true,
+          "matched_rule": null,
+          "group": "wildcard"
+        },
+        "ChatGPT-User": {
+          "allowed": true,
+          "matched_rule": null,
+          "group": "wildcard"
+        },
+        "ClaudeBot": {
+          "allowed": true,
+          "matched_rule": null,
+          "group": "wildcard"
+        },
+        "Claude-User": {
+          "allowed": true,
+          "matched_rule": null,
+          "group": "wildcard"
+        },
+        "Perplexity-User": {
+          "allowed": true,
+          "matched_rule": null,
+          "group": "wildcard"
+        },
+        "Google-Extended": {
+          "allowed": true,
+          "matched_rule": null,
+          "group": "wildcard"
+        },
+        "Applebot-Extended": {
+          "allowed": true,
+          "matched_rule": null,
+          "group": "wildcard"
+        },
+        "meta-externalagent": {
+          "allowed": true,
+          "matched_rule": null,
+          "group": "wildcard"
+        }
+      },
+      "final_robots_ai_allowed": {
+        "Googlebot": true,
+        "bingbot": true,
+        "OAI-SearchBot": true,
+        "Claude-SearchBot": true,
+        "PerplexityBot": true,
+        "GPTBot": true,
+        "ChatGPT-User": true,
+        "ClaudeBot": true,
+        "Claude-User": true,
+        "Perplexity-User": true,
+        "Google-Extended": true,
+        "Applebot-Extended": true,
+        "meta-externalagent": true
+      },
+      "x_robots_tag": "",
+      "x_robots_tags": [],
+      "last_modified": "",
+      "sample_type": "home",
+      "title": "PostgreSQL: The world's most advanced open source database",
+      "h1": [
+        "PostgreSQL: The World's Most Advanced Open Source Relational Database"
+      ],
+      "language": "en",
+      "base_href": null,
+      "hreflang": [],
+      "word_count": 772,
+      "text_length": 5073,
+      "landmarks": [
+        "footer",
+        "header",
+        "nav"
+      ],
+      "meta_robots": "",
+      "meta_robot_directives": {
+        "robots": "",
+        "googlebot": "",
+        "bingbot": ""
+      },
+      "description": "The official site for PostgreSQL, the world's most advanced open source database",
+      "canonical": [],
+      "links_count": 86,
+      "links": [
+        {
+          "href": "/",
+          "text": "PostgreSQL Elephant Logo",
+          "aria_label": "",
+          "selector": "a [source occurrence 1]",
+          "region": "navigation",
+          "url": "https://www.postgresql.org/"
+        },
+        {
+          "href": "/",
+          "text": "Home",
+          "aria_label": "",
+          "selector": "a [source occurrence 2]",
+          "region": "navigation",
+          "url": "https://www.postgresql.org/"
+        },
+        {
+          "href": "/about/",
+          "text": "About",
+          "aria_label": "",
+          "selector": "a [source occurrence 3]",
+          "region": "navigation",
+          "url": "https://www.postgresql.org/about/"
+        },
+        {
+          "href": "/download/",
+          "text": "Download",
+          "aria_label": "",
+          "selector": "a [source occurrence 4]",
+          "region": "navigation",
+          "url": "https://www.postgresql.org/download/"
+        },
+        {
+          "href": "/docs/",
+          "text": "Documentation",
+          "aria_label": "",
+          "selector": "a [source occurrence 5]",
+          "region": "navigation",
+          "url": "https://www.postgresql.org/docs/"
+        },
+        {
+          "href": "/community/",
+          "text": "Community",
+          "aria_label": "",
+          "selector": "a [source occurrence 6]",
+          "region": "navigation",
+          "url": "https://www.postgresql.org/community/"
+        },
+        {
+          "href": "/developer/",
+          "text": "Developers",
+          "aria_label": "",
+          "selector": "a [source occurrence 7]",
+          "region": "navigation",
+          "url": "https://www.postgresql.org/developer/"
+        },
+        {
+          "href": "/support/",
+          "text": "Support",
+          "aria_label": "",
+          "selector": "a [source occurrence 8]",
+          "region": "navigation",
+          "url": "https://www.postgresql.org/support/"
+        },
+        {
+          "href": "/about/donate/",
+          "text": "Donate",
+          "aria_label": "",
+          "selector": "a [source occurrence 9]",
+          "region": "navigation",
+          "url": "https://www.postgresql.org/about/donate/"
+        },
+        {
+          "href": "/account/",
+          "text": "Your account",
+          "aria_label": "",
+          "selector": "a [source occurrence 10]",
+          "region": "navigation",
+          "url": "https://www.postgresql.org/account/"
+        },
+        {
+          "href": "/about/news/postgresql-186-1711-1615-1519-1424-and-19-beta-3-released-3365/",
+          "text": "PostgreSQL 18.6, 17.11, 16.15, 15.19, 14.24 and 19 Beta 3 Released!",
+          "aria_label": "",
+          "selector": "a [source occurrence 11]",
+          "region": "content",
+          "url": "https://www.postgresql.org/about/news/postgresql-186-1711-1615-1519-1424-and-19-beta-3-released-3365/"
+        },
+        {
+          "href": "/download/",
+          "text": "Download",
+          "aria_label": "",
+          "selector": "a [source occurrence 12]",
+          "region": "content",
+          "url": "https://www.postgresql.org/download/"
+        },
+        {
+          "href": "/about/",
+          "text": "New to PostgreSQL?",
+          "aria_label": "",
+          "selector": "a [source occurrence 13]",
+          "region": "content",
+          "url": "https://www.postgresql.org/about/"
+        },
+        {
+          "href": "/download/",
+          "text": "install",
+          "aria_label": "",
+          "selector": "a [source occurrence 14]",
+          "region": "content",
+          "url": "https://www.postgresql.org/download/"
+        },
+        {
+          "href": "/docs/",
+          "text": "use",
+          "aria_label": "",
+          "selector": "a [source occurrence 15]",
+          "region": "content",
+          "url": "https://www.postgresql.org/docs/"
+        },
+        {
+          "href": "/docs/",
+          "text": "official documentation",
+          "aria_label": "",
+          "selector": "a [source occurrence 16]",
+          "region": "content",
+          "url": "https://www.postgresql.org/docs/"
+        },
+        {
+          "href": "/community/",
+          "text": "open source community",
+          "aria_label": "",
+          "selector": "a [source occurrence 17]",
+          "region": "content",
+          "url": "https://www.postgresql.org/community/"
+        },
+        {
+          "href": "/community/",
+          "text": "engage with the community",
+          "aria_label": "",
+          "selector": "a [source occurrence 18]",
+          "region": "content",
+          "url": "https://www.postgresql.org/community/"
+        },
+        {
+          "href": "/about/",
+          "text": "Learn More",
+          "aria_label": "",
+          "selector": "a [source occurrence 19]",
+          "region": "content",
+          "url": "https://www.postgresql.org/about/"
+        },
+        {
+          "href": "/about/featurematrix/",
+          "text": "Feature Matrix",
+          "aria_label": "",
+          "selector": "a [source occurrence 20]",
+          "region": "content",
+          "url": "https://www.postgresql.org/about/featurematrix/"
+        },
+        {
+          "href": "/about/governance/",
+          "text": "Governance",
+          "aria_label": "",
+          "selector": "a [source occurrence 21]",
+          "region": "content",
+          "url": "https://www.postgresql.org/about/governance/"
+        },
+        {
+          "href": "/about/news/postgresql-186-1711-1615-1519-1424-and-19-beta-3-released-3365/",
+          "text": "PostgreSQL 19 Beta 3, 18.6, 17.11, 16.15, 15.19 and 14.24 Released!",
+          "aria_label": "",
+          "selector": "a [source occurrence 22]",
+          "region": "content",
+          "url": "https://www.postgresql.org/about/news/postgresql-186-1711-1615-1519-1424-and-19-beta-3-released-3365/"
+        },
+        {
+          "href": "/download/",
+          "text": "released an update",
+          "aria_label": "",
+          "selector": "a [source occurrence 23]",
+          "region": "content",
+          "url": "https://www.postgresql.org/download/"
+        },
+        {
+          "href": "/about/news/postgresql-186-1711-1615-1519-1424-and-19-beta-3-released-3365/",
+          "text": "19 Beta 3, 18.6, 17.11, 16.15, 15.19 and 14.24",
+          "aria_label": "",
+          "selector": "a [source occurrence 24]",
+          "region": "content",
+          "url": "https://www.postgresql.org/about/news/postgresql-186-1711-1615-1519-1424-and-19-beta-3-released-3365/"
+        },
+        {
+          "href": "/docs/release/",
+          "text": "release notes",
+          "aria_label": "",
+          "selector": "a [source occurrence 25]",
+          "region": "content",
+          "url": "https://www.postgresql.org/docs/release/"
+        },
+        {
+          "href": "/download/",
+          "text": "download",
+          "aria_label": "",
+          "selector": "a [source occurrence 26]",
+          "region": "content",
+          "url": "https://www.postgresql.org/download/"
+        },
+        {
+          "href": "/support/versioning/",
+          "text": "versioning policy",
+          "aria_label": "",
+          "selector": "a [source occurrence 27]",
+          "region": "content",
+          "url": "https://www.postgresql.org/support/versioning/"
+        },
+        {
+          "href": "/docs/18/release-18-6.html",
+          "text": "Notes",
+          "aria_label": "",
+          "selector": "a [source occurrence 28]",
+          "region": "content",
+          "url": "https://www.postgresql.org/docs/18/release-18-6.html"
+        },
+        {
+          "href": "/docs/17/release-17-11.html",
+          "text": "Notes",
+          "aria_label": "",
+          "selector": "a [source occurrence 29]",
+          "region": "content",
+          "url": "https://www.postgresql.org/docs/17/release-17-11.html"
+        },
+        {
+          "href": "/docs/16/release-16-15.html",
+          "text": "Notes",
+          "aria_label": "",
+          "selector": "a [source occurrence 30]",
+          "region": "content",
+          "url": "https://www.postgresql.org/docs/16/release-16-15.html"
+        },
+        {
+          "href": "/docs/15/release-15-19.html",
+          "text": "Notes",
+          "aria_label": "",
+          "selector": "a [source occurrence 31]",
+          "region": "content",
+          "url": "https://www.postgresql.org/docs/15/release-15-19.html"
+        },
+        {
+          "href": "/docs/14/release-14-24.html",
+          "text": "Notes",
+          "aria_label": "",
+          "selector": "a [source occurrence 32]",
+          "region": "content",
+          "url": "https://www.postgresql.org/docs/14/release-14-24.html"
+        },
+        {
+          "href": "/download/",
+          "text": "Download",
+          "aria_label": "",
+          "selector": "a [source occurrence 33]",
+          "region": "content",
+          "url": "https://www.postgresql.org/download/"
+        },
+        {
+          "href": "/support/versioning/",
+          "text": "Why Upgrade?",
+          "aria_label": "",
+          "selector": "a [source occurrence 34]",
+          "region": "content",
+          "url": "https://www.postgresql.org/support/versioning/"
+        },
+        {
+          "href": "/support/security/",
+          "text": "Security",
+          "aria_label": "",
+          "selector": "a [source occurrence 35]",
+          "region": "content",
+          "url": "https://www.postgresql.org/support/security/"
+        },
+        {
+          "href": "/about/event/postgres-summit-us-2026-2598/",
+          "text": "Postgres Summit US 2026",
+          "aria_label": "",
+          "selector": "a [source occurrence 36]",
+          "region": "content",
+          "url": "https://www.postgresql.org/about/event/postgres-summit-us-2026-2598/"
+        },
+        {
+          "href": "/about/event/pgpune-pune-postgresql-user-group-2600/",
+          "text": "PgPune (Pune PostgreSQL User Group)",
+          "aria_label": "",
+          "selector": "a [source occurrence 37]",
+          "region": "content",
+          "url": "https://www.postgresql.org/about/event/pgpune-pune-postgresql-user-group-2600/"
+        },
+        {
+          "href": "/about/event/pgconfeu-2026-2587/",
+          "text": "PGConf.EU 2026",
+          "aria_label": "",
+          "selector": "a [source occurrence 38]",
+          "region": "content",
+          "url": "https://www.postgresql.org/about/event/pgconfeu-2026-2587/"
+        },
+        {
+          "href": "/about/event/pgday-israel-2026-2588/",
+          "text": "PGDay Israel 2026",
+          "aria_label": "",
+          "selector": "a [source occurrence 39]",
+          "region": "content",
+          "url": "https://www.postgresql.org/about/event/pgday-israel-2026-2588/"
+        },
+        {
+          "href": "/about/event/pg-down-under-2026-2585/",
+          "text": "PG Down Under 2026",
+          "aria_label": "",
+          "selector": "a [source occurrence 40]",
+          "region": "content",
+          "url": "https://www.postgresql.org/about/event/pg-down-under-2026-2585/"
+        },
+        {
+          "href": "/about/event/pgday-mexico-2026-2593/",
+          "text": "pgDay México 2026",
+          "aria_label": "",
+          "selector": "a [source occurrence 41]",
+          "region": "content",
+          "url": "https://www.postgresql.org/about/event/pgday-mexico-2026-2593/"
+        },
+        {
+          "href": "/about/event/postgresql-conference-japan-2026-2594/",
+          "text": "PostgreSQL Conference Japan 2026",
+          "aria_label": "",
+          "selector": "a [source occurrence 42]",
+          "region": "content",
+          "url": "https://www.postgresql.org/about/event/postgresql-conference-japan-2026-2594/"
+        },
+        {
+          "href": "/about/policies/conferences/",
+          "text": "community event guidelines",
+          "aria_label": "",
+          "selector": "a [source occurrence 43]",
+          "region": "content",
+          "url": "https://www.postgresql.org/about/policies/conferences/"
+        },
+        {
+          "href": "/about/events/",
+          "text": "Check Schedule",
+          "aria_label": "",
+          "selector": "a [source occurrence 44]",
+          "region": "content",
+          "url": "https://www.postgresql.org/about/events/"
+        },
+        {
+          "href": "/account/events/new/",
+          "text": "Add Your Event",
+          "aria_label": "",
+          "selector": "a [source occurrence 45]",
+          "region": "content",
+          "url": "https://www.postgresql.org/account/events/new/"
+        },
+        {
+          "href": "https://lists.postgresql.org",
+          "text": "mailing lists",
+          "aria_label": "",
+          "selector": "a [source occurrence 46]",
+          "region": "content",
+          "url": "https://lists.postgresql.org"
+        },
+        {
+          "href": "/account/",
+          "text": "PostgreSQL community account",
+          "aria_label": "",
+          "selector": "a [source occurrence 47]",
+          "region": "content",
+          "url": "https://www.postgresql.org/account/"
+        },
+        {
+          "href": "/account/",
+          "text": "Signing up",
+          "aria_label": "",
+          "selector": "a [source occurrence 48]",
+          "region": "content",
+          "url": "https://www.postgresql.org/account/"
+        },
+        {
+          "href": "/community/",
+          "text": "global PostgreSQL community",
+          "aria_label": "",
+          "selector": "a [source occurrence 49]",
+          "region": "content",
+          "url": "https://www.postgresql.org/community/"
+        },
+        {
+          "href": "https://lists.postgresql.org",
+          "text": "Subscribe",
+          "aria_label": "",
+          "selector": "a [source occurrence 50]",
+          "region": "content",
+          "url": "https://lists.postgresql.org"
+        },
+        {
+          "href": "https://www.postgresql.org/list/",
+          "text": "View Archives",
+          "aria_label": "",
+          "selector": "a [source occurrence 51]",
+          "region": "content",
+          "url": "https://www.postgresql.org/list/"
+        },
+        {
+          "href": "/about/events/",
+          "text": "Browse Events",
+          "aria_label": "",
+          "selector": "a [source occurrence 52]",
+          "region": "content",
+          "url": "https://www.postgresql.org/about/events/"
+        },
+        {
+          "href": "/community/user-groups/",
+          "text": "Browse User Groups",
+          "aria_label": "",
+          "selector": "a [source occurrence 53]",
+          "region": "content",
+          "url": "https://www.postgresql.org/community/user-groups/"
+        },
+        {
+          "href": "/about/news/postgresql-186-1711-1615-1519-1424-and-19-beta-3-released-3365/",
+          "text": "PostgreSQL 19 Beta 3, 18.6, 17.11, 16.15, 15.19 and 14.24 Released!",
+          "aria_label": "",
+          "selector": "a [source occurrence 54]",
+          "region": "navigation",
+          "url": "https://www.postgresql.org/about/news/postgresql-186-1711-1615-1519-1424-and-19-beta-3-released-3365/"
+        },
+        {
+          "href": "/download/",
+          "text": "released an update",
+          "aria_label": "",
+          "selector": "a [source occurrence 55]",
+          "region": "content",
+          "url": "https://www.postgresql.org/download/"
+        },
+        {
+          "href": "/about/news/postgresql-186-1711-1615-1519-1424-and-19-beta-3-released-3365/",
+          "text": "19 Beta 3, 18.6, 17.11, 16.15, 15.19 and 14.24",
+          "aria_label": "",
+          "selector": "a [source occurrence 56]",
+          "region": "content",
+          "url": "https://www.postgresql.org/about/news/postgresql-186-1711-1615-1519-1424-and-19-beta-3-released-3365/"
+        },
+        {
+          "href": "/docs/release/",
+          "text": "release notes",
+          "aria_label": "",
+          "selector": "a [source occurrence 57]",
+          "region": "content",
+          "url": "https://www.postgresql.org/docs/release/"
+        },
+        {
+          "href": "/download/",
+          "text": "download",
+          "aria_label": "",
+          "selector": "a [source occurrence 58]",
+          "region": "content",
+          "url": "https://www.postgresql.org/download/"
+        },
+        {
+          "href": "/support/versioning/",
+          "text": "versioning policy",
+          "aria_label": "",
+          "selector": "a [source occurrence 59]",
+          "region": "content",
+          "url": "https://www.postgresql.org/support/versioning/"
+        },
+        {
+          "href": "/about/news/postgresql-186-1711-1615-1519-1424-and-19-beta-3-released-3365/",
+          "text": "Release Announcement",
+          "aria_label": "",
+          "selector": "a [source occurrence 60]",
+          "region": "content",
+          "url": "https://www.postgresql.org/about/news/postgresql-186-1711-1615-1519-1424-and-19-beta-3-released-3365/"
+        },
+        {
+          "href": "/docs/release/",
+          "text": "Release Notes",
+          "aria_label": "",
+          "selector": "a [source occurrence 61]",
+          "region": "content",
+          "url": "https://www.postgresql.org/docs/release/"
+        },
+        {
+          "href": "/about/press/",
+          "text": "PostgreSQL Press Kit",
+          "aria_label": "",
+          "selector": "a [source occurrence 62]",
+          "region": "content",
+          "url": "https://www.postgresql.org/about/press/"
+        },
+        {
+          "href": "/support/versioning/",
+          "text": "Versioning Policy",
+          "aria_label": "",
+          "selector": "a [source occurrence 63]",
+          "region": "content",
+          "url": "https://www.postgresql.org/support/versioning/"
+        },
+        {
+          "href": "/download/",
+          "text": "Download",
+          "aria_label": "",
+          "selector": "a [source occurrence 64]",
+          "region": "content",
+          "url": "https://www.postgresql.org/download/"
+        },
+        {
+          "href": "/about/newsarchive/",
+          "text": "Browse Archives",
+          "aria_label": "",
+          "selector": "a [source occurrence 65]",
+          "region": "content",
+          "url": "https://www.postgresql.org/about/newsarchive/"
+        },
+        {
+          "href": "/account/news/new/",
+          "text": "Submit News",
+          "aria_label": "",
+          "selector": "a [source occurrence 66]",
+          "region": "content",
+          "url": "https://www.postgresql.org/account/news/new/"
+        },
+        {
+          "href": "/about/news/postgresql-migrator-10-first-stable-release-3377/",
+          "text": "PostgreSQL Migrator 1.0 : first stable release",
+          "aria_label": "",
+          "selector": "a [source occurrence 67]",
+          "region": "content",
+          "url": "https://www.postgresql.org/about/news/postgresql-migrator-10-first-stable-release-3377/"
+        },
+        {
+          "href": "/about/news/pg_vault_tde-v171-transparent-data-encryption-for-postgresql-17-and-18-3376/",
+          "text": "pg_vault_tde v1.7.1 : Transparent Data Encryption for PostgreSQL 17 and 18",
+          "aria_label": "",
+          "selector": "a [source occurrence 68]",
+          "region": "content",
+          "url": "https://www.postgresql.org/about/news/pg_vault_tde-v171-transparent-data-encryption-for-postgresql-17-and-18-3376/"
+        },
+        {
+          "href": "/about/news/postgresql-anonymizer-32-faster-pseudonymization-3373/",
+          "text": "PostgreSQL Anonymizer 3.2 : Faster Pseudonymization",
+          "aria_label": "",
+          "selector": "a [source occurrence 69]",
+          "region": "content",
+          "url": "https://www.postgresql.org/about/news/postgresql-anonymizer-32-faster-pseudonymization-3373/"
+        },
+        {
+          "href": "/about/news/autobase-211-released-3374/",
+          "text": "Autobase 2.11 released",
+          "aria_label": "",
+          "selector": "a [source occurrence 70]",
+          "region": "content",
+          "url": "https://www.postgresql.org/about/news/autobase-211-released-3374/"
+        },
+        {
+          "href": "/about/news/pgconf-india-2027-dates-announced-and-cfp-open-3370/",
+          "text": "PGConf India 2027 - Dates Announced and CFP Open",
+          "aria_label": "",
+          "selector": "a [source occurrence 71]",
+          "region": "content",
+          "url": "https://www.postgresql.org/about/news/pgconf-india-2027-dates-announced-and-cfp-open-3370/"
+        },
+        {
+          "href": "https://postgr.es/p/9ug",
+          "text": "All Your GUCs in a Row: max_connections",
+          "aria_label": "",
+          "selector": "a [source occurrence 72]",
+          "region": "content",
+          "url": "https://postgr.es/p/9ug"
+        },
+        {
+          "href": "https://postgr.es/p/9ud",
+          "text": "All Your GUCs in a Row: max_active_replication_origins",
+          "aria_label": "",
+          "selector": "a [source occurrence 73]",
+          "region": "content",
+          "url": "https://postgr.es/p/9ud"
+        },
+        {
+          "href": "https://postgr.es/p/9uf",
+          "text": "Chinese PostgreSQL Docs Are Live: All 11 Major Versions",
+          "aria_label": "",
+          "selector": "a [source occurrence 74]",
+          "region": "content",
+          "url": "https://postgr.es/p/9uf"
+        },
+        {
+          "href": "https://postgr.es/p/9uc",
+          "text": "Structured Query Language 101 at Texas Linuxfest",
+          "aria_label": "",
+          "selector": "a [source occurrence 75]",
+          "region": "content",
+          "url": "https://postgr.es/p/9uc"
+        },
+        {
+          "href": "https://postgr.es/p/9ue",
+          "text": "30 Years of Postgres Architecture: Tom Lane Interview",
+          "aria_label": "",
+          "selector": "a [source occurrence 76]",
+          "region": "content",
+          "url": "https://postgr.es/p/9ue"
+        },
+        {
+          "href": "https://postgr.es/p/9ub",
+          "text": "100,000 Lines of C Later: pgSafe at PGDay UK 2026",
+          "aria_label": "",
+          "selector": "a [source occurrence 77]",
+          "region": "content",
+          "url": "https://postgr.es/p/9ub"
+        },
+        {
+          "href": "https://postgr.es/p/9ua",
+          "text": "Percona Operator for PostgreSQL 3.1.0: Transparent Data Encryption, Logical Repl",
+          "aria_label": "",
+          "selector": "a [source occurrence 78]",
+          "region": "content",
+          "url": "https://postgr.es/p/9ua"
+        },
+        {
+          "href": "https://postgr.es/p/9u9",
+          "text": "All Your GUCs in a Row: maintenance_work_mem",
+          "aria_label": "",
+          "selector": "a [source occurrence 79]",
+          "region": "content",
+          "url": "https://postgr.es/p/9u9"
+        },
+        {
+          "href": "https://postgr.es/p/9u6",
+          "text": "From the Department of It&rsquo;s About Time: Inter-documentation and image links",
+          "aria_label": "",
+          "selector": "a [source occurrence 80]",
+          "region": "content",
+          "url": "https://postgr.es/p/9u6"
+        },
+        {
+          "href": "https://planet.postgresql.org",
+          "text": "Browse Archives",
+          "aria_label": "",
+          "selector": "a [source occurrence 81]",
+          "region": "content",
+          "url": "https://planet.postgresql.org"
+        },
+        {
+          "href": "/account/submitbug/",
+          "text": "Submit a Bug",
+          "aria_label": "",
+          "selector": "a [source occurrence 82]",
+          "region": "content",
+          "url": "https://www.postgresql.org/account/submitbug/"
+        },
+        {
+          "href": "/about/policies/",
+          "text": "Policies",
+          "aria_label": "",
+          "selector": "a [source occurrence 83]",
+          "region": "navigation",
+          "url": "https://www.postgresql.org/about/policies/"
+        },
+        {
+          "href": "/about/policies/coc/",
+          "text": "Code of Conduct",
+          "aria_label": "",
+          "selector": "a [source occurrence 84]",
+          "region": "navigation",
+          "url": "https://www.postgresql.org/about/policies/coc/"
+        },
+        {
+          "href": "/about/",
+          "text": "About PostgreSQL",
+          "aria_label": "",
+          "selector": "a [source occurrence 85]",
+          "region": "navigation",
+          "url": "https://www.postgresql.org/about/"
+        },
+        {
+          "href": "/about/contact/",
+          "text": "Contact",
+          "aria_label": "",
+          "selector": "a [source occurrence 86]",
+          "region": "navigation",
+          "url": "https://www.postgresql.org/about/contact/"
+        }
+      ],
+      "controls": [
+        {
+          "tag": "input",
+          "selector": "#navbar-toggler",
+          "type": "checkbox",
+          "id": "navbar-toggler",
+          "name": "",
+          "aria_label": "Toggle navigation",
+          "placeholder": ""
+        },
+        {
+          "tag": "input",
+          "selector": "#q",
+          "type": "text",
+          "id": "q",
+          "name": "q",
+          "aria_label": "",
+          "placeholder": "Search for..."
+        },
+        {
+          "tag": "button",
+          "selector": "button [source occurrence 1]",
+          "text": "",
+          "aria_label": ""
+        },
+        {
+          "tag": "button",
+          "selector": "#btn-theme",
+          "text": "",
+          "aria_label": ""
+        },
+        {
+          "tag": "button",
+          "selector": "button [source occurrence 3]",
+          "text": "Learn More",
+          "aria_label": ""
+        },
+        {
+          "tag": "button",
+          "selector": "button [source occurrence 4]",
+          "text": "Feature Matrix",
+          "aria_label": ""
+        },
+        {
+          "tag": "button",
+          "selector": "button [source occurrence 5]",
+          "text": "Governance",
+          "aria_label": ""
+        },
+        {
+          "tag": "button",
+          "selector": "button [source occurrence 6]",
+          "text": "Download",
+          "aria_label": ""
+        },
+        {
+          "tag": "button",
+          "selector": "button [source occurrence 7]",
+          "text": "Why Upgrade?",
+          "aria_label": ""
+        },
+        {
+          "tag": "button",
+          "selector": "button [source occurrence 8]",
+          "text": "Security",
+          "aria_label": ""
+        },
+        {
+          "tag": "button",
+          "selector": "button [source occurrence 9]",
+          "text": "Check Schedule",
+          "aria_label": ""
+        },
+        {
+          "tag": "button",
+          "selector": "button [source occurrence 10]",
+          "text": "Add Your Event",
+          "aria_label": ""
+        },
+        {
+          "tag": "button",
+          "selector": "button [source occurrence 11]",
+          "text": "Subscribe",
+          "aria_label": ""
+        },
+        {
+          "tag": "button",
+          "selector": "button [source occurrence 12]",
+          "text": "View Archives",
+          "aria_label": ""
+        },
+        {
+          "tag": "button",
+          "selector": "button [source occurrence 13]",
+          "text": "Browse Events",
+          "aria_label": ""
+        },
+        {
+          "tag": "button",
+          "selector": "button [source occurrence 14]",
+          "text": "Browse User Groups",
+          "aria_label": ""
+        },
+        {
+          "tag": "button",
+          "selector": "button [source occurrence 15]",
+          "text": "Browse Archives",
+          "aria_label": ""
+        },
+        {
+          "tag": "button",
+          "selector": "button [source occurrence 16]",
+          "text": "Submit News",
+          "aria_label": ""
+        },
+        {
+          "tag": "button",
+          "selector": "button [source occurrence 17]",
+          "text": "Browse Archives",
+          "aria_label": ""
+        },
+        {
+          "tag": "button",
+          "selector": "button [source occurrence 18]",
+          "text": "Submit a Bug",
+          "aria_label": ""
+        }
+      ],
+      "images": {
+        "count": 8,
+        "missing_alt": 0,
+        "empty_alt": 0,
+        "items": [
+          {
+            "src": "/media/img/about/press/elephant.png",
+            "alt": "PostgreSQL Elephant Logo",
+            "selector": "img [source occurrence 1]"
+          },
+          {
+            "src": "/media/img/about/press/elephant.png",
+            "alt": "PostgreSQL Elephant Logo",
+            "selector": "img [source occurrence 2]"
+          },
+          {
+            "src": "/media/img/PostgreSQL_Badge1.svg",
+            "alt": "PostgreSQL Community Event",
+            "selector": "img [source occurrence 3]"
+          },
+          {
+            "src": "/media/img/PostgreSQL_Badge1.svg",
+            "alt": "PostgreSQL Community Event",
+            "selector": "img [source occurrence 4]"
+          },
+          {
+            "src": "/media/img/PostgreSQL_Badge1.svg",
+            "alt": "PostgreSQL Community Event",
+            "selector": "img [source occurrence 5]"
+          },
+          {
+            "src": "/media/img/PostgreSQL_Badge1.svg",
+            "alt": "PostgreSQL Community Event",
+            "selector": "img [source occurrence 6]"
+          },
+          {
+            "src": "/media/img/PostgreSQL_Badge1.svg",
+            "alt": "PostgreSQL Community Event",
+            "selector": "img [source occurrence 7]"
+          },
+          {
+            "src": "/media/img/PostgreSQL_Badge1.svg",
+            "alt": "PostgreSQL Community Event",
+            "selector": "img [source occurrence 8]"
+          }
+        ]
+      },
+      "jsonld": {
+        "blocks": 0,
+        "parse_errors": 0,
+        "errors": [],
+        "types": [],
+        "data": [],
+        "data_omitted": false
+      },
+      "text_sample": "August 13, 2026: PostgreSQL 18.6, 17.11, 16.15, 15.19, 14.24 and 19 Beta 3 Released! PostgreSQL: The World's Most Advanced Open Source Relational Database Download New to PostgreSQL? New to PostgreSQL? PostgreSQL is a powerful, open source object-relational database system with over 35 years of active development that has earned it a strong reputation for reliability, feature robustness, and performance. There is a wealth of information to be found describing how to install and use PostgreSQL through the official documentation . The open source community provides many helpful places to become familiar with PostgreSQL, discover how it works, and find career opportunities. Learn more on how to engage with the community . Learn More Feature Matrix Governance Latest Releases 2026-08-13 - PostgreSQL 19 Beta 3, 18.6, 17.11, 16.15, 15.19 and 14.24 Released! The PostgreSQL Global Development Group has released an update to all supported versions of PostgreSQL, including 19 Beta 3, 18.6, 17.11, 16.15, 15.19 and 14.24 . This release fixes 28 security vulnerabilities and many bugs reported over the last several months. For the more information about this release, please review the release not",
+      "main_text": "August 13, 2026: PostgreSQL 18.6, 17.11, 16.15, 15.19, 14.24 and 19 Beta 3 Released! PostgreSQL: The World's Most Advanced Open Source Relational Database Download New to PostgreSQL? New to PostgreSQL? PostgreSQL is a powerful, open source object-relational database system with over 35 years of active development that has earned it a strong reputation for reliability, feature robustness, and performance. There is a wealth of information to be found describing how to install and use PostgreSQL through the official documentation . The open source community provides many helpful places to become familiar with PostgreSQL, discover how it works, and find career opportunities. Learn more on how to engage with the community . Learn More Feature Matrix Governance Latest Releases 2026-08-13 - PostgreSQL 19 Beta 3, 18.6, 17.11, 16.15, 15.19 and 14.24 Released! The PostgreSQL Global Development Group has released an update to all supported versions of PostgreSQL, including 19 Beta 3, 18.6, 17.11, 16.15, 15.19 and 14.24 . This release fixes 28 security vulnerabilities and many bugs reported over the last several months. For the more information about this release, please review the release notes . You can download PostgreSQL from the download page. PostgreSQL 14 will stop receiving fixes on November 12, 2026. If you are running PostgreSQL 14 in a production environment, we suggest that you make plans to upgrade to a newer, supported version of PostgreSQL. Please see our versioning policy for more information. 18.6 · 2026-08-13 · Notes 17.11 · 2026-08-13 · Notes 16.15 · 2026-08-13 · Notes 15.19 · 2026-08-13 · Notes 14.24 · 2026-08-13 · Notes Download Why Upgrade? Security Upcoming Events 2026-09-30 – 2026-10-02 · Postgres Summit US 2026 2026-10-09 · PgPune (Pune PostgreSQL User Group) 2026-10-20 – 2026-10-23 · PGConf.EU 2026 2026-10-25 · PGDay Israel 2026 2026-10-30 · PG Down Under 2026 2026-11-13 · pgDay México 2026 2026-11-27 · PostgreSQL Conference Japan 2026 indicates that an event is recognised under the community event guidelines and is directly helping the PostgreSQL community. Check Schedule Add Your Event Mailing Lists The PostgreSQL mailing lists enable you to interact with active community participants on subjects related to the development of PostgreSQL, discovering how to use PostgreSQL, or learning about upcoming events and product releases. In order to manage your mailing list subscription, you need a PostgreSQL community account . Signing up is easy and gives you direct access to the global PostgreSQL community . Subscribe View Archives Learning Opportunities Ahead Want to learn more about PostgreSQL and help build the community? Come to one of the many events, local user groups, & training sessions where you can meet experienced PostgreSQL users and enhance your database skills. Browse Events Browse User Groups Latest News The PostgreSQL Global Development Group has released an update to all supported versions of PostgreSQL, including 19 Beta 3, 18.6, 17.11, 16.15, 15.19 and 14.24 . This release fixes 28 security vulnerabilities and many bugs reported over the last several months. For the more information about this release, please review the release notes . You can download PostgreSQL from the download page. PostgreSQL 14 will stop receiving fixes on November 12, 2026. If you are running PostgreSQL 14 in a production environment, we suggest that you make plans to upgrade to a newer, supported version of PostgreSQL. Please see our versioning policy for more information. Release Announcement Release Notes PostgreSQL Press Kit Versioning Policy Download Browse Archives Submit News PostgreSQL Migrator 1.0 : first stable release 2026-09-10 by Dalibo pg_vault_tde v1.7.1 : Transparent Data Encryption for PostgreSQL 17 and 18 2026-09-10 by Miriade Srl PostgreSQL Anonymizer 3.2 : Faster Pseudonymization 2026-09-09 by Dalibo Autobase 2.11 released 2026-09-09 by vitabaks PGConf India 2027 - Dates Announced and CFP Open 2026-09-05 by PGConf India PLANET POSTGRESQL All Your GUCs in a Row: max_connections Christophe Pettus 2026-09-11 All Your GUCs in a Row: max_active_replication_origins Christophe Pettus 2026-09-10 Chinese PostgreSQL Docs Are Live: All 11 Major Versions Ruohang Feng 2026-09-10 Structured Query Language 101 at Texas Linuxfest Dave Stokes 2026-09-09 30 Years of Postgres Architecture: Tom Lane Interview Elizabeth Garrett Christensen 2026-09-09 100,000 Lines of C Later: pgSafe at PGDay UK 2026 Jimmy Angelakos 2026-09-09 Percona Operator for PostgreSQL 3.1.0: Transparent Data Encryption, Logical Repl Viacheslav Sarzhan 2026-09-09 All Your GUCs in a Row: maintenance_work_mem Christophe Pettus 2026-09-09 From the Department of It&rsquo;s About Time: Inter-documentation and image links David E. Wheeler 2026-09-08 Browse Archives Seeing unexpected behavior? The PostgreSQL community takes pride in releasing software that reliably stores your data. If you believe you've discovered a bug, please click the button below and follow the instructions on how to submit a bug. Submit a Bug",
+      "passages": [
+        {
+          "selector": "h1 [source occurrence 1]",
+          "heading": "",
+          "text": "PostgreSQL: The World's Most Advanced Open Source Relational Database"
+        },
+        {
+          "selector": "h2 [source occurrence 1]",
+          "heading": "PostgreSQL: The World's Most Advanced Open Source Relational Database",
+          "text": "New to PostgreSQL?"
+        },
+        {
+          "selector": "p [source occurrence 1]",
+          "heading": "New to PostgreSQL?",
+          "text": "PostgreSQL is a powerful, open source object-relational database system with over 35 years of active development that has earned it a strong reputation for reliability, feature robustness, and performance."
+        },
+        {
+          "selector": "p [source occurrence 2]",
+          "heading": "New to PostgreSQL?",
+          "text": "There is a wealth of information to be found describing how to install and use PostgreSQL through the official documentation . The open source community provides many helpful places to become familiar with PostgreSQL, discover how it works, and find career opportunities. Learn more on how to engage with the community ."
+        },
+        {
+          "selector": "h2 [source occurrence 2]",
+          "heading": "New to PostgreSQL?",
+          "text": "Latest Releases"
+        },
+        {
+          "selector": "p [source occurrence 3]",
+          "heading": "Latest Releases",
+          "text": "2026-08-13 - PostgreSQL 19 Beta 3, 18.6, 17.11, 16.15, 15.19 and 14.24 Released!"
+        },
+        {
+          "selector": "p [source occurrence 4]",
+          "heading": "Latest Releases",
+          "text": "The PostgreSQL Global Development Group has released an update to all supported versions of PostgreSQL, including 19 Beta 3, 18.6, 17.11, 16.15, 15.19 and 14.24 . This release fixes 28 security vulnerabilities and many bugs reported over the last several months."
+        },
+        {
+          "selector": "p [source occurrence 5]",
+          "heading": "Latest Releases",
+          "text": "For the more information about this release, please review the release notes . You can download PostgreSQL from the download page."
+        },
+        {
+          "selector": "p [source occurrence 6]",
+          "heading": "Latest Releases",
+          "text": "PostgreSQL 14 will stop receiving fixes on November 12, 2026. If you are running PostgreSQL 14 in a production environment, we suggest that you make plans to upgrade to a newer, supported version of PostgreSQL. Please see our versioning policy for more information."
+        },
+        {
+          "selector": "li [source occurrence 10]",
+          "heading": "Latest Releases",
+          "text": "18.6 · 2026-08-13 · Notes"
+        },
+        {
+          "selector": "li [source occurrence 11]",
+          "heading": "Latest Releases",
+          "text": "17.11 · 2026-08-13 · Notes"
+        },
+        {
+          "selector": "li [source occurrence 12]",
+          "heading": "Latest Releases",
+          "text": "16.15 · 2026-08-13 · Notes"
+        },
+        {
+          "selector": "li [source occurrence 13]",
+          "heading": "Latest Releases",
+          "text": "15.19 · 2026-08-13 · Notes"
+        },
+        {
+          "selector": "li [source occurrence 14]",
+          "heading": "Latest Releases",
+          "text": "14.24 · 2026-08-13 · Notes"
+        },
+        {
+          "selector": "h2 [source occurrence 3]",
+          "heading": "Latest Releases",
+          "text": "Upcoming Events"
+        },
+        {
+          "selector": "li [source occurrence 15]",
+          "heading": "Upcoming Events",
+          "text": "2026-09-30 – 2026-10-02 · Postgres Summit US 2026"
+        },
+        {
+          "selector": "li [source occurrence 16]",
+          "heading": "Upcoming Events",
+          "text": "2026-10-09 · PgPune (Pune PostgreSQL User Group)"
+        },
+        {
+          "selector": "li [source occurrence 17]",
+          "heading": "Upcoming Events",
+          "text": "2026-10-20 – 2026-10-23 · PGConf.EU 2026"
+        },
+        {
+          "selector": "li [source occurrence 18]",
+          "heading": "Upcoming Events",
+          "text": "2026-10-25 · PGDay Israel 2026"
+        },
+        {
+          "selector": "li [source occurrence 19]",
+          "heading": "Upcoming Events",
+          "text": "2026-10-30 · PG Down Under 2026"
+        },
+        {
+          "selector": "li [source occurrence 20]",
+          "heading": "Upcoming Events",
+          "text": "2026-11-13 · pgDay México 2026"
+        },
+        {
+          "selector": "li [source occurrence 21]",
+          "heading": "Upcoming Events",
+          "text": "2026-11-27 · PostgreSQL Conference Japan 2026"
+        },
+        {
+          "selector": "p [source occurrence 7]",
+          "heading": "Upcoming Events",
+          "text": "indicates that an event is recognised under the community event guidelines and is directly helping the PostgreSQL community."
+        },
+        {
+          "selector": "h2 [source occurrence 4]",
+          "heading": "Upcoming Events",
+          "text": "Mailing Lists"
+        },
+        {
+          "selector": "p [source occurrence 8]",
+          "heading": "Mailing Lists",
+          "text": "The PostgreSQL mailing lists enable you to interact with active community participants on subjects related to the development of PostgreSQL, discovering how to use PostgreSQL, or learning about upcoming events and product releases."
+        },
+        {
+          "selector": "p [source occurrence 9]",
+          "heading": "Mailing Lists",
+          "text": "In order to manage your mailing list subscription, you need a PostgreSQL community account . Signing up is easy and gives you direct access to the global PostgreSQL community ."
+        },
+        {
+          "selector": "h2 [source occurrence 5]",
+          "heading": "Mailing Lists",
+          "text": "Learning Opportunities Ahead"
+        },
+        {
+          "selector": "p [source occurrence 10]",
+          "heading": "Learning Opportunities Ahead",
+          "text": "Want to learn more about PostgreSQL and help build the community? Come to one of the many events, local user groups, & training sessions where you can meet experienced PostgreSQL users and enhance your database skills."
+        },
+        {
+          "selector": "h2 [source occurrence 6]",
+          "heading": "Learning Opportunities Ahead",
+          "text": "Latest News"
+        },
+        {
+          "selector": "p [source occurrence 11]",
+          "heading": "PostgreSQL 19 Beta 3, 18.6, 17.11, 16.15, 15.19 and 14.24 Released!",
+          "text": "The PostgreSQL Global Development Group has released an update to all supported versions of PostgreSQL, including 19 Beta 3, 18.6, 17.11, 16.15, 15.19 and 14.24 . This release fixes 28 security vulnerabilities and many bugs reported over the last several months."
+        },
+        {
+          "selector": "p [source occurrence 12]",
+          "heading": "PostgreSQL 19 Beta 3, 18.6, 17.11, 16.15, 15.19 and 14.24 Released!",
+          "text": "For the more information about this release, please review the release notes . You can download PostgreSQL from the download page."
+        },
+        {
+          "selector": "p [source occurrence 13]",
+          "heading": "PostgreSQL 19 Beta 3, 18.6, 17.11, 16.15, 15.19 and 14.24 Released!",
+          "text": "PostgreSQL 14 will stop receiving fixes on November 12, 2026. If you are running PostgreSQL 14 in a production environment, we suggest that you make plans to upgrade to a newer, supported version of PostgreSQL. Please see our versioning policy for more information."
+        },
+        {
+          "selector": "li [source occurrence 23]",
+          "heading": "PostgreSQL 19 Beta 3, 18.6, 17.11, 16.15, 15.19 and 14.24 Released!",
+          "text": "Release Announcement"
+        },
+        {
+          "selector": "li [source occurrence 24]",
+          "heading": "PostgreSQL 19 Beta 3, 18.6, 17.11, 16.15, 15.19 and 14.24 Released!",
+          "text": "Release Notes"
+        },
+        {
+          "selector": "li [source occurrence 25]",
+          "heading": "PostgreSQL 19 Beta 3, 18.6, 17.11, 16.15, 15.19 and 14.24 Released!",
+          "text": "PostgreSQL Press Kit"
+        },
+        {
+          "selector": "li [source occurrence 27]",
+          "heading": "PostgreSQL 19 Beta 3, 18.6, 17.11, 16.15, 15.19 and 14.24 Released!",
+          "text": "Download"
+        },
+        {
+          "selector": "li [source occurrence 26]",
+          "heading": "PostgreSQL 19 Beta 3, 18.6, 17.11, 16.15, 15.19 and 14.24 Released!",
+          "text": "Versioning Policy Download"
+        },
+        {
+          "selector": "h3 [source occurrence 2]",
+          "heading": "PostgreSQL 19 Beta 3, 18.6, 17.11, 16.15, 15.19 and 14.24 Released!",
+          "text": "PostgreSQL Migrator 1.0 : first stable release"
+        },
+        {
+          "selector": "li [source occurrence 29]",
+          "heading": "PostgreSQL Migrator 1.0 : first stable release",
+          "text": "2026-09-10 by Dalibo"
+        },
+        {
+          "selector": "li [source occurrence 28]",
+          "heading": "PostgreSQL 19 Beta 3, 18.6, 17.11, 16.15, 15.19 and 14.24 Released!",
+          "text": "PostgreSQL Migrator 1.0 : first stable release 2026-09-10 by Dalibo"
+        },
+        {
+          "selector": "h3 [source occurrence 3]",
+          "heading": "PostgreSQL Migrator 1.0 : first stable release",
+          "text": "pg_vault_tde v1.7.1 : Transparent Data Encryption for PostgreSQL 17 and 18"
+        },
+        {
+          "selector": "li [source occurrence 31]",
+          "heading": "pg_vault_tde v1.7.1 : Transparent Data Encryption for PostgreSQL 17 and 18",
+          "text": "2026-09-10 by Miriade Srl"
+        },
+        {
+          "selector": "li [source occurrence 30]",
+          "heading": "PostgreSQL Migrator 1.0 : first stable release",
+          "text": "pg_vault_tde v1.7.1 : Transparent Data Encryption for PostgreSQL 17 and 18 2026-09-10 by Miriade Srl"
+        },
+        {
+          "selector": "h3 [source occurrence 4]",
+          "heading": "pg_vault_tde v1.7.1 : Transparent Data Encryption for PostgreSQL 17 and 18",
+          "text": "PostgreSQL Anonymizer 3.2 : Faster Pseudonymization"
+        },
+        {
+          "selector": "li [source occurrence 33]",
+          "heading": "PostgreSQL Anonymizer 3.2 : Faster Pseudonymization",
+          "text": "2026-09-09 by Dalibo"
+        },
+        {
+          "selector": "li [source occurrence 32]",
+          "heading": "pg_vault_tde v1.7.1 : Transparent Data Encryption for PostgreSQL 17 and 18",
+          "text": "PostgreSQL Anonymizer 3.2 : Faster Pseudonymization 2026-09-09 by Dalibo"
+        },
+        {
+          "selector": "h3 [source occurrence 5]",
+          "heading": "PostgreSQL Anonymizer 3.2 : Faster Pseudonymization",
+          "text": "Autobase 2.11 released"
+        },
+        {
+          "selector": "li [source occurrence 35]",
+          "heading": "Autobase 2.11 released",
+          "text": "2026-09-09 by vitabaks"
+        },
+        {
+          "selector": "li [source occurrence 34]",
+          "heading": "PostgreSQL Anonymizer 3.2 : Faster Pseudonymization",
+          "text": "Autobase 2.11 released 2026-09-09 by vitabaks"
+        },
+        {
+          "selector": "h3 [source occurrence 6]",
+          "heading": "Autobase 2.11 released",
+          "text": "PGConf India 2027 - Dates Announced and CFP Open"
+        },
+        {
+          "selector": "li [source occurrence 37]",
+          "heading": "PGConf India 2027 - Dates Announced and CFP Open",
+          "text": "2026-09-05 by PGConf India"
+        },
+        {
+          "selector": "li [source occurrence 36]",
+          "heading": "Autobase 2.11 released",
+          "text": "PGConf India 2027 - Dates Announced and CFP Open 2026-09-05 by PGConf India"
+        },
+        {
+          "selector": "h2 [source occurrence 7]",
+          "heading": "PGConf India 2027 - Dates Announced and CFP Open",
+          "text": "PLANET POSTGRESQL"
+        },
+        {
+          "selector": "h3 [source occurrence 7]",
+          "heading": "PLANET POSTGRESQL",
+          "text": "All Your GUCs in a Row: max_connections"
+        },
+        {
+          "selector": "li [source occurrence 38]",
+          "heading": "All Your GUCs in a Row: max_connections",
+          "text": "Christophe Pettus"
+        },
+        {
+          "selector": "li [source occurrence 39]",
+          "heading": "All Your GUCs in a Row: max_connections",
+          "text": "2026-09-11"
+        },
+        {
+          "selector": "h3 [source occurrence 8]",
+          "heading": "All Your GUCs in a Row: max_connections",
+          "text": "All Your GUCs in a Row: max_active_replication_origins"
+        },
+        {
+          "selector": "li [source occurrence 40]",
+          "heading": "All Your GUCs in a Row: max_active_replication_origins",
+          "text": "Christophe Pettus"
+        },
+        {
+          "selector": "li [source occurrence 41]",
+          "heading": "All Your GUCs in a Row: max_active_replication_origins",
+          "text": "2026-09-10"
+        },
+        {
+          "selector": "h3 [source occurrence 9]",
+          "heading": "All Your GUCs in a Row: max_active_replication_origins",
+          "text": "Chinese PostgreSQL Docs Are Live: All 11 Major Versions"
+        },
+        {
+          "selector": "li [source occurrence 42]",
+          "heading": "Chinese PostgreSQL Docs Are Live: All 11 Major Versions",
+          "text": "Ruohang Feng"
+        },
+        {
+          "selector": "li [source occurrence 43]",
+          "heading": "Chinese PostgreSQL Docs Are Live: All 11 Major Versions",
+          "text": "2026-09-10"
+        },
+        {
+          "selector": "h3 [source occurrence 10]",
+          "heading": "Chinese PostgreSQL Docs Are Live: All 11 Major Versions",
+          "text": "Structured Query Language 101 at Texas Linuxfest"
+        },
+        {
+          "selector": "li [source occurrence 44]",
+          "heading": "Structured Query Language 101 at Texas Linuxfest",
+          "text": "Dave Stokes"
+        },
+        {
+          "selector": "li [source occurrence 45]",
+          "heading": "Structured Query Language 101 at Texas Linuxfest",
+          "text": "2026-09-09"
+        },
+        {
+          "selector": "h3 [source occurrence 11]",
+          "heading": "Structured Query Language 101 at Texas Linuxfest",
+          "text": "30 Years of Postgres Architecture: Tom Lane Interview"
+        },
+        {
+          "selector": "li [source occurrence 46]",
+          "heading": "30 Years of Postgres Architecture: Tom Lane Interview",
+          "text": "Elizabeth Garrett Christensen"
+        },
+        {
+          "selector": "li [source occurrence 47]",
+          "heading": "30 Years of Postgres Architecture: Tom Lane Interview",
+          "text": "2026-09-09"
+        },
+        {
+          "selector": "h3 [source occurrence 12]",
+          "heading": "30 Years of Postgres Architecture: Tom Lane Interview",
+          "text": "100,000 Lines of C Later: pgSafe at PGDay UK 2026"
+        },
+        {
+          "selector": "li [source occurrence 48]",
+          "heading": "100,000 Lines of C Later: pgSafe at PGDay UK 2026",
+          "text": "Jimmy Angelakos"
+        },
+        {
+          "selector": "li [source occurrence 49]",
+          "heading": "100,000 Lines of C Later: pgSafe at PGDay UK 2026",
+          "text": "2026-09-09"
+        },
+        {
+          "selector": "h3 [source occurrence 13]",
+          "heading": "100,000 Lines of C Later: pgSafe at PGDay UK 2026",
+          "text": "Percona Operator for PostgreSQL 3.1.0: Transparent Data Encryption, Logical Repl"
+        },
+        {
+          "selector": "li [source occurrence 50]",
+          "heading": "Percona Operator for PostgreSQL 3.1.0: Transparent Data Encryption, Logical Repl",
+          "text": "Viacheslav Sarzhan"
+        },
+        {
+          "selector": "li [source occurrence 51]",
+          "heading": "Percona Operator for PostgreSQL 3.1.0: Transparent Data Encryption, Logical Repl",
+          "text": "2026-09-09"
+        },
+        {
+          "selector": "h3 [source occurrence 14]",
+          "heading": "Percona Operator for PostgreSQL 3.1.0: Transparent Data Encryption, Logical Repl",
+          "text": "All Your GUCs in a Row: maintenance_work_mem"
+        },
+        {
+          "selector": "li [source occurrence 52]",
+          "heading": "All Your GUCs in a Row: maintenance_work_mem",
+          "text": "Christophe Pettus"
+        },
+        {
+          "selector": "li [source occurrence 53]",
+          "heading": "All Your GUCs in a Row: maintenance_work_mem",
+          "text": "2026-09-09"
+        },
+        {
+          "selector": "h3 [source occurrence 15]",
+          "heading": "All Your GUCs in a Row: maintenance_work_mem",
+          "text": "From the Department of It&rsquo;s About Time: Inter-documentation and image links"
+        },
+        {
+          "selector": "li [source occurrence 54]",
+          "heading": "From the Department of It&rsquo;s About Time: Inter-documentation and image links",
+          "text": "David E. Wheeler"
+        },
+        {
+          "selector": "li [source occurrence 55]",
+          "heading": "From the Department of It&rsquo;s About Time: Inter-documentation and image links",
+          "text": "2026-09-08"
+        },
+        {
+          "selector": "h2 [source occurrence 8]",
+          "heading": "From the Department of It&rsquo;s About Time: Inter-documentation and image links",
+          "text": "Seeing unexpected behavior?"
+        },
+        {
+          "selector": "p [source occurrence 14]",
+          "heading": "Seeing unexpected behavior?",
+          "text": "The PostgreSQL community takes pride in releasing software that reliably stores your data. If you believe you've discovered a bug, please click the button below and follow the instructions on how to submit a bug."
+        }
+      ],
+      "evidence_truncated": false,
+      "extraction_note": "Source HTML including noscript fallback; excludes semantic navigation/footer, scripts and explicit inline hidden content. CSS and JavaScript-enabled visibility require a browser.",
+      "parse_status": "parsed_html",
+      "link_base_url": "https://www.postgresql.org/"
+    },
+    {
+      "url": "https://www.postgresql.org/about/",
+      "robots_allowed": true,
+      "final_url": "https://www.postgresql.org/about/",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "latency_ms": 1018,
+      "response_truncated": false,
+      "redirects": [],
+      "robots_ai_allowed": {
+        "Googlebot": true,
+        "bingbot": true,
+        "OAI-SearchBot": true,
+        "Claude-SearchBot": true,
+        "PerplexityBot": true,
+        "GPTBot": true,
+        "ChatGPT-User": true,
+        "ClaudeBot": true,
+        "Claude-User": true,
+        "Perplexity-User": true,
+        "Google-Extended": true,
+        "Applebot-Extended": true,
+        "meta-externalagent": true
+      },
+      "robots_decisions": {
+        "Googlebot": {
+          "allowed": true,
+          "matched_rule": null,
+          "group": "wildcard"
+        },
+        "bingbot": {
+          "allowed": true,
+          "matched_rule": null,
+          "group": "wildcard"
+        },
+        "OAI-SearchBot": {
+          "allowed": true,
+          "matched_rule": null,
+          "group": "wildcard"
+        },
+        "Claude-SearchBot": {
+          "allowed": true,
+          "matched_rule": null,
+          "group": "wildcard"
+        },
+        "PerplexityBot": {
+          "allowed": true,
+          "matched_rule": null,
+          "group": "wildcard"
+        },
+        "GPTBot": {
+          "allowed": true,
+          "matched_rule": null,
+          "group": "wildcard"
+        },
+        "ChatGPT-User": {
+          "allowed": true,
+          "matched_rule": null,
+          "group": "wildcard"
+        },
+        "ClaudeBot": {
+          "allowed": true,
+          "matched_rule": null,
+          "group": "wildcard"
+        },
+        "Claude-User": {
+          "allowed": true,
+          "matched_rule": null,
+          "group": "wildcard"
+        },
+        "Perplexity-User": {
+          "allowed": true,
+          "matched_rule": null,
+          "group": "wildcard"
+        },
+        "Google-Extended": {
+          "allowed": true,
+          "matched_rule": null,
+          "group": "wildcard"
+        },
+        "Applebot-Extended": {
+          "allowed": true,
+          "matched_rule": null,
+          "group": "wildcard"
+        },
+        "meta-externalagent": {
+          "allowed": true,
+          "matched_rule": null,
+          "group": "wildcard"
+        }
+      },
+      "final_robots_ai_allowed": {
+        "Googlebot": true,
+        "bingbot": true,
+        "OAI-SearchBot": true,
+        "Claude-SearchBot": true,
+        "PerplexityBot": true,
+        "GPTBot": true,
+        "ChatGPT-User": true,
+        "ClaudeBot": true,
+        "Claude-User": true,
+        "Perplexity-User": true,
+        "Google-Extended": true,
+        "Applebot-Extended": true,
+        "meta-externalagent": true
+      },
+      "x_robots_tag": "",
+      "x_robots_tags": [],
+      "last_modified": "",
+      "sample_type": "entity",
+      "title": "PostgreSQL: About",
+      "h1": [
+        "About"
+      ],
+      "language": "en",
+      "base_href": null,
+      "hreflang": [],
+      "word_count": 994,
+      "text_length": 6851,
+      "landmarks": [
+        "footer",
+        "nav"
+      ],
+      "meta_robots": "",
+      "meta_robot_directives": {
+        "robots": "",
+        "googlebot": "",
+        "bingbot": ""
+      },
+      "description": "",
+      "canonical": [],
+      "links_count": 52,
+      "links": [
+        {
+          "href": "/",
+          "text": "PostgreSQL Elephant Logo",
+          "aria_label": "",
+          "selector": "a [source occurrence 1]",
+          "region": "navigation",
+          "url": "https://www.postgresql.org/"
+        },
+        {
+          "href": "/",
+          "text": "Home",
+          "aria_label": "",
+          "selector": "a [source occurrence 2]",
+          "region": "navigation",
+          "url": "https://www.postgresql.org/"
+        },
+        {
+          "href": "/about/",
+          "text": "About",
+          "aria_label": "",
+          "selector": "a [source occurrence 3]",
+          "region": "navigation",
+          "url": "https://www.postgresql.org/about/"
+        },
+        {
+          "href": "/download/",
+          "text": "Download",
+          "aria_label": "",
+          "selector": "a [source occurrence 4]",
+          "region": "navigation",
+          "url": "https://www.postgresql.org/download/"
+        },
+        {
+          "href": "/docs/",
+          "text": "Documentation",
+          "aria_label": "",
+          "selector": "a [source occurrence 5]",
+          "region": "navigation",
+          "url": "https://www.postgresql.org/docs/"
+        },
+        {
+          "href": "/community/",
+          "text": "Community",
+          "aria_label": "",
+          "selector": "a [source occurrence 6]",
+          "region": "navigation",
+          "url": "https://www.postgresql.org/community/"
+        },
+        {
+          "href": "/developer/",
+          "text": "Developers",
+          "aria_label": "",
+          "selector": "a [source occurrence 7]",
+          "region": "navigation",
+          "url": "https://www.postgresql.org/developer/"
+        },
+        {
+          "href": "/support/",
+          "text": "Support",
+          "aria_label": "",
+          "selector": "a [source occurrence 8]",
+          "region": "navigation",
+          "url": "https://www.postgresql.org/support/"
+        },
+        {
+          "href": "/about/donate/",
+          "text": "Donate",
+          "aria_label": "",
+          "selector": "a [source occurrence 9]",
+          "region": "navigation",
+          "url": "https://www.postgresql.org/about/donate/"
+        },
+        {
+          "href": "/account/",
+          "text": "Your account",
+          "aria_label": "",
+          "selector": "a [source occurrence 10]",
+          "region": "navigation",
+          "url": "https://www.postgresql.org/account/"
+        },
+        {
+          "href": "/about/news/postgresql-186-1711-1615-1519-1424-and-19-beta-3-released-3365/",
+          "text": "PostgreSQL 18.6, 17.11, 16.15, 15.19, 14.24 and 19 Beta 3 Released!",
+          "aria_label": "",
+          "selector": "a [source occurrence 11]",
+          "region": "content",
+          "url": "https://www.postgresql.org/about/news/postgresql-186-1711-1615-1519-1424-and-19-beta-3-released-3365/"
+        },
+        {
+          "href": "/about/",
+          "text": "About",
+          "aria_label": "",
+          "selector": "a [source occurrence 12]",
+          "region": "content",
+          "url": "https://www.postgresql.org/about/"
+        },
+        {
+          "href": "/about/governance/",
+          "text": "Governance",
+          "aria_label": "",
+          "selector": "a [source occurrence 13]",
+          "region": "content",
+          "url": "https://www.postgresql.org/about/governance/"
+        },
+        {
+          "href": "/about/policies/",
+          "text": "Policies",
+          "aria_label": "",
+          "selector": "a [source occurrence 14]",
+          "region": "content",
+          "url": "https://www.postgresql.org/about/policies/"
+        },
+        {
+          "href": "/about/featurematrix/",
+          "text": "Feature Matrix",
+          "aria_label": "",
+          "selector": "a [source occurrence 15]",
+          "region": "content",
+          "url": "https://www.postgresql.org/about/featurematrix/"
+        },
+        {
+          "href": "/about/donate/",
+          "text": "Donate",
+          "aria_label": "",
+          "selector": "a [source occurrence 16]",
+          "region": "content",
+          "url": "https://www.postgresql.org/about/donate/"
+        },
+        {
+          "href": "/docs/current/history.html",
+          "text": "History",
+          "aria_label": "",
+          "selector": "a [source occurrence 17]",
+          "region": "content",
+          "url": "https://www.postgresql.org/docs/current/history.html"
+        },
+        {
+          "href": "/about/sponsors/",
+          "text": "Sponsors",
+          "aria_label": "",
+          "selector": "a [source occurrence 18]",
+          "region": "content",
+          "url": "https://www.postgresql.org/about/sponsors/"
+        },
+        {
+          "href": "/about/contributing/",
+          "text": "Contributing",
+          "aria_label": "",
+          "selector": "a [source occurrence 19]",
+          "region": "content",
+          "url": "https://www.postgresql.org/about/contributing/"
+        },
+        {
+          "href": "/about/financial/",
+          "text": "Financial",
+          "aria_label": "",
+          "selector": "a [source occurrence 20]",
+          "region": "content",
+          "url": "https://www.postgresql.org/about/financial/"
+        },
+        {
+          "href": "/about/servers/",
+          "text": "Servers",
+          "aria_label": "",
+          "selector": "a [source occurrence 21]",
+          "region": "content",
+          "url": "https://www.postgresql.org/about/servers/"
+        },
+        {
+          "href": "/about/newsarchive/",
+          "text": "Latest News",
+          "aria_label": "",
+          "selector": "a [source occurrence 22]",
+          "region": "content",
+          "url": "https://www.postgresql.org/about/newsarchive/"
+        },
+        {
+          "href": "/about/events/",
+          "text": "Upcoming Events",
+          "aria_label": "",
+          "selector": "a [source occurrence 23]",
+          "region": "content",
+          "url": "https://www.postgresql.org/about/events/"
+        },
+        {
+          "href": "/about/eventarchive/",
+          "text": "Past events",
+          "aria_label": "",
+          "selector": "a [source occurrence 24]",
+          "region": "content",
+          "url": "https://www.postgresql.org/about/eventarchive/"
+        },
+        {
+          "href": "/about/press/",
+          "text": "Press",
+          "aria_label": "",
+          "selector": "a [source occurrence 25]",
+          "region": "content",
+          "url": "https://www.postgresql.org/about/press/"
+        },
+        {
+          "href": "/about/licence/",
+          "text": "Licence",
+          "aria_label": "",
+          "selector": "a [source occurrence 26]",
+          "region": "content",
+          "url": "https://www.postgresql.org/about/licence/"
+        },
+        {
+          "href": "/docs/current/history.html",
+          "text": "POSTGRES",
+          "aria_label": "",
+          "selector": "a [source occurrence 27]",
+          "region": "content",
+          "url": "https://www.postgresql.org/docs/current/history.html"
+        },
+        {
+          "href": "/download/",
+          "text": "all major operating systems",
+          "aria_label": "",
+          "selector": "a [source occurrence 28]",
+          "region": "content",
+          "url": "https://www.postgresql.org/download/"
+        },
+        {
+          "href": "https://en.wikipedia.org/wiki/ACID",
+          "text": "ACID",
+          "aria_label": "",
+          "selector": "a [source occurrence 29]",
+          "region": "content",
+          "url": "https://en.wikipedia.org/wiki/ACID"
+        },
+        {
+          "href": "https://postgis.net/",
+          "text": "PostGIS",
+          "aria_label": "",
+          "selector": "a [source occurrence 30]",
+          "region": "content",
+          "url": "https://postgis.net/"
+        },
+        {
+          "href": "/docs/current/tutorial.html",
+          "text": "Getting started",
+          "aria_label": "",
+          "selector": "a [source occurrence 31]",
+          "region": "content",
+          "url": "https://www.postgresql.org/docs/current/tutorial.html"
+        },
+        {
+          "href": "/about/featurematrix/",
+          "text": "many features",
+          "aria_label": "",
+          "selector": "a [source occurrence 32]",
+          "region": "content",
+          "url": "https://www.postgresql.org/about/featurematrix/"
+        },
+        {
+          "href": "/about/license/",
+          "text": "free and open source",
+          "aria_label": "",
+          "selector": "a [source occurrence 33]",
+          "region": "content",
+          "url": "https://www.postgresql.org/about/license/"
+        },
+        {
+          "href": "/docs/current/xplang.html",
+          "text": "different programming languages",
+          "aria_label": "",
+          "selector": "a [source occurrence 34]",
+          "region": "content",
+          "url": "https://www.postgresql.org/docs/current/xplang.html"
+        },
+        {
+          "href": "/docs/current/features.html",
+          "text": "SQL standard",
+          "aria_label": "",
+          "selector": "a [source occurrence 35]",
+          "region": "content",
+          "url": "https://www.postgresql.org/docs/current/features.html"
+        },
+        {
+          "href": "/developer/roadmap/",
+          "text": "major release",
+          "aria_label": "",
+          "selector": "a [source occurrence 36]",
+          "region": "content",
+          "url": "https://www.postgresql.org/developer/roadmap/"
+        },
+        {
+          "href": "/docs/",
+          "text": "documentation",
+          "aria_label": "",
+          "selector": "a [source occurrence 37]",
+          "region": "content",
+          "url": "https://www.postgresql.org/docs/"
+        },
+        {
+          "href": "/docs/",
+          "text": "world-renowned documentation",
+          "aria_label": "",
+          "selector": "a [source occurrence 38]",
+          "region": "content",
+          "url": "https://www.postgresql.org/docs/"
+        },
+        {
+          "href": "/list/",
+          "text": "mailing lists",
+          "aria_label": "",
+          "selector": "a [source occurrence 39]",
+          "region": "content",
+          "url": "https://www.postgresql.org/list/"
+        },
+        {
+          "href": "/community/",
+          "text": "community",
+          "aria_label": "",
+          "selector": "a [source occurrence 40]",
+          "region": "content",
+          "url": "https://www.postgresql.org/community/"
+        },
+        {
+          "href": "/about/events/",
+          "text": "events",
+          "aria_label": "",
+          "selector": "a [source occurrence 41]",
+          "region": "content",
+          "url": "https://www.postgresql.org/about/events/"
+        },
+        {
+          "href": "/community/user-groups/",
+          "text": "local user groups",
+          "aria_label": "",
+          "selector": "a [source occurrence 42]",
+          "region": "content",
+          "url": "https://www.postgresql.org/community/user-groups/"
+        },
+        {
+          "href": "http://www.proximitygroup.com",
+          "text": "Proximity Group",
+          "aria_label": "",
+          "selector": "a [source occurrence 43]",
+          "region": "content",
+          "url": "http://www.proximitygroup.com"
+        },
+        {
+          "href": "http://www.bitleap.com/",
+          "text": "BitLeap LLC",
+          "aria_label": "",
+          "selector": "a [source occurrence 45]",
+          "region": "content",
+          "url": "http://www.bitleap.com/"
+        },
+        {
+          "href": "http://flightaware.com",
+          "text": "FlightAware.com",
+          "aria_label": "",
+          "selector": "a [source occurrence 46]",
+          "region": "content",
+          "url": "http://flightaware.com"
+        },
+        {
+          "href": "https://www.syntheticgenomics.com/",
+          "text": "Synthetic Genomics",
+          "aria_label": "",
+          "selector": "a [source occurrence 47]",
+          "region": "content",
+          "url": "https://www.syntheticgenomics.com/"
+        },
+        {
+          "href": "#myCarousel",
+          "text": "",
+          "aria_label": "",
+          "selector": "a [source occurrence 48]",
+          "region": "content",
+          "url": "https://www.postgresql.org/about/#myCarousel"
+        },
+        {
+          "href": "#myCarousel",
+          "text": "",
+          "aria_label": "",
+          "selector": "a [source occurrence 49]",
+          "region": "content",
+          "url": "https://www.postgresql.org/about/#myCarousel"
+        },
+        {
+          "href": "/about/policies/",
+          "text": "Policies",
+          "aria_label": "",
+          "selector": "a [source occurrence 50]",
+          "region": "navigation",
+          "url": "https://www.postgresql.org/about/policies/"
+        },
+        {
+          "href": "/about/policies/coc/",
+          "text": "Code of Conduct",
+          "aria_label": "",
+          "selector": "a [source occurrence 51]",
+          "region": "navigation",
+          "url": "https://www.postgresql.org/about/policies/coc/"
+        },
+        {
+          "href": "/about/",
+          "text": "About PostgreSQL",
+          "aria_label": "",
+          "selector": "a [source occurrence 52]",
+          "region": "navigation",
+          "url": "https://www.postgresql.org/about/"
+        },
+        {
+          "href": "/about/contact/",
+          "text": "Contact",
+          "aria_label": "",
+          "selector": "a [source occurrence 53]",
+          "region": "navigation",
+          "url": "https://www.postgresql.org/about/contact/"
+        }
+      ],
+      "controls": [
+        {
+          "tag": "input",
+          "selector": "#navbar-toggler",
+          "type": "checkbox",
+          "id": "navbar-toggler",
+          "name": "",
+          "aria_label": "Toggle navigation",
+          "placeholder": ""
+        },
+        {
+          "tag": "input",
+          "selector": "#q",
+          "type": "text",
+          "id": "q",
+          "name": "q",
+          "aria_label": "",
+          "placeholder": "Search for..."
+        },
+        {
+          "tag": "button",
+          "selector": "button [source occurrence 1]",
+          "text": "",
+          "aria_label": ""
+        },
+        {
+          "tag": "button",
+          "selector": "#btn-theme",
+          "text": "",
+          "aria_label": ""
+        }
+      ],
+      "images": {
+        "count": 2,
+        "missing_alt": 0,
+        "empty_alt": 0,
+        "items": [
+          {
+            "src": "/media/img/about/press/elephant.png",
+            "alt": "PostgreSQL Elephant Logo",
+            "selector": "img [source occurrence 1]"
+          },
+          {
+            "src": "/media/img/about/press/elephant.png",
+            "alt": "PostgreSQL Elephant Logo",
+            "selector": "img [source occurrence 2]"
+          }
+        ]
+      },
+      "jsonld": {
+        "blocks": 0,
+        "parse_errors": 0,
+        "errors": [],
+        "types": [],
+        "data": [],
+        "data_omitted": false
+      },
+      "text_sample": "August 13, 2026: PostgreSQL 18.6, 17.11, 16.15, 15.19, 14.24 and 19 Beta 3 Released! Quick Links About Governance Policies Feature Matrix Donate History Sponsors Contributing Financial Servers Latest News Upcoming Events Past events Press Licence About What is PostgreSQL? PostgreSQL is a powerful, open source object-relational database system that uses and extends the SQL language combined with many features that safely store and scale the most complicated data workloads. The origins of PostgreSQL date back to 1986 as part of the POSTGRES project at the University of California at Berkeley and has nearly 40 years of active development on the core platform. PostgreSQL has earned a strong reputation for its proven architecture, reliability, data integrity, robust feature set, extensibility, and the dedication of the open source community behind the software to consistently deliver performant and innovative solutions. PostgreSQL runs on all major operating systems , has been ACID -compliant since 2001, and has powerful add-ons such as the popular PostGIS geospatial database extender. It is no surprise that PostgreSQL has become the open source relational database of choice for many pe",
+      "main_text": "August 13, 2026: PostgreSQL 18.6, 17.11, 16.15, 15.19, 14.24 and 19 Beta 3 Released! Quick Links About Governance Policies Feature Matrix Donate History Sponsors Contributing Financial Servers Latest News Upcoming Events Past events Press Licence About What is PostgreSQL? PostgreSQL is a powerful, open source object-relational database system that uses and extends the SQL language combined with many features that safely store and scale the most complicated data workloads. The origins of PostgreSQL date back to 1986 as part of the POSTGRES project at the University of California at Berkeley and has nearly 40 years of active development on the core platform. PostgreSQL has earned a strong reputation for its proven architecture, reliability, data integrity, robust feature set, extensibility, and the dedication of the open source community behind the software to consistently deliver performant and innovative solutions. PostgreSQL runs on all major operating systems , has been ACID -compliant since 2001, and has powerful add-ons such as the popular PostGIS geospatial database extender. It is no surprise that PostgreSQL has become the open source relational database of choice for many people and organisations. Getting started with using PostgreSQL has never been easier - pick a project you want to build, and let PostgreSQL safely and robustly store your data. Why use PostgreSQL? PostgreSQL comes with many features aimed to help developers build applications, administrators to protect data integrity and build fault-tolerant environments, and help you manage your data no matter how big or small the dataset. In addition to being free and open source , PostgreSQL is highly extensible. For example, you can define your own data types, build out custom functions, even write code from different programming languages without recompiling your database! PostgreSQL tries to conform with the SQL standard where such conformance does not contradict traditional features or could lead to poor architectural decisions. Many of the features required by the SQL standard are supported, though sometimes with slightly differing syntax or function. Further moves towards conformance can be expected over time. As of the version 18 release in September 2025, PostgreSQL conforms to at least 170 of the 177 mandatory features for SQL:2023 Core conformance. As of this writing, no relational database meets full conformance with this standard. Below is an inexhaustive list of various features found in PostgreSQL, with more being added in every major release : Data Types Primitives: Integer, Numeric, String, Boolean Structured: Date/Time, Array, Range / Multirange, UUID Document: JSON/JSONB, XML, Key-value (Hstore) Geometry: Point, Line, Circle, Polygon Customizations: Composite, Custom Types Data Integrity UNIQUE, NOT NULL Primary Keys Foreign Keys Exclusion Constraints Explicit Locks, Advisory Locks Concurrency, Performance Indexing: B-tree, Multicolumn, Expressions, Partial Advanced Indexing: GiST, SP-Gist, KNN Gist, GIN, BRIN, Covering indexes, Bloom filters Sophisticated query planner / optimizer, index-only scans, multicolumn statistics Transactions, Nested Transactions (via savepoints) Multi-Version concurrency Control (MVCC) Parallelization of read queries and building B-tree indexes Table partitioning All transaction isolation levels defined in the SQL standard, including Serializable Just-in-time (JIT) compilation of expressions Asynchronous I/O (AIO) Reliability, Disaster Recovery Write-ahead Logging (WAL) Replication: Asynchronous, Synchronous, Logical Point-in-time-recovery (PITR), active standbys Tablespaces Security Authentication: GSSAPI, SSPI, LDAP, SCRAM-SHA-256, Certificate, OAuth 2.0, and more Robust access-control system Column and row-level security Multi-factor authentication with certificates and an additional method Extensibility Stored functions and procedures Procedural Languages: PL/pgSQL, Perl, Python, and Tcl. There are other languages available through extensions, e.g. Java, JavaScript (V8), R, Lua, and Rust SQL/JSON constructors, query functions, path expressions, and JSON_TABLE Foreign data wrappers: connect to other databases or streams with a standard SQL interface Customizable storage interface for tables Many extensions that provide additional functionality, including PostGIS Internationalisation, Text Search Support for international character sets, e.g. through ICU collations Case-insensitive and accent-insensitive collations Full-text search There are many more features that you can discover in the PostgreSQL documentation . Additionally, PostgreSQL is highly extensible: many features, such as indexes, have defined APIs so that you can build out with PostgreSQL to solve your challenges. PostgreSQL has been proven to be highly scalable both in the sheer quantity of data it can manage and in the number of concurrent users it can accommodate. There are active PostgreSQL clusters in production environments that manage many terabytes of data, and specialized systems that manage petabytes. Any questions? The first place to go to for any questions on PostgreSQL is its world-renowned documentation , which discusses how to use PostgreSQL in-depth. We also have many mailing lists where you can connect and participate in the community . There are also many events and local user groups where you can connect with other PostgreSQL users. Our users us \"Our systems are deployed in high-availability environments and the combination of PostgreSQL on Linux has enabled us to deploy and support systems without any need for a large support team.\" Tim Allen, Senior Software Developer, Proximity Group \"PostgreSQL handles virtually all the standard SQL constructs. It is easy (relatively speaking) to administer, it is fast, it is efficient, it has a great API, and it supports ODBC, why would you choose something else?\" Mark Woodward, Mohawk Software PostgreSQL has the feature set of an enterprise level DBMS and should be strongly considered when researching both open source and commercial database servers. Lindsay Snider, Founding Partner, BitLeap LLC There was quite a bit of debate when we were deciding what tools would best serve as the foundation of FlightAware's ambitious goals. For the underlying database, however, the choice to use PostgreSQL was quite clear from the very beginning. David McNett, Chief Information Officer, FlightAware.com Postgres 9.5 has proven itself to be utterly stable, remarkably performant, and, in my opinion, the best mixed relational-document store data storage engine on the market at this time. Mike Sofen, Synthetic Genomics What's a database project without statistics? 35+ Years Development 725+ Contributors 61,000+ Commits 70+ Local User Groups 1,780,000+ Lines of C 720+ Events Millions of Happy Users ∞ Data Stored",
+      "passages": [
+        {
+          "selector": "h2 [source occurrence 1]",
+          "heading": "",
+          "text": "Quick Links"
+        },
+        {
+          "selector": "li [source occurrence 10]",
+          "heading": "Quick Links",
+          "text": "About"
+        },
+        {
+          "selector": "li [source occurrence 11]",
+          "heading": "Quick Links",
+          "text": "Governance"
+        },
+        {
+          "selector": "li [source occurrence 12]",
+          "heading": "Quick Links",
+          "text": "Policies"
+        },
+        {
+          "selector": "li [source occurrence 13]",
+          "heading": "Quick Links",
+          "text": "Feature Matrix"
+        },
+        {
+          "selector": "li [source occurrence 14]",
+          "heading": "Quick Links",
+          "text": "Donate"
+        },
+        {
+          "selector": "li [source occurrence 15]",
+          "heading": "Quick Links",
+          "text": "History"
+        },
+        {
+          "selector": "li [source occurrence 17]",
+          "heading": "Quick Links",
+          "text": "Contributing"
+        },
+        {
+          "selector": "li [source occurrence 18]",
+          "heading": "Quick Links",
+          "text": "Financial"
+        },
+        {
+          "selector": "li [source occurrence 19]",
+          "heading": "Quick Links",
+          "text": "Servers"
+        },
+        {
+          "selector": "li [source occurrence 16]",
+          "heading": "Quick Links",
+          "text": "Sponsors Contributing Financial Servers"
+        },
+        {
+          "selector": "li [source occurrence 20]",
+          "heading": "Quick Links",
+          "text": "Latest News"
+        },
+        {
+          "selector": "li [source occurrence 22]",
+          "heading": "Quick Links",
+          "text": "Past events"
+        },
+        {
+          "selector": "li [source occurrence 21]",
+          "heading": "Quick Links",
+          "text": "Upcoming Events Past events"
+        },
+        {
+          "selector": "li [source occurrence 23]",
+          "heading": "Quick Links",
+          "text": "Press"
+        },
+        {
+          "selector": "li [source occurrence 24]",
+          "heading": "Quick Links",
+          "text": "Licence"
+        },
+        {
+          "selector": "h1 [source occurrence 1]",
+          "heading": "Quick Links",
+          "text": "About"
+        },
+        {
+          "selector": "h2 [source occurrence 2]",
+          "heading": "About",
+          "text": "What is PostgreSQL?"
+        },
+        {
+          "selector": "p [source occurrence 1]",
+          "heading": "What is PostgreSQL?",
+          "text": "PostgreSQL is a powerful, open source object-relational database system that uses and extends the SQL language combined with many features that safely store and scale the most complicated data workloads. The origins of PostgreSQL date back to 1986 as part of the POSTGRES project at the University of California at Berkeley and has nearly 40 years of active development on the core platform."
+        },
+        {
+          "selector": "p [source occurrence 2]",
+          "heading": "What is PostgreSQL?",
+          "text": "PostgreSQL has earned a strong reputation for its proven architecture, reliability, data integrity, robust feature set, extensibility, and the dedication of the open source community behind the software to consistently deliver performant and innovative solutions. PostgreSQL runs on all major operating systems , has been ACID -compliant since 2001, and has powerful add-ons such as the popular PostGIS geospatial database extender. It is no surprise that PostgreSQL has become the open source relational database of choice for many people and organisations."
+        },
+        {
+          "selector": "p [source occurrence 3]",
+          "heading": "What is PostgreSQL?",
+          "text": "Getting started with using PostgreSQL has never been easier - pick a project you want to build, and let PostgreSQL safely and robustly store your data."
+        },
+        {
+          "selector": "h2 [source occurrence 3]",
+          "heading": "What is PostgreSQL?",
+          "text": "Why use PostgreSQL?"
+        },
+        {
+          "selector": "p [source occurrence 4]",
+          "heading": "Why use PostgreSQL?",
+          "text": "PostgreSQL comes with many features aimed to help developers build applications, administrators to protect data integrity and build fault-tolerant environments, and help you manage your data no matter how big or small the dataset. In addition to being free and open source , PostgreSQL is highly extensible. For example, you can define your own data types, build out custom functions, even write code from different programming languages without recompiling your database!"
+        },
+        {
+          "selector": "p [source occurrence 5]",
+          "heading": "Why use PostgreSQL?",
+          "text": "PostgreSQL tries to conform with the SQL standard where such conformance does not contradict traditional features or could lead to poor architectural decisions. Many of the features required by the SQL standard are supported, though sometimes with slightly differing syntax or function. Further moves towards conformance can be expected over time. As of the version 18 release in September 2025, PostgreSQL conforms to at least 170 of the 177 mandatory features for SQL:2023 Core conformance. As of this writing, no relational database meets full conformance with this standard."
+        },
+        {
+          "selector": "p [source occurrence 6]",
+          "heading": "Why use PostgreSQL?",
+          "text": "Below is an inexhaustive list of various features found in PostgreSQL, with more being added in every major release :"
+        },
+        {
+          "selector": "li [source occurrence 26]",
+          "heading": "Why use PostgreSQL?",
+          "text": "Primitives: Integer, Numeric, String, Boolean"
+        },
+        {
+          "selector": "li [source occurrence 27]",
+          "heading": "Why use PostgreSQL?",
+          "text": "Structured: Date/Time, Array, Range / Multirange, UUID"
+        },
+        {
+          "selector": "li [source occurrence 28]",
+          "heading": "Why use PostgreSQL?",
+          "text": "Document: JSON/JSONB, XML, Key-value (Hstore)"
+        },
+        {
+          "selector": "li [source occurrence 29]",
+          "heading": "Why use PostgreSQL?",
+          "text": "Geometry: Point, Line, Circle, Polygon"
+        },
+        {
+          "selector": "li [source occurrence 30]",
+          "heading": "Why use PostgreSQL?",
+          "text": "Customizations: Composite, Custom Types"
+        },
+        {
+          "selector": "li [source occurrence 25]",
+          "heading": "Why use PostgreSQL?",
+          "text": "Data Types Primitives: Integer, Numeric, String, Boolean Structured: Date/Time, Array, Range / Multirange, UUID Document: JSON/JSONB, XML, Key-value (Hstore) Geometry: Point, Line, Circle, Polygon Customizations: Composite, Custom Types"
+        },
+        {
+          "selector": "li [source occurrence 32]",
+          "heading": "Why use PostgreSQL?",
+          "text": "UNIQUE, NOT NULL"
+        },
+        {
+          "selector": "li [source occurrence 33]",
+          "heading": "Why use PostgreSQL?",
+          "text": "Primary Keys"
+        },
+        {
+          "selector": "li [source occurrence 34]",
+          "heading": "Why use PostgreSQL?",
+          "text": "Foreign Keys"
+        },
+        {
+          "selector": "li [source occurrence 35]",
+          "heading": "Why use PostgreSQL?",
+          "text": "Exclusion Constraints"
+        },
+        {
+          "selector": "li [source occurrence 36]",
+          "heading": "Why use PostgreSQL?",
+          "text": "Explicit Locks, Advisory Locks"
+        },
+        {
+          "selector": "li [source occurrence 31]",
+          "heading": "Why use PostgreSQL?",
+          "text": "Data Integrity UNIQUE, NOT NULL Primary Keys Foreign Keys Exclusion Constraints Explicit Locks, Advisory Locks"
+        },
+        {
+          "selector": "li [source occurrence 38]",
+          "heading": "Why use PostgreSQL?",
+          "text": "Indexing: B-tree, Multicolumn, Expressions, Partial"
+        },
+        {
+          "selector": "li [source occurrence 39]",
+          "heading": "Why use PostgreSQL?",
+          "text": "Advanced Indexing: GiST, SP-Gist, KNN Gist, GIN, BRIN, Covering indexes, Bloom filters"
+        },
+        {
+          "selector": "li [source occurrence 40]",
+          "heading": "Why use PostgreSQL?",
+          "text": "Sophisticated query planner / optimizer, index-only scans, multicolumn statistics"
+        },
+        {
+          "selector": "li [source occurrence 41]",
+          "heading": "Why use PostgreSQL?",
+          "text": "Transactions, Nested Transactions (via savepoints)"
+        },
+        {
+          "selector": "li [source occurrence 42]",
+          "heading": "Why use PostgreSQL?",
+          "text": "Multi-Version concurrency Control (MVCC)"
+        },
+        {
+          "selector": "li [source occurrence 43]",
+          "heading": "Why use PostgreSQL?",
+          "text": "Parallelization of read queries and building B-tree indexes"
+        },
+        {
+          "selector": "li [source occurrence 44]",
+          "heading": "Why use PostgreSQL?",
+          "text": "Table partitioning"
+        },
+        {
+          "selector": "li [source occurrence 45]",
+          "heading": "Why use PostgreSQL?",
+          "text": "All transaction isolation levels defined in the SQL standard, including Serializable"
+        },
+        {
+          "selector": "li [source occurrence 46]",
+          "heading": "Why use PostgreSQL?",
+          "text": "Just-in-time (JIT) compilation of expressions"
+        },
+        {
+          "selector": "li [source occurrence 47]",
+          "heading": "Why use PostgreSQL?",
+          "text": "Asynchronous I/O (AIO)"
+        },
+        {
+          "selector": "li [source occurrence 37]",
+          "heading": "Why use PostgreSQL?",
+          "text": "Concurrency, Performance Indexing: B-tree, Multicolumn, Expressions, Partial Advanced Indexing: GiST, SP-Gist, KNN Gist, GIN, BRIN, Covering indexes, Bloom filters Sophisticated query planner / optimizer, index-only scans, multicolumn statistics Transactions, Nested Transactions (via savepoints) Multi-Version concurrency Control (MVCC) Parallelization of read queries and building B-tree indexes Table partitioning All transaction isolation levels defined in the SQL standard, including Serializable Just-in-time (JIT) compilation of expressions Asynchronous I/O (AIO)"
+        },
+        {
+          "selector": "li [source occurrence 49]",
+          "heading": "Why use PostgreSQL?",
+          "text": "Write-ahead Logging (WAL)"
+        },
+        {
+          "selector": "li [source occurrence 50]",
+          "heading": "Why use PostgreSQL?",
+          "text": "Replication: Asynchronous, Synchronous, Logical"
+        },
+        {
+          "selector": "li [source occurrence 51]",
+          "heading": "Why use PostgreSQL?",
+          "text": "Point-in-time-recovery (PITR), active standbys"
+        },
+        {
+          "selector": "li [source occurrence 52]",
+          "heading": "Why use PostgreSQL?",
+          "text": "Tablespaces"
+        },
+        {
+          "selector": "li [source occurrence 48]",
+          "heading": "Why use PostgreSQL?",
+          "text": "Reliability, Disaster Recovery Write-ahead Logging (WAL) Replication: Asynchronous, Synchronous, Logical Point-in-time-recovery (PITR), active standbys Tablespaces"
+        },
+        {
+          "selector": "li [source occurrence 54]",
+          "heading": "Why use PostgreSQL?",
+          "text": "Authentication: GSSAPI, SSPI, LDAP, SCRAM-SHA-256, Certificate, OAuth 2.0, and more"
+        },
+        {
+          "selector": "li [source occurrence 55]",
+          "heading": "Why use PostgreSQL?",
+          "text": "Robust access-control system"
+        },
+        {
+          "selector": "li [source occurrence 56]",
+          "heading": "Why use PostgreSQL?",
+          "text": "Column and row-level security"
+        },
+        {
+          "selector": "li [source occurrence 57]",
+          "heading": "Why use PostgreSQL?",
+          "text": "Multi-factor authentication with certificates and an additional method"
+        },
+        {
+          "selector": "li [source occurrence 53]",
+          "heading": "Why use PostgreSQL?",
+          "text": "Security Authentication: GSSAPI, SSPI, LDAP, SCRAM-SHA-256, Certificate, OAuth 2.0, and more Robust access-control system Column and row-level security Multi-factor authentication with certificates and an additional method"
+        },
+        {
+          "selector": "li [source occurrence 59]",
+          "heading": "Why use PostgreSQL?",
+          "text": "Stored functions and procedures"
+        },
+        {
+          "selector": "li [source occurrence 60]",
+          "heading": "Why use PostgreSQL?",
+          "text": "Procedural Languages: PL/pgSQL, Perl, Python, and Tcl. There are other languages available through extensions, e.g. Java, JavaScript (V8), R, Lua, and Rust"
+        },
+        {
+          "selector": "li [source occurrence 61]",
+          "heading": "Why use PostgreSQL?",
+          "text": "SQL/JSON constructors, query functions, path expressions, and JSON_TABLE"
+        },
+        {
+          "selector": "li [source occurrence 62]",
+          "heading": "Why use PostgreSQL?",
+          "text": "Foreign data wrappers: connect to other databases or streams with a standard SQL interface"
+        },
+        {
+          "selector": "li [source occurrence 63]",
+          "heading": "Why use PostgreSQL?",
+          "text": "Customizable storage interface for tables"
+        },
+        {
+          "selector": "li [source occurrence 64]",
+          "heading": "Why use PostgreSQL?",
+          "text": "Many extensions that provide additional functionality, including PostGIS"
+        },
+        {
+          "selector": "li [source occurrence 58]",
+          "heading": "Why use PostgreSQL?",
+          "text": "Extensibility Stored functions and procedures Procedural Languages: PL/pgSQL, Perl, Python, and Tcl. There are other languages available through extensions, e.g. Java, JavaScript (V8), R, Lua, and Rust SQL/JSON constructors, query functions, path expressions, and JSON_TABLE Foreign data wrappers: connect to other databases or streams with a standard SQL interface Customizable storage interface for tables Many extensions that provide additional functionality, including PostGIS"
+        },
+        {
+          "selector": "li [source occurrence 66]",
+          "heading": "Why use PostgreSQL?",
+          "text": "Support for international character sets, e.g. through ICU collations"
+        },
+        {
+          "selector": "li [source occurrence 67]",
+          "heading": "Why use PostgreSQL?",
+          "text": "Case-insensitive and accent-insensitive collations"
+        },
+        {
+          "selector": "li [source occurrence 68]",
+          "heading": "Why use PostgreSQL?",
+          "text": "Full-text search"
+        },
+        {
+          "selector": "li [source occurrence 65]",
+          "heading": "Why use PostgreSQL?",
+          "text": "Internationalisation, Text Search Support for international character sets, e.g. through ICU collations Case-insensitive and accent-insensitive collations Full-text search"
+        },
+        {
+          "selector": "p [source occurrence 7]",
+          "heading": "Why use PostgreSQL?",
+          "text": "There are many more features that you can discover in the PostgreSQL documentation . Additionally, PostgreSQL is highly extensible: many features, such as indexes, have defined APIs so that you can build out with PostgreSQL to solve your challenges."
+        },
+        {
+          "selector": "p [source occurrence 8]",
+          "heading": "Why use PostgreSQL?",
+          "text": "PostgreSQL has been proven to be highly scalable both in the sheer quantity of data it can manage and in the number of concurrent users it can accommodate. There are active PostgreSQL clusters in production environments that manage many terabytes of data, and specialized systems that manage petabytes."
+        },
+        {
+          "selector": "h2 [source occurrence 4]",
+          "heading": "Why use PostgreSQL?",
+          "text": "Any questions?"
+        },
+        {
+          "selector": "p [source occurrence 9]",
+          "heading": "Any questions?",
+          "text": "The first place to go to for any questions on PostgreSQL is its world-renowned documentation , which discusses how to use PostgreSQL in-depth."
+        },
+        {
+          "selector": "p [source occurrence 10]",
+          "heading": "Any questions?",
+          "text": "We also have many mailing lists where you can connect and participate in the community . There are also many events and local user groups where you can connect with other PostgreSQL users."
+        },
+        {
+          "selector": "h2 [source occurrence 5]",
+          "heading": "Any questions?",
+          "text": "Our users us"
+        },
+        {
+          "selector": "p [source occurrence 11]",
+          "heading": "Our users us",
+          "text": "\"Our systems are deployed in high-availability environments and the combination of PostgreSQL on Linux has enabled us to deploy and support systems without any need for a large support team.\""
+        },
+        {
+          "selector": "p [source occurrence 12]",
+          "heading": "Our users us",
+          "text": "Tim Allen, Senior Software Developer, Proximity Group"
+        },
+        {
+          "selector": "p [source occurrence 13]",
+          "heading": "Our users us",
+          "text": "\"PostgreSQL handles virtually all the standard SQL constructs. It is easy (relatively speaking) to administer, it is fast, it is efficient, it has a great API, and it supports ODBC, why would you choose something else?\""
+        },
+        {
+          "selector": "p [source occurrence 14]",
+          "heading": "Our users us",
+          "text": "Mark Woodward, Mohawk Software"
+        },
+        {
+          "selector": "p [source occurrence 15]",
+          "heading": "Our users us",
+          "text": "PostgreSQL has the feature set of an enterprise level DBMS and should be strongly considered when researching both open source and commercial database servers."
+        },
+        {
+          "selector": "p [source occurrence 16]",
+          "heading": "Our users us",
+          "text": "Lindsay Snider, Founding Partner, BitLeap LLC"
+        },
+        {
+          "selector": "p [source occurrence 17]",
+          "heading": "Our users us",
+          "text": "There was quite a bit of debate when we were deciding what tools would best serve as the foundation of FlightAware's ambitious goals. For the underlying database, however, the choice to use PostgreSQL was quite clear from the very beginning."
+        },
+        {
+          "selector": "p [source occurrence 18]",
+          "heading": "Our users us",
+          "text": "David McNett, Chief Information Officer, FlightAware.com"
+        },
+        {
+          "selector": "p [source occurrence 19]",
+          "heading": "Our users us",
+          "text": "Postgres 9.5 has proven itself to be utterly stable, remarkably performant, and, in my opinion, the best mixed relational-document store data storage engine on the market at this time."
+        },
+        {
+          "selector": "p [source occurrence 20]",
+          "heading": "Our users us",
+          "text": "Mike Sofen, Synthetic Genomics"
+        },
+        {
+          "selector": "h2 [source occurrence 6]",
+          "heading": "Our users us",
+          "text": "What's a database project without statistics?"
+        },
+        {
+          "selector": "h3 [source occurrence 1]",
+          "heading": "What's a database project without statistics?",
+          "text": "35+ Years Development"
+        },
+        {
+          "selector": "h3 [source occurrence 2]",
+          "heading": "35+ Years Development",
+          "text": "725+ Contributors"
+        },
+        {
+          "selector": "h3 [source occurrence 3]",
+          "heading": "725+ Contributors",
+          "text": "61,000+ Commits"
+        },
+        {
+          "selector": "h3 [source occurrence 4]",
+          "heading": "61,000+ Commits",
+          "text": "70+ Local User Groups"
+        },
+        {
+          "selector": "h3 [source occurrence 5]",
+          "heading": "70+ Local User Groups",
+          "text": "1,780,000+ Lines of C"
+        },
+        {
+          "selector": "h3 [source occurrence 6]",
+          "heading": "1,780,000+ Lines of C",
+          "text": "720+ Events"
+        },
+        {
+          "selector": "h3 [source occurrence 7]",
+          "heading": "720+ Events",
+          "text": "Millions of Happy Users"
+        },
+        {
+          "selector": "h3 [source occurrence 8]",
+          "heading": "Millions of Happy Users",
+          "text": "∞ Data Stored"
+        }
+      ],
+      "evidence_truncated": false,
+      "extraction_note": "Source HTML including noscript fallback; excludes semantic navigation/footer, scripts and explicit inline hidden content. CSS and JavaScript-enabled visibility require a browser.",
+      "parse_status": "parsed_html",
+      "link_base_url": "https://www.postgresql.org/about/"
+    },
+    {
+      "url": "https://www.postgresql.org/docs/",
+      "robots_allowed": true,
+      "final_url": "https://www.postgresql.org/docs/",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "latency_ms": 813,
+      "response_truncated": false,
+      "redirects": [],
+      "robots_ai_allowed": {
+        "Googlebot": true,
+        "bingbot": true,
+        "OAI-SearchBot": true,
+        "Claude-SearchBot": true,
+        "PerplexityBot": true,
+        "GPTBot": true,
+        "ChatGPT-User": true,
+        "ClaudeBot": true,
+        "Claude-User": true,
+        "Perplexity-User": true,
+        "Google-Extended": true,
+        "Applebot-Extended": true,
+        "meta-externalagent": true
+      },
+      "robots_decisions": {
+        "Googlebot": {
+          "allowed": true,
+          "matched_rule": null,
+          "group": "wildcard"
+        },
+        "bingbot": {
+          "allowed": true,
+          "matched_rule": null,
+          "group": "wildcard"
+        },
+        "OAI-SearchBot": {
+          "allowed": true,
+          "matched_rule": null,
+          "group": "wildcard"
+        },
+        "Claude-SearchBot": {
+          "allowed": true,
+          "matched_rule": null,
+          "group": "wildcard"
+        },
+        "PerplexityBot": {
+          "allowed": true,
+          "matched_rule": null,
+          "group": "wildcard"
+        },
+        "GPTBot": {
+          "allowed": true,
+          "matched_rule": null,
+          "group": "wildcard"
+        },
+        "ChatGPT-User": {
+          "allowed": true,
+          "matched_rule": null,
+          "group": "wildcard"
+        },
+        "ClaudeBot": {
+          "allowed": true,
+          "matched_rule": null,
+          "group": "wildcard"
+        },
+        "Claude-User": {
+          "allowed": true,
+          "matched_rule": null,
+          "group": "wildcard"
+        },
+        "Perplexity-User": {
+          "allowed": true,
+          "matched_rule": null,
+          "group": "wildcard"
+        },
+        "Google-Extended": {
+          "allowed": true,
+          "matched_rule": null,
+          "group": "wildcard"
+        },
+        "Applebot-Extended": {
+          "allowed": true,
+          "matched_rule": null,
+          "group": "wildcard"
+        },
+        "meta-externalagent": {
+          "allowed": true,
+          "matched_rule": null,
+          "group": "wildcard"
+        }
+      },
+      "final_robots_ai_allowed": {
+        "Googlebot": true,
+        "bingbot": true,
+        "OAI-SearchBot": true,
+        "Claude-SearchBot": true,
+        "PerplexityBot": true,
+        "GPTBot": true,
+        "ChatGPT-User": true,
+        "ClaudeBot": true,
+        "Claude-User": true,
+        "Perplexity-User": true,
+        "Google-Extended": true,
+        "Applebot-Extended": true,
+        "meta-externalagent": true
+      },
+      "x_robots_tag": "",
+      "x_robots_tags": [],
+      "last_modified": "",
+      "sample_type": "task",
+      "title": "PostgreSQL: Documentation",
+      "h1": [
+        "Documentation"
+      ],
+      "language": "en",
+      "base_href": null,
+      "hreflang": [],
+      "word_count": 155,
+      "text_length": 790,
+      "landmarks": [
+        "footer",
+        "nav"
+      ],
+      "meta_robots": "",
+      "meta_robot_directives": {
+        "robots": "",
+        "googlebot": "",
+        "bingbot": ""
+      },
+      "description": "",
+      "canonical": [],
+      "links_count": 49,
+      "links": [
+        {
+          "href": "/",
+          "text": "PostgreSQL Elephant Logo",
+          "aria_label": "",
+          "selector": "a [source occurrence 1]",
+          "region": "navigation",
+          "url": "https://www.postgresql.org/"
+        },
+        {
+          "href": "/",
+          "text": "Home",
+          "aria_label": "",
+          "selector": "a [source occurrence 2]",
+          "region": "navigation",
+          "url": "https://www.postgresql.org/"
+        },
+        {
+          "href": "/about/",
+          "text": "About",
+          "aria_label": "",
+          "selector": "a [source occurrence 3]",
+          "region": "navigation",
+          "url": "https://www.postgresql.org/about/"
+        },
+        {
+          "href": "/download/",
+          "text": "Download",
+          "aria_label": "",
+          "selector": "a [source occurrence 4]",
+          "region": "navigation",
+          "url": "https://www.postgresql.org/download/"
+        },
+        {
+          "href": "/docs/",
+          "text": "Documentation",
+          "aria_label": "",
+          "selector": "a [source occurrence 5]",
+          "region": "navigation",
+          "url": "https://www.postgresql.org/docs/"
+        },
+        {
+          "href": "/community/",
+          "text": "Community",
+          "aria_label": "",
+          "selector": "a [source occurrence 6]",
+          "region": "navigation",
+          "url": "https://www.postgresql.org/community/"
+        },
+        {
+          "href": "/developer/",
+          "text": "Developers",
+          "aria_label": "",
+          "selector": "a [source occurrence 7]",
+          "region": "navigation",
+          "url": "https://www.postgresql.org/developer/"
+        },
+        {
+          "href": "/support/",
+          "text": "Support",
+          "aria_label": "",
+          "selector": "a [source occurrence 8]",
+          "region": "navigation",
+          "url": "https://www.postgresql.org/support/"
+        },
+        {
+          "href": "/about/donate/",
+          "text": "Donate",
+          "aria_label": "",
+          "selector": "a [source occurrence 9]",
+          "region": "navigation",
+          "url": "https://www.postgresql.org/about/donate/"
+        },
+        {
+          "href": "/account/",
+          "text": "Your account",
+          "aria_label": "",
+          "selector": "a [source occurrence 10]",
+          "region": "navigation",
+          "url": "https://www.postgresql.org/account/"
+        },
+        {
+          "href": "/about/news/postgresql-186-1711-1615-1519-1424-and-19-beta-3-released-3365/",
+          "text": "PostgreSQL 18.6, 17.11, 16.15, 15.19, 14.24 and 19 Beta 3 Released!",
+          "aria_label": "",
+          "selector": "a [source occurrence 11]",
+          "region": "content",
+          "url": "https://www.postgresql.org/about/news/postgresql-186-1711-1615-1519-1424-and-19-beta-3-released-3365/"
+        },
+        {
+          "href": "/docs/",
+          "text": "Documentation",
+          "aria_label": "",
+          "selector": "a [source occurrence 12]",
+          "region": "content",
+          "url": "https://www.postgresql.org/docs/"
+        },
+        {
+          "href": "/docs/",
+          "text": "Manuals",
+          "aria_label": "",
+          "selector": "a [source occurrence 13]",
+          "region": "content",
+          "url": "https://www.postgresql.org/docs/"
+        },
+        {
+          "href": "/docs/manuals/archive/",
+          "text": "Archive",
+          "aria_label": "",
+          "selector": "a [source occurrence 14]",
+          "region": "content",
+          "url": "https://www.postgresql.org/docs/manuals/archive/"
+        },
+        {
+          "href": "/docs/release/",
+          "text": "Release Notes",
+          "aria_label": "",
+          "selector": "a [source occurrence 15]",
+          "region": "content",
+          "url": "https://www.postgresql.org/docs/release/"
+        },
+        {
+          "href": "/docs/books/",
+          "text": "Books",
+          "aria_label": "",
+          "selector": "a [source occurrence 16]",
+          "region": "content",
+          "url": "https://www.postgresql.org/docs/books/"
+        },
+        {
+          "href": "/docs/online-resources/",
+          "text": "Tutorials & Other Resources",
+          "aria_label": "",
+          "selector": "a [source occurrence 17]",
+          "region": "content",
+          "url": "https://www.postgresql.org/docs/online-resources/"
+        },
+        {
+          "href": "/docs/faq/",
+          "text": "FAQ",
+          "aria_label": "",
+          "selector": "a [source occurrence 18]",
+          "region": "content",
+          "url": "https://www.postgresql.org/docs/faq/"
+        },
+        {
+          "href": "https://wiki.postgresql.org",
+          "text": "Wiki",
+          "aria_label": "",
+          "selector": "a [source occurrence 19]",
+          "region": "content",
+          "url": "https://wiki.postgresql.org"
+        },
+        {
+          "href": "/docs/current/",
+          "text": "View the manual",
+          "aria_label": "",
+          "selector": "a [source occurrence 20]",
+          "region": "content",
+          "url": "https://www.postgresql.org/docs/current/"
+        },
+        {
+          "href": "/docs/19/index.html",
+          "text": "19 beta",
+          "aria_label": "",
+          "selector": "a [source occurrence 21]",
+          "region": "content",
+          "url": "https://www.postgresql.org/docs/19/index.html"
+        },
+        {
+          "href": "/files/documentation/pdf/19/postgresql-19-A4.pdf",
+          "text": "A4 PDF",
+          "aria_label": "",
+          "selector": "a [source occurrence 22]",
+          "region": "content",
+          "url": "https://www.postgresql.org/files/documentation/pdf/19/postgresql-19-A4.pdf"
+        },
+        {
+          "href": "/files/documentation/pdf/19/postgresql-19-US.pdf",
+          "text": "US PDF",
+          "aria_label": "",
+          "selector": "a [source occurrence 23]",
+          "region": "content",
+          "url": "https://www.postgresql.org/files/documentation/pdf/19/postgresql-19-US.pdf"
+        },
+        {
+          "href": "/docs/18/index.html",
+          "text": "18",
+          "aria_label": "",
+          "selector": "a [source occurrence 24]",
+          "region": "content",
+          "url": "https://www.postgresql.org/docs/18/index.html"
+        },
+        {
+          "href": "/docs/current/index.html",
+          "text": "Current",
+          "aria_label": "",
+          "selector": "a [source occurrence 25]",
+          "region": "content",
+          "url": "https://www.postgresql.org/docs/current/index.html"
+        },
+        {
+          "href": "/files/documentation/pdf/18/postgresql-18-A4.pdf",
+          "text": "A4 PDF",
+          "aria_label": "",
+          "selector": "a [source occurrence 26]",
+          "region": "content",
+          "url": "https://www.postgresql.org/files/documentation/pdf/18/postgresql-18-A4.pdf"
+        },
+        {
+          "href": "/files/documentation/pdf/18/postgresql-18-US.pdf",
+          "text": "US PDF",
+          "aria_label": "",
+          "selector": "a [source occurrence 27]",
+          "region": "content",
+          "url": "https://www.postgresql.org/files/documentation/pdf/18/postgresql-18-US.pdf"
+        },
+        {
+          "href": "/docs/17/index.html",
+          "text": "17",
+          "aria_label": "",
+          "selector": "a [source occurrence 28]",
+          "region": "content",
+          "url": "https://www.postgresql.org/docs/17/index.html"
+        },
+        {
+          "href": "/files/documentation/pdf/17/postgresql-17-A4.pdf",
+          "text": "A4 PDF",
+          "aria_label": "",
+          "selector": "a [source occurrence 29]",
+          "region": "content",
+          "url": "https://www.postgresql.org/files/documentation/pdf/17/postgresql-17-A4.pdf"
+        },
+        {
+          "href": "/files/documentation/pdf/17/postgresql-17-US.pdf",
+          "text": "US PDF",
+          "aria_label": "",
+          "selector": "a [source occurrence 30]",
+          "region": "content",
+          "url": "https://www.postgresql.org/files/documentation/pdf/17/postgresql-17-US.pdf"
+        },
+        {
+          "href": "/docs/16/index.html",
+          "text": "16",
+          "aria_label": "",
+          "selector": "a [source occurrence 31]",
+          "region": "content",
+          "url": "https://www.postgresql.org/docs/16/index.html"
+        },
+        {
+          "href": "/files/documentation/pdf/16/postgresql-16-A4.pdf",
+          "text": "A4 PDF",
+          "aria_label": "",
+          "selector": "a [source occurrence 32]",
+          "region": "content",
+          "url": "https://www.postgresql.org/files/documentation/pdf/16/postgresql-16-A4.pdf"
+        },
+        {
+          "href": "/files/documentation/pdf/16/postgresql-16-US.pdf",
+          "text": "US PDF",
+          "aria_label": "",
+          "selector": "a [source occurrence 33]",
+          "region": "content",
+          "url": "https://www.postgresql.org/files/documentation/pdf/16/postgresql-16-US.pdf"
+        },
+        {
+          "href": "/docs/15/index.html",
+          "text": "15",
+          "aria_label": "",
+          "selector": "a [source occurrence 34]",
+          "region": "content",
+          "url": "https://www.postgresql.org/docs/15/index.html"
+        },
+        {
+          "href": "/files/documentation/pdf/15/postgresql-15-A4.pdf",
+          "text": "A4 PDF",
+          "aria_label": "",
+          "selector": "a [source occurrence 35]",
+          "region": "content",
+          "url": "https://www.postgresql.org/files/documentation/pdf/15/postgresql-15-A4.pdf"
+        },
+        {
+          "href": "/files/documentation/pdf/15/postgresql-15-US.pdf",
+          "text": "US PDF",
+          "aria_label": "",
+          "selector": "a [source occurrence 36]",
+          "region": "content",
+          "url": "https://www.postgresql.org/files/documentation/pdf/15/postgresql-15-US.pdf"
+        },
+        {
+          "href": "/docs/14/index.html",
+          "text": "14",
+          "aria_label": "",
+          "selector": "a [source occurrence 37]",
+          "region": "content",
+          "url": "https://www.postgresql.org/docs/14/index.html"
+        },
+        {
+          "href": "/files/documentation/pdf/14/postgresql-14-A4.pdf",
+          "text": "A4 PDF",
+          "aria_label": "",
+          "selector": "a [source occurrence 38]",
+          "region": "content",
+          "url": "https://www.postgresql.org/files/documentation/pdf/14/postgresql-14-A4.pdf"
+        },
+        {
+          "href": "/files/documentation/pdf/14/postgresql-14-US.pdf",
+          "text": "US PDF",
+          "aria_label": "",
+          "selector": "a [source occurrence 39]",
+          "region": "content",
+          "url": "https://www.postgresql.org/files/documentation/pdf/14/postgresql-14-US.pdf"
+        },
+        {
+          "href": "/docs/devel/index.html",
+          "text": "Development snapshot",
+          "aria_label": "",
+          "selector": "a [source occurrence 40]",
+          "region": "content",
+          "url": "https://www.postgresql.org/docs/devel/index.html"
+        },
+        {
+          "href": "/docs/manuals/archive/",
+          "text": "archive",
+          "aria_label": "",
+          "selector": "a [source occurrence 41]",
+          "region": "content",
+          "url": "https://www.postgresql.org/docs/manuals/archive/"
+        },
+        {
+          "href": "http://www.postgres.cn/docs",
+          "text": "Chinese",
+          "aria_label": "",
+          "selector": "a [source occurrence 42]",
+          "region": "content",
+          "url": "http://www.postgres.cn/docs"
+        },
+        {
+          "href": "https://docs.postgresql.fr",
+          "text": "French",
+          "aria_label": "",
+          "selector": "a [source occurrence 43]",
+          "region": "content",
+          "url": "https://docs.postgresql.fr"
+        },
+        {
+          "href": "https://www.postgresql.jp/document/",
+          "text": "Japanese",
+          "aria_label": "",
+          "selector": "a [source occurrence 44]",
+          "region": "content",
+          "url": "https://www.postgresql.jp/document/"
+        },
+        {
+          "href": "https://postgrespro.ru/docs/postgresql",
+          "text": "Russian",
+          "aria_label": "",
+          "selector": "a [source occurrence 45]",
+          "region": "content",
+          "url": "https://postgrespro.ru/docs/postgresql"
+        },
+        {
+          "href": "/about/policies/",
+          "text": "Policies",
+          "aria_label": "",
+          "selector": "a [source occurrence 46]",
+          "region": "navigation",
+          "url": "https://www.postgresql.org/about/policies/"
+        },
+        {
+          "href": "/about/policies/coc/",
+          "text": "Code of Conduct",
+          "aria_label": "",
+          "selector": "a [source occurrence 47]",
+          "region": "navigation",
+          "url": "https://www.postgresql.org/about/policies/coc/"
+        },
+        {
+          "href": "/about/",
+          "text": "About PostgreSQL",
+          "aria_label": "",
+          "selector": "a [source occurrence 48]",
+          "region": "navigation",
+          "url": "https://www.postgresql.org/about/"
+        },
+        {
+          "href": "/about/contact/",
+          "text": "Contact",
+          "aria_label": "",
+          "selector": "a [source occurrence 49]",
+          "region": "navigation",
+          "url": "https://www.postgresql.org/about/contact/"
+        }
+      ],
+      "controls": [
+        {
+          "tag": "input",
+          "selector": "#navbar-toggler",
+          "type": "checkbox",
+          "id": "navbar-toggler",
+          "name": "",
+          "aria_label": "Toggle navigation",
+          "placeholder": ""
+        },
+        {
+          "tag": "input",
+          "selector": "#q",
+          "type": "text",
+          "id": "q",
+          "name": "q",
+          "aria_label": "",
+          "placeholder": "Search for..."
+        },
+        {
+          "tag": "button",
+          "selector": "button [source occurrence 1]",
+          "text": "",
+          "aria_label": ""
+        },
+        {
+          "tag": "button",
+          "selector": "#btn-theme",
+          "text": "",
+          "aria_label": ""
+        }
+      ],
+      "images": {
+        "count": 1,
+        "missing_alt": 0,
+        "empty_alt": 0,
+        "items": [
+          {
+            "src": "/media/img/about/press/elephant.png",
+            "alt": "PostgreSQL Elephant Logo",
+            "selector": "img [source occurrence 1]"
+          }
+        ]
+      },
+      "jsonld": {
+        "blocks": 0,
+        "parse_errors": 0,
+        "errors": [],
+        "types": [],
+        "data": [],
+        "data_omitted": false
+      },
+      "text_sample": "August 13, 2026: PostgreSQL 18.6, 17.11, 16.15, 15.19, 14.24 and 19 Beta 3 Released! Quick Links Documentation Manuals Archive Release Notes Books Tutorials & Other Resources FAQ Wiki Documentation View the manual Manuals You can view the manual for an older version or download a PDF of a manual from the below table. Online Version PDF Version 19 beta A4 PDF (15.5 MB) • US PDF (15.4 MB) 18 / Current A4 PDF (15.1 MB) • US PDF (15.0 MB) 17 A4 PDF (14.8 MB) • US PDF (14.7 MB) 16 A4 PDF (14.6 MB) • US PDF (14.5 MB) 15 A4 PDF (13.9 MB) • US PDF (13.8 MB) 14 A4 PDF (13.7 MB) • US PDF (13.6 MB) Development snapshot PDF version not available Looking for documentation for an older, unsupported, version? Check the archive of older manuals. Translated Manuals Chinese French Japanese Russian",
+      "main_text": "August 13, 2026: PostgreSQL 18.6, 17.11, 16.15, 15.19, 14.24 and 19 Beta 3 Released! Quick Links Documentation Manuals Archive Release Notes Books Tutorials & Other Resources FAQ Wiki Documentation View the manual Manuals You can view the manual for an older version or download a PDF of a manual from the below table. Online Version PDF Version 19 beta A4 PDF (15.5 MB) • US PDF (15.4 MB) 18 / Current A4 PDF (15.1 MB) • US PDF (15.0 MB) 17 A4 PDF (14.8 MB) • US PDF (14.7 MB) 16 A4 PDF (14.6 MB) • US PDF (14.5 MB) 15 A4 PDF (13.9 MB) • US PDF (13.8 MB) 14 A4 PDF (13.7 MB) • US PDF (13.6 MB) Development snapshot PDF version not available Looking for documentation for an older, unsupported, version? Check the archive of older manuals. Translated Manuals Chinese French Japanese Russian",
+      "passages": [
+        {
+          "selector": "h2 [source occurrence 1]",
+          "heading": "",
+          "text": "Quick Links"
+        },
+        {
+          "selector": "li [source occurrence 10]",
+          "heading": "Quick Links",
+          "text": "Documentation"
+        },
+        {
+          "selector": "li [source occurrence 12]",
+          "heading": "Quick Links",
+          "text": "Archive"
+        },
+        {
+          "selector": "li [source occurrence 11]",
+          "heading": "Quick Links",
+          "text": "Manuals Archive"
+        },
+        {
+          "selector": "li [source occurrence 13]",
+          "heading": "Quick Links",
+          "text": "Release Notes"
+        },
+        {
+          "selector": "li [source occurrence 14]",
+          "heading": "Quick Links",
+          "text": "Books"
+        },
+        {
+          "selector": "li [source occurrence 15]",
+          "heading": "Quick Links",
+          "text": "Tutorials & Other Resources"
+        },
+        {
+          "selector": "li [source occurrence 16]",
+          "heading": "Quick Links",
+          "text": "FAQ"
+        },
+        {
+          "selector": "li [source occurrence 17]",
+          "heading": "Quick Links",
+          "text": "Wiki"
+        },
+        {
+          "selector": "h1 [source occurrence 1]",
+          "heading": "Quick Links",
+          "text": "Documentation"
+        },
+        {
+          "selector": "p [source occurrence 1]",
+          "heading": "Documentation",
+          "text": "View the manual"
+        },
+        {
+          "selector": "h2 [source occurrence 2]",
+          "heading": "Documentation",
+          "text": "Manuals"
+        },
+        {
+          "selector": "p [source occurrence 2]",
+          "heading": "Manuals",
+          "text": "You can view the manual for an older version or download a PDF of a manual from the below table."
+        },
+        {
+          "selector": "th [source occurrence 1]",
+          "heading": "Manuals",
+          "text": "Online Version"
+        },
+        {
+          "selector": "th [source occurrence 2]",
+          "heading": "Manuals",
+          "text": "PDF Version"
+        },
+        {
+          "selector": "td [source occurrence 1]",
+          "heading": "Manuals",
+          "text": "19 beta"
+        },
+        {
+          "selector": "td [source occurrence 2]",
+          "heading": "Manuals",
+          "text": "A4 PDF (15.5 MB) • US PDF (15.4 MB)"
+        },
+        {
+          "selector": "td [source occurrence 3]",
+          "heading": "Manuals",
+          "text": "18 / Current"
+        },
+        {
+          "selector": "td [source occurrence 4]",
+          "heading": "Manuals",
+          "text": "A4 PDF (15.1 MB) • US PDF (15.0 MB)"
+        },
+        {
+          "selector": "td [source occurrence 5]",
+          "heading": "Manuals",
+          "text": "17"
+        },
+        {
+          "selector": "td [source occurrence 6]",
+          "heading": "Manuals",
+          "text": "A4 PDF (14.8 MB) • US PDF (14.7 MB)"
+        },
+        {
+          "selector": "td [source occurrence 7]",
+          "heading": "Manuals",
+          "text": "16"
+        },
+        {
+          "selector": "td [source occurrence 8]",
+          "heading": "Manuals",
+          "text": "A4 PDF (14.6 MB) • US PDF (14.5 MB)"
+        },
+        {
+          "selector": "td [source occurrence 9]",
+          "heading": "Manuals",
+          "text": "15"
+        },
+        {
+          "selector": "td [source occurrence 10]",
+          "heading": "Manuals",
+          "text": "A4 PDF (13.9 MB) • US PDF (13.8 MB)"
+        },
+        {
+          "selector": "td [source occurrence 11]",
+          "heading": "Manuals",
+          "text": "14"
+        },
+        {
+          "selector": "td [source occurrence 12]",
+          "heading": "Manuals",
+          "text": "A4 PDF (13.7 MB) • US PDF (13.6 MB)"
+        },
+        {
+          "selector": "td [source occurrence 13]",
+          "heading": "Manuals",
+          "text": "Development snapshot"
+        },
+        {
+          "selector": "td [source occurrence 14]",
+          "heading": "Manuals",
+          "text": "PDF version not available"
+        },
+        {
+          "selector": "p [source occurrence 3]",
+          "heading": "Manuals",
+          "text": "Looking for documentation for an older, unsupported, version? Check the archive of older manuals."
+        },
+        {
+          "selector": "h2 [source occurrence 3]",
+          "heading": "Manuals",
+          "text": "Translated Manuals"
+        },
+        {
+          "selector": "li [source occurrence 18]",
+          "heading": "Translated Manuals",
+          "text": "Chinese"
+        },
+        {
+          "selector": "li [source occurrence 19]",
+          "heading": "Translated Manuals",
+          "text": "French"
+        },
+        {
+          "selector": "li [source occurrence 20]",
+          "heading": "Translated Manuals",
+          "text": "Japanese"
+        },
+        {
+          "selector": "li [source occurrence 21]",
+          "heading": "Translated Manuals",
+          "text": "Russian"
+        }
+      ],
+      "evidence_truncated": false,
+      "extraction_note": "Source HTML including noscript fallback; excludes semantic navigation/footer, scripts and explicit inline hidden content. CSS and JavaScript-enabled visibility require a browser.",
+      "parse_status": "parsed_html",
+      "link_base_url": "https://www.postgresql.org/docs/"
+    },
+    {
+      "url": "https://www.postgresql.org/account/news/new/",
+      "robots_allowed": false,
+      "robots_ai_allowed": {
+        "Googlebot": false,
+        "bingbot": false,
+        "OAI-SearchBot": false,
+        "Claude-SearchBot": false,
+        "PerplexityBot": false,
+        "GPTBot": false,
+        "ChatGPT-User": false,
+        "ClaudeBot": false,
+        "Claude-User": false,
+        "Perplexity-User": false,
+        "Google-Extended": false,
+        "Applebot-Extended": false,
+        "meta-externalagent": false
+      }
+    },
+    {
+      "url": "https://www.postgresql.org/download/",
+      "robots_allowed": true,
+      "final_url": "https://www.postgresql.org/download/",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "latency_ms": 817,
+      "response_truncated": false,
+      "redirects": [],
+      "robots_ai_allowed": {
+        "Googlebot": true,
+        "bingbot": true,
+        "OAI-SearchBot": true,
+        "Claude-SearchBot": true,
+        "PerplexityBot": true,
+        "GPTBot": true,
+        "ChatGPT-User": true,
+        "ClaudeBot": true,
+        "Claude-User": true,
+        "Perplexity-User": true,
+        "Google-Extended": true,
+        "Applebot-Extended": true,
+        "meta-externalagent": true
+      },
+      "robots_decisions": {
+        "Googlebot": {
+          "allowed": true,
+          "matched_rule": null,
+          "group": "wildcard"
+        },
+        "bingbot": {
+          "allowed": true,
+          "matched_rule": null,
+          "group": "wildcard"
+        },
+        "OAI-SearchBot": {
+          "allowed": true,
+          "matched_rule": null,
+          "group": "wildcard"
+        },
+        "Claude-SearchBot": {
+          "allowed": true,
+          "matched_rule": null,
+          "group": "wildcard"
+        },
+        "PerplexityBot": {
+          "allowed": true,
+          "matched_rule": null,
+          "group": "wildcard"
+        },
+        "GPTBot": {
+          "allowed": true,
+          "matched_rule": null,
+          "group": "wildcard"
+        },
+        "ChatGPT-User": {
+          "allowed": true,
+          "matched_rule": null,
+          "group": "wildcard"
+        },
+        "ClaudeBot": {
+          "allowed": true,
+          "matched_rule": null,
+          "group": "wildcard"
+        },
+        "Claude-User": {
+          "allowed": true,
+          "matched_rule": null,
+          "group": "wildcard"
+        },
+        "Perplexity-User": {
+          "allowed": true,
+          "matched_rule": null,
+          "group": "wildcard"
+        },
+        "Google-Extended": {
+          "allowed": true,
+          "matched_rule": null,
+          "group": "wildcard"
+        },
+        "Applebot-Extended": {
+          "allowed": true,
+          "matched_rule": null,
+          "group": "wildcard"
+        },
+        "meta-externalagent": {
+          "allowed": true,
+          "matched_rule": null,
+          "group": "wildcard"
+        }
+      },
+      "final_robots_ai_allowed": {
+        "Googlebot": true,
+        "bingbot": true,
+        "OAI-SearchBot": true,
+        "Claude-SearchBot": true,
+        "PerplexityBot": true,
+        "GPTBot": true,
+        "ChatGPT-User": true,
+        "ClaudeBot": true,
+        "Claude-User": true,
+        "Perplexity-User": true,
+        "Google-Extended": true,
+        "Applebot-Extended": true,
+        "meta-externalagent": true
+      },
+      "x_robots_tag": "",
+      "x_robots_tags": [],
+      "last_modified": "",
+      "sample_type": "other",
+      "title": "PostgreSQL: Downloads",
+      "h1": [
+        "Downloads"
+      ],
+      "language": "en",
+      "base_href": null,
+      "hreflang": [],
+      "word_count": 251,
+      "text_length": 1581,
+      "landmarks": [
+        "footer",
+        "nav"
+      ],
+      "meta_robots": "",
+      "meta_robot_directives": {
+        "robots": "",
+        "googlebot": "",
+        "bingbot": ""
+      },
+      "description": "",
+      "canonical": [],
+      "links_count": 40,
+      "links": [
+        {
+          "href": "/",
+          "text": "PostgreSQL Elephant Logo",
+          "aria_label": "",
+          "selector": "a [source occurrence 1]",
+          "region": "navigation",
+          "url": "https://www.postgresql.org/"
+        },
+        {
+          "href": "/",
+          "text": "Home",
+          "aria_label": "",
+          "selector": "a [source occurrence 2]",
+          "region": "navigation",
+          "url": "https://www.postgresql.org/"
+        },
+        {
+          "href": "/about/",
+          "text": "About",
+          "aria_label": "",
+          "selector": "a [source occurrence 3]",
+          "region": "navigation",
+          "url": "https://www.postgresql.org/about/"
+        },
+        {
+          "href": "/download/",
+          "text": "Download",
+          "aria_label": "",
+          "selector": "a [source occurrence 4]",
+          "region": "navigation",
+          "url": "https://www.postgresql.org/download/"
+        },
+        {
+          "href": "/docs/",
+          "text": "Documentation",
+          "aria_label": "",
+          "selector": "a [source occurrence 5]",
+          "region": "navigation",
+          "url": "https://www.postgresql.org/docs/"
+        },
+        {
+          "href": "/community/",
+          "text": "Community",
+          "aria_label": "",
+          "selector": "a [source occurrence 6]",
+          "region": "navigation",
+          "url": "https://www.postgresql.org/community/"
+        },
+        {
+          "href": "/developer/",
+          "text": "Developers",
+          "aria_label": "",
+          "selector": "a [source occurrence 7]",
+          "region": "navigation",
+          "url": "https://www.postgresql.org/developer/"
+        },
+        {
+          "href": "/support/",
+          "text": "Support",
+          "aria_label": "",
+          "selector": "a [source occurrence 8]",
+          "region": "navigation",
+          "url": "https://www.postgresql.org/support/"
+        },
+        {
+          "href": "/about/donate/",
+          "text": "Donate",
+          "aria_label": "",
+          "selector": "a [source occurrence 9]",
+          "region": "navigation",
+          "url": "https://www.postgresql.org/about/donate/"
+        },
+        {
+          "href": "/account/",
+          "text": "Your account",
+          "aria_label": "",
+          "selector": "a [source occurrence 10]",
+          "region": "navigation",
+          "url": "https://www.postgresql.org/account/"
+        },
+        {
+          "href": "/about/news/postgresql-186-1711-1615-1519-1424-and-19-beta-3-released-3365/",
+          "text": "PostgreSQL 18.6, 17.11, 16.15, 15.19, 14.24 and 19 Beta 3 Released!",
+          "aria_label": "",
+          "selector": "a [source occurrence 11]",
+          "region": "content",
+          "url": "https://www.postgresql.org/about/news/postgresql-186-1711-1615-1519-1424-and-19-beta-3-released-3365/"
+        },
+        {
+          "href": "/download/",
+          "text": "Downloads",
+          "aria_label": "",
+          "selector": "a [source occurrence 12]",
+          "region": "content",
+          "url": "https://www.postgresql.org/download/"
+        },
+        {
+          "href": "/download/",
+          "text": "Packages",
+          "aria_label": "",
+          "selector": "a [source occurrence 13]",
+          "region": "content",
+          "url": "https://www.postgresql.org/download/"
+        },
+        {
+          "href": "/ftp/source/",
+          "text": "Source",
+          "aria_label": "",
+          "selector": "a [source occurrence 14]",
+          "region": "content",
+          "url": "https://www.postgresql.org/ftp/source/"
+        },
+        {
+          "href": "/download/product-categories/",
+          "text": "Software Catalogue",
+          "aria_label": "",
+          "selector": "a [source occurrence 15]",
+          "region": "content",
+          "url": "https://www.postgresql.org/download/product-categories/"
+        },
+        {
+          "href": "/ftp/",
+          "text": "File Browser",
+          "aria_label": "",
+          "selector": "a [source occurrence 16]",
+          "region": "content",
+          "url": "https://www.postgresql.org/ftp/"
+        },
+        {
+          "href": "/download/linux/",
+          "text": "Linux Linux Logo",
+          "aria_label": "",
+          "selector": "#btn-download-linux",
+          "region": "content",
+          "url": "https://www.postgresql.org/download/linux/"
+        },
+        {
+          "href": "/download/macosx/",
+          "text": "macOS Apple Logo",
+          "aria_label": "",
+          "selector": "a [source occurrence 18]",
+          "region": "content",
+          "url": "https://www.postgresql.org/download/macosx/"
+        },
+        {
+          "href": "/download/windows/",
+          "text": "Windows Windows Logo",
+          "aria_label": "",
+          "selector": "a [source occurrence 19]",
+          "region": "content",
+          "url": "https://www.postgresql.org/download/windows/"
+        },
+        {
+          "href": "/download/bsd/",
+          "text": "BSD BSD Logo",
+          "aria_label": "",
+          "selector": "#btn-download-bsd",
+          "region": "content",
+          "url": "https://www.postgresql.org/download/bsd/"
+        },
+        {
+          "href": "/download/solaris/",
+          "text": "Solaris Solaris Logo",
+          "aria_label": "",
+          "selector": "a [source occurrence 21]",
+          "region": "content",
+          "url": "https://www.postgresql.org/download/solaris/"
+        },
+        {
+          "href": "/download/linux/debian/",
+          "text": "Debian Debian Logo",
+          "aria_label": "",
+          "selector": "a [source occurrence 22]",
+          "region": "content",
+          "url": "https://www.postgresql.org/download/linux/debian/"
+        },
+        {
+          "href": "/download/linux/redhat",
+          "text": "Red Hat/Rocky/AlmaLinux Red Hat Logo",
+          "aria_label": "",
+          "selector": "a [source occurrence 23]",
+          "region": "content",
+          "url": "https://www.postgresql.org/download/linux/redhat"
+        },
+        {
+          "href": "/download/linux/suse",
+          "text": "SUSE SUSE Logo",
+          "aria_label": "",
+          "selector": "a [source occurrence 24]",
+          "region": "content",
+          "url": "https://www.postgresql.org/download/linux/suse"
+        },
+        {
+          "href": "/download/linux/ubuntu",
+          "text": "Ubuntu Ubuntu Logo",
+          "aria_label": "",
+          "selector": "a [source occurrence 25]",
+          "region": "content",
+          "url": "https://www.postgresql.org/download/linux/ubuntu"
+        },
+        {
+          "href": "/download/linux/#generic",
+          "text": "Other Linux Linux Logo",
+          "aria_label": "",
+          "selector": "a [source occurrence 26]",
+          "region": "content",
+          "url": "https://www.postgresql.org/download/linux/#generic"
+        },
+        {
+          "href": "/download/openbsd/",
+          "text": "OpenBSD OpenBSD Logo",
+          "aria_label": "",
+          "selector": "a [source occurrence 27]",
+          "region": "content",
+          "url": "https://www.postgresql.org/download/openbsd/"
+        },
+        {
+          "href": "/download/freebsd/",
+          "text": "FreeBSD FreeBSD Logo",
+          "aria_label": "",
+          "selector": "a [source occurrence 28]",
+          "region": "content",
+          "url": "https://www.postgresql.org/download/freebsd/"
+        },
+        {
+          "href": "/download/netbsd/",
+          "text": "NetBSD NetBSD Logo",
+          "aria_label": "",
+          "selector": "a [source occurrence 29]",
+          "region": "content",
+          "url": "https://www.postgresql.org/download/netbsd/"
+        },
+        {
+          "href": "/ftp/source/",
+          "text": "file browser",
+          "aria_label": "",
+          "selector": "a [source occurrence 30]",
+          "region": "content",
+          "url": "https://www.postgresql.org/ftp/source/"
+        },
+        {
+          "href": "https://git.postgresql.org/gitweb/?p=postgresql.git;a=summary",
+          "text": "git.postgresql.org",
+          "aria_label": "",
+          "selector": "a [source occurrence 31]",
+          "region": "content",
+          "url": "https://git.postgresql.org/gitweb/?p=postgresql.git;a=summary"
+        },
+        {
+          "href": "/docs/current/installation.html",
+          "text": "documentation",
+          "aria_label": "",
+          "selector": "a [source occurrence 32]",
+          "region": "content",
+          "url": "https://www.postgresql.org/docs/current/installation.html"
+        },
+        {
+          "href": "/download/snapshots/",
+          "text": "packages",
+          "aria_label": "",
+          "selector": "a [source occurrence 33]",
+          "region": "content",
+          "url": "https://www.postgresql.org/download/snapshots/"
+        },
+        {
+          "href": "/download/product-categories",
+          "text": "Software Catalogue",
+          "aria_label": "",
+          "selector": "a [source occurrence 34]",
+          "region": "content",
+          "url": "https://www.postgresql.org/download/product-categories"
+        },
+        {
+          "href": "/account/products/new/",
+          "text": "form",
+          "aria_label": "",
+          "selector": "a [source occurrence 35]",
+          "region": "content",
+          "url": "https://www.postgresql.org/account/products/new/"
+        },
+        {
+          "href": "/ftp/",
+          "text": "File Browser",
+          "aria_label": "",
+          "selector": "a [source occurrence 36]",
+          "region": "content",
+          "url": "https://www.postgresql.org/ftp/"
+        },
+        {
+          "href": "/about/policies/",
+          "text": "Policies",
+          "aria_label": "",
+          "selector": "a [source occurrence 37]",
+          "region": "navigation",
+          "url": "https://www.postgresql.org/about/policies/"
+        },
+        {
+          "href": "/about/policies/coc/",
+          "text": "Code of Conduct",
+          "aria_label": "",
+          "selector": "a [source occurrence 38]",
+          "region": "navigation",
+          "url": "https://www.postgresql.org/about/policies/coc/"
+        },
+        {
+          "href": "/about/",
+          "text": "About PostgreSQL",
+          "aria_label": "",
+          "selector": "a [source occurrence 39]",
+          "region": "navigation",
+          "url": "https://www.postgresql.org/about/"
+        },
+        {
+          "href": "/about/contact/",
+          "text": "Contact",
+          "aria_label": "",
+          "selector": "a [source occurrence 40]",
+          "region": "navigation",
+          "url": "https://www.postgresql.org/about/contact/"
+        }
+      ],
+      "controls": [
+        {
+          "tag": "input",
+          "selector": "#navbar-toggler",
+          "type": "checkbox",
+          "id": "navbar-toggler",
+          "name": "",
+          "aria_label": "Toggle navigation",
+          "placeholder": ""
+        },
+        {
+          "tag": "input",
+          "selector": "#q",
+          "type": "text",
+          "id": "q",
+          "name": "q",
+          "aria_label": "",
+          "placeholder": "Search for..."
+        },
+        {
+          "tag": "button",
+          "selector": "button [source occurrence 1]",
+          "text": "",
+          "aria_label": ""
+        },
+        {
+          "tag": "button",
+          "selector": "#btn-theme",
+          "text": "",
+          "aria_label": ""
+        }
+      ],
+      "images": {
+        "count": 14,
+        "missing_alt": 0,
+        "empty_alt": 0,
+        "items": [
+          {
+            "src": "/media/img/about/press/elephant.png",
+            "alt": "PostgreSQL Elephant Logo",
+            "selector": "img [source occurrence 1]"
+          },
+          {
+            "src": "/media/img/linux.svg",
+            "alt": "Linux Logo",
+            "selector": "img [source occurrence 2]"
+          },
+          {
+            "src": "/media/img/apple.png",
+            "alt": "Apple Logo",
+            "selector": "img [source occurrence 3]"
+          },
+          {
+            "src": "/media/img/windows.svg",
+            "alt": "Windows Logo",
+            "selector": "img [source occurrence 4]"
+          },
+          {
+            "src": "/media/img/bsd.png",
+            "alt": "BSD Logo",
+            "selector": "img [source occurrence 5]"
+          },
+          {
+            "src": "/media/img/solaris.png",
+            "alt": "Solaris Logo",
+            "selector": "img [source occurrence 6]"
+          },
+          {
+            "src": "/media/img/debian.svg",
+            "alt": "Debian Logo",
+            "selector": "img [source occurrence 7]"
+          },
+          {
+            "src": "/media/img/redhat.svg",
+            "alt": "Red Hat Logo",
+            "selector": "img [source occurrence 8]"
+          },
+          {
+            "src": "/media/img/suse.svg",
+            "alt": "SUSE Logo",
+            "selector": "img [source occurrence 9]"
+          },
+          {
+            "src": "/media/img/ubuntu.svg",
+            "alt": "Ubuntu Logo",
+            "selector": "img [source occurrence 10]"
+          },
+          {
+            "src": "/media/img/linux.svg",
+            "alt": "Linux Logo",
+            "selector": "img [source occurrence 11]"
+          },
+          {
+            "src": "/media/img/openbsd.gif",
+            "alt": "OpenBSD Logo",
+            "selector": "img [source occurrence 12]"
+          },
+          {
+            "src": "/media/img/freebsd.svg",
+            "alt": "FreeBSD Logo",
+            "selector": "img [source occurrence 13]"
+          },
+          {
+            "src": "/media/img/netbsd.svg",
+            "alt": "NetBSD Logo",
+            "selector": "img [source occurrence 14]"
+          }
+        ]
+      },
+      "jsonld": {
+        "blocks": 0,
+        "parse_errors": 0,
+        "errors": [],
+        "types": [],
+        "data": [],
+        "data_omitted": false
+      },
+      "text_sample": "August 13, 2026: PostgreSQL 18.6, 17.11, 16.15, 15.19, 14.24 and 19 Beta 3 Released! Quick Links Downloads Packages Source Software Catalogue File Browser Downloads PostgreSQL Downloads PostgreSQL is available for download as ready-to-use packages or installers for various platforms, as well as a source code archive if you want to build it yourself. Packages and Installers Select your operating system family: Linux macOS Windows BSD Solaris Select your Linux distribution: Debian Red Hat/Rocky/AlmaLinux SUSE Ubuntu Other Linux Select your BSD operating system: OpenBSD FreeBSD NetBSD Source code The source code can be found in the main file browser or you can access the source control repository directly at git.postgresql.org . Instructions for building from source can be found in the documentation . Beta/RC Releases and development snapshots (unstable) There are source code and binary packages of beta and release candidates, and of the current development code available for testing and evaluation of new features. Note that these builds should be used for testing purposes only , and not for production systems. Additional Software Software Catalogue There is much software available th",
+      "main_text": "August 13, 2026: PostgreSQL 18.6, 17.11, 16.15, 15.19, 14.24 and 19 Beta 3 Released! Quick Links Downloads Packages Source Software Catalogue File Browser Downloads PostgreSQL Downloads PostgreSQL is available for download as ready-to-use packages or installers for various platforms, as well as a source code archive if you want to build it yourself. Packages and Installers Select your operating system family: Linux macOS Windows BSD Solaris Select your Linux distribution: Debian Red Hat/Rocky/AlmaLinux SUSE Ubuntu Other Linux Select your BSD operating system: OpenBSD FreeBSD NetBSD Source code The source code can be found in the main file browser or you can access the source control repository directly at git.postgresql.org . Instructions for building from source can be found in the documentation . Beta/RC Releases and development snapshots (unstable) There are source code and binary packages of beta and release candidates, and of the current development code available for testing and evaluation of new features. Note that these builds should be used for testing purposes only , and not for production systems. Additional Software Software Catalogue There is much software available that is not bundled with PostgreSQL. The Software Catalogue offers a listing of many commercial and Open Source applications, interfaces and extensions to PostgreSQL that you may find useful. If you wish to have your product listed in the catalogue, please fill out this form . File Browser You can download most of the software we publish from a mirror site using our File Browser .",
+      "passages": [
+        {
+          "selector": "h2 [source occurrence 1]",
+          "heading": "",
+          "text": "Quick Links"
+        },
+        {
+          "selector": "li [source occurrence 11]",
+          "heading": "Quick Links",
+          "text": "Packages"
+        },
+        {
+          "selector": "li [source occurrence 12]",
+          "heading": "Quick Links",
+          "text": "Source"
+        },
+        {
+          "selector": "li [source occurrence 10]",
+          "heading": "Quick Links",
+          "text": "Downloads Packages Source"
+        },
+        {
+          "selector": "li [source occurrence 13]",
+          "heading": "Quick Links",
+          "text": "Software Catalogue"
+        },
+        {
+          "selector": "li [source occurrence 14]",
+          "heading": "Quick Links",
+          "text": "File Browser"
+        },
+        {
+          "selector": "h1 [source occurrence 1]",
+          "heading": "Quick Links",
+          "text": "Downloads"
+        },
+        {
+          "selector": "h2 [source occurrence 2]",
+          "heading": "Downloads",
+          "text": "PostgreSQL Downloads"
+        },
+        {
+          "selector": "p [source occurrence 1]",
+          "heading": "PostgreSQL Downloads",
+          "text": "PostgreSQL is available for download as ready-to-use packages or installers for various platforms, as well as a source code archive if you want to build it yourself."
+        },
+        {
+          "selector": "h3 [source occurrence 1]",
+          "heading": "PostgreSQL Downloads",
+          "text": "Packages and Installers"
+        },
+        {
+          "selector": "p [source occurrence 2]",
+          "heading": "Packages and Installers",
+          "text": "Select your operating system family:"
+        },
+        {
+          "selector": "p [source occurrence 3]",
+          "heading": "Packages and Installers",
+          "text": "Select your Linux distribution:"
+        },
+        {
+          "selector": "p [source occurrence 4]",
+          "heading": "Packages and Installers",
+          "text": "Select your BSD operating system:"
+        },
+        {
+          "selector": "h3 [source occurrence 2]",
+          "heading": "Packages and Installers",
+          "text": "Source code"
+        },
+        {
+          "selector": "p [source occurrence 5]",
+          "heading": "Source code",
+          "text": "The source code can be found in the main file browser or you can access the source control repository directly at git.postgresql.org . Instructions for building from source can be found in the documentation ."
+        },
+        {
+          "selector": "h3 [source occurrence 3]",
+          "heading": "Source code",
+          "text": "Beta/RC Releases and development snapshots (unstable)"
+        },
+        {
+          "selector": "p [source occurrence 6]",
+          "heading": "Beta/RC Releases and development snapshots (unstable)",
+          "text": "There are source code and binary packages of beta and release candidates, and of the current development code available for testing and evaluation of new features. Note that these builds should be used for testing purposes only , and not for production systems."
+        },
+        {
+          "selector": "h2 [source occurrence 3]",
+          "heading": "Beta/RC Releases and development snapshots (unstable)",
+          "text": "Additional Software"
+        },
+        {
+          "selector": "h3 [source occurrence 4]",
+          "heading": "Additional Software",
+          "text": "Software Catalogue"
+        },
+        {
+          "selector": "p [source occurrence 7]",
+          "heading": "Software Catalogue",
+          "text": "There is much software available that is not bundled with PostgreSQL. The Software Catalogue offers a listing of many commercial and Open Source applications, interfaces and extensions to PostgreSQL that you may find useful."
+        },
+        {
+          "selector": "p [source occurrence 8]",
+          "heading": "Software Catalogue",
+          "text": "If you wish to have your product listed in the catalogue, please fill out this form ."
+        },
+        {
+          "selector": "h2 [source occurrence 4]",
+          "heading": "Software Catalogue",
+          "text": "File Browser"
+        },
+        {
+          "selector": "p [source occurrence 9]",
+          "heading": "File Browser",
+          "text": "You can download most of the software we publish from a mirror site using our File Browser ."
+        }
+      ],
+      "evidence_truncated": false,
+      "extraction_note": "Source HTML including noscript fallback; excludes semantic navigation/footer, scripts and explicit inline hidden content. CSS and JavaScript-enabled visibility require a browser.",
+      "parse_status": "parsed_html",
+      "link_base_url": "https://www.postgresql.org/download/"
+    }
+  ],
+  "errors": [],
+  "ai_probe": {
+    "status": "not_checked",
+    "reason": "No bot impersonation: local requests do not verify provider IP access."
+  },
+  "coverage": {
+    "rendered": "not_checked: collector is static",
+    "off_site": "not_checked: requires search-capable agent",
+    "actual_ai_visibility": "not_measured: requires recorded assistant answers and citations",
+    "deadline_reached": false,
+    "sample_types": {
+      "home": 1,
+      "entity": 1,
+      "task": 1,
+      "other": 1
+    },
+    "request_count": 6,
+    "elapsed_seconds": 7.73
+  }
+}

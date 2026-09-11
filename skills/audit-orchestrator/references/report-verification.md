@@ -27,7 +27,7 @@ Refer to existing collector records by `page:0`, `page:1`, etc.; also supported 
     }
   },
   "answers": [
-    {"test_index": 0, "evidence_index": 0, "ref": "page:1", "field": "main_text"}
+    {"test_index": 0, "evidence_index": 0, "ref": "page:1", "field": "main_text", "element_indices": [0]}
   ],
   "journeys": [
     {
@@ -49,6 +49,8 @@ Refer to existing collector records by `page:0`, `page:1`, etc.; also supported 
 ```
 
 This illustrates the record format, not a complete report's evidence. Supply a claim entry for every retained finding and opportunity, an answer mapping for every reported answer quote, and journey mappings for the reported steps. Indices are zero-based; claim IDs must follow the final report's ranking. Use actual evidence references and values, never the illustrative values above. Finding scopes must identify the records actually checked and affected, with counts and cited URLs agreeing with the report. Reading the same page in two modes does not double its page count.
+
+For each `answered` question, every answer mapping needs `element_indices`: the zero-based required elements supported by that quote. Together the mappings must cover all required elements; one quote may support several. Preserve dates, version names, units, conditions and exclusions in the actual quotes. A generic heading or a sentence clipped before its date cannot support the missing detail. For other statuses, mappings may omit these indices; any supplied indices are still checked. The validator checks coverage of the mapping, not whether the selected quote semantically supports the assigned element. Apply the same material-qualifier review to opportunity premises and journey observations, including `not_checked` journeys.
 
 Supported assertions:
 
@@ -84,6 +86,8 @@ When a tool supplies evidence beyond the collector, add a compact observation:
 ```
 
 Use `mode` from `static`, `rendered`, `off_site`, `retrieval`; use `kind` from `page`, `resource`, `external`, `interaction`. Status is the observed integer or null when not exposed. Set `complete` false for excerpts or capped observations; a successful fetch alone does not establish complete source capture. Optional `fields` contains only actually captured collector-shaped fields, addressed by their names in assertions. Cleaned text cannot establish the absence of a source HTML meta tag or header. Never invent status codes, tool references, timestamps or completeness to satisfy validation.
+
+Search-result excerpts use `mode: "retrieval"`, `status: null` and `complete: false`, even when they link to a first-party page. They support quoted retrieval observations, but do not count in `coverage.pages_checked`, establish a live response, complete a journey, or provide opened-source corroboration. Opening a result successfully is a separate `static` or `off_site` observation with its own capture reference; do not relabel the search excerpt. Public text-fetch tools that omit HTTP status also use null, never an assumed 200. Save verbatim passages with their qualifiers; do not reconstruct text from memory or paraphrase a capture to make a quote assertion pass.
 
 External corroboration entries are `{ "ref": "host:institution", "field": "text", "quote": "Exact relevant passage" }`. An observed corroboration stage must cite its opened external sources. The validator checks source provenance and quotes; the auditor must still establish independence and that the source supports the claimed relationship.
 

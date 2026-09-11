@@ -1,0 +1,85 @@
+{
+  "schema_version": "1.2",
+  "site": "http://127.0.0.1:50253/",
+  "audited_at": "2026-09-11T05:36:49.341504Z",
+  "executive_summary": {
+    "conclusion": "The sampled pages make the tour offer and key buying constraints easy to extract, and robots permits access for the named crawlers. Two concrete issues remain: the homepage sends a noindex directive, and the primary reservation handoff reaches a 404 page.",
+    "top_action_ids": ["F-001", "F-002"]
+  },
+  "summary": {"total_findings": 2, "critical": 0, "high": 1, "medium": 1, "low": 0},
+  "coverage": {
+    "pages_checked": 3,
+    "modes": ["static"],
+    "not_checked": [
+      "Rendered extraction and interactive behavior, including keyboard, focus, mobile layout, overlays and state retention, were not checked because no browser was available.",
+      "Off-site retrieval and independent corroboration were not checked because search was unavailable for this local fixture.",
+      "Actual assistant citations, provider access beyond robots policy, Search Console settings and behavioral analytics were not measured."
+    ]
+  },
+  "findings": [
+    {
+      "id": "F-001",
+      "title": "Homepage is marked noindex",
+      "category": "discoverability",
+      "severity": "medium",
+      "confidence": "high",
+      "evidence": {
+        "observation": "The supplied homepage response contains meta_robots `noindex`; the two sampled supporting pages have an empty meta_robots field. Robots.txt allows `/` for Googlebot, bingbot, OAI-SearchBot, Claude-SearchBot and other named roles, so the homepage directive is the specific conflicting access signal observed.",
+        "affected": 1,
+        "checked": 3,
+        "urls": ["http://127.0.0.1:50253/"]
+      },
+      "suggested_action": {
+        "summary": "Remove the homepage noindex directive unless exclusion is intentional.",
+        "priority": "medium",
+        "effort": "low",
+        "owner_hint": "Web platform or SEO owner",
+        "mechanism": "Allow the primary entry page to be considered for indexing and machine retrieval while retaining the observed permissive robots policy.",
+        "verification": "Fetch http://127.0.0.1:50253/ and confirm the response no longer contains a noindex meta directive; confirm robots.txt remains intentionally configured."
+      }
+    },
+    {
+      "id": "F-002",
+      "title": "Primary reservation handoff returns 404",
+      "category": "engagement",
+      "severity": "high",
+      "confidence": "high",
+      "evidence": {
+        "observation": "The tour page exposes the literal link `/reserve.html` labeled `Reserve a coastal tour`; following the observed absolute destination `http://127.0.0.1:50253/reserve.html` returned HTTP 404. The tour page also states the price and eligibility, so the broken handoff occurs at the next step after a visitor decides to reserve.",
+        "affected": 1,
+        "checked": 2,
+        "urls": ["http://127.0.0.1:50253/tours.html"]
+      },
+      "suggested_action": {
+        "summary": "Restore the reservation destination or change the call to action to a working public contact route.",
+        "priority": "high",
+        "effort": "medium",
+        "owner_hint": "Web owner or booking integration owner",
+        "mechanism": "Make the primary conversion handoff resolve to a live reservation or clearly labeled contact endpoint so the task can continue after the price and eligibility decision.",
+        "verification": "Request the literal href from the tour page and confirm it returns a successful public response with reservation instructions; if redirected, verify the final URL and that the reservation context is clear."
+      }
+    }
+  ],
+  "proactive_opportunities": [],
+  "assessment": {
+    "mode": "agent_composed",
+    "readiness": [
+      {"stage": "access", "status": "observed", "detail": "robots.txt was fetched successfully and allows the named search, user and training roles for `/`; actual provider access remains unverified.", "urls": ["http://127.0.0.1:50253/robots.txt"]},
+      {"stage": "extraction", "status": "observed", "detail": "Readable source text, links and captured metadata were inspected on the homepage, about page and tour details page.", "urls": ["http://127.0.0.1:50253/", "http://127.0.0.1:50253/about.html", "http://127.0.0.1:50253/tours.html"]},
+      {"stage": "answerability", "status": "observed", "detail": "The sampled source pages answer the selected offer, constraint, trust/contact and next-step questions, with the reservation destination itself unresolved by a 404.", "urls": ["http://127.0.0.1:50253/", "http://127.0.0.1:50253/about.html", "http://127.0.0.1:50253/tours.html", "http://127.0.0.1:50253/reserve.html"]},
+      {"stage": "corroboration", "status": "not_checked", "detail": "No off-site search or independent source review was available for this local fixture.", "urls": []},
+      {"stage": "engagement", "status": "observed", "detail": "Source links established the information route and the reservation handoff was checked; rendered interaction and visual continuity remain unobserved.", "urls": ["http://127.0.0.1:50253/", "http://127.0.0.1:50253/tours.html", "http://127.0.0.1:50253/reserve.html"]}
+    ],
+    "intent_tests": [
+      {"question": "What does Morrow Bike Tours offer and who is it for?", "required_elements": ["guided coastal bicycle tour", "two-hour duration", "adults and families", "riders aged 12 and above", "bicycle and helmet included"], "status": "answered", "evidence": [{"url": "http://127.0.0.1:50253/", "quote": "Two-hour guided coastal bicycle tours for adults and families with riders aged 12 and above. Helmets and a rental bicycle are included."}], "reason": "All required offer and audience elements are present in one readable homepage passage."},
+      {"question": "What does the coastal tour cost and what eligibility or cancellation constraints apply?", "required_elements": ["£45 per rider", "at least 12 years old", "able to cycle independently", "full refund with cancellation at least 48 hours before departure"], "status": "answered", "evidence": [{"url": "http://127.0.0.1:50253/tours.html", "quote": "The coastal tour costs £45 per rider, including the bicycle and helmet. Riders must be at least 12 years old and able to cycle independently."}, {"url": "http://127.0.0.1:50253/tours.html", "quote": "Cancel at least 48 hours before departure for a full refund."}], "reason": "The tour page states the price, eligibility, inclusion and refund deadline."},
+      {"question": "Where is the operator and how can a visitor ask about eligibility or group bookings?", "required_elements": ["10 Harbour Lane", "email hello@morrow.example.test", "eligibility or group bookings contact context"], "status": "answered", "evidence": [{"url": "http://127.0.0.1:50253/about.html", "quote": "Morrow Bike Tours is a local guided bicycle-tour operator at 10 Harbour Lane. Questions about eligibility or group bookings: email hello@morrow.example.test."}], "reason": "The about page provides the location and the stated contact route with its purpose."},
+      {"question": "How can a visitor reserve a coastal tour after reviewing the details?", "required_elements": ["working reservation endpoint", "reservation instructions or form"], "status": "partial", "evidence": [{"url": "http://127.0.0.1:50253/tours.html", "quote": "Reserve a coastal tour"}], "reason": "The source page exposes the reservation action, but the observed destination returned 404, so no working endpoint or instructions were available."}
+    ],
+    "journeys": [
+      {"task": "Understand the offer, then check price and eligibility", "starting_context": "Homepage offer summary", "steps": [{"url": "http://127.0.0.1:50253/", "action": "[source] Follow `Tour price and eligibility`.", "observation": "The link targets http://127.0.0.1:50253/tours.html."}, {"url": "http://127.0.0.1:50253/tours.html", "action": "[source] Read the tour details.", "observation": "The page states £45 per rider, minimum age 12, independent cycling, two-hour duration, Saturday 09:00 departure and the 48-hour full-refund condition."}], "status": "completed", "reason": "The requested informational destination was reached and contained the material decision facts."},
+      {"task": "Review the tour and continue to reservation", "starting_context": "Tour details page after price and eligibility review", "steps": [{"url": "http://127.0.0.1:50253/tours.html", "action": "[source] Follow `Reserve a coastal tour`.", "observation": "The literal href is `/reserve.html`, resolving to http://127.0.0.1:50253/reserve.html."}, {"url": "http://127.0.0.1:50253/reserve.html", "action": "[source] Request the reservation destination.", "observation": "The destination returned HTTP 404, so reservation instructions or a form could not be reached."}], "status": "friction", "reason": "A website-side 404 blocks the advertised reservation handoff."}
+    ],
+    "visibility": {"status": "not_measured", "detail": "No assistant answer runs or retrieval searches were recorded; source crawl results do not measure citations.", "cohorts": []}
+  }
+}

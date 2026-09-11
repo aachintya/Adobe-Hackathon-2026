@@ -1,0 +1,63 @@
+[
+  {
+    "site": "british-museum",
+    "schema_errors": [],
+    "revised_gate_errors": [
+      "observations[0]: retrieval observations must use null HTTP status",
+      "observations[1]: retrieval observations must use null HTTP status",
+      "observations[2]: retrieval observations must use null HTTP status",
+      "observations[3]: retrieval observations must use null HTTP status",
+      "pages_checked disagrees with 0 unique inspected first-party pages",
+      "answer (0, 0): answered tests require element_indices",
+      "answer (0, 1): answered tests require element_indices",
+      "answer (1, 0): answered tests require element_indices",
+      "answer (1, 1): answered tests require element_indices",
+      "answer (1, 2): answered tests require element_indices",
+      "answer (2, 0): answered tests require element_indices",
+      "answer (2, 1): answered tests require element_indices",
+      "answer (2, 2): answered tests require element_indices",
+      "answer test 0: element_indices must cover every required element",
+      "answer test 1: element_indices must cover every required element",
+      "answer test 2: element_indices must cover every required element"
+    ],
+    "note": "Post-run evaluation only; original reports and receipts unchanged."
+  },
+  {
+    "site": "framework",
+    "schema_errors": [],
+    "revised_gate_errors": [
+      "answer (0, 0): answered tests require element_indices",
+      "answer (0, 1): answered tests require element_indices",
+      "answer (1, 0): answered tests require element_indices",
+      "answer (1, 1): answered tests require element_indices",
+      "answer (2, 0): answered tests require element_indices",
+      "answer (2, 1): answered tests require element_indices",
+      "answer (2, 2): answered tests require element_indices",
+      "answer test 0: element_indices must cover every required element",
+      "answer test 1: element_indices must cover every required element",
+      "answer test 2: element_indices must cover every required element"
+    ],
+    "note": "Post-run evaluation only; original reports and receipts unchanged."
+  },
+  {
+    "site": "postgresql",
+    "schema_errors": [],
+    "revised_gate_errors": [
+      "answer (0, 0): answered tests require element_indices",
+      "answer (0, 1): answered tests require element_indices",
+      "answer (1, 0): answered tests require element_indices",
+      "answer (1, 1): answered tests require element_indices",
+      "answer (1, 2): answered tests require element_indices",
+      "answer (2, 0): answered tests require element_indices",
+      "answer (2, 1): answered tests require element_indices",
+      "answer (2, 2): answered tests require element_indices",
+      "answer (3, 0): answered tests require element_indices",
+      "answer (3, 1): answered tests require element_indices",
+      "answer test 0: element_indices must cover every required element",
+      "answer test 1: element_indices must cover every required element",
+      "answer test 2: element_indices must cover every required element",
+      "answer test 3: element_indices must cover every required element"
+    ],
+    "note": "Post-run evaluation only; original reports and receipts unchanged."
+  }
+]

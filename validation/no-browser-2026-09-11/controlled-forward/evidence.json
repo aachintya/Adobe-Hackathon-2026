@@ -1,0 +1,731 @@
+{
+  "site": "http://127.0.0.1:50253/",
+  "origin": "http://127.0.0.1:50253/",
+  "collected_at": "2026-09-11T05:36:49.341504+00:00",
+  "collector": "static",
+  "collector_version": "2.0",
+  "agent_roles": {
+    "search": [
+      "Googlebot",
+      "bingbot",
+      "OAI-SearchBot",
+      "Claude-SearchBot",
+      "PerplexityBot"
+    ],
+    "training_or_other_control": [
+      "GPTBot",
+      "ClaudeBot",
+      "Google-Extended",
+      "Applebot-Extended",
+      "meta-externalagent"
+    ],
+    "user_fetch": [
+      "ChatGPT-User",
+      "Claude-User",
+      "Perplexity-User"
+    ]
+  },
+  "limits": {
+    "max_pages": 5,
+    "max_seconds": 45,
+    "rate_per_second": 2,
+    "max_bytes_per_page": 2000000,
+    "effective_request_interval_seconds": 0.5
+  },
+  "robots": {
+    "url": "http://127.0.0.1:50253/robots.txt",
+    "status": 200,
+    "state": "present",
+    "final_url": "http://127.0.0.1:50253/robots.txt",
+    "content_type": "text/plain",
+    "response_truncated": false,
+    "redirects": [],
+    "read_error": null,
+    "rules_text": "User-agent: *\nAllow: /\n",
+    "wildcard_allowed": true,
+    "collector_allowed": true,
+    "ai_agent_allowed": {
+      "Googlebot": true,
+      "bingbot": true,
+      "OAI-SearchBot": true,
+      "Claude-SearchBot": true,
+      "PerplexityBot": true,
+      "GPTBot": true,
+      "ChatGPT-User": true,
+      "ClaudeBot": true,
+      "Claude-User": true,
+      "Perplexity-User": true,
+      "Google-Extended": true,
+      "Applebot-Extended": true,
+      "meta-externalagent": true
+    },
+    "decisions": {
+      "Googlebot": {
+        "allowed": true,
+        "matched_rule": "allow: /",
+        "group": "wildcard"
+      },
+      "bingbot": {
+        "allowed": true,
+        "matched_rule": "allow: /",
+        "group": "wildcard"
+      },
+      "OAI-SearchBot": {
+        "allowed": true,
+        "matched_rule": "allow: /",
+        "group": "wildcard"
+      },
+      "Claude-SearchBot": {
+        "allowed": true,
+        "matched_rule": "allow: /",
+        "group": "wildcard"
+      },
+      "PerplexityBot": {
+        "allowed": true,
+        "matched_rule": "allow: /",
+        "group": "wildcard"
+      },
+      "GPTBot": {
+        "allowed": true,
+        "matched_rule": "allow: /",
+        "group": "wildcard"
+      },
+      "ChatGPT-User": {
+        "allowed": true,
+        "matched_rule": "allow: /",
+        "group": "wildcard"
+      },
+      "ClaudeBot": {
+        "allowed": true,
+        "matched_rule": "allow: /",
+        "group": "wildcard"
+      },
+      "Claude-User": {
+        "allowed": true,
+        "matched_rule": "allow: /",
+        "group": "wildcard"
+      },
+      "Perplexity-User": {
+        "allowed": true,
+        "matched_rule": "allow: /",
+        "group": "wildcard"
+      },
+      "Google-Extended": {
+        "allowed": true,
+        "matched_rule": "allow: /",
+        "group": "wildcard"
+      },
+      "Applebot-Extended": {
+        "allowed": true,
+        "matched_rule": "allow: /",
+        "group": "wildcard"
+      },
+      "meta-externalagent": {
+        "allowed": true,
+        "matched_rule": "allow: /",
+        "group": "wildcard"
+      }
+    },
+    "sitemap_hints": []
+  },
+  "sitemaps": [],
+  "pages": [
+    {
+      "url": "http://127.0.0.1:50253/",
+      "robots_allowed": true,
+      "final_url": "http://127.0.0.1:50253/",
+      "status": 200,
+      "content_type": "text/html",
+      "latency_ms": 8,
+      "response_truncated": false,
+      "redirects": [],
+      "robots_ai_allowed": {
+        "Googlebot": true,
+        "bingbot": true,
+        "OAI-SearchBot": true,
+        "Claude-SearchBot": true,
+        "PerplexityBot": true,
+        "GPTBot": true,
+        "ChatGPT-User": true,
+        "ClaudeBot": true,
+        "Claude-User": true,
+        "Perplexity-User": true,
+        "Google-Extended": true,
+        "Applebot-Extended": true,
+        "meta-externalagent": true
+      },
+      "robots_decisions": {
+        "Googlebot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "bingbot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "OAI-SearchBot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "Claude-SearchBot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "PerplexityBot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "GPTBot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "ChatGPT-User": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "ClaudeBot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "Claude-User": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "Perplexity-User": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "Google-Extended": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "Applebot-Extended": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "meta-externalagent": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        }
+      },
+      "final_robots_ai_allowed": {
+        "Googlebot": true,
+        "bingbot": true,
+        "OAI-SearchBot": true,
+        "Claude-SearchBot": true,
+        "PerplexityBot": true,
+        "GPTBot": true,
+        "ChatGPT-User": true,
+        "ClaudeBot": true,
+        "Claude-User": true,
+        "Perplexity-User": true,
+        "Google-Extended": true,
+        "Applebot-Extended": true,
+        "meta-externalagent": true
+      },
+      "x_robots_tag": "",
+      "x_robots_tags": [],
+      "last_modified": "Fri, 11 Sep 2026 05:36:04 GMT",
+      "sample_type": "home",
+      "title": "Morrow Bike Tours",
+      "h1": [
+        "Morrow Bike Tours"
+      ],
+      "language": "en",
+      "base_href": null,
+      "hreflang": [],
+      "word_count": 43,
+      "text_length": 257,
+      "landmarks": [
+        "main"
+      ],
+      "meta_robots": "noindex",
+      "meta_robot_directives": {
+        "robots": "noindex",
+        "googlebot": "",
+        "bingbot": ""
+      },
+      "description": "",
+      "canonical": [],
+      "links_count": 2,
+      "links": [
+        {
+          "href": "/tours.html",
+          "text": "Tour price and eligibility",
+          "aria_label": "",
+          "selector": "a [source occurrence 1]",
+          "region": "content",
+          "url": "http://127.0.0.1:50253/tours.html"
+        },
+        {
+          "href": "/about.html",
+          "text": "About and contact",
+          "aria_label": "",
+          "selector": "a [source occurrence 2]",
+          "region": "content",
+          "url": "http://127.0.0.1:50253/about.html"
+        }
+      ],
+      "controls": [],
+      "images": {
+        "count": 0,
+        "missing_alt": 0,
+        "empty_alt": 0,
+        "items": []
+      },
+      "jsonld": {
+        "blocks": 0,
+        "parse_errors": 0,
+        "errors": [],
+        "types": [],
+        "data": [],
+        "data_omitted": false
+      },
+      "text_sample": "Morrow Bike Tours Two-hour guided coastal bicycle tours for adults and families with riders aged 12 and above. Helmets and a rental bicycle are included. Tours depart every Saturday at 09:00 from 10 Harbour Lane. Tour price and eligibility About and contact",
+      "main_text": "Morrow Bike Tours Two-hour guided coastal bicycle tours for adults and families with riders aged 12 and above. Helmets and a rental bicycle are included. Tours depart every Saturday at 09:00 from 10 Harbour Lane. Tour price and eligibility About and contact",
+      "passages": [
+        {
+          "selector": "h1 [source occurrence 1]",
+          "heading": "",
+          "text": "Morrow Bike Tours"
+        },
+        {
+          "selector": "p [source occurrence 1]",
+          "heading": "Morrow Bike Tours",
+          "text": "Two-hour guided coastal bicycle tours for adults and families with riders aged 12 and above."
+        },
+        {
+          "selector": "p [source occurrence 2]",
+          "heading": "Morrow Bike Tours",
+          "text": "Helmets and a rental bicycle are included. Tours depart every Saturday at 09:00 from 10 Harbour Lane."
+        }
+      ],
+      "evidence_truncated": false,
+      "extraction_note": "Source HTML including noscript fallback; excludes semantic navigation/footer, scripts and explicit inline hidden content. CSS and JavaScript-enabled visibility require a browser.",
+      "parse_status": "parsed_html",
+      "link_base_url": "http://127.0.0.1:50253/"
+    },
+    {
+      "url": "http://127.0.0.1:50253/about.html",
+      "robots_allowed": true,
+      "final_url": "http://127.0.0.1:50253/about.html",
+      "status": 200,
+      "content_type": "text/html",
+      "latency_ms": 10,
+      "response_truncated": false,
+      "redirects": [],
+      "robots_ai_allowed": {
+        "Googlebot": true,
+        "bingbot": true,
+        "OAI-SearchBot": true,
+        "Claude-SearchBot": true,
+        "PerplexityBot": true,
+        "GPTBot": true,
+        "ChatGPT-User": true,
+        "ClaudeBot": true,
+        "Claude-User": true,
+        "Perplexity-User": true,
+        "Google-Extended": true,
+        "Applebot-Extended": true,
+        "meta-externalagent": true
+      },
+      "robots_decisions": {
+        "Googlebot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "bingbot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "OAI-SearchBot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "Claude-SearchBot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "PerplexityBot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "GPTBot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "ChatGPT-User": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "ClaudeBot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "Claude-User": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "Perplexity-User": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "Google-Extended": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "Applebot-Extended": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "meta-externalagent": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        }
+      },
+      "final_robots_ai_allowed": {
+        "Googlebot": true,
+        "bingbot": true,
+        "OAI-SearchBot": true,
+        "Claude-SearchBot": true,
+        "PerplexityBot": true,
+        "GPTBot": true,
+        "ChatGPT-User": true,
+        "ClaudeBot": true,
+        "Claude-User": true,
+        "Perplexity-User": true,
+        "Google-Extended": true,
+        "Applebot-Extended": true,
+        "meta-externalagent": true
+      },
+      "x_robots_tag": "",
+      "x_robots_tags": [],
+      "last_modified": "Fri, 11 Sep 2026 05:36:04 GMT",
+      "sample_type": "entity",
+      "title": "About Morrow Bike Tours",
+      "h1": [
+        "About Morrow Bike Tours"
+      ],
+      "language": "en",
+      "base_href": null,
+      "hreflang": [],
+      "word_count": 37,
+      "text_length": 234,
+      "landmarks": [
+        "main"
+      ],
+      "meta_robots": "",
+      "meta_robot_directives": {
+        "robots": "",
+        "googlebot": "",
+        "bingbot": ""
+      },
+      "description": "",
+      "canonical": [],
+      "links_count": 2,
+      "links": [
+        {
+          "href": "/tours.html",
+          "text": "Tour details",
+          "aria_label": "",
+          "selector": "a [source occurrence 1]",
+          "region": "content",
+          "url": "http://127.0.0.1:50253/tours.html"
+        },
+        {
+          "href": "/",
+          "text": "Home",
+          "aria_label": "",
+          "selector": "a [source occurrence 2]",
+          "region": "content",
+          "url": "http://127.0.0.1:50253/"
+        }
+      ],
+      "controls": [],
+      "images": {
+        "count": 0,
+        "missing_alt": 0,
+        "empty_alt": 0,
+        "items": []
+      },
+      "jsonld": {
+        "blocks": 0,
+        "parse_errors": 0,
+        "errors": [],
+        "types": [],
+        "data": [],
+        "data_omitted": false
+      },
+      "text_sample": "About Morrow Bike Tours Morrow Bike Tours is a local guided bicycle-tour operator at 10 Harbour Lane. Questions about eligibility or group bookings: email hello@morrow.example.test. This is a synthetic audit fixture. Tour details Home",
+      "main_text": "About Morrow Bike Tours Morrow Bike Tours is a local guided bicycle-tour operator at 10 Harbour Lane. Questions about eligibility or group bookings: email hello@morrow.example.test. This is a synthetic audit fixture. Tour details Home",
+      "passages": [
+        {
+          "selector": "h1 [source occurrence 1]",
+          "heading": "",
+          "text": "About Morrow Bike Tours"
+        },
+        {
+          "selector": "p [source occurrence 1]",
+          "heading": "About Morrow Bike Tours",
+          "text": "Morrow Bike Tours is a local guided bicycle-tour operator at 10 Harbour Lane."
+        },
+        {
+          "selector": "p [source occurrence 2]",
+          "heading": "About Morrow Bike Tours",
+          "text": "Questions about eligibility or group bookings: email hello@morrow.example.test. This is a synthetic audit fixture."
+        }
+      ],
+      "evidence_truncated": false,
+      "extraction_note": "Source HTML including noscript fallback; excludes semantic navigation/footer, scripts and explicit inline hidden content. CSS and JavaScript-enabled visibility require a browser.",
+      "parse_status": "parsed_html",
+      "link_base_url": "http://127.0.0.1:50253/about.html"
+    },
+    {
+      "url": "http://127.0.0.1:50253/tours.html",
+      "robots_allowed": true,
+      "final_url": "http://127.0.0.1:50253/tours.html",
+      "status": 200,
+      "content_type": "text/html",
+      "latency_ms": 8,
+      "response_truncated": false,
+      "redirects": [],
+      "robots_ai_allowed": {
+        "Googlebot": true,
+        "bingbot": true,
+        "OAI-SearchBot": true,
+        "Claude-SearchBot": true,
+        "PerplexityBot": true,
+        "GPTBot": true,
+        "ChatGPT-User": true,
+        "ClaudeBot": true,
+        "Claude-User": true,
+        "Perplexity-User": true,
+        "Google-Extended": true,
+        "Applebot-Extended": true,
+        "meta-externalagent": true
+      },
+      "robots_decisions": {
+        "Googlebot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "bingbot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "OAI-SearchBot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "Claude-SearchBot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "PerplexityBot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "GPTBot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "ChatGPT-User": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "ClaudeBot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "Claude-User": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "Perplexity-User": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "Google-Extended": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "Applebot-Extended": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "meta-externalagent": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        }
+      },
+      "final_robots_ai_allowed": {
+        "Googlebot": true,
+        "bingbot": true,
+        "OAI-SearchBot": true,
+        "Claude-SearchBot": true,
+        "PerplexityBot": true,
+        "GPTBot": true,
+        "ChatGPT-User": true,
+        "ClaudeBot": true,
+        "Claude-User": true,
+        "Perplexity-User": true,
+        "Google-Extended": true,
+        "Applebot-Extended": true,
+        "meta-externalagent": true
+      },
+      "x_robots_tag": "",
+      "x_robots_tags": [],
+      "last_modified": "Fri, 11 Sep 2026 05:36:04 GMT",
+      "sample_type": "other",
+      "title": "Tour price and eligibility",
+      "h1": [
+        "Coastal tour"
+      ],
+      "language": "en",
+      "base_href": null,
+      "hreflang": [],
+      "word_count": 61,
+      "text_length": 337,
+      "landmarks": [
+        "main"
+      ],
+      "meta_robots": "",
+      "meta_robot_directives": {
+        "robots": "",
+        "googlebot": "",
+        "bingbot": ""
+      },
+      "description": "",
+      "canonical": [],
+      "links_count": 3,
+      "links": [
+        {
+          "href": "/reserve.html",
+          "text": "Reserve a coastal tour",
+          "aria_label": "",
+          "selector": "a [source occurrence 1]",
+          "region": "content",
+          "url": "http://127.0.0.1:50253/reserve.html"
+        },
+        {
+          "href": "/about.html",
+          "text": "Contact the team",
+          "aria_label": "",
+          "selector": "a [source occurrence 2]",
+          "region": "content",
+          "url": "http://127.0.0.1:50253/about.html"
+        },
+        {
+          "href": "/",
+          "text": "Home",
+          "aria_label": "",
+          "selector": "a [source occurrence 3]",
+          "region": "content",
+          "url": "http://127.0.0.1:50253/"
+        }
+      ],
+      "controls": [],
+      "images": {
+        "count": 0,
+        "missing_alt": 0,
+        "empty_alt": 0,
+        "items": []
+      },
+      "jsonld": {
+        "blocks": 0,
+        "parse_errors": 0,
+        "errors": [],
+        "types": [],
+        "data": [],
+        "data_omitted": false
+      },
+      "text_sample": "Coastal tour The coastal tour costs £45 per rider, including the bicycle and helmet. Riders must be at least 12 years old and able to cycle independently. The ride lasts two hours and leaves 10 Harbour Lane every Saturday at 09:00. Cancel at least 48 hours before departure for a full refund. Reserve a coastal tour Contact the team Home",
+      "main_text": "Coastal tour The coastal tour costs £45 per rider, including the bicycle and helmet. Riders must be at least 12 years old and able to cycle independently. The ride lasts two hours and leaves 10 Harbour Lane every Saturday at 09:00. Cancel at least 48 hours before departure for a full refund. Reserve a coastal tour Contact the team Home",
+      "passages": [
+        {
+          "selector": "h1 [source occurrence 1]",
+          "heading": "",
+          "text": "Coastal tour"
+        },
+        {
+          "selector": "p [source occurrence 1]",
+          "heading": "Coastal tour",
+          "text": "The coastal tour costs £45 per rider, including the bicycle and helmet. Riders must be at least 12 years old and able to cycle independently."
+        },
+        {
+          "selector": "p [source occurrence 2]",
+          "heading": "Coastal tour",
+          "text": "The ride lasts two hours and leaves 10 Harbour Lane every Saturday at 09:00. Cancel at least 48 hours before departure for a full refund."
+        }
+      ],
+      "evidence_truncated": false,
+      "extraction_note": "Source HTML including noscript fallback; excludes semantic navigation/footer, scripts and explicit inline hidden content. CSS and JavaScript-enabled visibility require a browser.",
+      "parse_status": "parsed_html",
+      "link_base_url": "http://127.0.0.1:50253/tours.html"
+    }
+  ],
+  "errors": [
+    {
+      "url": "http://127.0.0.1:50253/reserve.html",
+      "error": "HTTPError",
+      "detail": "HTTP Error 404: File not found",
+      "status": 404
+    }
+  ],
+  "ai_probe": {
+    "status": "not_checked",
+    "reason": "No bot impersonation: local requests do not verify provider IP access."
+  },
+  "coverage": {
+    "rendered": "not_checked: collector is static",
+    "off_site": "not_checked: requires search-capable agent",
+    "actual_ai_visibility": "not_measured: requires recorded assistant answers and citations",
+    "deadline_reached": false,
+    "sample_types": {
+      "home": 1,
+      "entity": 1,
+      "other": 1
+    },
+    "request_count": 6,
+    "elapsed_seconds": 2.53
+  }
+}

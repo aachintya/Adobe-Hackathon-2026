@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.2",
+  "site": "https://www.djangoproject.com/",
+  "audited_at": "2026-09-11T05:39:00Z",
+  "executive_summary": {
+    "conclusion": "The sampled Django pages provide clear, quotable descriptions of the framework, current release and security updates, with direct routes to documentation, code, community and Foundation contacts. Browser interaction, independent corroboration and actual assistant citation behavior were unavailable in this run, so no website defect is asserted from those lanes.",
+    "top_action_ids": []
+  },
+  "summary": {"total_findings": 0, "critical": 0, "high": 0, "medium": 0, "low": 0},
+  "coverage": {
+    "pages_checked": 5,
+    "modes": ["static"],
+    "not_checked": [
+      "Rendered extraction and interactive engagement: no browser available.",
+      "Mobile layout, keyboard reachability, focus, overlays and context retention.",
+      "Off-site retrieval and independent corroboration: no search-capable agent available.",
+      "Actual assistant answers/citations, provider IP access, Search Console settings and analytics.",
+      "Some collector page evidence is capped; absence claims were not made."
+    ]
+  },
+  "findings": [],
+  "proactive_opportunities": [],
+  "assessment": {
+    "mode": "agent_composed",
+    "readiness": [
+      {"stage": "access", "status": "observed", "detail": "robots.txt permits the sampled public pages for the named crawler roles; /admin and /checklists are disallowed. Local collection does not verify provider access.", "urls": ["https://www.djangoproject.com/robots.txt"]},
+      {"stage": "extraction", "status": "observed", "detail": "Five sampled HTML pages expose readable titles, headings, main text, links and dates in static source evidence.", "urls": ["https://www.djangoproject.com/", "https://www.djangoproject.com/weblog/", "https://www.djangoproject.com/contact/foundation/", "https://www.djangoproject.com/foundation/teams/", "https://www.djangoproject.com/weblog/2026/aug/04/security-releases/"]},
+      {"stage": "answerability", "status": "observed", "detail": "Four representative questions were checked against saved passages; each required element is supported by the cited source text.", "urls": ["https://www.djangoproject.com/", "https://www.djangoproject.com/weblog/", "https://www.djangoproject.com/contact/foundation/", "https://www.djangoproject.com/weblog/2026/aug/04/security-releases/"]},
+      {"stage": "corroboration", "status": "not_checked", "detail": "No independent web search or opened external corroborating source was available within this audit lane.", "urls": []},
+      {"stage": "engagement", "status": "observed", "detail": "Two source-only routes were traced through captured links; rendered interaction and context retention remain untested.", "urls": ["https://www.djangoproject.com/", "https://www.djangoproject.com/weblog/", "https://www.djangoproject.com/weblog/2026/aug/04/security-releases/", "https://www.djangoproject.com/contact/foundation/"]}
+    ],
+    "intent_tests": [
+      {"question": "What is Django and who is it for?", "required_elements": ["high-level Python web framework", "rapid, clean development", "free and open source"], "status": "answered", "evidence": [{"url": "https://www.djangoproject.com/", "quote": "Django is a high-level Python web framework"}, {"url": "https://www.djangoproject.com/", "quote": "rapid development and clean, pragmatic design"}, {"url": "https://www.djangoproject.com/", "quote": "It’s free and open source."}], "reason": "The homepage states the framework type, development purpose and licensing directly."},
+      {"question": "What is the latest Django release shown on the site?", "required_elements": ["latest release version"], "status": "answered", "evidence": [{"url": "https://www.djangoproject.com/", "quote": "Download latest release: 6.1.1"}], "reason": "The homepage provides a versioned latest-release link."},
+      {"question": "How does a visitor verify current security guidance?", "required_elements": ["dated security release", "affected versions", "upgrade guidance"], "status": "answered", "evidence": [{"url": "https://www.djangoproject.com/weblog/2026/aug/04/security-releases/", "quote": "Django security releases issued: 6.0.8 and 5.2.17"}, {"url": "https://www.djangoproject.com/weblog/2026/aug/04/security-releases/", "quote": "These releases address the security issues detailed below. We encourage all users of Django to upgrade as soon as possible."}], "reason": "The security post identifies affected release versions and gives direct upgrade guidance."},
+      {"question": "Where should a visitor direct Foundation, bug, website or usage questions?", "required_elements": ["Foundation contact route", "bug tracker route", "website issue route", "usage forum route"], "status": "answered", "evidence": [{"url": "https://www.djangoproject.com/contact/foundation/", "quote": "This contact form is for the Django Software Foundation"}, {"url": "https://www.djangoproject.com/contact/foundation/", "quote": "report a bug, feature request, or documentation issue in Django, use the ticket tracker"}, {"url": "https://www.djangoproject.com/contact/foundation/", "quote": "report a problem with this website, use the GitHub repo"}, {"url": "https://www.djangoproject.com/contact/foundation/", "quote": "questions about how to use Django, use the Django Forum"}], "reason": "The contact page explicitly separates the Foundation form from project, website and usage support routes."}
+    ],
+    "journeys": [
+      {"task": "Understand Django, then verify a current security release", "starting_context": "Django homepage visitor evaluating the framework and its current maintenance status", "steps": [{"url": "https://www.djangoproject.com/", "action": "[source] Read homepage description and select News", "observation": "Homepage describes Django as a high-level Python framework and links News."}, {"url": "https://www.djangoproject.com/weblog/", "action": "[source] Inspect News & Events", "observation": "The news index lists dated releases and links to the security release article."}, {"url": "https://www.djangoproject.com/weblog/2026/aug/04/security-releases/", "action": "[source] Open the security release article", "observation": "The article names Django 6.0.8 and 5.2.17 and recommends upgrading."}], "status": "completed", "reason": "The source route reached a public, dated security detail destination; no submission or authentication was needed."},
+      {"task": "Find the correct contact route for Foundation or project support", "starting_context": "Visitor needs to contact the Django Software Foundation or redirect a project/website/usage question", "steps": [{"url": "https://www.djangoproject.com/", "action": "[source] Inspect global navigation and support links", "observation": "The homepage exposes Foundation, Issues, Community and Forum destinations."}, {"url": "https://www.djangoproject.com/contact/foundation/", "action": "[source] Open the Foundation contact page", "observation": "The page identifies the Foundation form and provides ticket tracker, GitHub repo and Django Forum routes for other needs."}], "status": "completed", "reason": "The inspected public contact destination clearly explains the handoff routes; interactive form behavior was not exercised."}
+    ],
+    "visibility": {"status": "not_measured", "detail": "No recorded assistant answer runs or citation observations were available; static crawl evidence cannot measure provider citation behavior.", "cohorts": []}
+  }
+}

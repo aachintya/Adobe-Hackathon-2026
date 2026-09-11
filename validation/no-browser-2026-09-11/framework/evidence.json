@@ -1,0 +1,156 @@
+{
+  "site": "https://frame.work/",
+  "origin": "https://frame.work/",
+  "collected_at": "2026-09-11T05:25:54.159663+00:00",
+  "collector": "static",
+  "collector_version": "2.0",
+  "agent_roles": {
+    "search": [
+      "Googlebot",
+      "bingbot",
+      "OAI-SearchBot",
+      "Claude-SearchBot",
+      "PerplexityBot"
+    ],
+    "training_or_other_control": [
+      "GPTBot",
+      "ClaudeBot",
+      "Google-Extended",
+      "Applebot-Extended",
+      "meta-externalagent"
+    ],
+    "user_fetch": [
+      "ChatGPT-User",
+      "Claude-User",
+      "Perplexity-User"
+    ]
+  },
+  "limits": {
+    "max_pages": 5,
+    "max_seconds": 45,
+    "rate_per_second": 2,
+    "max_bytes_per_page": 2000000,
+    "effective_request_interval_seconds": 0.5
+  },
+  "robots": {
+    "url": "https://frame.work/robots.txt",
+    "status": 403,
+    "state": "unavailable_4xx",
+    "read_error": null,
+    "rules_text": "",
+    "wildcard_allowed": true,
+    "collector_allowed": true,
+    "ai_agent_allowed": {
+      "Googlebot": true,
+      "bingbot": true,
+      "OAI-SearchBot": true,
+      "Claude-SearchBot": true,
+      "PerplexityBot": true,
+      "GPTBot": true,
+      "ChatGPT-User": true,
+      "ClaudeBot": true,
+      "Claude-User": true,
+      "Perplexity-User": true,
+      "Google-Extended": true,
+      "Applebot-Extended": true,
+      "meta-externalagent": true
+    },
+    "decisions": {
+      "Googlebot": {
+        "allowed": true,
+        "matched_rule": null,
+        "group": "none"
+      },
+      "bingbot": {
+        "allowed": true,
+        "matched_rule": null,
+        "group": "none"
+      },
+      "OAI-SearchBot": {
+        "allowed": true,
+        "matched_rule": null,
+        "group": "none"
+      },
+      "Claude-SearchBot": {
+        "allowed": true,
+        "matched_rule": null,
+        "group": "none"
+      },
+      "PerplexityBot": {
+        "allowed": true,
+        "matched_rule": null,
+        "group": "none"
+      },
+      "GPTBot": {
+        "allowed": true,
+        "matched_rule": null,
+        "group": "none"
+      },
+      "ChatGPT-User": {
+        "allowed": true,
+        "matched_rule": null,
+        "group": "none"
+      },
+      "ClaudeBot": {
+        "allowed": true,
+        "matched_rule": null,
+        "group": "none"
+      },
+      "Claude-User": {
+        "allowed": true,
+        "matched_rule": null,
+        "group": "none"
+      },
+      "Perplexity-User": {
+        "allowed": true,
+        "matched_rule": null,
+        "group": "none"
+      },
+      "Google-Extended": {
+        "allowed": true,
+        "matched_rule": null,
+        "group": "none"
+      },
+      "Applebot-Extended": {
+        "allowed": true,
+        "matched_rule": null,
+        "group": "none"
+      },
+      "meta-externalagent": {
+        "allowed": true,
+        "matched_rule": null,
+        "group": "none"
+      }
+    },
+    "sitemap_hints": []
+  },
+  "sitemaps": [],
+  "pages": [],
+  "errors": [
+    {
+      "url": "https://frame.work/",
+      "error": "HTTPError",
+      "detail": "HTTP Error 403: Forbidden",
+      "status": 403
+    },
+    {
+      "url": "https://frame.work/sitemap.xml",
+      "error": "HTTPError",
+      "detail": "HTTP Error 403: Forbidden",
+      "status": 403
+    }
+  ],
+  "ai_probe": {
+    "status": "not_checked",
+    "reason": "No bot impersonation: local requests do not verify provider IP access."
+  },
+  "coverage": {
+    "rendered": "not_checked: collector is static",
+    "off_site": "not_checked: requires search-capable agent",
+    "actual_ai_visibility": "not_measured: requires recorded assistant answers and citations",
+    "deadline_reached": false,
+    "sample_types": {},
+    "request_count": 3,
+    "elapsed_seconds": 1.15
+  }
+}

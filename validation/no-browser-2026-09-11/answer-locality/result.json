@@ -1,0 +1,259 @@
+{
+  "probe_version": "1",
+  "site": "https://www.postgresql.org/",
+  "cases": [
+    {
+      "id": "release-support-lifecycle",
+      "ref": "page:0",
+      "elements": [
+        {
+          "label": "current stable release",
+          "quote": "PostgreSQL 18.6,"
+        },
+        {
+          "label": "end of support",
+          "quote": "PostgreSQL 14 will stop receiving fixes on November 12, 2026."
+        }
+      ],
+      "status": "measured",
+      "url": "https://www.postgresql.org/",
+      "capture_complete": true,
+      "source_text_sha256": "51cdb55ef447030b94fb6b5927d4297bd350c1affbd270769fdb8017faae760a",
+      "minimum_span_words": 200,
+      "span": {
+        "start_word": 3,
+        "end_word_exclusive": 203
+      },
+      "excerpt": "PostgreSQL 18.6, 17.11, 16.15, 15.19, 14.24 and 19 Beta 3 Released! PostgreSQL: The World's Most Advanced Open Source Relational Database Download New to PostgreSQL? New to PostgreSQL? PostgreSQL is a powerful, open source object-relational database system with over 35 years of active development that has earned it a strong reputation for reliability, feature robustness, and performance. There is a wealth of information to be found describing how to install and use PostgreSQL through the official documentation . The open source community provides many helpful places to become familiar with PostgreSQL, discover how it works, and find career opportunities. Learn more on how to engage with the community . Learn More Feature Matrix Governance Latest Releases 2026-08-13 - PostgreSQL 19 Beta 3, ",
+      "excerpt_truncated": true,
+      "windows": [
+        {
+          "budget_words": 20,
+          "fits_contiguous_window": false,
+          "phases": [
+            {
+              "offset_words": 0,
+              "all_elements_together": false,
+              "window": null
+            },
+            {
+              "offset_words": 10,
+              "all_elements_together": false,
+              "window": null
+            }
+          ]
+        },
+        {
+          "budget_words": 40,
+          "fits_contiguous_window": false,
+          "phases": [
+            {
+              "offset_words": 0,
+              "all_elements_together": false,
+              "window": null
+            },
+            {
+              "offset_words": 20,
+              "all_elements_together": false,
+              "window": null
+            }
+          ]
+        },
+        {
+          "budget_words": 80,
+          "fits_contiguous_window": false,
+          "phases": [
+            {
+              "offset_words": 0,
+              "all_elements_together": false,
+              "window": null
+            },
+            {
+              "offset_words": 40,
+              "all_elements_together": false,
+              "window": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "about-open-source-extensibility",
+      "ref": "page:1",
+      "elements": [
+        {
+          "label": "license model",
+          "quote": "free and open source"
+        },
+        {
+          "label": "extensibility",
+          "quote": "highly extensible."
+        }
+      ],
+      "status": "measured",
+      "url": "https://www.postgresql.org/about/",
+      "capture_complete": true,
+      "source_text_sha256": "4847a99794f584d824d09fbf03122d9dc771e08a89b8f06010bb5dbc5b21495e",
+      "minimum_span_words": 9,
+      "span": {
+        "start_word": 250,
+        "end_word_exclusive": 259
+      },
+      "excerpt": "free and open source , PostgreSQL is highly extensible.",
+      "excerpt_truncated": false,
+      "windows": [
+        {
+          "budget_words": 20,
+          "fits_contiguous_window": true,
+          "phases": [
+            {
+              "offset_words": 0,
+              "all_elements_together": true,
+              "window": [
+                240,
+                260
+              ]
+            },
+            {
+              "offset_words": 10,
+              "all_elements_together": true,
+              "window": [
+                250,
+                270
+              ]
+            }
+          ]
+        },
+        {
+          "budget_words": 40,
+          "fits_contiguous_window": true,
+          "phases": [
+            {
+              "offset_words": 0,
+              "all_elements_together": true,
+              "window": [
+                240,
+                280
+              ]
+            },
+            {
+              "offset_words": 20,
+              "all_elements_together": true,
+              "window": [
+                220,
+                260
+              ]
+            }
+          ]
+        },
+        {
+          "budget_words": 80,
+          "fits_contiguous_window": true,
+          "phases": [
+            {
+              "offset_words": 0,
+              "all_elements_together": true,
+              "window": [
+                240,
+                320
+              ]
+            },
+            {
+              "offset_words": 40,
+              "all_elements_together": true,
+              "window": [
+                200,
+                280
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "docs-current-version",
+      "ref": "page:2",
+      "elements": [
+        {
+          "label": "current manual",
+          "quote": "18 / Current"
+        },
+        {
+          "label": "unsupported-version route",
+          "quote": "archive of older manuals."
+        }
+      ],
+      "status": "measured",
+      "url": "https://www.postgresql.org/docs/",
+      "capture_complete": true,
+      "source_text_sha256": "8636c74697e2e0d95b4a3cb6487e319ca3b56b6d0c4dfc2509bc3851ab192a43",
+      "minimum_span_words": 72,
+      "span": {
+        "start_word": 68,
+        "end_word_exclusive": 140
+      },
+      "excerpt": "18 / Current A4 PDF (15.1 MB) • US PDF (15.0 MB) 17 A4 PDF (14.8 MB) • US PDF (14.7 MB) 16 A4 PDF (14.6 MB) • US PDF (14.5 MB) 15 A4 PDF (13.9 MB) • US PDF (13.8 MB) 14 A4 PDF (13.7 MB) • US PDF (13.6 MB) Development snapshot PDF version not available Looking for documentation for an older, unsupported, version? Check the archive of older manuals.",
+      "excerpt_truncated": false,
+      "windows": [
+        {
+          "budget_words": 20,
+          "fits_contiguous_window": false,
+          "phases": [
+            {
+              "offset_words": 0,
+              "all_elements_together": false,
+              "window": null
+            },
+            {
+              "offset_words": 10,
+              "all_elements_together": false,
+              "window": null
+            }
+          ]
+        },
+        {
+          "budget_words": 40,
+          "fits_contiguous_window": false,
+          "phases": [
+            {
+              "offset_words": 0,
+              "all_elements_together": false,
+              "window": null
+            },
+            {
+              "offset_words": 20,
+              "all_elements_together": false,
+              "window": null
+            }
+          ]
+        },
+        {
+          "budget_words": 80,
+          "fits_contiguous_window": true,
+          "phases": [
+            {
+              "offset_words": 0,
+              "all_elements_together": false,
+              "window": null
+            },
+            {
+              "offset_words": 40,
+              "all_elements_together": false,
+              "window": null
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Exact-quote locality only; a reviewer must select every material answer element and qualifier and check meaning.",
+    "Whitespace-delimited words are not model tokens. Two fixed non-overlapping chunk alignments are an experiment, not a search-engine simulation.",
+    "A split is a review candidate, not an automatic website defect. Missing, failed or truncated captures cannot establish absence.",
+    "No browser, network, live assistant answers, citation probability or visibility uplift is measured."
+  ],
+  "input_sha256": {
+    "evidence": "f5d7fb30589be5e2f815206d0593a26cd260f38546654a72782fcfa62110c219",
+    "cases": "8cf9e7f39c52d8daf5053e41bc1b3607c91764fa105271e80ce82c1a4b8d7d0e"
+  }
+}

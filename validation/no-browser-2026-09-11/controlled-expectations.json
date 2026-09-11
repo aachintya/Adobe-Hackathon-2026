@@ -1,0 +1,13 @@
+{
+  "private_to_evaluator": true,
+  "expected_root_causes": [
+    "Homepage has an explicit noindex directive on a public acquisition page.",
+    "Tour details link to /reserve.html, whose observed HTTP status is 404."
+  ],
+  "healthy_qualifiers": [
+    "\u00a345 includes bicycle and helmet",
+    "minimum age12",
+    "48-hour cancellation cutoff"
+  ],
+  "note": "Do not reveal this file or fixture source to the auditor. No critical site-wide finding expected."
+}

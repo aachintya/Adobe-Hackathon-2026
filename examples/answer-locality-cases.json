@@ -1,0 +1,32 @@
+{
+  "cases": [
+    {
+      "id": "synthetic-before",
+      "ref": "page:0",
+      "elements": [
+        {
+          "label": "price and unit",
+          "quote": "The plan costs $12 per user each month."
+        },
+        {
+          "label": "billing condition and taxes",
+          "quote": "Annual billing is required; taxes are extra."
+        }
+      ]
+    },
+    {
+      "id": "hypothetical-answer-card",
+      "ref": "page:1",
+      "elements": [
+        {
+          "label": "price and unit",
+          "quote": "The plan costs $12 per user each month."
+        },
+        {
+          "label": "billing condition and taxes",
+          "quote": "Annual billing is required; taxes are extra."
+        }
+      ]
+    }
+  ]
+}

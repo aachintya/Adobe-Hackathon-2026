@@ -1,0 +1,187 @@
+{
+  "probe_version": "1",
+  "site": "https://locality-demo.example.test/",
+  "cases": [
+    {
+      "id": "synthetic-before",
+      "ref": "page:0",
+      "elements": [
+        {
+          "label": "price and unit",
+          "quote": "The plan costs $12 per user each month."
+        },
+        {
+          "label": "billing condition and taxes",
+          "quote": "Annual billing is required; taxes are extra."
+        }
+      ],
+      "status": "measured",
+      "url": "https://locality-demo.example.test/before",
+      "capture_complete": true,
+      "source_text_sha256": "d54bb163ff1ca0f20d9589db8a15597c9b28e36113fa6e7018cb748aa32bafc2",
+      "minimum_span_words": 197,
+      "span": {
+        "start_word": 0,
+        "end_word_exclusive": 197
+      },
+      "excerpt": "The plan costs $12 per user each month. Product background and general feature descriptions appear between the price and its conditions. Product background and general feature descriptions appear between the price and its conditions. Product background and general feature descriptions appear between the price and its conditions. Product background and general feature descriptions appear between the price and its conditions. Product background and general feature descriptions appear between the price and its conditions. Product background and general feature descriptions appear between the price and its conditions. Product background and general feature descriptions appear between the price and its conditions. Product background and general feature descriptions appear between the price and ",
+      "excerpt_truncated": true,
+      "windows": [
+        {
+          "budget_words": 80,
+          "fits_contiguous_window": false,
+          "phases": [
+            {
+              "offset_words": 0,
+              "all_elements_together": false,
+              "window": null
+            },
+            {
+              "offset_words": 40,
+              "all_elements_together": false,
+              "window": null
+            }
+          ]
+        },
+        {
+          "budget_words": 160,
+          "fits_contiguous_window": false,
+          "phases": [
+            {
+              "offset_words": 0,
+              "all_elements_together": false,
+              "window": null
+            },
+            {
+              "offset_words": 80,
+              "all_elements_together": false,
+              "window": null
+            }
+          ]
+        },
+        {
+          "budget_words": 300,
+          "fits_contiguous_window": true,
+          "phases": [
+            {
+              "offset_words": 0,
+              "all_elements_together": true,
+              "window": [
+                0,
+                197
+              ]
+            },
+            {
+              "offset_words": 150,
+              "all_elements_together": false,
+              "window": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hypothetical-answer-card",
+      "ref": "page:1",
+      "elements": [
+        {
+          "label": "price and unit",
+          "quote": "The plan costs $12 per user each month."
+        },
+        {
+          "label": "billing condition and taxes",
+          "quote": "Annual billing is required; taxes are extra."
+        }
+      ],
+      "status": "measured",
+      "url": "https://locality-demo.example.test/proposed",
+      "capture_complete": true,
+      "source_text_sha256": "39459ca4de33b6ad597b2071680867bf5315b7ef475a5c5a0c3c3fcc1824334a",
+      "minimum_span_words": 15,
+      "span": {
+        "start_word": 0,
+        "end_word_exclusive": 15
+      },
+      "excerpt": "The plan costs $12 per user each month. Annual billing is required; taxes are extra.",
+      "excerpt_truncated": false,
+      "windows": [
+        {
+          "budget_words": 80,
+          "fits_contiguous_window": true,
+          "phases": [
+            {
+              "offset_words": 0,
+              "all_elements_together": true,
+              "window": [
+                0,
+                15
+              ]
+            },
+            {
+              "offset_words": 40,
+              "all_elements_together": true,
+              "window": [
+                0,
+                15
+              ]
+            }
+          ]
+        },
+        {
+          "budget_words": 160,
+          "fits_contiguous_window": true,
+          "phases": [
+            {
+              "offset_words": 0,
+              "all_elements_together": true,
+              "window": [
+                0,
+                15
+              ]
+            },
+            {
+              "offset_words": 80,
+              "all_elements_together": true,
+              "window": [
+                0,
+                15
+              ]
+            }
+          ]
+        },
+        {
+          "budget_words": 300,
+          "fits_contiguous_window": true,
+          "phases": [
+            {
+              "offset_words": 0,
+              "all_elements_together": true,
+              "window": [
+                0,
+                15
+              ]
+            },
+            {
+              "offset_words": 150,
+              "all_elements_together": true,
+              "window": [
+                0,
+                15
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Exact-quote locality only; a reviewer must select every material answer element and qualifier and check meaning.",
+    "Whitespace-delimited words are not model tokens. Two fixed non-overlapping chunk alignments are an experiment, not a search-engine simulation.",
+    "A split is a review candidate, not an automatic website defect. Missing, failed or truncated captures cannot establish absence.",
+    "No browser, network, live assistant answers, citation probability or visibility uplift is measured."
+  ],
+  "input_sha256": {
+    "evidence": "fa5be7ac3745a6f4229da9c34448645979ec85e9e497eb1f6673e4fae594fff3",
+    "cases": "7f8334db3b56cd430f4e3f4406ec39830aa9ce43e2c89540b793026a2a38b119"
+  }
+}

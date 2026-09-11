@@ -1,0 +1,15 @@
+{
+  "schema_errors": [],
+  "evidence_errors": [],
+  "receipt_hash_matches": {
+    "report": true,
+    "evidence": true,
+    "review": true
+  },
+  "expected_roots_detected": {
+    "homepage_noindex": true,
+    "reservation_404": true
+  },
+  "findings": 2,
+  "elapsed_seconds": 181.019011
+}

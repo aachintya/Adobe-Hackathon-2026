@@ -145,6 +145,11 @@ def _validate(doc, evidence, review):
         # absence claims. Collector errors never receive this allowance.
         if observation["status"] is None and observation["text"].strip():
             records[ref]["readable"] = True
+        if observation["mode"] == "retrieval":
+            if observation["status"] is not None:
+                errors.append(f"{where}: retrieval observations must use null HTTP status")
+            if observation["complete"] is not False:
+                errors.append(f"{where}: retrieval observations must be incomplete excerpts")
 
     def get(ref, where):
         if not isinstance(ref, str) or ref not in records:
@@ -206,9 +211,11 @@ def _validate(doc, evidence, review):
     # Honor an actually observed landing redirect (e.g. apex -> www), without
     # treating arbitrary sibling hosts or merely discovered links as first party.
     for record in records.values():
-        if record["readable"] and _url(record["data"].get("url")) == _url(doc["site"]):
+        if (record["readable"] and record["mode"] != "retrieval"
+                and _url(record["data"].get("url")) == _url(doc["site"])):
             site_hosts.add(urlparse(record["identity"]).netloc.lower())
     checked_pages = {r["identity"] for r in records.values() if r["kind"] == "page" and r["readable"]
+                     and r["mode"] != "retrieval"
                      and urlparse(r["identity"]).netloc.lower() in site_hosts}
     if doc["coverage"]["pages_checked"] != len(checked_pages):
         errors.append(f"pages_checked disagrees with {len(checked_pages)} unique inspected first-party pages")
@@ -258,7 +265,7 @@ def _validate(doc, evidence, review):
         if any(not any(r["aliases"] & support["aliases"] for support in support_records) for r in affected_records):
             errors.append(f"{ident}: every affected page needs its own supporting assertion")
 
-    answer_map = {}
+    answer_map, element_coverage = {}, {}
     for answer in review["answers"]:
         key = (answer["test_index"], answer["evidence_index"])
         if key in answer_map:
@@ -271,6 +278,18 @@ def _validate(doc, evidence, review):
             expected_answers.add(key)
             mapping = answer_map.get(key, {})
             record = get(mapping.get("ref"), f"answer {key}")
+            if "element_indices" in mapping:
+                indices = mapping["element_indices"]
+                valid_items = (isinstance(indices, list) and bool(indices)
+                               and all(type(item) is int and 0 <= item < len(test["required_elements"])
+                                       for item in indices))
+                valid = valid_items and len(indices) == len(set(indices))
+                if not valid:
+                    errors.append(f"answer {key}: element_indices must be nonempty, unique, valid required-element indices")
+                else:
+                    element_coverage[key] = set(indices)
+            elif test["status"] == "answered":
+                errors.append(f"answer {key}: answered tests require element_indices")
             if record:
                 assertions([{"type": "quote", "ref": mapping["ref"], "field": mapping.get("field"), "quote": item["quote"]}], f"answer {key}")
                 if _url(item["url"]) not in record["aliases"]:
@@ -279,6 +298,13 @@ def _validate(doc, evidence, review):
                     errors.append(f"answer {key}: missing_in_sample cannot follow from incomplete evidence")
     if set(answer_map) != expected_answers:
         errors.append("answers must map every report answer excerpt exactly once")
+    for index, test in enumerate(doc["assessment"]["intent_tests"]):
+        if test["status"] == "answered":
+            covered = set().union(*(element_coverage.get((index, evidence_index), set())
+                                    for evidence_index in range(len(test["evidence"]))))
+            expected = set(range(len(test["required_elements"])))
+            if covered != expected:
+                errors.append(f"answer test {index}: element_indices must cover every required element")
 
     journey_map = {}
     for journey in review["journeys"]:
@@ -305,6 +331,8 @@ def _validate(doc, evidence, review):
             if f"[{mode}]" not in step["action"].lower():
                 errors.append(f"{label}: report action must label its [{mode}] reading mode")
             if record:
+                if record["mode"] == "retrieval" and journey["status"] in {"completed", "friction"}:
+                    errors.append(f"journey {index}: retrieval excerpts cannot establish completed or friction status")
                 if _url(step["url"]) not in record["aliases"]:
                     errors.append(f"{label}: observation URL mismatch")
                 if mode == "rendered" and record["mode"] != "rendered" or mode == "source" and record["mode"] == "rendered":
@@ -321,9 +349,9 @@ def _validate(doc, evidence, review):
     for support in review["corroboration"]:
         record = get(support.get("ref"), "corroboration")
         if record:
-            if (record["kind"] != "external" or record["mode"] not in {"off_site", "retrieval"}
+            if (record["kind"] != "external" or record["mode"] != "off_site"
                     or urlparse(record["identity"]).hostname == urlparse(doc["site"]).hostname):
-                errors.append("corroboration requires an external source observation with off_site/retrieval mode")
+                errors.append("corroboration requires an external source observation with off_site mode")
             external_aliases.update(record["aliases"])
         assertions([{**support, "type": "quote"}], "corroboration")
     if corroboration["status"] == "observed" and not external_aliases & {_url(url) for url in corroboration["urls"]}:

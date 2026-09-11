@@ -1,0 +1,24 @@
+{
+  "receipt_version": "1",
+  "status": "validated",
+  "started_at": "2026-09-11T05:25:30Z",
+  "finalized_at": "2026-09-11T05:29:29.583341Z",
+  "elapsed_seconds": 239.583341,
+  "deadline_seconds": 300,
+  "sha256": {
+    "report": "c2118c11d3fc970a7520063931967df149f33de44cd402cd45f2c387fcfaf60b",
+    "evidence": "43b61c1d9f19a4732855b38dc37e4c13f641b3f960b61f61b66cd188c699fe71",
+    "review": "1552ebb45ed305376dbf7f2a539e3baa956967c4197122b4a01af41c37ac4014"
+  },
+  "validator_sha256": {
+    "validate_report.py": "f1def78e1ac27df61fca000aa983deeb2eada3bdca8c9fa5398cb137c86a0df5",
+    "report_evidence.py": "0f135237abf01dceaa8304f1ba4d9ede3abdcff1fc5b406b14e1cfa340c200d8"
+  },
+  "limits": [
+    "Validation checks structural and evidence consistency, not semantic truth.",
+    "Elapsed time ends at the observed finalization gate before publication; it excludes final receipt writing and host delivery.",
+    "The deadline is checked again during and immediately after publication; a failed check removes this invocation's output and receipt.",
+    "This command does not enforce or prove an end-to-end host delivery deadline, and cannot verify the supplied host-task start.",
+    "Report and receipt are individually atomic; consumers must require both files with matching report hashes."
+  ]
+}

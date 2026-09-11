@@ -1,5 +1,11 @@
 # Validation
 
+The September 11 no-browser evaluation used fresh Luna agents on British Museum, Framework and PostgreSQL, followed by a Django run against the revised evidence gate. Original finalization times were 199–240 seconds; Django finalized in 168 seconds. It exposed search-excerpt coverage inflation and incomplete answer support, leading to stricter retrieval handling and required-element mappings. The complete local review and unchanged audit artifacts are under `validation/NO-BROWSER-2026-09-11.md` and `validation/no-browser-2026-09-11/` in the repository (excluded from the submission ZIP). The forward run still exposed a semantic mismatch between affected and fixed versions; consistency validation does not establish entailment.
+
+The complete deterministic suite passed on Python 3.12.14 after these changes, including 30 evidence-gate tests, 8 answer-locality tests, 15 finalizer tests and the extracted-package test. The optional offline locality probe also ran on three captured PostgreSQL cases and the packaged synthetic before/proposed example; those word-window experiments do not establish citation uplift.
+
+A second fresh Luna forward run detected both seeded defects in a newly served local tour-operator fixture (homepage noindex and reservation HTTP 404), with no additional findings, and finalized in 181 seconds. Source evidence, typed assertions, report hashes and the evaluator's private expectations are preserved with the no-browser batch. This is a controlled detection result, not a general recall estimate.
+
 For actual host-agent execution with public browser journeys and independently reviewed reports, see [the September 8–10 live usage evaluation](https://github.com/aachintya/Adobe-Hackathon-2026/blob/main/validation/LIVE-USAGE-2026-09-09.md). It separates observed behavioral results and runtime overruns from the older deterministic checks below. Detailed evaluation artifacts are kept in the repository rather than the submission ZIP.
 
 The [September 10 portability follow-up](https://github.com/aachintya/Adobe-Hackathon-2026/blob/main/validation/PORTABILITY-2026-09-10.md) records the HTTP 308 fix, optional-tool behavior and the full suite passing on Python 3.12.14. The statements below describe the earlier validation revision.

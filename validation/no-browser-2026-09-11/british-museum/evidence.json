@@ -1,0 +1,160 @@
+{
+  "site": "https://www.britishmuseum.org/",
+  "origin": "https://www.britishmuseum.org/",
+  "collected_at": "2026-09-11T05:25:49.777486+00:00",
+  "collector": "static",
+  "collector_version": "2.0",
+  "agent_roles": {
+    "search": [
+      "Googlebot",
+      "bingbot",
+      "OAI-SearchBot",
+      "Claude-SearchBot",
+      "PerplexityBot"
+    ],
+    "training_or_other_control": [
+      "GPTBot",
+      "ClaudeBot",
+      "Google-Extended",
+      "Applebot-Extended",
+      "meta-externalagent"
+    ],
+    "user_fetch": [
+      "ChatGPT-User",
+      "Claude-User",
+      "Perplexity-User"
+    ]
+  },
+  "limits": {
+    "max_pages": 5,
+    "max_seconds": 45,
+    "rate_per_second": 2,
+    "max_bytes_per_page": 2000000,
+    "effective_request_interval_seconds": 20.0
+  },
+  "robots": {
+    "url": "https://www.britishmuseum.org/robots.txt",
+    "status": 200,
+    "state": "present",
+    "final_url": "https://www.britishmuseum.org/robots.txt",
+    "content_type": "text/plain",
+    "response_truncated": false,
+    "redirects": [],
+    "read_error": null,
+    "rules_text": "#\n# robots.txt\n#\n# This file is to prevent the crawling and indexing of certain parts\n# of your site by web crawlers and spiders run by sites like Yahoo!\n# and Google. By telling these \"robots\" where not to go on your site,\n# you save bandwidth and server resources.\n#\n# This file will be ignored unless it is at the root of your host:\n# Used:    http://example.com/robots.txt\n# Ignored: http://example.com/site/robots.txt\n#\n# For more information about the robots.txt standard, see:\n# http://www.robotstxt.org/robotstxt.html\n\nUser-agent: *\nCrawl-delay: 20\n# CSS, JS, Images\nAllow: /core/*.css$\nAllow: /core/*.css?\nAllow: /core/*.js$\nAllow: /core/*.js?\nAllow: /core/*.gif\nAllow: /core/*.jpg\nAllow: /core/*.jpeg\nAllow: /core/*.png\nAllow: /core/*.svg\nAllow: /profiles/*.css$\nAllow: /profiles/*.css?\nAllow: /profiles/*.js$\nAllow: /profiles/*.js?\nAllow: /profiles/*.gif\nAllow: /profiles/*.jpg\nAllow: /profiles/*.jpeg\nAllow: /profiles/*.png\nAllow: /profiles/*.svg\n# Directories\nDisallow: /core/\nDisallow: /profiles/\n# Files\nDisallow: /README.txt\nDisallow: /web.config\n# Paths (clean URLs)\nDisallow: /admin/\nDisallow: /comment/reply/\nDisallow: /filter/tips\nDisallow: /node/add/\nDisallow: /search/\nDisallow: /user/register/\nDisallow: /user/password/\nDisallow: /user/login/\nDisallow: /user/logout/\n# Paths (no clean URLs)\nDisallow: /index.php/admin/\nDisallow: /index.php/comment/reply/\nDisallow: /index.php/filter/tips\nDisallow: /index.php/node/add/\nDisallow: /index.php/search/\nDisallow: /index.php/user/password/\nDisallow: /index.php/user/register/\nDisallow: /index.php/user/login/\nDisallow: /index.php/user/logout/\n# Stop Google Crawling Search\nDisallow: /search*\n# Stop bots crawling exhibition and events facets\nAllow: /exhibitions-events/past-exhibitions/\nAllow: /exhibitions-events/past-exhibitions/*\nAllow: /exhibitions-events/see-everything/\nDisallow: /exhibitions-events/*\n\n# Allow BM’s accessibility auditor to crawl the entire site.\nUser-agent: PowerMapper\nAllow: /\n\n",
+    "wildcard_allowed": true,
+    "collector_allowed": true,
+    "ai_agent_allowed": {
+      "Googlebot": true,
+      "bingbot": true,
+      "OAI-SearchBot": true,
+      "Claude-SearchBot": true,
+      "PerplexityBot": true,
+      "GPTBot": true,
+      "ChatGPT-User": true,
+      "ClaudeBot": true,
+      "Claude-User": true,
+      "Perplexity-User": true,
+      "Google-Extended": true,
+      "Applebot-Extended": true,
+      "meta-externalagent": true
+    },
+    "decisions": {
+      "Googlebot": {
+        "allowed": true,
+        "matched_rule": null,
+        "group": "wildcard"
+      },
+      "bingbot": {
+        "allowed": true,
+        "matched_rule": null,
+        "group": "wildcard"
+      },
+      "OAI-SearchBot": {
+        "allowed": true,
+        "matched_rule": null,
+        "group": "wildcard"
+      },
+      "Claude-SearchBot": {
+        "allowed": true,
+        "matched_rule": null,
+        "group": "wildcard"
+      },
+      "PerplexityBot": {
+        "allowed": true,
+        "matched_rule": null,
+        "group": "wildcard"
+      },
+      "GPTBot": {
+        "allowed": true,
+        "matched_rule": null,
+        "group": "wildcard"
+      },
+      "ChatGPT-User": {
+        "allowed": true,
+        "matched_rule": null,
+        "group": "wildcard"
+      },
+      "ClaudeBot": {
+        "allowed": true,
+        "matched_rule": null,
+        "group": "wildcard"
+      },
+      "Claude-User": {
+        "allowed": true,
+        "matched_rule": null,
+        "group": "wildcard"
+      },
+      "Perplexity-User": {
+        "allowed": true,
+        "matched_rule": null,
+        "group": "wildcard"
+      },
+      "Google-Extended": {
+        "allowed": true,
+        "matched_rule": null,
+        "group": "wildcard"
+      },
+      "Applebot-Extended": {
+        "allowed": true,
+        "matched_rule": null,
+        "group": "wildcard"
+      },
+      "meta-externalagent": {
+        "allowed": true,
+        "matched_rule": null,
+        "group": "wildcard"
+      }
+    },
+    "sitemap_hints": []
+  },
+  "sitemaps": [],
+  "pages": [],
+  "errors": [
+    {
+      "url": "https://www.britishmuseum.org/",
+      "error": "HTTPError",
+      "detail": "HTTP Error 403: Forbidden",
+      "status": 403
+    },
+    {
+      "url": "https://www.britishmuseum.org/sitemap.xml",
+      "error": "HTTPError",
+      "detail": "HTTP Error 403: Forbidden",
+      "status": 403
+    }
+  ],
+  "ai_probe": {
+    "status": "not_checked",
+    "reason": "No bot impersonation: local requests do not verify provider IP access."
+  },
+  "coverage": {
+    "rendered": "not_checked: collector is static",
+    "off_site": "not_checked: requires search-capable agent",
+    "actual_ai_visibility": "not_measured: requires recorded assistant answers and citations",
+    "deadline_reached": false,
+    "sample_types": {},
+    "request_count": 3,
+    "elapsed_seconds": 40.17
+  }
+}

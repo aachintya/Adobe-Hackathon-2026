@@ -1,0 +1,25 @@
+{
+  "review_version": "1",
+  "observations": [
+    {"id": "host:landing-search", "url": "https://www.britishmuseum.org/", "final_url": "https://www.britishmuseum.org/", "mode": "retrieval", "kind": "page", "status": 200, "complete": false, "text": "Discover two million years of human history and culture. Free entry – book online. Open today: 10.00–17.00. Explore the collection. Visit the Museum. Plan your visit.", "provenance": {"tool": "public search", "reference": "turn4search0", "observed_at": "2026-09-11T05:26:40Z"}},
+    {"id": "host:visit-search", "url": "https://www.britishmuseum.org/Visit", "final_url": "https://www.britishmuseum.org/Visit", "mode": "retrieval", "kind": "page", "status": 200, "complete": false, "text": "Plan your visit. Free entry. Opening times Daily: 10.00–17.00 (Fridays: 20.30). The British Museum Great Russell Street, London WC1B 3DG. Ticket information. Gallery information. Exhibitions. Opening hours. Getting here. Entering the Museum. Accessibility. Facilities. Food and drink.", "provenance": {"tool": "public search", "reference": "turn4search3", "observed_at": "2026-09-11T05:26:40Z"}},
+    {"id": "host:collection-guide-search", "url": "https://www.britishmuseum.org/collection/collection-online/guide", "final_url": "https://www.britishmuseum.org/collection/collection-online/guide", "mode": "retrieval", "kind": "page", "status": 200, "complete": false, "text": "Start typing in the search box. If you type 'gold' and select 'Search all fields by keyword: gold'. Collection online allows access to almost five million objects in more than two million records.", "provenance": {"tool": "public search", "reference": "turn4search2", "observed_at": "2026-09-11T05:26:40Z"}},
+    {"id": "host:collection-search-search", "url": "https://www.britishmuseum.org/collection/search", "final_url": "https://www.britishmuseum.org/collection/search", "mode": "retrieval", "kind": "page", "status": 200, "complete": false, "text": "Collection. Enter a keyword, museum number or reference. 2,684,834 Results.", "provenance": {"tool": "public search", "reference": "turn4search11", "observed_at": "2026-09-11T05:26:40Z"}}
+  ],
+  "claims": {},
+  "answers": [
+    {"test_index": 0, "evidence_index": 0, "ref": "host:landing-search", "field": "text"},
+    {"test_index": 0, "evidence_index": 1, "ref": "host:collection-guide-search", "field": "text"},
+    {"test_index": 1, "evidence_index": 0, "ref": "host:visit-search", "field": "text"},
+    {"test_index": 1, "evidence_index": 1, "ref": "host:visit-search", "field": "text"},
+    {"test_index": 1, "evidence_index": 2, "ref": "host:visit-search", "field": "text"},
+    {"test_index": 2, "evidence_index": 0, "ref": "host:collection-guide-search", "field": "text"},
+    {"test_index": 2, "evidence_index": 1, "ref": "host:collection-guide-search", "field": "text"},
+    {"test_index": 2, "evidence_index": 2, "ref": "host:collection-search-search", "field": "text"}
+  ],
+  "journeys": [
+    {"journey_index": 0, "mode": "source", "steps": [{"step_index": 0, "ref": "host:landing-search", "assertions": [{"type": "quote", "ref": "host:landing-search", "field": "text", "quote": "Plan your visit"}]}, {"step_index": 1, "ref": "host:visit-search", "assertions": [{"type": "quote", "ref": "host:visit-search", "field": "text", "quote": "Free entry"}]}]},
+    {"journey_index": 1, "mode": "source", "steps": [{"step_index": 0, "ref": "host:landing-search", "assertions": [{"type": "quote", "ref": "host:landing-search", "field": "text", "quote": "Explore the collection"}]}, {"step_index": 1, "ref": "host:collection-guide-search", "assertions": [{"type": "quote", "ref": "host:collection-guide-search", "field": "text", "quote": "Start typing in the search box"}]}]}
+  ],
+  "corroboration": []
+}

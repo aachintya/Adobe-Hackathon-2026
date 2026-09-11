@@ -1,0 +1,27 @@
+{
+  "review_version": "1",
+  "observations": [
+    {"id": "host:home", "url": "https://frame.work/", "final_url": "https://frame.work/", "mode": "static", "kind": "page", "status": 200, "complete": false, "text": "The ultimate developer laptop. Framework Laptop 13 Pro delivers 20 hours of battery life, Intel Core Ultra Series 3 processors, LPCAMM2 memory, and a haptic touchpad. Still repairable, upgradeable, and customizable, with excellent Linux support. We build high-performance products that are easy to repair, upgrade, and customize.", "provenance": {"tool": "public text fetch", "reference": "turn0view0", "observed_at": "2026-09-11T05:25:45Z"}},
+    {"id": "host:product", "url": "https://frame.work/laptop13pro", "final_url": "https://frame.work/laptop13pro", "mode": "static", "kind": "page", "status": 200, "complete": false, "text": "The ultimate developer laptop. Framework Laptop 13 Pro delivers 20 hours of battery life. Available with Ubuntu pre-loaded and certified out of the box, or bring your own OS. up to 64GB of LPCAMM2 LPDDR5X memory, and support for up to 8TB of PCIe Gen 5.0 NVMe storage. DIY Edition Bring your own memory, storage, and operating system.", "provenance": {"tool": "public text fetch", "reference": "turn1view0", "observed_at": "2026-09-11T05:25:50Z"}},
+    {"id": "host:config", "url": "https://frame.work/products/laptop13pro-diy-intel-ultra-3/configuration/new", "final_url": "https://frame.work/products/laptop13pro-diy-intel-ultra-3/configuration/new", "mode": "static", "kind": "page", "status": 200, "complete": false, "text": "Pre-order Intel Core Ultra Series 3 Starting at $1,199.00. Deposit Secure your pre-order with a deposit. Cancel any time before shipment for a full refund. Batch 22 Ships Dec.", "provenance": {"tool": "public text fetch", "reference": "turn1view1", "observed_at": "2026-09-11T05:25:52Z"}},
+    {"id": "host:tomshardware", "url": "https://www.tomshardware.com/laptops/framework-laptop-13-pro-review", "final_url": "https://www.tomshardware.com/laptops/framework-laptop-13-pro-review", "mode": "off_site", "kind": "external", "status": 200, "complete": false, "text": "If you want a Windows or Linux laptop that you can upgrade and repair, you should be looking at Framework.", "provenance": {"tool": "public search result", "reference": "turn2search2", "observed_at": "2026-09-11T05:26:20Z"}},
+    {"id": "host:arstechnica", "url": "https://arstechnica.com/gadgets/2026/07/framework-laptop-13-pro-review-much-better-battery-much-worse-price/", "final_url": "https://arstechnica.com/gadgets/2026/07/framework-laptop-13-pro-review-much-better-battery-much-worse-price/", "mode": "off_site", "kind": "external", "status": 200, "complete": false, "text": "Framework’s latest modular laptop trades one set of problems for another.", "provenance": {"tool": "public search result", "reference": "turn2search1", "observed_at": "2026-09-11T05:26:20Z"}}
+  ],
+  "claims": {
+    "O-001": {"assertions": [{"type": "quote", "ref": "host:config", "field": "text", "quote": "Pre-order Intel Core Ultra Series 3 Starting at $1,199.00"}, {"type": "quote", "ref": "host:config", "field": "text", "quote": "Batch 22 Ships Dec"}, {"type": "quote", "ref": "host:home", "field": "text", "quote": "The ultimate developer laptop"}], "checked_refs": ["host:home", "host:product", "host:config"], "affected_refs": ["host:home", "host:product"]}
+  },
+  "answers": [
+    {"test_index": 0, "evidence_index": 0, "ref": "host:home", "field": "text"},
+    {"test_index": 0, "evidence_index": 1, "ref": "host:product", "field": "text"},
+    {"test_index": 1, "evidence_index": 0, "ref": "host:product", "field": "text"},
+    {"test_index": 1, "evidence_index": 1, "ref": "host:product", "field": "text"},
+    {"test_index": 2, "evidence_index": 0, "ref": "host:product", "field": "text"},
+    {"test_index": 2, "evidence_index": 1, "ref": "host:config", "field": "text"},
+    {"test_index": 2, "evidence_index": 2, "ref": "host:config", "field": "text"}
+  ],
+  "journeys": [
+    {"journey_index": 0, "mode": "source", "steps": [{"step_index": 0, "ref": "host:home", "assertions": [{"type": "quote", "ref": "host:home", "field": "text", "quote": "The ultimate developer laptop"}]}, {"step_index": 1, "ref": "host:product", "assertions": [{"type": "quote", "ref": "host:product", "field": "text", "quote": "Available with Ubuntu pre-loaded and certified out of the box"}]}]},
+    {"journey_index": 1, "mode": "source", "steps": [{"step_index": 0, "ref": "host:product", "assertions": [{"type": "quote", "ref": "host:product", "field": "text", "quote": "Available with Ubuntu pre-loaded and certified out of the box"}]}, {"step_index": 1, "ref": "host:config", "assertions": [{"type": "quote", "ref": "host:config", "field": "text", "quote": "Pre-order Intel Core Ultra Series 3 Starting at $1,199.00"}]}]}
+  ],
+  "corroboration": [{"ref": "host:tomshardware", "field": "text", "quote": "If you want a Windows or Linux laptop that you can upgrade and repair, you should be looking at Framework."}, {"ref": "host:arstechnica", "field": "text", "quote": "Framework’s latest modular laptop trades one set of problems for another."}]
+}

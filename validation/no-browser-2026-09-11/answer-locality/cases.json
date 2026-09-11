@@ -1,0 +1,28 @@
+{
+  "cases": [
+    {
+      "id": "release-support-lifecycle",
+      "ref": "page:0",
+      "elements": [
+        {"label": "current stable release", "quote": "PostgreSQL 18.6,"},
+        {"label": "end of support", "quote": "PostgreSQL 14 will stop receiving fixes on November 12, 2026."}
+      ]
+    },
+    {
+      "id": "about-open-source-extensibility",
+      "ref": "page:1",
+      "elements": [
+        {"label": "license model", "quote": "free and open source"},
+        {"label": "extensibility", "quote": "highly extensible."}
+      ]
+    },
+    {
+      "id": "docs-current-version",
+      "ref": "page:2",
+      "elements": [
+        {"label": "current manual", "quote": "18 / Current"},
+        {"label": "unsupported-version route", "quote": "archive of older manuals."}
+      ]
+    }
+  ]
+}
