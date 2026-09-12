@@ -1,0 +1,48 @@
+{
+  "c01-a": {
+    "homepage_status": 200
+  },
+  "c01-b": {
+    "homepage_status": 200,
+    "proposed_correction_removed_conflict_or_barrier": true
+  },
+  "c02-a": {
+    "homepage_status": 200
+  },
+  "c02-b": {
+    "homepage_status": 200,
+    "proposed_correction_removed_conflict_or_barrier": true
+  },
+  "c03-a": {
+    "homepage_status": 200,
+    "proposed_correction_removed_conflict_or_barrier": true
+  },
+  "c03-b": {
+    "homepage_status": 200
+  },
+  "c04-a": {
+    "homepage_status": 200,
+    "proposed_correction_removed_conflict_or_barrier": true
+  },
+  "c04-b": {
+    "homepage_status": 200
+  },
+  "c05-a": {
+    "homepage_status": 200,
+    "primary_route_after_correction": {
+      "before": 404,
+      "after": 200
+    }
+  },
+  "c05-b": {
+    "homepage_status": 200
+  },
+  "c06-a": {
+    "homepage_status": 200,
+    "proposed_correction_removed_conflict_or_barrier": true
+  },
+  "c06-b": {
+    "homepage_status": 200
+  },
+  "scope": "Fixture mechanism checks after local in-memory changes; not measured visitor outcomes, live site edits, or agent finding accuracy."
+}

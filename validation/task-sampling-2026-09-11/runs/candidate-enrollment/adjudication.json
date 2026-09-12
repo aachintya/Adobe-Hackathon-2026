@@ -1,0 +1,66 @@
+{
+  "report_sha256": "9b066b0973b3850a40aaebf80b63e2ea1380ba43732ec274f0f0e0c9b9d4447c",
+  "adjudications": [
+    {
+      "item_id": "F-001",
+      "verdict": "correct",
+      "root_id": "generic-navigation-destinations",
+      "scope": 2,
+      "evidence": 2,
+      "severity": 2,
+      "action_correctness": 1,
+      "action_mechanism": 2,
+      "action_specificity": 2,
+      "action_verification": 2,
+      "review_note": "Bookshop and course fees should remain distinct; recommendation introduces course pricing into a bookshop route."
+    },
+    {
+      "item_id": "F-002",
+      "verdict": "duplicate",
+      "root_id": "generic-navigation-destinations",
+      "scope": 2,
+      "evidence": 2,
+      "severity": 2,
+      "action_correctness": 2,
+      "action_mechanism": 2,
+      "action_specificity": 2,
+      "action_verification": 2
+    }
+  ],
+  "answer_support": {
+    "0": {
+      "autumn evening language courses": 2,
+      "adult learners": 2
+    },
+    "1": {
+      "learners aged 18 or older": 2,
+      "classes start on 2 November 2026": 2,
+      "enrollment closes on 18 October 2026 at 17:00 local time": 2
+    },
+    "2": {
+      "read the enrollment guide": 2,
+      "visit the public reception desk with proof of age": 2,
+      "reception weekdays 09:00\u201317:00": 2,
+      "no online submission": 2
+    },
+    "3": {
+      "current applicable price or fee": 0,
+      "currency and conditions": 0
+    },
+    "4": {
+      "materials description": 0,
+      "availability or requirement conditions": 0
+    }
+  },
+  "runtime": {
+    "completion": "completed",
+    "timestamp_kind": "observed_completion_upper_bound",
+    "observer_start": "2026-09-11T15:33:51Z",
+    "delivery": "2026-09-11T15:38:18Z"
+  },
+  "review_notes": [
+    "Both reports found real unintended placeholder-page gaps, so this is not a healthy-control result.",
+    "The baseline consolidated this shared placeholder/navigation cause; the candidate split it into two findings. Candidate F-002 is scored as a duplicate root, not a false factual observation.",
+    "The candidate recovered the enrollment deadline in its five-page capture. Baseline independently inspected the guide via a host observation after initial collection."
+  ]
+}

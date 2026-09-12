@@ -1,0 +1,36 @@
+{
+  "review_version":"1",
+  "observations":[
+    {"id":"host:home","url":"https://www.bbg.org/","final_url":"https://www.bbg.org/","mode":"rendered","kind":"page","status":200,"complete":true,"text":"Today’s Hours: 10 a.m.–6 p.m. Important: The Eastern Parkway entrance is temporarily closed; please enter at 455 Flatbush Avenue or 990 Washington Avenue.","provenance":{"tool":"cua browser","reference":"rendered AX snapshot landing","observed_at":"2026-09-11T15:40:00Z"}},
+    {"id":"host:visit","url":"https://www.bbg.org/visit","final_url":"https://www.bbg.org/visit","mode":"rendered","kind":"page","status":200,"complete":true,"text":"Visitor FAQ; Directions & Parking; Garden Map; Today's Events; Suggested Itineraries","provenance":{"tool":"cua browser","reference":"rendered AX snapshot visit","observed_at":"2026-09-11T15:40:10Z"}},
+    {"id":"host:hours","url":"https://www.bbg.org/visit/hours","final_url":"https://www.bbg.org/visit/hours","mode":"rendered","kind":"page","status":200,"complete":true,"text":"September Tuesday–Thursday: 10 a.m.–7 p.m. Friday–Sunday: 10 a.m.–6 p.m. October Tuesday–Sunday: 10 a.m.–6 p.m. All visitors must present ticket for entrance.","provenance":{"tool":"cua browser","reference":"rendered AX snapshot hours","observed_at":"2026-09-11T15:40:20Z"}},
+    {"id":"host:map","url":"https://www.bbg.org/map","final_url":"https://www.bbg.org/map","mode":"rendered","kind":"page","status":200,"complete":true,"text":"Use our interactive map as a guide to gardens, collections, amenities at BBG. Show on map. Entrances. Parking. Dining Options. Elevators. Sensory Areas.","provenance":{"tool":"cua browser","reference":"rendered AX snapshot map","observed_at":"2026-09-11T15:40:30Z"}},
+    {"id":"host:search","url":"https://www.bbg.org/about/history","final_url":"https://www.bbg.org/about/history","mode":"retrieval","kind":"external","status":null,"complete":false,"text":"When Brooklyn Botanic Garden was founded more than a century ago... 1910","provenance":{"tool":"web search","reference":"turn4search0","observed_at":"2026-09-11T15:40:40Z"}},
+    {"id":"host:nps","url":"https://home.nps.gov/places/brooklyn-botanic-garden.htm","final_url":"https://home.nps.gov/places/brooklyn-botanic-garden.htm","mode":"off_site","kind":"external","status":200,"complete":false,"text":"Brooklyn Botanic Garden. Location: New York City, NY. The land was left undeveloped until 1910.","provenance":{"tool":"web open","reference":"turn5view0","observed_at":"2026-09-11T15:41:00Z"}}
+  ],
+  "claims":{
+    "O-001":{"assertions":[{"type":"quote","ref":"page:0","field":"main_text","quote":"Gardens for Peace Saturday, September 12, 2026 | 11 a.m.–2:30 p.m."},{"type":"quote","ref":"page:3","field":"main_text","quote":"Next 7 Days This Month Next Month Member Events Families & Kids Workshops & Classes Tours Access Programs Special Events"}]},
+    "O-002":{"assertions":[{"type":"quote","ref":"host:visit","field":"text","quote":"Visitor FAQ; Directions & Parking; Garden Map"},{"type":"quote","ref":"host:map","field":"text","quote":"Show on map. Entrances. Parking. Dining Options. Elevators. Sensory Areas."}]}
+  },
+  "answers":[
+    {"test_index":0,"evidence_index":0,"ref":"page:0","field":"main_text","element_indices":[0,1,2]},
+    {"test_index":1,"evidence_index":0,"ref":"page:2","field":"main_text","element_indices":[0]},
+    {"test_index":1,"evidence_index":1,"ref":"page:2","field":"main_text","element_indices":[1]},
+    {"test_index":1,"evidence_index":2,"ref":"page:2","field":"main_text","element_indices":[2]},
+    {"test_index":1,"evidence_index":3,"ref":"page:2","field":"main_text","element_indices":[3]},
+    {"test_index":2,"evidence_index":0,"ref":"page:2","field":"main_text","element_indices":[0]},
+    {"test_index":2,"evidence_index":1,"ref":"page:2","field":"main_text","element_indices":[1]},
+    {"test_index":2,"evidence_index":2,"ref":"page:2","field":"main_text","element_indices":[2]},
+    {"test_index":2,"evidence_index":3,"ref":"page:2","field":"main_text","element_indices":[3]},
+    {"test_index":3,"evidence_index":0,"ref":"page:3","field":"main_text","element_indices":[0,2]},
+    {"test_index":3,"evidence_index":1,"ref":"page:3","field":"main_text","element_indices":[1]},
+    {"test_index":3,"evidence_index":2,"ref":"page:3","field":"main_text","element_indices":[3]},
+    {"test_index":4,"evidence_index":0,"ref":"page:4","field":"main_text","element_indices":[0,2]},
+    {"test_index":4,"evidence_index":1,"ref":"page:4","field":"main_text","element_indices":[1]}
+  ],
+  "journeys":[
+    {"journey_index":0,"mode":"rendered","steps":[{"step_index":0,"ref":"host:home","assertions":[{"type":"quote","ref":"host:home","field":"text","quote":"Today’s Hours: 10 a.m.–6 p.m."}]},{"step_index":1,"ref":"host:hours","assertions":[{"type":"quote","ref":"host:hours","field":"text","quote":"All visitors must present ticket for entrance."}]}]},
+    {"journey_index":1,"mode":"rendered","steps":[{"step_index":0,"ref":"host:visit","assertions":[{"type":"quote","ref":"host:visit","field":"text","quote":"Visitor FAQ; Directions & Parking; Garden Map"}]},{"step_index":1,"ref":"host:map","assertions":[{"type":"quote","ref":"host:map","field":"text","quote":"Show on map. Entrances. Parking. Dining Options. Elevators. Sensory Areas."}]}]}
+  ],
+  "corroboration":[{"ref":"host:nps","field":"text","quote":"Brooklyn Botanic Garden. Location: New York City, NY. The land was left undeveloped until 1910."}]
+}

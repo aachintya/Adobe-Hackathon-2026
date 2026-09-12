@@ -1,0 +1,76 @@
+{
+  "version": 2,
+  "pairs": {
+    "c01": {
+      "defective": "c01-b",
+      "healthy": "c01-a",
+      "expected_roots": [
+        {
+          "id": "price-tax-contradiction",
+          "severity": "medium"
+        }
+      ]
+    },
+    "c02": {
+      "defective": "c02-b",
+      "healthy": "c02-a",
+      "expected_roots": [
+        {
+          "id": "release-scope-contradiction",
+          "severity": "high"
+        }
+      ]
+    },
+    "c03": {
+      "defective": "c03-a",
+      "healthy": "c03-b",
+      "expected_roots": [
+        {
+          "id": "unpublished-enrollment-deadline",
+          "severity": "medium"
+        }
+      ]
+    },
+    "c04": {
+      "defective": "c04-a",
+      "healthy": "c04-b",
+      "expected_roots": [
+        {
+          "id": "selected-kit-context-loss",
+          "severity": "medium"
+        }
+      ]
+    },
+    "c05": {
+      "defective": "c05-a",
+      "healthy": "c05-b",
+      "expected_roots": [
+        {
+          "id": "primary-tour-link-404",
+          "severity": "medium"
+        }
+      ]
+    },
+    "c06": {
+      "defective": "c06-a",
+      "healthy": "c06-b",
+      "expected_roots": [
+        {
+          "id": "public-landing-noindex",
+          "severity": "high"
+        }
+      ]
+    }
+  },
+  "notes": [
+    "Healthy paired cases have no planted defects.",
+    "Conditional prices are not contradictions.",
+    "7.2.9 and 8.0.4 are FIXED releases; affected ranges end 7.2.8 and 8.0.3.",
+    "A date in an opaque linked guide is available evidence, not a missing-answer defect.",
+    "The absent deadline is explicitly unpublished; no exact deadline may be invented.",
+    "Kit choice can be tested through safe links without submitting any form.",
+    "The broken primary tour link has a working alternate; scope/severity must acknowledge recovery.",
+    "Utility noindex is intentional in both archive cases.",
+    "No case establishes actual search indexing or assistant citations."
+  ]
+}

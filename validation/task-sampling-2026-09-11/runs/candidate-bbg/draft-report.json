@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.2",
+  "site": "https://www.bbg.org/",
+  "audited_at": "2026-09-11T15:39:25Z",
+  "executive_summary": {
+    "conclusion": "Brooklyn Botanic Garden exposes clear, crawlable first-party information for visiting, admission, seasonal hours, events, and its mission, and the tested rendered routes completed successfully. The strongest next step is to make event and visit decision facts more consistently explicit in compact, reusable summaries while measuring actual retrieval visibility separately.",
+    "top_action_ids": ["O-001", "O-002"]
+  },
+  "summary": {"total_findings": 0, "critical": 0, "high": 0, "medium": 0, "low": 0},
+  "coverage": {
+    "pages_checked": 6,
+    "modes": ["static", "rendered", "retrieval"],
+    "not_checked": ["Provider crawler IP access and actual assistant citation behavior were not measured.", "Keyboard, mobile breakpoint, and form submission behavior were not tested; no forms were submitted."]
+  },
+  "findings": [],
+  "proactive_opportunities": [
+    {
+      "id": "O-001",
+      "title": "Standardize event decision summaries across cards and detail pages",
+      "rationale": "The homepage and Visit page expose event names, dates, times, audience labels, and occasional registration qualifiers, while the calendar exposes event-type filters. A consistent short summary for audience, date/time, cost or registration status would make event answers easier to extract and compare.",
+      "priority": "medium",
+      "effort": "medium",
+      "owner_hint": "Editorial and events web team",
+      "mechanism": "Use a shared event summary block and matching structured fields on event cards and detail templates, preserving date, time, audience, access, and registration qualifiers.",
+      "verification": "For three event types, confirm the rendered page and source expose the same audience, date/time, and registration or access state in a contiguous summary and that calendar filters still resolve to the detail page."
+    },
+    {
+      "id": "O-002",
+      "title": "Make visitor route choices explicit in map and admission handoffs",
+      "rationale": "The Visit page links to Hours & Admission, Directions & Parking, and Garden Map, and the rendered map offers selectable layers such as entrances, parking, dining, elevators, and sensory areas. A compact route guide connecting admission status, entrance availability, and the relevant map layer would support visitors planning around the observed Eastern Parkway closure.",
+      "priority": "medium",
+      "effort": "low",
+      "owner_hint": "Visitor services and web content team",
+      "mechanism": "Add a plain-language handoff near the temporary-closure notice that links directly to the map with entrance or parking context and repeats the current admission prerequisite.",
+      "verification": "Starting from /visit, follow the closure notice to the map and confirm the destination visibly identifies the two open entrances and exposes entrance/parking layers without losing the current-hours context."
+    }
+  ],
+  "assessment": {
+    "mode": "agent_composed",
+    "readiness": [
+      {"stage": "access", "status": "observed", "detail": "robots.txt returned 200 and allows the tested search and user-fetch roles; the five sampled first-party pages returned 200 without indexing directives or redirects.", "urls": ["https://www.bbg.org/robots.txt", "https://www.bbg.org/"]},
+      {"stage": "extraction", "status": "observed", "detail": "Static and rendered text expose the Garden identity, mission, visit facts, seasonal hours, ticket prices, event dates, and map controls.", "urls": ["https://www.bbg.org/", "https://www.bbg.org/visit", "https://www.bbg.org/visit/hours", "https://www.bbg.org/visit/calendar", "https://www.bbg.org/about"]},
+      {"stage": "answerability", "status": "observed", "detail": "The sampled visitor questions are resolved by the landing, visit, hours, calendar, and about pages; no required element remains unanswered in this sample.", "urls": ["https://www.bbg.org/visit", "https://www.bbg.org/visit/hours", "https://www.bbg.org/visit/calendar", "https://www.bbg.org/about"]},
+      {"stage": "corroboration", "status": "observed", "detail": "Search retrieval and an opened National Park Service page corroborate the entity and its Brooklyn location; no material contradiction was observed in the sampled results.", "urls": ["https://www.bbg.org/about", "https://home.nps.gov/places/brooklyn-botanic-garden.htm"]},
+      {"stage": "engagement", "status": "observed", "detail": "Rendered navigation completed two public visitor journeys to the Visit, Hours & Admission, and Garden Map destinations without submission or authentication.", "urls": ["https://www.bbg.org/visit", "https://www.bbg.org/visit/hours", "https://www.bbg.org/map"]}
+    ],
+    "intent_tests": [
+      {"question": "What is Brooklyn Botanic Garden and what does it offer visitors?", "required_elements": ["It is Brooklyn Botanic Garden", "It is a 52-acre garden with plants and flowers in varied landscapes", "It offers nature programs or special events"], "status": "answered", "evidence": [{"url": "https://www.bbg.org/", "quote": "Stroll 52 acres of plants and flowers displayed in a variety of landscapes and engage with nature programs and special events."}], "reason": "The homepage states the identity, scale, offer, and visitor programming in one concise description."},
+      {"question": "What are the current seasonal hours and admission rules?", "required_elements": ["September hours", "October hours", "last-entry or closure timing", "ticket requirement and advance-ticket guidance"], "status": "answered", "evidence": [{"url": "https://www.bbg.org/visit/hours", "quote": "September Tuesday–Thursday: 10 a.m.–7 p.m. Friday–Sunday: 10 a.m.–6 p.m."}, {"url": "https://www.bbg.org/visit/hours", "quote": "October Tuesday–Sunday: 10 a.m.–6 p.m."}, {"url": "https://www.bbg.org/visit/hours", "quote": "Last entry 30 minutes before closing."}, {"url": "https://www.bbg.org/visit/hours", "quote": "All visitors must present ticket for entrance. Members and affiliates with free tickets must also show proof of eligibility. Advance tickets are recommended."}], "reason": "The admission page supplies each required seasonal and entry condition."},
+      {"question": "How much does general admission cost and what constraints apply?", "required_elements": ["adult price", "senior or student price", "child policy", "ticket exchange/refund condition"], "status": "answered", "evidence": [{"url": "https://www.bbg.org/visit/hours", "quote": "Adults $22 $23.67 ($22 + $1.67 Fee)"}, {"url": "https://www.bbg.org/visit/hours", "quote": "Seniors (65+) $16 $17.47 ($16 + $1.47 Fee)"}, {"url": "https://www.bbg.org/visit/hours", "quote": "Children under 12 are free."}, {"url": "https://www.bbg.org/visit/hours", "quote": "Tickets are nonrefundable, but may be exchanged in advance of visit for another date."}], "reason": "The ticket table and admission notes resolve the price and policy elements."},
+      {"question": "What events can a visitor find and how are they filtered?", "required_elements": ["calendar destination", "date navigation", "event-type filters", "at least one dated event or exhibit"], "status": "answered", "evidence": [{"url": "https://www.bbg.org/visit/calendar", "quote": "Next 7 Days This Month Next Month Member Events Families & Kids Workshops & Classes Tours Access Programs Special Events"}, {"url": "https://www.bbg.org/visit/calendar", "quote": "Previous month, August 2026 ‹ September 2026 Next month, October 2026"}, {"url": "https://www.bbg.org/visit/calendar", "quote": "Ancestral Ecologies May 23–October 25, 2026"}], "reason": "The calendar exposes navigation, filters, and dated listings."},
+      {"question": "What is the Garden's mission and founding context?", "required_elements": ["mission statement", "founding year", "Brooklyn location or identity"], "status": "answered", "evidence": [{"url": "https://www.bbg.org/about", "quote": "Brooklyn Botanic Garden is an urban botanic garden that connects people to the world of plants, fostering delight and curiosity while inspiring an appreciation and sense of stewardship of the environment."}, {"url": "https://www.bbg.org/about", "quote": "Brooklyn Botanic Garden was founded in 1910."}], "reason": "The About page provides the mission, founding year, and entity identity."}
+    ],
+    "journeys": [
+      {"task": "Plan a general visit and check hours/admission", "starting_context": "Rendered BBG homepage with Plan a Visit, today's hours, and the temporary entrance closure notice.", "steps": [{"url": "https://www.bbg.org/", "action": "[rendered] Read Plan a Visit and select Full Hours & Admission.", "observation": "Homepage displayed today's hours, two open entrance addresses, and the closure notice; Full Hours & Admission was a visible link."}, {"url": "https://www.bbg.org/visit/hours", "action": "[rendered] Follow Full Hours & Admission.", "observation": "Hours & Admission rendered with seasonal hours, ticket prices, admission rules, and entrance details."}], "status": "completed", "reason": "The public admission endpoint was reached and contained the expected planning information."},
+      {"task": "Use a visitor planning choice to locate entrances and amenities", "starting_context": "Rendered Visit page with Directions & Parking and Garden Map links.", "steps": [{"url": "https://www.bbg.org/visit", "action": "[rendered] Read the closure notice and select Explore the Garden under Garden Map.", "observation": "Visit page displayed the temporary closure, two alternative entrances, and an Explore the Garden link."}, {"url": "https://www.bbg.org/map", "action": "[rendered] Inspect the interactive map's Show on map control.", "observation": "Garden Map rendered with layers for entrances, parking, dining, elevators, sensory areas, and other amenities; a PDF map brochure was also linked."}], "status": "completed", "reason": "The non-default planning choice was the map layer selector; its public destination and available layers were visibly confirmed."}
+    ],
+    "visibility": {"status": "not_measured", "detail": "No recorded assistant answer/citation runs were available. Search results were used only as retrieval observations and do not establish assistant citation rates.", "cohorts": []}
+  }
+}

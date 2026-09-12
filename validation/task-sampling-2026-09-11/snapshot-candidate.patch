@@ -1,0 +1,864 @@
+--- a/DESIGN.md
++++ b/DESIGN.md
+@@ -17,7 +17,8 @@
+ 
+ - Standard-library helpers keep the package portable. A browser-capable host agent supplies rendered review.
+ - Capability declarations do not provision tools. Select the available collection path before starting; source fetch, search, browser interaction, execution, a trustworthy clock and writable output are separate capabilities. Return the report in chat if files cannot be written, and disclose any unavailable check.
+-- Source extraction retains material passages, link labels and destinations, structured values and indexing directives. External CSS and JavaScript behavior require a browser.
++- The timed collector captures the landing page before the agent chooses its questions. Resumption reuses captured pages and prioritizes observed task destinations within the total page cap, with fresh robots checks and cumulative request/time records.
++- Source extraction retains material passages, link labels and destinations (including empty/missing targets), structured values and indexing directives. Simple table records preserve row/column relationships; complex tables remain explicit review cases. Literal email-recipient mismatches and empty CTA anchors are candidates for review. External CSS and JavaScript behavior require a browser.
+ - Requests use a dedicated crawler identity, respect applicable robots rules and stay within bounded public navigation. Redirects to another authority are left for explicit agent review of the destination's policy and scope.
+ - The Python report is a `static_baseline`. The agent completes answerability, trust and visitor-journey analysis and records unavailable checks explicitly.
+ - The composed draft keeps schema 1.2. A compact review sidecar references collector records and additional host observations; typed assertions check factual fields, exact quotes and observed broken destinations. Finding scopes, answer quotes, reading modes and external corroboration are checked against those records. Semantic entailment, source independence and observation authenticity remain reviewer responsibilities.
+--- a/README.md
++++ b/README.md
+@@ -64,4 +64,4 @@
+ 
+ Submit `dist/brand-ai-readiness-audit.zip`. It contains one folder, `brand-ai-readiness-audit/`, with the manifest, skills, references, helpers, examples and validation tools. The package excludes caches, live crawl outputs and other archives. Both compressed and uncompressed sizes are checked against a 50 MB cap.
+ 
+-Standalone collection defaults to 12 pages, 2 requests/second and 120 seconds. The timed skill starts with 5 pages and a 45-second collector cap, stops evidence gathering by 120 seconds, and targets 280 seconds through composition, verification and delivery. The finalization gate checks its own deadline; enforcing cancellation and the full request-to-delivery deadline requires host support. The audit respects robots, uses its own crawler identity and recommends changes without modifying live sites. See [design](DESIGN.md) and [validation](VALIDATION.md).
++Standalone collection defaults to 12 pages, 2 requests/second and 120 seconds. The timed skill starts with 1 page/15 seconds, selects visitor questions and observed task links, then resumes to a total of 5 pages with up to 30 further seconds. It stops evidence gathering by 120 seconds, and targets 280 seconds through composition, verification and delivery. The finalization gate checks its own deadline; enforcing cancellation and the full request-to-delivery deadline requires host support. The audit respects robots, uses its own crawler identity and recommends changes without modifying live sites. See [design](DESIGN.md) and [validation](VALIDATION.md).
+--- /dev/null
++++ b/evals/AGENT-QUALITY.md
+@@ -0,0 +1,16 @@
++# Agent report quality evaluator
++
++`score_agent_reports.py` uses only explicit private adjudications. The expected file is `{ "expected_roots": [{"id":"R1", "severity":"critical"}] }`.
++Every `findings` and `proactive_opportunities` item must have one entry in `adjudications`, identified by `item_id`, with `verdict` (`correct`, `partial`, `false`, `duplicate`, or `unsubstantiated`). Correct and partial findings need a known `root_id`; duplicate findings need an accepted sibling for that root. Opportunities may have a null root ID: a useful suggestion need not repair a defect. Only one accepted finding may claim a given root; mark additional reports of it as duplicates.
++
++Finding entries require integer 0, 1, or 2 fields: `scope`, `evidence`, `severity`, `action_correctness`, `action_mechanism`, `action_specificity`, and `action_verification`. Opportunity entries require the same evidence and action fields (scope and severity may be omitted for opportunities). The `answer_support` object is indexed by `assessment.intent_tests` index and must contain every `required_elements` value with an explicit integer 0, 1, or 2.
++
++Adjudications must include the exact `report_sha256`, and the API requires `report_path` or `report_bytes` so the hash is checked against report bytes. Runtime is independently adjudicated with timezone-aware `observer_start`, `delivery`, `completion` (`completed`, `failed`, or `interrupted`), and `timestamp_kind` (`exact_delivery` or `observed_completion_upper_bound`). A negative duration or malformed timestamp is invalid. Report runtime fields are never trusted.
++
++Evidence and action means include findings and opportunities, including unsupported claims. Scores use 0–2 scales; finding precision and weighted recall give partial findings half credit. `root_recall_full` excludes partial matches; `root_recall_partial` includes them. These are reviewer judgments, not automatic truth verification.
++
++Any missing, unknown, malformed, stale, or unreviewed entry returns `incomplete_run` with null quality metrics and CLI exit code 2. Zero findings is valid and gives null precision; zero expected roots gives null recall.
++
++```sh
++python3 evals/score_agent_reports.py report.json --expected private-roots.json --adjudications adjudications.json
++```
+--- a/evals/README.md
++++ b/evals/README.md
+@@ -27,6 +27,8 @@
+ 
+ Require observed question tests and journey steps in the composed report. Assess missing-in-sample conclusions against actual inspected coverage. Do not require a finding in both categories on every site: verified passes and explicit untested lanes are valid outcomes. For citation measurement, preserve raw assistant answers and evaluate cohorts separately; a search-tool result is not a consumer assistant-answer test.
+ 
++Use the [agent quality evaluator](AGENT-QUALITY.md) to score hash-bound private adjudications of fresh reports. The older `tests/evaluate_report_quality.py` is an authored-example smoke test, not a general accuracy metric.
++
+ ## Metrics
+ 
+ Record these values per case and in aggregate:
+--- /dev/null
++++ b/evals/score_agent_reports.py
+@@ -0,0 +1,108 @@
++#!/usr/bin/env python3
++"""Fail-closed quality scoring from private, explicit adjudications."""
++from __future__ import annotations
++import argparse, hashlib, json
++from datetime import datetime
++from pathlib import Path
++from typing import Any
++
++VERDICTS = {"correct", "partial", "false", "duplicate", "unsubstantiated"}
++DIMENSIONS = ("scope", "evidence", "severity", "action_correctness", "action_mechanism", "action_specificity", "action_verification")
++
++def report_sha256(source: str | Path | bytes) -> str:
++    return hashlib.sha256(source if isinstance(source, bytes) else Path(source).read_bytes()).hexdigest()
++
++def _entry_map(value: Any) -> dict[str, dict]:
++    if isinstance(value, list):
++        return {str(x.get("item_id", x.get("report_id", x.get("finding_id", "")))): x for x in value if isinstance(x, dict)}
++    if isinstance(value, dict) and all(isinstance(v, dict) for v in value.values()):
++        return {str(k): dict(v, item_id=str(v.get("item_id", k))) for k, v in value.items()}
++    return {}
++
++def _mean(values: list[int]) -> float | None:
++    return round(sum(values) / len(values), 4) if values else None
++
++def _blank_quality() -> dict:
++    return {"finding_precision": None, "root_recall": None, "root_recall_full": None, "root_recall_partial": None, "high_or_critical_recall": None, "false_findings": None, "duplicate_findings": None, "scope_agreement": None, "evidence_fidelity": None, "severity_agreement": None, "actions": {d: None for d in DIMENSIONS[3:]}, "answer_requirement_support": None}
++
++def evaluate_report(report: dict, expected: dict, adjudication: dict, *, report_path: str | Path | None = None, report_bytes: bytes | None = None) -> dict:
++    errors: list[str] = []
++    if not isinstance(report, dict):
++        return {"complete": False, "incomplete_run": True, "validation_errors": ["report is not an object"], "quality": _blank_quality(), "runtime": {"completion": 0}}
++    findings = [x for x in report.get("findings", []) if isinstance(x, dict)]; opportunities = [x for x in report.get("proactive_opportunities", []) if isinstance(x, dict)]
++    finding_ids = [str(x.get("id")) for x in findings if x.get("id") is not None]; item_ids = finding_ids + [str(x.get("id")) for x in opportunities if x.get("id") is not None]
++    if len(item_ids) != len(set(item_ids)): errors.append("duplicate report item IDs")
++    for field in ("findings", "proactive_opportunities"):
++        value = report.get(field, [])
++        if not isinstance(value, list) or any(not isinstance(x, dict) or not isinstance(x.get("id"), str) or not x["id"] for x in value):
++            errors.append(f"{field} must contain objects with nonempty IDs")
++    roots = expected.get("expected_roots", [])
++    if not isinstance(roots, list) or not all(isinstance(x, dict) and x.get("id") is not None for x in roots): errors.append("expected_roots must be a list of objects with IDs"); roots = []
++    root_ids = {str(x["id"]) for x in roots}
++    if len(root_ids) != len(roots): errors.append("duplicate expected root IDs")
++    raw_ads = adjudication.get("adjudications")
++    ads = _entry_map(raw_ads)
++    if not isinstance(raw_ads, (dict, list)) or len(ads) != len(raw_ads): errors.append("malformed or duplicate adjudication entries")
++    for x in sorted(set(item_ids) - set(ads)): errors.append(f"unreviewed report item: {x}")
++    for x in sorted(set(ads) - set(item_ids)): errors.append(f"unknown report item in adjudication: {x}")
++    if report_path is None and report_bytes is None: errors.append("report_path or report_bytes required for SHA256 verification")
++    if report_path is not None or report_bytes is not None:
++        if adjudication.get("report_sha256") != report_sha256(report_bytes if report_bytes is not None else report_path): errors.append("adjudication report SHA256 mismatch")
++    reviewed: dict[str, dict] = {}
++    for iid, a in ads.items():
++        verdict = a.get("verdict"); rid = a.get("root_id")
++        if verdict not in VERDICTS: errors.append(f"invalid verdict for {iid}"); continue
++        if iid in finding_ids and verdict in {"correct", "partial", "duplicate"} and str(rid) not in root_ids: errors.append(f"{verdict} item {iid} requires known root_id")
++        if rid is not None and str(rid) not in root_ids: errors.append(f"unknown root ID for {iid}")
++        reviewed[iid] = a
++        if iid in finding_ids:
++            required_dimensions = DIMENSIONS
++        else:
++            required_dimensions = ("evidence", "action_correctness", "action_mechanism", "action_specificity", "action_verification")
++        if iid in item_ids:
++            for d in required_dimensions:
++                v = a.get(d)
++                if isinstance(v, bool) or not isinstance(v, int) or v not in (0, 1, 2): errors.append(f"invalid or missing {d} for {iid}: expected integer 0, 1, or 2")
++    for rid in root_ids:
++        group = [a for iid, a in reviewed.items() if iid in finding_ids and str(a.get("root_id")) == rid]
++        if sum(a.get("verdict") in {"correct", "partial"} for a in group) > 1: errors.append(f"multiple accepted findings assigned to root {rid}; mark duplicates")
++        if any(a.get("verdict") == "duplicate" for a in group) and not any(a.get("verdict") in {"correct", "partial"} for a in group): errors.append(f"duplicate root assignment without accepted finding: {rid}")
++    support = adjudication.get("answer_support", {}); support_values: list[int] = []
++    tests = report.get("assessment", {}).get("intent_tests", []) if isinstance(report.get("assessment"), dict) else []
++    if not isinstance(support, dict): errors.append("answer_support must be an object")
++    elif set(support) - {str(i) for i in range(len(tests))}: errors.append("unknown question in answer_support")
++    for qi, q in enumerate(tests):
++        entry = support.get(str(qi), support.get(qi, {})) if isinstance(support, dict) else {}; required = q.get("required_elements", []) if isinstance(q, dict) else []
++        if not isinstance(entry, dict): errors.append(f"invalid answer_support for question {qi}"); continue
++        if set(entry) - set(required): errors.append(f"unknown answer element for question {qi}")
++        for element in required:
++            v = entry.get(element)
++            if isinstance(v, bool) or not isinstance(v, int) or v not in (0, 1, 2): errors.append(f"invalid or missing answer support question {qi}: {element}")
++            else: support_values.append(v)
++    runtime = adjudication.get("runtime"); runtime_out = {"completion": 0, "duration_seconds": None, "timestamp_kind": None}
++    if not isinstance(runtime, dict): errors.append("runtime adjudication required")
++    else:
++        completion = runtime.get("completion"); runtime_out["completion"] = 1 if completion == "completed" else 0; runtime_out["timestamp_kind"] = runtime.get("timestamp_kind")
++        if completion not in {"completed", "failed", "interrupted"}: errors.append("invalid runtime completion")
++        if runtime.get("timestamp_kind") not in {"exact_delivery", "observed_completion_upper_bound"}: errors.append("invalid timestamp_kind")
++        try:
++            start = datetime.fromisoformat(str(runtime["observer_start"]).replace("Z", "+00:00")); end = datetime.fromisoformat(str(runtime["delivery"]).replace("Z", "+00:00"))
++            if start.tzinfo is None or end.tzinfo is None: raise ValueError
++            runtime_out["duration_seconds"] = (end - start).total_seconds()
++            if runtime_out["duration_seconds"] < 0: errors.append("runtime delivery precedes observer_start")
++        except (KeyError, TypeError, ValueError): errors.append("runtime observer_start and delivery must be timezone-aware timestamps")
++    if errors: return {"complete": False, "incomplete_run": True, "validation_errors": errors, "quality": _blank_quality(), "runtime": runtime_out}
++    accepted = [i for i in finding_ids if reviewed[i]["verdict"] in {"correct", "partial"}]; full = {str(reviewed[i]["root_id"]) for i in accepted if reviewed[i]["verdict"] == "correct"}; partial = {str(reviewed[i]["root_id"]) for i in accepted}; highcrit = {str(x["id"]) for x in roots if str(x.get("severity", "")).lower() in {"high", "critical"}}
++    q = {"finding_precision": round(sum(1 if reviewed[i]["verdict"] == "correct" else .5 for i in accepted) / len(finding_ids), 4) if finding_ids else None, "root_recall": round((len(full) + .5 * len(partial-full)) / len(root_ids), 4) if root_ids else None, "root_recall_full": len(full)/len(root_ids) if root_ids else None, "root_recall_partial": len(partial)/len(root_ids) if root_ids else None, "high_or_critical_recall": (len(full & highcrit) + .5 * len((partial-full) & highcrit))/len(highcrit) if highcrit else None, "false_findings": sum(reviewed[i]["verdict"] in {"false", "unsubstantiated"} for i in finding_ids), "duplicate_findings": sum(reviewed[i]["verdict"] == "duplicate" for i in finding_ids), "scope_agreement": _mean([reviewed[i]["scope"] for i in finding_ids]), "evidence_fidelity": _mean([reviewed[i]["evidence"] for i in item_ids]), "severity_agreement": _mean([reviewed[i]["severity"] for i in finding_ids]), "actions": {d: _mean([reviewed[i][d] for i in item_ids]) for d in DIMENSIONS[3:]}, "answer_requirement_support": _mean(support_values)}
++    return {"complete": True, "validation_errors": [], "quality": q, "runtime": runtime_out}
++
++def main(argv=None) -> int:
++    ap = argparse.ArgumentParser(description=__doc__); ap.add_argument("reports", nargs="+"); ap.add_argument("--expected", required=True); ap.add_argument("--adjudications", required=True); args = ap.parse_args(argv)
++    expected = json.loads(Path(args.expected).read_text()); mapping = json.loads(Path(args.adjudications).read_text()); out = []
++    for name in args.reports:
++        try:
++            raw = Path(name).read_bytes(); report = json.loads(raw); ad = mapping.get(name, mapping.get(Path(name).name, mapping)) if isinstance(mapping, dict) else {}; result = evaluate_report(report, expected, ad, report_bytes=raw)
++        except Exception as exc: result = {"complete": False, "incomplete_run": True, "validation_errors": [f"report could not be loaded: {exc}"], "quality": _blank_quality(), "runtime": {"completion": 0}}
++        out.append({"report": name, **result})
++    print(json.dumps(out[0] if len(out) == 1 else {"reports": out}, indent=2, sort_keys=True)); return 0 if all(x["complete"] for x in out) else 2
++if __name__ == "__main__": raise SystemExit(main())
+--- a/skills/audit-orchestrator/SKILL.md
++++ b/skills/audit-orchestrator/SKILL.md
+@@ -24,11 +24,11 @@
+ ## Procedure
+ 
+ 1. Record the actual host-invocation UTC start time and tool availability before further instruction reading. Resolve bundled paths from THIS SKILL.md's directory; the marketplace root is two directories above it. Use a fresh output directory outside the installed skill. The host agent is the entrypoint runtime; Python is optional. The 280-second target includes instruction reading, tool calls, evidence notes, composition and validation. Preserve this original start through retries and tool failures; never substitute collection start. Use an observed UTC clock for `audited_at`. If invocation timing is unavailable, disclose that limit instead of claiming end-to-end compliance. Load only the references needed for the current capability and task; do not inspect helper implementations or development tests during an audit.
+-2. When Python execution and an output directory are available, collect evidence with `python3 <skill-directory>/scripts/run_audit.py URL --output-dir OUTPUT --max-pages 5 --max-seconds 45` (substitute a user-specified page cap). Read the collection coverage, relevant page records and explicitly partial `report.json`; do not dump the whole evidence bundle into context. Otherwise gather the evidence exposed by permitted public fetch/browser tools, using the tool-availability reference; a Python evidence bundle is not required. Preserve the supplied path. Use the rolling deadline in [evidence-policy.md](references/evidence-policy.md): stop all evidence gathering by elapsed 120 seconds and reserve 160 seconds for composition, validation and delivery. Stop earlier once the selected tasks have adequate evidence. Favor task-specific destinations over expanding the general inventory.
+-3. Apply [evidence-policy.md](references/evidence-policy.md). From the site, choose 3-5 realistic questions: what the offer does and for whom, one important constraint/cost/eligibility question, one trust/current-fact question, and a next-step question as relevant. Avoid irrelevant pricing checks for nonprofits, research or public-information sites. Record these in `assessment.intent_tests` with expected answer elements before judging their coverage.
++2. Inspect the supplied landing page first. With Python and writable output, run `python3 <skill-directory>/scripts/run_audit.py URL --output-dir OUTPUT --max-pages 1 --max-seconds 15`. Read its coverage, passages and labeled links; the generated `report.json` is a static baseline. Otherwise use permitted public fetch/browser tools. Preserve the supplied path and avoid dumping the whole evidence bundle into context. Use the rolling deadline in [evidence-policy.md](references/evidence-policy.md): all gathering stops by elapsed 120 seconds, leaving 160 seconds for composition, verification and delivery.
++3. Apply [evidence-policy.md](references/evidence-policy.md). From the site, choose 3-5 realistic questions: what the offer does and for whom, one important constraint/cost/eligibility question, one trust/current-fact question, and a next-step question as relevant. Avoid irrelevant pricing checks for nonprofits, research or public-information sites. Record these in `assessment.intent_tests` with expected answer elements before judging their coverage. Choose supporting destinations from observed link labels and context, including opaque or non-English URLs. With a successful Python landing capture, run `python3 <skill-directory>/scripts/run_audit.py URL --output-dir OUTPUT --resume-evidence OUTPUT/evidence.json --target-url OBSERVED_URL --target-url ANOTHER_OBSERVED_URL --max-pages 5 --max-seconds 30`, omitting unnecessary targets and substituting the requested total page cap. This reuses saved pages and prioritizes selected links before inventory; both passes share at most 45 seconds of collector budget. Stop after the landing pass if sufficient. Documents and other authorities need the host tools and their own scope/policy checks. If the first capture failed, switch permitted tools promptly; do not repeat the failed collection.
+ 4. Read and apply the three sibling skills: [crawl and extraction](../crawl-extract-audit/SKILL.md), [entity and trust](../entity-trust-audit/SKILL.md), and [engagement](../engagement-context-audit/SKILL.md). They are separate reasoning stages in this invocation; no special subagent API or installed plugin is required. Share the same pages, questions and source ledger. Each returns candidates, passes, unresolved checks and owned assessment records. Crawl owns answerability; entity owns corroboration; engagement owns journeys.
+ 5. When browser tools exist, inspect the supplied landing page and one or two distinct task destinations. Trace two realistic journeys in `assessment.journeys`, recording starting context, safe link steps, expected destination/context and observed outcome. Use one main task and, where the site exposes a material choice, one non-default constraint and its handoff as described by the engagement skill. Compare material facts across static and rendered modes when necessary. When search exists, run [retrieval-validation.md](references/retrieval-validation.md), storing exact queries and dated source evidence. Search results establish retrieval observations, not assistant-answer citation rates.
+-6. Merge candidates by root cause. Preserve exact URLs, short quotes/selectors, response mode and denominators. Before accepting each finding or opportunity, check its factual premise against the saved fields and surrounding source, including counterevidence and material qualifiers. For an absence claim, verify the correct destination and complete relevant evidence; missing capture is unknown. For a broken route, use the final page URL and any base element, the literal href, and an observed destination response. An off-site link, fetched 403, missing capability, truncated extraction or one missed search result is not itself a website defect. Keep training preferences independent from search remedies. With Python and saved artifacts, maintain the compact evidence references in [report-verification.md](references/report-verification.md); reuse the collector records rather than transcribing them.
++6. Merge candidates by root cause. Preserve exact URLs, short quotes/selectors, response mode and denominators. Before accepting each finding or opportunity, check its factual premise against the saved fields and surrounding source, including counterevidence and material qualifiers. Check subject, relationship, value, conditions and date: a fixed release does not identify an affected release; a certificate fee does not answer programme tuition. For tables, read the row and column with the value; derived context strings are not verbatim page quotes. For an absence claim, verify the correct destination and complete relevant evidence; missing capture is unknown. For a broken route, use the final page URL and any base element, the literal href, and an observed destination response. An off-site link, fetched 403, missing capability, truncated extraction or one missed search result is not itself a website defect. Keep training preferences independent from search remedies. With Python and saved artifacts, maintain the compact evidence references in [report-verification.md](references/report-verification.md); reuse the collector records rather than transcribing them.
+ 7. Apply [severity.md](references/severity.md). Rank specific actions by severity, breadth, confidence and effort. Give an owner, change location, mechanism and a verifiable acceptance test. Include up to three proactive opportunities only when the observed business/tasks support them; empty is valid. A tool failure alone belongs in coverage and an auditor follow-up, not a prioritized task for the website owner. Explain benefits as mechanisms, not guaranteed citations, conversions or retention.
+ 8. Compose ONE JSON report conforming to [report-schema.json](references/report-schema.json). Save it as `draft-report.json`, separate from the collector's `report.json` static baseline. Include all five readiness stages, 3-5 question tests and two journeys; do not change the contract to save time. Set `assessment.mode` to `agent_composed`; preserve unavailable lanes and leave visibility `not_measured` unless actual recorded assistant runs support it. Recompute counts and sequential IDs after ranking. Prefer three well-supported questions over five shallow ones. Use a two-sentence conclusion, concise observations, short material quotes and one reproduction per root cause. Label source-only journey actions `[source]` and observed browser actions `[rendered]`. Keep query/source notes in the shared evidence; the review sidecar contains references and checks, not another narrative report. Aim to have the draft and review ready by elapsed 240 seconds, leaving 40 seconds for verification and delivery.
+ 9. With permitted Python execution, saved evidence and an observed invocation start, run `python3 <skill-directory>/scripts/finalize_report.py --report OUTPUT/draft-report.json --evidence OUTPUT/evidence.json --review OUTPUT/review.json --output OUTPUT/final-report.json --started-at ORIGINAL_UTC_START` using [report-verification.md](references/report-verification.md). Deliver the final report only when this command succeeds; keep its receipt with the evidence. Repair rejected claims within the original budget or remove unsupported candidates and recount. On timeout/unresolved rejection, preserve the draft and disclose incomplete verification; do not relabel it as a verified final or reset the clock. Where this command cannot run, perform the manual checks in the tool-availability reference and return the report with explicit validation limits. Schema-only validation is not evidence verification. Do not run the development test suite during a website audit.
+--- a/skills/audit-orchestrator/references/evidence-policy.md
++++ b/skills/audit-orchestrator/references/evidence-policy.md
+@@ -1,6 +1,6 @@
+ # Evidence collection within one shared deadline
+ 
+-Start from the supplied URL, preserving its path. Resolve robots at the origin, evaluate named crawler roles independently, and respect the audit collector's applicable rules. Fetch the requested page before inventories. Same-authority sitemap indexes are followed within three inventory requests; links and sitemap pages are sampled across inferred page types. The standalone collector defaults to 12 pages and 120 seconds; the timed agent audit requests 5 pages and 45 seconds. Both throttle to 2 requests/second. The collector uses only the standard library and its own identity. Cross-authority redirects are retained as untested coverage rather than followed. If an apex/www redirect prevents inspection, the agent may inspect the observed public destination after checking its own robots policy and reporting the changed scope; never bypass a block.
++Start from the supplied URL, preserving its path. Resolve robots at the origin, evaluate named crawler roles independently, and respect the audit collector's applicable rules. Fetch the requested page before inventories. Same-authority sitemap indexes are followed within three inventory requests; links and sitemap pages are sampled across inferred page types. The standalone collector defaults to 12 pages and 120 seconds; the timed agent audit first requests 1 landing page/15 seconds, then resumes to a total of 5 pages with up to 30 further seconds. Selected observed HTML destinations take priority over inventory. Resume retains page references and the original capture timestamp, rechecks robots and rejects captures older than five minutes; it does not restart the invocation deadline. Both throttle to 2 requests/second. The collector uses only the standard library and its own identity. Cross-authority redirects are retained as untested coverage rather than followed. If an apex/www redirect prevents inspection, the agent may inspect the observed public destination after checking its own robots policy and reporting the changed scope; never bypass a block.
+ 
+ A robots 4xx is unavailable and permits collection; 5xx/network/incomplete policy stops collection. Missing robots is not a defect. The parser preserves matching rules, combines matching groups, uses the most specific path and prefers Allow for ties. Results describe policy rather than actual provider access. No request is made solely to impersonate a provider bot.
+ 
+@@ -10,7 +10,7 @@
+ 
+ Sample for the selected questions: supplied landing page, material decision/constraint page, and public next-step or proof destination. Reuse pages across tasks and stop when those questions have adequate support, rather than filling the page cap. A small sample must narrow the claims; it must not manufacture a missing-answer finding. Unfinished checks remain `not_checked` with the time/tool reason in the existing coverage fields, not a new schema property.
+ 
+-Read coverage and task-relevant page records first, not hundreds of kilobytes of inventory. An unrelated menu or sitemap page does not substitute for the supplied service's pricing, eligibility, support or next-step page. Count distinct inspected first-party pages once across static/rendered modes; record external corroborating documents separately. Query/locale/version states are journey observations, not automatically additional pages. Keep enough short source and action notes to reproduce a finding without transcribing entire pages into the report.
++Read coverage and task-relevant page records first, not hundreds of kilobytes of inventory. Choose questions after the landing capture, then pass their observed destinations to the resumed collector. Readable link labels carry task relevance even when URLs are opaque or non-English. An unrelated menu or sitemap page does not substitute for the supplied service's pricing, eligibility, support or next-step page. Count distinct inspected first-party pages once across static/rendered modes; record external corroborating documents separately. Query/locale/version states are journey observations, not automatically additional pages. Keep enough short source and action notes to reproduce a finding without transcribing entire pages into the report.
+ 
+ Render the supplied landing page and one or two task destinations when possible. Trace visitor journeys even if static text is complete. Compare specific material facts across source and rendered evidence when a question is unanswered or a shell/media trigger warrants it. Do not require all mobile/keyboard/performance tests in every five-minute run; record checks actually exercised.
+ 
+@@ -26,4 +26,6 @@
+ - Media: show the decision-critical fact and the unavailable text equivalent in the tested reading mode. Decorative images and PDFs with readable text are not blanket failures.
+ - Trust: establish contradictions/identity collisions from opened sources. Search absence, missing dates and first-party-only facts are not enough.
+ 
++Use captured table `rows` and `records` to retain header/value relationships. Tables marked `requires_review` have complex, incomplete or ambiguous structure: inspect the raw cells or rendered table before interpreting relationships. `relationship_candidates` are inspection leads, never automatic findings. Empty source hrefs can have working JavaScript behavior; a literal address mismatch still needs task context and proportionate severity.
++
+ Apply the gates to opportunity rationales and executive claims too. Before delivery, challenge each retained claim using existing evidence: is the named fact present elsewhere in the inspected relevant source, does a qualifier resolve the apparent conflict, or does the cited record concern another page? Perform this review within composition time. Use typed field checks for captured-field absence/equality and destination checks for broken links; a nearby quote is not a substitute for these checks. Preserve untested questions rather than searching past the evidence cutoff to fill a quota.
+--- a/skills/audit-orchestrator/references/report-verification.md
++++ b/skills/audit-orchestrator/references/report-verification.md
+@@ -50,7 +50,7 @@
+ 
+ This illustrates the record format, not a complete report's evidence. Supply a claim entry for every retained finding and opportunity, an answer mapping for every reported answer quote, and journey mappings for the reported steps. Indices are zero-based; claim IDs must follow the final report's ranking. Use actual evidence references and values, never the illustrative values above. Finding scopes must identify the records actually checked and affected, with counts and cited URLs agreeing with the report. Reading the same page in two modes does not double its page count.
+ 
+-For each `answered` question, every answer mapping needs `element_indices`: the zero-based required elements supported by that quote. Together the mappings must cover all required elements; one quote may support several. Preserve dates, version names, units, conditions and exclusions in the actual quotes. A generic heading or a sentence clipped before its date cannot support the missing detail. For other statuses, mappings may omit these indices; any supplied indices are still checked. The validator checks coverage of the mapping, not whether the selected quote semantically supports the assigned element. Apply the same material-qualifier review to opportunity premises and journey observations, including `not_checked` journeys.
++For each `answered` question, every answer mapping needs `element_indices`: the zero-based required elements supported by that quote. Together the mappings must cover all required elements; one quote may support several. Preserve dates, version names, units, conditions and exclusions in the actual quotes. A generic heading or a sentence clipped before its date cannot support the missing detail. For other statuses, mappings may omit these indices; any supplied indices are still checked. For each required element, check the quote’s subject, relationship, value, conditions and date. “Fixed in 7.2.9” cannot support “affected versions”; “120 per year” cannot support “120 per month.” Quote a table’s raw header and cell fields separately (for example `tables.0.rows.0.1.value` and `tables.0.rows.1.1.value`); `records.*.context` is reconstructed reading context, not a verbatim website quotation. The validator checks coverage of the mapping, not whether the selected quote semantically supports the assigned element. Apply the same material-qualifier review to opportunity premises and journey observations, including `not_checked` journeys.
+ 
+ Supported assertions:
+ 
+--- a/skills/audit-orchestrator/scripts/collect_site.py
++++ b/skills/audit-orchestrator/scripts/collect_site.py
+@@ -1,9 +1,11 @@
+ #!/usr/bin/env python3
+ """Collect reusable source evidence, not an invented AI visibility score."""
+ import argparse
++import copy
+ import gzip
+ import io
+ import json
++import math
+ import re
+ import time
+ import zlib
+@@ -152,7 +154,63 @@
+     return "home" if path == "/" else "other"
+ 
+ 
+-def collect(url, max_pages=12, max_seconds=120):
++def resume_selection(previous, start, host, targets):
++    """Reuse this invocation's captures; only prioritize observed HTML links."""
++    if (not isinstance(previous, dict) or previous.get("site") != start
++            or previous.get("collector") != "static"
++            or previous.get("collector_version") != "2.1"):
++        raise ValueError("Resume evidence must be a current collector capture of the same supplied URL")
++    pages = previous.get("pages")
++    if not isinstance(pages, list) or not pages or len(pages) > 40:
++        raise ValueError("Resume evidence needs 1-40 captured page records")
++    for field in ("limits", "coverage"):
++        if not isinstance(previous.get(field), dict): raise ValueError(f"Resume {field} must be an object")
++    for field in ("sitemaps", "errors"):
++        if not isinstance(previous.get(field), list) or any(not isinstance(x, dict) or not isinstance(x.get("url"), str) for x in previous[field]):
++            raise ValueError(f"Resume {field} must contain URL records")
++    for container, field in (("limits", "max_seconds"), ("limits", "effective_request_interval_seconds"),
++                             ("coverage", "request_count"), ("coverage", "elapsed_seconds")):
++        value = previous[container].get(field)
++        if isinstance(value, bool) or not isinstance(value, (int, float)) or not math.isfinite(value) or value < 0:
++            raise ValueError(f"Resume {container}.{field} must be a finite nonnegative number")
++    if not isinstance(previous["coverage"].get("sample_types", {}), dict):
++        raise ValueError("Resume sample_types must be an object")
++    try:
++        age = (datetime.now(timezone.utc) - datetime.fromisoformat(previous["collected_at"])).total_seconds()
++    except (KeyError, TypeError, ValueError):
++        raise ValueError("Resume evidence needs its original UTC capture timestamp")
++    if not 0 <= age < 300:
++        raise ValueError("Resume evidence is only reusable within the original five-minute invocation")
++    observed, seen = [], set()
++    for page in pages:
++        if not isinstance(page, dict) or not normalize(start, page.get("url", ""), host):
++            raise ValueError("Resume page is outside the supplied authority")
++        for field in ("url", "final_url"):
++            if page.get(field):
++                normalized = normalize(start, page[field], host)
++                if normalized: seen.add(normalized)
++        base = page.get("link_base_url", page.get("final_url", page["url"]))
++        if not isinstance(base, str) or not isinstance(page.get("links", []), list):
++            raise ValueError("Resume page needs a URL base and link records")
++        for link in page.get("links", []):
++            if not isinstance(link, dict) or (link.get("href") is not None and not isinstance(link["href"], str)):
++                raise ValueError("Resume links must be captured link objects")
++            if not link.get("href"): continue
++            candidate = normalize(base, link["href"], host)
++            if candidate and candidate not in observed: observed.append(candidate)
++    selected = []
++    for target in targets:
++        candidate = normalize(start, target, host)
++        if candidate not in observed:
++            raise ValueError("Task targets must be observed same-authority HTML link destinations; inspect documents or other authorities with host tools")
++        if candidate not in selected: selected.append(candidate)
++    for error in previous.get("errors", []):
++        candidate = normalize(start, error.get("url", ""), host)
++        if candidate: seen.add(candidate)
++    return [item for item in observed if item not in seen], seen, selected
++
++
++def collect(url, max_pages=12, max_seconds=120, *, resume=None, target_urls=None):
+     max_pages, max_seconds = max(1, min(max_pages, 40)), max(5, min(max_seconds, 180))
+     supplied = url if "://" in url else "https://" + url
+     parsed = urlparse(supplied)
+@@ -161,14 +219,32 @@
+     origin = f"{parsed.scheme.lower()}://{parsed.netloc.lower()}/"; host = parsed.netloc.lower()
+     start = normalize(origin, supplied, host)
+     if not start: raise ValueError("Starting URL must be an HTML page, not a media/archive file")
++    target_urls = target_urls or []
++    if target_urls and resume is None:
++        raise ValueError("Task targets require --resume-evidence from the landing-page pass")
++    queue, seen, selected = resume_selection(resume, start, host, target_urls) if resume is not None else ([start], set(), [])
++    if resume is not None and max_pages < len(resume["pages"]):
++        raise ValueError("--max-pages is the total page cap and cannot be below the saved page count")
+     client = Client(origin, max_seconds)
+     out = {"site": start, "origin": origin, "collected_at": datetime.now(timezone.utc).isoformat(),
+-           "collector": "static", "collector_version": "2.0", "agent_roles": AGENT_ROLES,
++           "collector": "static", "collector_version": "2.1", "agent_roles": AGENT_ROLES,
+            "limits": {"max_pages": max_pages, "max_seconds": max_seconds, "rate_per_second": 2, "max_bytes_per_page": 2_000_000},
+            "robots": {}, "sitemaps": [], "pages": [], "errors": [],
+            "ai_probe": {"status": "not_checked", "reason": "No bot impersonation: local requests do not verify provider IP access."},
+            "coverage": {"rendered": "not_checked: collector is static", "off_site": "not_checked: requires search-capable agent",
+                         "actual_ai_visibility": "not_measured: requires recorded assistant answers and citations", "deadline_reached": False}}
++    if resume is not None:
++        out = copy.deepcopy(resume)
++        out["limits"]["max_pages"] = max_pages
++        out["limits"]["max_seconds"] += max_seconds
++        # Recheck robots in the second pass; never treat a saved policy as new evidence.
++        # This delay also preserves throttling across immediately adjacent invocations.
++        client.next_request = time.monotonic() + max(.5, out["limits"].get("effective_request_interval_seconds", .5))
++    prior_requests = out["coverage"].get("request_count", 0)
++    prior_elapsed = out["coverage"].get("elapsed_seconds", 0)
++    out.setdefault("collection_passes", [])
++    out["coverage"]["selected_task_urls"] = list(dict.fromkeys(out["coverage"].get("selected_task_urls", []) + selected))
++    out["coverage"]["selected_already_attempted"] = [item for item in selected if item in seen]
+     def record_error(target, error):
+         item = {"url": target, "error": type(error).__name__, "detail": str(error)[:300]}
+         if isinstance(error, HTTPError): item["status"] = error.code
+@@ -205,11 +281,13 @@
+             out["coverage"]["crawl"] = "not_checked: robots policy unavailable or supplied path is blocked for this collector"
+         else:
+             # Fetch the actual requested page first. Expensive inventories must not consume its budget.
+-            queue, seen, types = [start], set(), {}
+-            inventory_pending, sitemaps_seen = list(hints or [urljoin(origin, "sitemap.xml")]), set()
++            types = dict(out["coverage"].get("sample_types", {}))
++            sitemaps_seen = {item["url"] for item in out["sitemaps"]}
++            inventory_pending = [item for item in hints or [urljoin(origin, "sitemap.xml")] if item not in sitemaps_seen]
++            selected_order = {item: i for i, item in enumerate(selected)}
+             while (queue or inventory_pending) and len(out["pages"]) < max_pages:
+                 if time.monotonic() >= client.deadline: raise DeadlineReached()
+-                if seen and inventory_pending and len(sitemaps_seen) < 3:
++                if seen and inventory_pending and len(sitemaps_seen) < 3 and not any(item in selected_order for item in queue):
+                     sitemap = normalize(origin, inventory_pending.pop(0), host)
+                     if not sitemap or sitemap in sitemaps_seen or not policy.can_fetch(UA, sitemap): continue
+                     sitemaps_seen.add(sitemap)
+@@ -226,7 +304,7 @@
+                 if not queue:
+                     if len(sitemaps_seen) >= 3: break
+                     continue
+-                if seen: queue.sort(key=lambda x: (types.get(page_type(x), 0), page_type(x) == "other"))
++                if seen: queue.sort(key=lambda x: (selected_order.get(x, len(selected_order)), types.get(page_type(x), 0), page_type(x) == "other"))
+                 target = queue.pop(0)
+                 if target in seen: continue
+                 seen.add(target)
+@@ -256,9 +334,10 @@
+                                 link_base = declared_base
+                         page["link_base_url"] = link_base
+                         for link in page["links"]:
+-                            link["url"] = resolve_link(link_base, link["href"])
+-                            if link["url"] is None: link["resolution_error"] = "Malformed URL; not followed"
++                            link["url"] = resolve_link(link_base, link["href"]) if link.get("href") is not None else None
++                            if link["url"] is None: link["resolution_error"] = "Missing or malformed URL; not followed"
+                         for href in parser.links:
++                            if not href: continue
+                             candidate = normalize(link_base, href, host)
+                             if candidate and candidate not in seen and candidate not in queue and len(queue) < max_pages * 10:
+                                 queue.append(candidate)
+@@ -269,8 +348,11 @@
+     except DeadlineReached:
+         out["coverage"]["deadline_reached"] = True
+         out["coverage"]["crawl"] = "partial: collection budget reached; compose from saved evidence"
+-    out["coverage"]["request_count"] = client.requests
+-    out["coverage"]["elapsed_seconds"] = round(max_seconds - max(0, client.deadline - time.monotonic()), 2)
++    elapsed = round(max_seconds - max(0, client.deadline - time.monotonic()), 2)
++    out["collection_passes"].append({"max_seconds": max_seconds, "elapsed_seconds": elapsed,
++                                     "request_count": client.requests, "target_urls": selected})
++    out["coverage"]["request_count"] = prior_requests + client.requests
++    out["coverage"]["elapsed_seconds"] = round(prior_elapsed + elapsed, 2)
+     return out
+ 
+ 
+@@ -278,9 +360,14 @@
+     parser = argparse.ArgumentParser(description=__doc__)
+     parser.add_argument("url"); parser.add_argument("--output", default="-")
+     parser.add_argument("--max-pages", type=int, default=12); parser.add_argument("--max-seconds", type=int, default=120)
++    parser.add_argument("--resume-evidence", help="Landing-page evidence from this same invocation")
++    parser.add_argument("--target-url", action="append", default=[], help="Observed task destination to fetch before inventory (repeatable)")
+     args = parser.parse_args()
+-    try: result = collect(args.url, args.max_pages, args.max_seconds)
+-    except ValueError as error: parser.error(str(error))
++    try:
++        from pathlib import Path
++        previous = json.loads(Path(args.resume_evidence).read_text(encoding="utf-8")) if args.resume_evidence else None
++        result = collect(args.url, args.max_pages, args.max_seconds, resume=previous, target_urls=args.target_url)
++    except (ValueError, OSError) as error: parser.error(str(error))
+     payload = json.dumps(result, indent=2, ensure_ascii=False)
+     if args.output == "-": print(json.dumps(result, indent=2, ensure_ascii=True))
+     else:
+--- a/skills/audit-orchestrator/scripts/page_evidence.py
++++ b/skills/audit-orchestrator/scripts/page_evidence.py
+@@ -6,6 +6,7 @@
+ import json
+ import re
+ from html.parser import HTMLParser
++from urllib.parse import unquote, urlsplit
+ 
+ 
+ VOID = {"area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "param", "source", "track", "wbr"}
+@@ -24,6 +25,7 @@
+         self.links, self.link_details, self.text, self.title, self.h1 = [], [], [], [], []
+         self.jsonld, self.meta, self.canon, self.img, self.landmarks = [], [], [], [], []
+         self.passages, self.controls, self.hreflang = [], [], []
++        self.tables, self.relationship_candidates = [], []
+         self.lang = ""
+         self.base_href = None
+         self._stack, self._counts, self._heading = [], {}, ""
+@@ -48,7 +50,30 @@
+             if "canonical" in rel: self.canon.append(a.get("href", ""))
+             if "alternate" in rel and a.get("hreflang"):
+                 self.hreflang.append({"lang": a["hreflang"], "href": a.get("href", "")})
+-        if tag == "a" and a.get("href"): self.links.append(a["href"])
++        if tag == "a":
++            self.links.append(a.get("href") if "href" in a else None)
++        readable = not hidden and not any(x["hidden"] or x["tag"] in SUPPRESSED for x in self._stack)
++        table = next((x.get("table_data") for x in reversed(self._stack) if x.get("table_data") is not None), None)
++        if tag == "table" and readable:
++            frame["table_data"] = {"selector": selector, "caption": "", "rows": [], "ambiguities": [], "truncated": False}
++            if table is not None:
++                table["ambiguities"].append("nested_table")
++                frame["table_data"]["ambiguities"].append("nested_table")
++        elif tag in {"tr", "td", "th", "caption"} and table is not None and readable:
++            frame["table_owner"] = table
++            if tag == "tr":
++                if any(x.get("table_owner") is table and x["tag"] == "tr" for x in self._stack):
++                    table["ambiguities"].append("unclosed_row")
++                row = []
++                frame["row_data"] = row
++                if len(table["rows"]) < 40: table["rows"].append(row)
++                else: table["truncated"] = True
++            elif tag in {"td", "th"}:
++                if any(x.get("table_owner") is table and x["tag"] in {"td", "th"} for x in self._stack):
++                    table["ambiguities"].append("unclosed_cell")
++                row_frame = next((x for x in reversed(self._stack) if x.get("table_owner") is table and "row_data" in x), None)
++                if row_frame is not None: frame["cell_row"] = row_frame["row_data"]
++                else: table["ambiguities"].append("cell_without_row")
+         if tag == "img":
+             self.img.append({"src": a.get("src", ""), "alt": a.get("alt"), "selector": selector})
+             if a.get("alt"):
+@@ -72,9 +97,42 @@
+         if tag in {"h1", "h2", "h3", "h4", "h5", "h6"} and value: self._heading = value
+         if tag in BLOCKS and value and not frame["boilerplate"]:
+             self.passages.append({"selector": frame["selector"], "heading": frame["heading"], "text": value[:3000]})
+-        if tag == "a" and a.get("href"):
+-            self.link_details.append({"href": a["href"], "text": value[:300], "aria_label": a.get("aria-label", ""),
++        if tag == "a":
++            href = a.get("href") if "href" in a else None
++            self.link_details.append({"href": href, "text": value[:300], "aria_label": a.get("aria-label", ""),
+                                       "selector": frame["selector"], "region": "navigation" if frame["boilerplate"] else "content"})
++            if len(self.relationship_candidates) < 100:
++                # Compare literal email addresses, not generic words such as "email".
++                addresses = re.findall(r"[A-Za-z0-9.!#$%&'*+/=?^_`{|}~-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}", value)
++                if isinstance(href, str) and href.lower().startswith("mailto:") and len(addresses) == 1:
++                    recipients = [x.strip() for x in unquote(urlsplit(href).path).split(",")]
++                    if len(recipients) == 1 and "@" in recipients[0] and addresses[0].casefold() != recipients[0].casefold():
++                        self.relationship_candidates.append({"type": "email_address_mismatch", "selector": frame["selector"],
++                            "text": value[:300], "href": href, "status": "candidate",
++                            "reason": "Displayed email address differs from the source mailto recipient; verify the intended routing."})
++                hint = clean(value or a.get("aria-label", "")).lower()
++                if href in (None, "") and any(x in hint for x in ("buy", "apply", "start", "sign up", "contact", "learn more")):
++                    self.relationship_candidates.append({"type": "empty_cta_link", "selector": frame["selector"],
++                        "text": value[:300], "href": href, "status": "candidate",
++                        "reason": "CTA-like anchor has no source href; JavaScript behavior requires browser review."})
++        table = frame.get("table_owner")
++        if table is not None:
++            if tag == "caption":
++                table["caption"] = value[:1000]
++                table["truncated"] |= len(value) > 1000
++            elif tag in {"td", "th"} and "cell_row" in frame:
++                row = frame["cell_row"]
++                if len(row) < 20:
++                    row.append({"value": value[:1000], "tag": tag, "scope": a.get("scope", ""), "selector": frame["selector"]})
++                else: table["truncated"] = True
++                table["truncated"] |= len(value) > 1000
++                for span in ("rowspan", "colspan"):
++                    try:
++                        if int(a.get(span, "1")) != 1: table["ambiguities"].append("spanned_cells")
++                    except ValueError: table["ambiguities"].append("invalid_span")
++                if a.get("headers"): table["ambiguities"].append("explicit_header_mapping_requires_review")
++        if tag == "table" and "table_data" in frame:
++            self.tables.append(self._build_table(frame["table_data"]))
+         if tag == "button":
+             self.controls.append({"tag": tag, "selector": frame["selector"], "text": value[:300], "aria_label": a.get("aria-label", "")})
+ 
+@@ -85,7 +143,6 @@
+         if indices:
+             for frame in reversed(self._stack[indices[-1]:]): self._finish(frame)
+             del self._stack[indices[-1]:]
+-
+     def handle_data(self, data):
+         if self._json:
+             self._buf.append(data)
+@@ -100,9 +157,48 @@
+         for frame in self._stack: frame["parts"].append(value)
+         if not any(x["boilerplate"] for x in self._stack): self.text.append(value)
+ 
++    def _build_table(self, table):
++        """Infer relationships only for complete rectangular, simple header tables."""
++        rows = table["rows"]
++        if not rows or not any(cell["tag"] == "th" for row in rows for cell in row):
++            table["ambiguities"].append("missing_headers")
++        if rows and any(len(row) != len(rows[0]) for row in rows):
++            table["ambiguities"].append("irregular_rows")
++        if rows and any(cell["scope"] not in {"", "row", "col"} for row in rows for cell in row):
++            table["ambiguities"].append("complex_header_scope")
++        # Do not let a later header overwrite an earlier relationship.
++        if any(cell["tag"] == "th" and cell["scope"] == "col" for row in rows[1:] for cell in row):
++            table["ambiguities"].append("multiple_header_rows")
++        if any(cell["tag"] == "th" and cell["scope"] != "row" for row in rows[1:] for cell in row[1:]):
++            table["ambiguities"].append("ambiguous_body_headers")
++        records = []
++        if not table["ambiguities"] and not table["truncated"]:
++            headers = rows[0] if rows else []
++            for ri, row in enumerate(rows):
++                for ci, cell in enumerate(row):
++                    if cell["tag"] != "td": continue
++                    row_header = row[0]["value"] if row and row[0]["tag"] == "th" and row[0]["scope"] in {"", "row"} else ""
++                    col_header = headers[ci]["value"] if headers[ci]["tag"] == "th" and headers[ci]["scope"] in {"", "col"} else ""
++                    if len(records) == 200:
++                        table["truncated"] = True
++                        break
++                    records.append({"row": ri, "column": ci, "value": cell["value"],
++                                    "row_header": row_header, "column_header": col_header,
++                                    "qualifiers": [x for x in (row_header, col_header) if x],
++                                    "value_path": f"rows.{ri}.{ci}.value",
++                                    "context": " | ".join(x for x in (row_header, col_header, cell["value"]) if x),
++                                    "context_is_derived": True})
++                if table["truncated"]: break
++        if table["truncated"]: records = []
++        return {**table, "records": records, "ambiguities": sorted(set(table["ambiguities"])),
++                "relationship_status": "requires_review" if table["ambiguities"] or table["truncated"] else "simple_headers",
++                "note": "Context joins captured header/cell values; it is not a contiguous website quote. Cite raw cells and headers separately."}
++
+     def close(self):
+         super().close()
+-        for frame in reversed(self._stack): self._finish(frame)
++        for frame in reversed(self._stack):
++            if "table_data" in frame: frame["table_data"]["ambiguities"].append("unclosed_table")
++            self._finish(frame)
+         self._stack.clear()
+ 
+ 
+@@ -139,12 +235,13 @@
+         "meta_robot_directives": {k: ", ".join(meta.get(k, [])) for k in ("robots", "googlebot", "bingbot")},
+         "description": " ".join(meta.get("description", [])), "canonical": parser.canon,
+         "links_count": len(parser.links), "links": parser.link_details[:150], "controls": parser.controls[:40],
++        "tables": parser.tables[:20], "relationship_candidates": parser.relationship_candidates[:100],
+         "images": {"count": len(parser.img), "missing_alt": sum(x["alt"] is None for x in parser.img),
+                    "empty_alt": sum(x["alt"] == "" for x in parser.img), "items": parser.img[:40]},
+         "jsonld": {"blocks": len(parser.jsonld), "parse_errors": len(ld_errors), "errors": ld_errors,
+                    "types": jsonld_types(ld), "data": ld if len(json.dumps(ld)) <= 40000 else [],
+                    "data_omitted": len(json.dumps(ld)) > 40000},
+         "text_sample": text[:1200], "main_text": text[:24000], "passages": parser.passages[:100],
+-        "evidence_truncated": len(text) > 24000 or len(parser.passages) > 100 or len(parser.link_details) > 150,
++        "evidence_truncated": len(text) > 24000 or len(parser.passages) > 100 or len(parser.link_details) > 150 or len(parser.tables) > 20 or any(t["truncated"] for t in parser.tables),
+         "extraction_note": "Source HTML including noscript fallback; excludes semantic navigation/footer, scripts and explicit inline hidden content. CSS and JavaScript-enabled visibility require a browser."
+     }
+--- a/skills/audit-orchestrator/scripts/run_audit.py
++++ b/skills/audit-orchestrator/scripts/run_audit.py
+@@ -97,9 +97,13 @@
+     parser = argparse.ArgumentParser(description=__doc__)
+     parser.add_argument("url"); parser.add_argument("--output-dir", default="audit-output")
+     parser.add_argument("--max-pages", type=int, default=12); parser.add_argument("--max-seconds", type=int, default=120)
++    parser.add_argument("--resume-evidence", help="Reuse the landing-page capture from this invocation")
++    parser.add_argument("--target-url", action="append", default=[], help="Observed task destination to prioritize (repeatable)")
+     args = parser.parse_args()
+-    try: evidence = collect(args.url, args.max_pages, args.max_seconds)
+-    except ValueError as error: parser.error(str(error))
++    try:
++        previous = json.loads(Path(args.resume_evidence).read_text(encoding="utf-8")) if args.resume_evidence else None
++        evidence = collect(args.url, args.max_pages, args.max_seconds, resume=previous, target_urls=args.target_url)
++    except (ValueError, OSError) as error: parser.error(str(error))
+     destination = Path(args.output_dir); destination.mkdir(parents=True, exist_ok=True)
+     for name, value in (("evidence.json", evidence), ("report.json", baseline(evidence))):
+         (destination / name).write_text(json.dumps(value, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+--- a/skills/crawl-extract-audit/SKILL.md
++++ b/skills/crawl-extract-audit/SKILL.md
+@@ -9,7 +9,7 @@
+ 
+ Use the shared evidence bundle and the orchestrator's visitor questions. Check access for named search crawlers, engine-specific meta and HTTP directives, redirects/canonical coherence, then whether a reader can extract the facts needed to answer those questions. Treat the Python report as technical candidates; review their business relevance and intentional restrictions before retaining them.
+ 
+-For each question, fill its `assessment.intent_tests` record using `main_text`, `passages`, actual JSON-LD values, media alternatives and relevant linked pages. Cite a short quote and URL for each answer; record partial or untested coverage honestly. Check each required element, including its unit, variant or qualifier, before assigning status. A resolved answer is `answered` even if another passage warrants a separate localized finding; `partial` must name the still-missing or unresolved element. A long marketing page may lack the important answer; a short clear page may answer it fully. Compare rendered and source facts when a browser can resolve uncertainty. Review `evidence_truncated` before claiming absence.
++For each question, fill its `assessment.intent_tests` record using `main_text`, `passages`, table headers/cells, actual JSON-LD values, media alternatives and relevant linked pages. Table `records` provide derived reading context only; quote the actual header and value fields separately. Complex or truncated tables need contextual review. Cite a short quote and URL for each answer; record partial or untested coverage honestly. Check each required element, including its unit, variant or qualifier, before assigning status. A resolved answer is `answered` even if another passage warrants a separate localized finding; `partial` must name the still-missing or unresolved element. A long marketing page may lack the important answer; a short clear page may answer it fully. Compare rendered and source facts when a browser can resolve uncertainty. Review `evidence_truncated` before claiming absence.
+ 
+ Check schema syntax AND agreement with material visible facts; source schema values are evidence, not a higher truth than the page. Evaluate canonical destinations before claiming duplicate-content exclusion. Distinguish policy that blocks training from policy that blocks search; neither permission nor a successful local GET proves actual citation.
+ 
+--- a/tests/report_evidence.py
++++ b/tests/report_evidence.py
+@@ -169,6 +169,9 @@
+             data, kind = record["data"], assertion.get("type")
+             value = _field(data, assertion.get("field"))
+             if kind == "quote":
++                parent = _field(data, assertion.get("field", "").rsplit(".", 1)[0])
++                if isinstance(parent, dict) and parent.get("context_is_derived") is True and assertion.get("field", "").endswith(".context"):
++                    errors.append(f"{label}: derived table context is not a verbatim website quote; cite raw headers and cells")
+                 if not record["readable"] or not _quote(assertion.get("quote"), value):
+                     errors.append(f"{label}: quote is not a short verbatim excerpt from readable captured evidence")
+             elif kind == "field_equals":
+--- a/tests/run_all.py
++++ b/tests/run_all.py
+@@ -10,6 +10,9 @@
+     [sys.executable, str(ROOT / "tests" / "test_robots_scenarios.py")],
+     [sys.executable, str(ROOT / "tests" / "test_redirects.py")],
+     [sys.executable, str(ROOT / "tests" / "test_collector_generalization.py")],
++    [sys.executable, str(ROOT / "tests" / "test_task_sampling.py")],
++    [sys.executable, str(ROOT / "tests" / "test_relationship_evidence.py")],
++    [sys.executable, str(ROOT / "tests" / "test_agent_quality.py")],
+     [sys.executable, str(ROOT / "tests" / "test_eval_suite.py")],
+     [sys.executable, str(ROOT / "tests" / "test_practical_audit.py")],
+     [sys.executable, str(ROOT / "tests" / "test_edge_cases.py")],
+--- /dev/null
++++ b/tests/test_agent_quality.py
+@@ -0,0 +1,31 @@
++import hashlib, json, subprocess, sys, tempfile, unittest
++from pathlib import Path
++sys.path.insert(0, str(Path(__file__).parents[1] / "evals"))
++from score_agent_reports import evaluate_report
++
++class AgentQualityTests(unittest.TestCase):
++    def setUp(self):
++        self.expected = {"expected_roots": [{"id":"R1","severity":"critical"},{"id":"R2","severity":"medium"}]}
++    def run_score(self, findings, opportunities=None, ads=None, support=None, runtime=None):
++        report = {"findings": findings, "proactive_opportunities": opportunities or [], "assessment":{"intent_tests":[{"required_elements":["price"]}]}}
++        raw = json.dumps(report).encode(); a={"report_sha256":hashlib.sha256(raw).hexdigest(),"adjudications":ads or [],"answer_support":support or {"0":{"price":2}},"runtime":runtime or {"completion":"completed","timestamp_kind":"exact_delivery","observer_start":"2026-01-01T00:00:00Z","delivery":"2026-01-01T00:01:00Z"}}
++        return evaluate_report(report,self.expected,a,report_bytes=raw)
++    def ad(self, iid, verdict, root=None):
++        return {"item_id":iid,"verdict":verdict,"root_id":root,**{d:2 for d in ("scope","evidence","severity","action_correctness","action_mechanism","action_specificity","action_verification")}}
++    def test_false_lowers_precision_and_abstention_recall(self):
++        x=self.run_score([{"id":"F1"},{"id":"F2"}],ads=[self.ad("F1","correct","R1"),self.ad("F2","false")]); self.assertEqual(x["quality"]["finding_precision"],.5); self.assertEqual(x["quality"]["root_recall"],.5)
++    def test_healthy_answered_zero_findings(self):
++        x=self.run_score([]); self.assertIsNone(x["quality"]["finding_precision"]); self.assertEqual(x["quality"]["answer_requirement_support"],2)
++    def test_opportunity_must_be_adjudicated(self):
++        x=self.run_score([], [{"id":"O1"}], ads=[]); self.assertFalse(x["complete"]); self.assertIsNone(x["quality"]["finding_precision"])
++    def test_duplicate_order_independent(self):
++        x=self.run_score([{"id":"F1"},{"id":"F2"}],ads=[self.ad("F1","duplicate","R1"),self.ad("F2","correct","R1")]); self.assertTrue(x["complete"]); self.assertEqual(x["quality"]["duplicate_findings"],1)
++    def test_invalid_duration_and_hash(self):
++        x=self.run_score([],runtime={"completion":"completed","timestamp_kind":"exact_delivery","observer_start":"2026-01-01T00:02:00Z","delivery":"2026-01-01T00:01:00Z"}); self.assertFalse(x["complete"])
++        report={"findings":[]}; x=evaluate_report(report,{"expected_roots":[]},{"report_sha256":"bad","adjudications":[],"answer_support":{},"runtime":{"completion":"failed","timestamp_kind":"exact_delivery","observer_start":"2026-01-01T00:00:00Z","delivery":"2026-01-01T00:01:00Z"}},report_bytes=json.dumps(report).encode()); self.assertFalse(x["complete"]); self.assertIsNone(x["quality"]["root_recall"])
++    def test_cli_malformed_report_is_recorded(self):
++        with tempfile.TemporaryDirectory() as d:
++            p=Path(d)/"bad.json"; p.write_text("{"); e=Path(d)/"e.json"; e.write_text('{"expected_roots":[]}'); a=Path(d)/"a.json"; a.write_text('{}')
++            r=subprocess.run([sys.executable,"evals/score_agent_reports.py",str(p),"--expected",str(e),"--adjudications",str(a)],capture_output=True,text=True); self.assertEqual(r.returncode,2); self.assertIn("could not be loaded",r.stdout)
++
++if __name__ == "__main__": unittest.main()
+--- /dev/null
++++ b/tests/test_relationship_evidence.py
+@@ -0,0 +1,90 @@
++import sys
++import unittest
++from pathlib import Path
++
++ROOT = Path(__file__).resolve().parents[1]
++sys.path.insert(0, str(ROOT / "skills/audit-orchestrator/scripts"))
++from page_evidence import page_fields
++
++
++class RelationshipEvidenceTests(unittest.TestCase):
++    def test_table_preserves_row_column_value_and_qualifiers(self):
++        html = """<table><caption>Plans</caption>
++          <tr><th scope=col>Plan</th><th scope=col>Price</th><th scope=col>Billing</th></tr>
++          <tr><th scope=row>Pro</th><td>$10</td><td>Monthly</td></tr>
++          <tr><th scope=row>Pro annual</th><td>$100</td><td>Annual</td></tr>
++        </table>"""
++        _, fields = page_fields(html)
++        table = fields["tables"][0]
++        annual = next(record for record in table["records"] if record["value"] == "Annual")
++        self.assertEqual(annual["row_header"], "Pro annual")
++        self.assertEqual(annual["column_header"], "Billing")
++        self.assertEqual(annual["qualifiers"], ["Pro annual", "Billing"])
++        self.assertEqual(annual["context"], "Pro annual | Billing | Annual")
++        self.assertTrue(annual["context_is_derived"])
++        self.assertEqual(table["caption"], "Plans")
++        self.assertFalse(table["truncated"])
++
++    def test_empty_and_missing_href_are_retained_but_healthy_link_is_unchanged(self):
++        _, fields = page_fields('<a href="">Buy monthly</a><a>Apply annually</a><a href="mailto:sales@example.test">Email sales</a>')
++        links = fields["links"]
++        self.assertEqual([link["href"] for link in links], ["", None, "mailto:sales@example.test"])
++        self.assertEqual(links[2]["text"], "Email sales")
++        kinds = [candidate["type"] for candidate in fields["relationship_candidates"]]
++        self.assertIn("empty_cta_link", kinds)
++        self.assertNotIn("email_label_mismatch", kinds)
++
++    def test_complex_or_oversized_table_is_bounded_and_explicit(self):
++        rows = "".join("<tr><th>Row %d</th><td>value</td></tr>" % i for i in range(45))
++        _, fields = page_fields("<table>" + rows + "</table><table><tr><td rowspan=bad>x</td></tr></table>")
++        self.assertEqual(len(fields["tables"]), 2)
++        self.assertTrue(fields["tables"][0]["truncated"])
++        self.assertIn("invalid_span", fields["tables"][1]["ambiguities"])
++        self.assertLessEqual(len(fields["tables"][0]["records"]), 200)
++
++    def test_fixed_and_affected_are_distinct_relationships(self):
++        _, fields = page_fields('<table><tr><th>Branch</th><th>Fixed release</th><th>Affected versions</th></tr>'
++                               '<tr><th>7.2</th><td>7.2.9</td><td>7.2.0 through 7.2.8</td></tr></table>')
++        records = fields['tables'][0]['records']
++        self.assertEqual([(r['row_header'], r['column_header'], r['value']) for r in records],
++                         [('7.2', 'Fixed release', '7.2.9'), ('7.2', 'Affected versions', '7.2.0 through 7.2.8')])
++
++    def test_hidden_script_and_caption_do_not_pollute_values(self):
++        _, fields = page_fields('<table><caption>Fees</caption><tr><th>Plan</th><th>Cost</th></tr>'
++                               '<tr><th>Annual</th><td><span hidden>999</span>120<script>500</script></td></tr></table>'
++                               '<table hidden><tr><td>secret</td></tr></table>')
++        self.assertEqual(len(fields['tables']), 1)
++        table = fields['tables'][0]
++        self.assertEqual(table['caption'], 'Fees')
++        self.assertEqual(table['records'][0]['value'], '120')
++        self.assertNotIn('999', str(table))
++
++    def test_span_nested_and_unclosed_tables_do_not_infer_headers(self):
++        for html in [
++            '<table><tr><th rowspan=2>Branch</th><th>Version</th></tr><tr><td>7.2</td></tr></table>',
++            '<table><tr><th>Plan</th><td><table><tr><th>Inner</th><td>20</td></tr></table></td></tr></table>',
++            '<table><tr><th>Plan</th><td>20',
++        ]:
++            with self.subTest(html=html):
++                _, fields = page_fields(html)
++                self.assertTrue(fields['tables'])
++                self.assertTrue(all(t['ambiguities'] and not t['records'] for t in fields['tables']))
++
++    def test_truncated_cell_is_not_complete_evidence(self):
++        _, fields = page_fields('<table><tr><th>Plan</th><th>Terms</th></tr><tr><th>A</th><td>' + 'x' * 1001 + '</td></tr></table>')
++        self.assertTrue(fields['evidence_truncated'])
++        self.assertTrue(fields['tables'][0]['truncated'])
++        self.assertEqual(fields['tables'][0]['records'], [])
++
++    def test_literal_email_mismatch_and_healthy_controls(self):
++        _, fields = page_fields('<a href="mailto:other@example.test">help@example.test</a>'
++                               '<a href="mailto:help%40example.test?subject=Question">help@example.test</a>'
++                               '<a href="/support">Email support</a>')
++        candidates = fields['relationship_candidates']
++        self.assertEqual(len(candidates), 1)
++        self.assertEqual(candidates[0]['type'], 'email_address_mismatch')
++        self.assertEqual(candidates[0]['href'], 'mailto:other@example.test')
++
++
++if __name__ == "__main__":
++    unittest.main()
+--- a/tests/test_report_evidence.py
++++ b/tests/test_report_evidence.py
+@@ -62,6 +62,11 @@
+         self.assertEqual(validate(self.report), [])
+         self.assertEqual(self.errors(), [])
+ 
++    def test_derived_table_context_is_not_a_website_quote(self):
++        self.evidence['pages'][1]['tables'] = [{'records': [{'context': '7.2 | Fixed release | 7.2.9', 'context_is_derived': True}]}]
++        self.review['claims']['O-001']['assertions'] = [{'type': 'quote', 'ref': 'page:1', 'field': 'tables.0.records.0.context', 'quote': '7.2 | Fixed release | 7.2.9'}]
++        self.assertRejected('derived table context')
++
+     def test_every_finding_and_opportunity_requires_support(self):
+         for ident in ("F-001", "O-001"):
+             with self.subTest(ident=ident):
+--- /dev/null
++++ b/tests/test_task_sampling.py
+@@ -0,0 +1,101 @@
++"""Task-led resumption must reuse captures and preserve network boundaries."""
++import copy
++import json
++import subprocess
++import sys
++import tempfile
++import threading
++import unittest
++from datetime import datetime, timedelta, timezone
++from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
++from pathlib import Path
++
++ROOT = Path(__file__).resolve().parents[1]
++sys.path.insert(0, str(ROOT / 'skills/audit-orchestrator/scripts'))
++from collect_site import collect
++
++
++class TaskSamplingTests(unittest.TestCase):
++    @classmethod
++    def setUpClass(cls):
++        cls.hits = []
++        class Site(BaseHTTPRequestHandler):
++            def do_GET(self):
++                cls.hits.append(self.path)
++                if self.path == '/robots.txt':
++                    body, kind = 'User-agent: *\nAllow: /\nDisallow: /private\n', 'text/plain'
++                elif self.path == '/sitemap.xml':
++                    body, kind = '<urlset><url><loc>/pricing</loc></url></urlset>', 'application/xml'
++                elif self.path == '/start':
++                    body, kind = """<main><h1>Regional training centre</h1>
++                    <a href='/pricing'>Store plans</a><a href='/team'>Our team</a>
++                    <a href='/r/73?lang=ta'>சேர்க்கை / eligibility</a>
++                    <a href='/r/84'>Application instructions</a><a href='/private'>Private staff area</a>
++                    <a href='/fee.pdf'>Fee document</a><a href='http://elsewhere.invalid/info'>Partner</a>
++                    <a href=''>Apply</a><a>Placeholder</a></main>""", 'text/html'
++                else:
++                    body, kind = '<main><h1>Information</h1><p>Source content.</p></main>', 'text/html'
++                self.send_response(200); self.send_header('Content-Type', kind)
++                self.end_headers(); self.wfile.write(body.encode())
++            def log_message(self, *_): pass
++        cls.server = ThreadingHTTPServer(('127.0.0.1', 0), Site)
++        cls.thread = threading.Thread(target=cls.server.serve_forever, daemon=True); cls.thread.start()
++        cls.origin = f'http://127.0.0.1:{cls.server.server_port}'
++
++    @classmethod
++    def tearDownClass(cls):
++        cls.server.shutdown(); cls.server.server_close(); cls.thread.join()
++
++    def landing(self):
++        return collect(self.origin + '/start', max_pages=1, max_seconds=15)
++
++    def test_selected_opaque_destinations_precede_inventory_without_refetch(self):
++        self.hits.clear()
++        first = self.landing(); before = copy.deepcopy(first)
++        result = collect(self.origin + '/start', 3, 15, resume=first,
++                         target_urls=[self.origin + '/r/73?lang=ta', self.origin + '/r/84'])
++        self.assertEqual(first, before)
++        self.assertEqual([p['url'] for p in result['pages']],
++                         [self.origin + '/start', self.origin + '/r/73?lang=ta', self.origin + '/r/84'])
++        self.assertEqual(self.hits.count('/start'), 1)
++        self.assertEqual(self.hits.count('/robots.txt'), 2)
++        self.assertNotIn('/sitemap.xml', self.hits)
++        self.assertEqual(result['collected_at'], first['collected_at'])
++        self.assertEqual(len(result['collection_passes']), 2)
++        self.assertEqual(result['coverage']['request_count'], len(self.hits))
++        self.assertEqual(result['limits']['max_pages'], 3)
++        self.assertEqual(result['limits']['max_seconds'], 30)
++
++    def test_task_target_still_obeys_robots(self):
++        first = self.landing(); self.hits.clear()
++        result = collect(self.origin + '/start', 2, 15, resume=first, target_urls=[self.origin + '/private'])
++        self.assertNotIn('/private', self.hits)
++        self.assertFalse(result['pages'][1]['robots_allowed'])
++
++    def test_invalid_resume_or_target_fails_before_network(self):
++        first = self.landing(); self.hits.clear()
++        for target in ['/invented', '/fee.pdf', 'http://elsewhere.invalid/info']:
++            with self.subTest(target=target), self.assertRaises(ValueError):
++                collect(self.origin + '/start', 3, 15, resume=first, target_urls=[target])
++        stale = copy.deepcopy(first)
++        stale['collected_at'] = (datetime.now(timezone.utc) - timedelta(minutes=6)).isoformat()
++        for previous in [stale, {**first, 'site': self.origin + '/another'}]:
++            with self.assertRaises(ValueError): collect(self.origin + '/start', 3, 15, resume=previous)
++        malformed = copy.deepcopy(first); malformed['pages'][0]['links'] = ['bad']
++        with self.assertRaises(ValueError): collect(self.origin + '/start', 3, 15, resume=malformed)
++        with self.assertRaises(ValueError): collect(self.origin + '/start', 3, 15, target_urls=['/r/84'])
++        self.assertEqual(self.hits, [])
++
++    def test_cli_reads_resume_before_replacing_output(self):
++        with tempfile.TemporaryDirectory() as folder:
++            cmd = [sys.executable, str(ROOT / 'skills/audit-orchestrator/scripts/run_audit.py'),
++                   self.origin + '/start', '--output-dir', folder, '--max-seconds', '15']
++            subprocess.run(cmd + ['--max-pages', '1'], check=True, capture_output=True)
++            subprocess.run(cmd + ['--max-pages', '2', '--resume-evidence', str(Path(folder) / 'evidence.json'),
++                                  '--target-url', self.origin + '/r/84'], check=True, capture_output=True)
++            evidence = json.loads((Path(folder) / 'evidence.json').read_text())
++            self.assertEqual(len(evidence['pages']), 2)
++            self.assertTrue(evidence['pages'][1]['url'].endswith('/r/84'))
++
++
++if __name__ == '__main__': unittest.main()

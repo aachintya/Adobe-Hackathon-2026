@@ -1,0 +1,23 @@
+{
+  "review_version":"1",
+  "observations":[
+    {"id":"host:landing-rendered","url":"https://www.bbg.org/","final_url":"https://www.bbg.org/","mode":"rendered","kind":"page","status":200,"complete":false,"text":"Plan a visit; Full Hours & Admission; Entrances 455 Flatbush Avenue 990 Washington Avenue Brooklyn, NY 11225; 150 Eastern Parkway is temporarily closed.","provenance":{"tool":"CUA in-app browser","reference":"rendered AX snapshot for tab 1","observed_at":"2026-09-11T15:57:00Z"}},
+    {"id":"host:hours-rendered","url":"https://www.bbg.org/visit/hours","final_url":"https://www.bbg.org/visit/hours","mode":"rendered","kind":"page","status":200,"complete":false,"text":"Hours & Admission; All visitors must present ticket for entrance; Adults $22 online $23.67; Children under 12 are free.","provenance":{"tool":"CUA in-app browser","reference":"rendered AX snapshot for tab 1","observed_at":"2026-09-11T15:57:20Z"}},
+    {"id":"host:directions-rendered","url":"https://www.bbg.org/visit/directions","final_url":"https://www.bbg.org/visit/hours#directions","mode":"rendered","kind":"interaction","status":200,"complete":false,"text":"Entrances, Directions & Parking; 150 Eastern Parkway is temporarily closed; 990 Washington Avenue Brooklyn, NY 11225; 455 Flatbush Avenue Brooklyn, NY 11225.","provenance":{"tool":"CUA in-app browser","reference":"goto and rendered AX snapshot for tab 1","observed_at":"2026-09-11T15:57:30Z"}},
+    {"id":"host:retrieval-bbg","url":"https://www.bbg.org/visit/hours","final_url":"https://www.bbg.org/visit/hours","mode":"retrieval","kind":"external","status":null,"complete":false,"text":"Search result reproduced the official Hours & Admission page with seasonal hours, admission and ticket prices.","provenance":{"tool":"web search","reference":"turn8search0","observed_at":"2026-09-11T15:58:00Z"}}
+  ],
+  "claims":{},
+  "answers":[
+    {"test_index":0,"evidence_index":0,"ref":"page:0","field":"description","element_indices":[0,1]},
+    {"test_index":1,"evidence_index":0,"ref":"page:2","field":"main_text","element_indices":[0]},
+    {"test_index":1,"evidence_index":1,"ref":"page:2","field":"main_text","element_indices":[1]},
+    {"test_index":1,"evidence_index":2,"ref":"page:2","field":"main_text","element_indices":[2]},
+    {"test_index":2,"evidence_index":0,"ref":"page:1","field":"main_text","element_indices":[0,2]},
+    {"test_index":2,"evidence_index":1,"ref":"page:2","field":"main_text","element_indices":[1]}
+  ],
+  "journeys":[
+    {"journey_index":0,"mode":"rendered","steps":[{"step_index":0,"ref":"host:landing-rendered","assertions":[{"type":"quote","ref":"host:landing-rendered","field":"text","quote":"Full Hours & Admission"}]},{"step_index":1,"ref":"host:hours-rendered","assertions":[{"type":"quote","ref":"host:hours-rendered","field":"text","quote":"Hours & Admission"}]}]},
+    {"journey_index":1,"mode":"rendered","steps":[{"step_index":0,"ref":"host:directions-rendered","assertions":[{"type":"quote","ref":"host:directions-rendered","field":"text","quote":"Entrances, Directions & Parking"}]},{"step_index":1,"ref":"host:directions-rendered","assertions":[{"type":"quote","ref":"host:directions-rendered","field":"text","quote":"455 Flatbush Avenue Brooklyn, NY 11225"}]}]}
+  ],
+  "corroboration":[]
+}

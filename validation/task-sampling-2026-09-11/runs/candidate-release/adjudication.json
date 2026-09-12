@@ -1,0 +1,47 @@
+{
+  "report_sha256": "8189e9d6d72c18c346900d30b9dbf782e23b74317e84bda7950ffc53ff612f25",
+  "adjudications": [
+    {
+      "item_id": "F-001",
+      "verdict": "correct",
+      "root_id": "release-scope-contradiction",
+      "scope": 2,
+      "evidence": 2,
+      "severity": 2,
+      "action_correctness": 2,
+      "action_mechanism": 2,
+      "action_specificity": 2,
+      "action_verification": 2
+    }
+  ],
+  "answer_support": {
+    "0": {
+      "Harbor Metrics is open-source monitoring software": 2,
+      "administrators are the intended audience": 2
+    },
+    "1": {
+      "issue HM-42": 2,
+      "branch 7.2 affected versions": 1,
+      "branch 7.2 fixed release or no fix": 1,
+      "branch 8.0 affected versions and fixed release": 2
+    },
+    "2": {
+      "choose the fixed release from the bulletin": 2,
+      "back up configuration": 2,
+      "install and restart the service": 2
+    },
+    "3": {
+      "MIT licence": 2
+    }
+  },
+  "runtime": {
+    "completion": "completed",
+    "timestamp_kind": "not_measured",
+    "reason": "Independent dispatch clock was not captured after task resume; finalizer reports 170.417265 seconds from agent-recorded start, not exact delivery timing."
+  },
+  "review_notes": [
+    "Both quoted table and prose support the planted release contradiction; severity and scoped action accepted.",
+    "Search was permitted but unused; unavailable-search wording in coverage overstates a capability limit.",
+    "Release 7.2 affected/fixed outcome is explicitly partial; contradictory sources cannot establish one safe answer."
+  ]
+}

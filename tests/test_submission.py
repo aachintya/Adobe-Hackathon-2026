@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Build the actual ZIP, extract to a path with spaces and run from an unrelated cwd."""
 import json
+import hashlib
 import re
 import subprocess
 import sys
@@ -10,6 +11,9 @@ from functools import partial
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from zipfile import ZipFile
+from datetime import datetime, timezone
+
+from test_report_evidence import fixture as composed_fixture
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -36,8 +40,30 @@ def main():
             assert report['findings'] == []
             assert report['assessment']['mode'] == 'static_baseline'
             assert report['assessment']['visibility']['status'] == 'not_measured'
-            assert (root/'scripts/package_submission.py').is_file()
+            assert {p.name for p in root.iterdir()} == {
+                'marketplace.json', 'README.md', 'LICENSE', 'skills', 'examples', 'tests'}
+            assert {p.name for p in (root/'tests').iterdir() if p.is_file()} == {
+                'validate_report.py', 'report_evidence.py'}
             assert not list(root.rglob('*.zip'))
+            # Exercise the composed-report path from the actual cleaned archive;
+            # a collector-only smoke test would miss removed finalizer dependencies.
+            composed, evidence, review = composed_fixture()
+            inputs = [temp/name for name in ('draft.json', 'evidence.json', 'review.json')]
+            for path, value in zip(inputs, (composed, evidence, review)):
+                path.write_text(json.dumps(value), encoding='utf-8')
+            final = temp/'final-report.json'
+            command = [sys.executable, str(root/'skills/audit-orchestrator/scripts/finalize_report.py'),
+                       '--report', str(inputs[0]), '--evidence', str(inputs[1]), '--review', str(inputs[2]),
+                       '--started-at', datetime.now(timezone.utc).isoformat()]
+            subprocess.run(command + ['--output', str(final)], cwd=temp, check=True, capture_output=True)
+            receipt = json.loads(final.with_name(final.name + '.receipt.json').read_text())
+            assert final.read_bytes() == inputs[0].read_bytes()
+            assert receipt['sha256']['report'] == hashlib.sha256(final.read_bytes()).hexdigest()
+            review['claims']['F-001']['assertions'][0]['value'] = 'index'
+            inputs[2].write_text(json.dumps(review), encoding='utf-8')
+            rejected = temp/'rejected-report.json'
+            result = subprocess.run(command + ['--output', str(rejected)], cwd=temp, capture_output=True)
+            assert result.returncode != 0 and not rejected.exists()
             for document in root.rglob('*.md'):
                 for target in re.findall(r'\[[^]]+\]\(([^)]+)\)', document.read_text(encoding='utf-8')):
                     target = target.strip('<>')
@@ -45,7 +71,7 @@ def main():
                         continue
                     destination = target.split('#', 1)[0]
                     assert (document.parent/destination).exists(), f'Broken packaged link in {document.relative_to(root)}: {target}'
-        print('PASS: extracted ZIP runs with no install/API key from a different cwd and preserves honest coverage')
+        print('PASS: clean ZIP excludes development files; collection and evidence-gated finalization run from a different cwd')
     finally:
         server.shutdown()
         server.server_close()

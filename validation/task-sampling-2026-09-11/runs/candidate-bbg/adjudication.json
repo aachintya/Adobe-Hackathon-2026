@@ -1,0 +1,69 @@
+{
+  "report_sha256": "1cc1ccc7c809dee8dc106371d30b09b0154c4b85d91cf7ecb18cbc9836e68e47",
+  "adjudications": [
+    {
+      "item_id": "O-001",
+      "root_id": null,
+      "verdict": "partial",
+      "evidence": 1,
+      "action_correctness": 1,
+      "action_mechanism": 2,
+      "action_specificity": 2,
+      "action_verification": 2
+    },
+    {
+      "item_id": "O-002",
+      "root_id": null,
+      "verdict": "partial",
+      "evidence": 2,
+      "action_correctness": 1,
+      "action_mechanism": 2,
+      "action_specificity": 2,
+      "action_verification": 2
+    }
+  ],
+  "answer_support": {
+    "0": {
+      "It is Brooklyn Botanic Garden": 0,
+      "It is a 52-acre garden with plants and flowers in varied landscapes": 2,
+      "It offers nature programs or special events": 2
+    },
+    "1": {
+      "September hours": 2,
+      "October hours": 2,
+      "last-entry or closure timing": 2,
+      "ticket requirement and advance-ticket guidance": 2
+    },
+    "2": {
+      "adult price": 1,
+      "senior or student price": 1,
+      "child policy": 2,
+      "ticket exchange/refund condition": 1
+    },
+    "3": {
+      "calendar destination": 2,
+      "date navigation": 2,
+      "event-type filters": 2,
+      "at least one dated event or exhibit": 2
+    },
+    "4": {
+      "mission statement": 2,
+      "founding year": 2,
+      "Brooklyn location or identity": 1
+    }
+  },
+  "runtime": {
+    "observer_start": "2026-09-11T15:39:02Z",
+    "delivery": "2026-09-11T15:44:54Z",
+    "completion": "interrupted",
+    "timestamp_kind": "observed_completion_upper_bound"
+  },
+  "review_notes": [
+    "This is an interrupted, unfinalized draft; quality grades do not convert it into a successful audit.",
+    "O-001 has event-card/calendar evidence but no inspected detail-template comparison establishing the proposed cross-template inconsistency. O-002 has real closure/map facts but no proved task failure.",
+    "Q0 omits the entity from its chosen quote; its description quote maps to the wrong captured field. Price quotes omit table column headers. Refund wording is not a verbatim captured quote. Q4 Brooklyn location is only suggested by the entity name.",
+    "The purported non-default map choice was only inspecting available layers; no selected option or retained context was observed.",
+    "Host browser observations are excerpts but claim complete:true and generic snapshot provenance; they should not support page-wide absences. Report coverage also omits off_site despite an NPS corroboration observation.",
+    "Public ground truth is incomplete; recall is not estimated."
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "schema_version": "1.2",
+  "site": "http://127.0.0.1:53097/c03-b/index.html",
+  "audited_at": "2026-09-11T15:34:17Z",
+  "executive_summary": {
+    "conclusion": "Mosaic Learning is crawlable and its enrollment guide and application page expose clear audience, eligibility, deadline and next-step facts. Two task-labeled navigation routes do not answer the task implied by their labels, leaving price and learning-material details unresolved in the inspected sample.",
+    "top_action_ids": ["F-001", "F-002"]
+  },
+  "summary": {"total_findings": 2, "critical": 0, "high": 0, "medium": 2, "low": 0},
+  "coverage": {
+    "pages_checked": 5,
+    "modes": ["static"],
+    "not_checked": [
+      "Rendered browser behavior, mobile layout, keyboard/focus behavior, overlays and context retention were not checked because no browser lane was available.",
+      "Off-site retrieval and independent corroboration were not checked; this local site has no usable public search baseline.",
+      "Actual assistant visibility/citation rates, provider IP access, Search Console settings and behavioral analytics were not measured."
+    ]
+  },
+  "findings": [
+    {
+      "id": "F-001",
+      "title": "Bookshop prices route does not provide prices",
+      "category": "discoverability",
+      "severity": "medium",
+      "confidence": "high",
+      "evidence": {
+        "observation": "The home navigation labels /c03-b/pricing.html as ‘Bookshop prices’, but the destination only says ‘General school information’ and directs readers to the enrollment guide; no price or fee is stated in the captured page text.",
+        "affected": 1,
+        "checked": 2,
+        "urls": ["http://127.0.0.1:53097/c03-b/pricing.html"]
+      },
+      "suggested_action": {
+        "summary": "Add current bookshop/course price information to the pricing destination or rename the link to match its actual purpose.",
+        "priority": "high",
+        "effort": "medium",
+        "owner_hint": "Content owner and admissions/product webmaster",
+        "mechanism": "Aligns the navigation label, destination content and quotable fee facts so a prospective learner can resolve the cost question in one route.",
+        "verification": "Open the home ‘Bookshop prices’ link and confirm the destination contains the applicable price, currency and conditions, or that the link label accurately describes the generic information page."
+      }
+    },
+    {
+      "id": "F-002",
+      "title": "Learning materials route does not describe learning materials",
+      "category": "engagement",
+      "severity": "medium",
+      "confidence": "high",
+      "evidence": {
+        "observation": "The home navigation labels /c03-b/products.html as ‘Learning materials’, but the destination repeats ‘General school information’ and links to the enrollment guide without identifying materials, availability or requirements.",
+        "affected": 1,
+        "checked": 2,
+        "urls": ["http://127.0.0.1:53097/c03-b/products.html"]
+      },
+      "suggested_action": {
+        "summary": "Publish the materials information on the products destination or retitle the navigation route to reflect its actual enrollment-guide handoff.",
+        "priority": "medium",
+        "effort": "medium",
+        "owner_hint": "Content owner and course operations webmaster",
+        "mechanism": "Gives prospective learners a direct, machine-readable answer about required or available materials and preserves a clear route to enrollment.",
+        "verification": "Follow the home ‘Learning materials’ link and confirm the destination names the relevant materials and any conditions, or uses a label that accurately describes the generic page."
+      }
+    }
+  ],
+  "proactive_opportunities": [],
+  "assessment": {
+    "mode": "agent_composed",
+    "readiness": [
+      {"stage": "access", "status": "observed", "detail": "robots.txt permits all named search, training and user-fetch cohorts, and all five inspected pages returned successful HTML responses; actual provider access remains unverified.", "urls": ["http://127.0.0.1:53097/robots.txt"]},
+      {"stage": "extraction", "status": "observed", "detail": "Static source captures expose readable headings, passages and links across the five inspected HTML pages.", "urls": ["http://127.0.0.1:53097/c03-b/index.html", "http://127.0.0.1:53097/c03-b/pricing.html", "http://127.0.0.1:53097/c03-b/products.html", "http://127.0.0.1:53097/c03-b/sable-archive.html", "http://127.0.0.1:53097/c03-b/apply.html"]},
+      {"stage": "answerability", "status": "observed", "detail": "Offer, audience, eligibility, dates, deadline and application steps are answerable; price and learning-material questions remain partial on their labeled destinations.", "urls": ["http://127.0.0.1:53097/c03-b/index.html", "http://127.0.0.1:53097/c03-b/pricing.html", "http://127.0.0.1:53097/c03-b/products.html", "http://127.0.0.1:53097/c03-b/sable-archive.html", "http://127.0.0.1:53097/c03-b/apply.html"]},
+      {"stage": "corroboration", "status": "not_checked", "detail": "No independent public source was available in the bounded audit to corroborate the local brand, offering or dated enrollment claims.", "urls": []},
+      {"stage": "engagement", "status": "observed", "detail": "Source journeys reached the enrollment guide and application instructions; the price and materials routes were observable but did not complete the task implied by their labels.", "urls": ["http://127.0.0.1:53097/c03-b/index.html", "http://127.0.0.1:53097/c03-b/pricing.html", "http://127.0.0.1:53097/c03-b/products.html", "http://127.0.0.1:53097/c03-b/sable-archive.html", "http://127.0.0.1:53097/c03-b/apply.html"]}
+    ],
+    "intent_tests": [
+      {"question": "What does Mosaic Learning offer and who is it for?", "required_elements": ["autumn evening language courses", "adult learners"], "status": "answered", "evidence": [{"url": "http://127.0.0.1:53097/c03-b/index.html", "quote": "Autumn evening language courses for adult learners."}], "reason": "The landing page states both the offer and intended audience."},
+      {"question": "Who is eligible and when does autumn enrollment close?", "required_elements": ["learners aged 18 or older", "classes start on 2 November 2026", "enrollment closes on 18 October 2026 at 17:00 local time"], "status": "answered", "evidence": [{"url": "http://127.0.0.1:53097/c03-b/sable-archive.html", "quote": "Autumn courses are open to learners aged 18 or older. Classes start on 2 November 2026."}, {"url": "http://127.0.0.1:53097/c03-b/sable-archive.html", "quote": "Enrollment closes on 18 October 2026 at 17:00 local time."}], "reason": "The enrollment guide supplies eligibility, start date and deadline with the local-time qualifier."},
+      {"question": "How do I apply?", "required_elements": ["read the enrollment guide", "visit the public reception desk with proof of age", "reception weekdays 09:00–17:00", "no online submission"], "status": "answered", "evidence": [{"url": "http://127.0.0.1:53097/c03-b/apply.html", "quote": "Read the enrollment guide, choose a class, then visit our public reception desk with proof of age. No online submission is required. Reception opens weekdays 09:00–17:00."}], "reason": "The application page states the sequence, evidence requirement, in-person constraint and reception hours."},
+      {"question": "What are the bookshop prices?", "required_elements": ["current applicable price or fee", "currency and conditions"], "status": "partial", "evidence": [{"url": "http://127.0.0.1:53097/c03-b/pricing.html", "quote": "General school information. For course enrollment dates and eligibility, use the enrollment guide."}], "reason": "The labeled pricing destination contains no price, currency or conditions."},
+      {"question": "What learning materials are available or required?", "required_elements": ["materials description", "availability or requirement conditions"], "status": "partial", "evidence": [{"url": "http://127.0.0.1:53097/c03-b/products.html", "quote": "General school information. For course enrollment dates and eligibility, use the enrollment guide."}], "reason": "The labeled products destination contains no materials description or conditions."}
+    ],
+    "journeys": [
+      {"task": "Understand eligibility and reach application instructions", "starting_context": "Landing page describes autumn evening language courses for adult learners and links to an enrollment guide.", "steps": [{"url": "http://127.0.0.1:53097/c03-b/index.html", "action": "[source] Read the offer and follow ‘Guía de inscripción — enrollment dates and eligibility’.", "observation": "The landing passage identifies adult learners and the guide link is observed."}, {"url": "http://127.0.0.1:53097/c03-b/sable-archive.html", "action": "[source] Read eligibility and deadline, then follow ‘How to apply’. ", "observation": "The guide states age 18+, start date and the 18 October 2026 17:00 local deadline; the application link is observed."}, {"url": "http://127.0.0.1:53097/c03-b/apply.html", "action": "[source] Read the public next-step instructions.", "observation": "The page states to visit reception with proof of age, no online submission, and weekday 09:00–17:00 hours."}], "status": "completed", "reason": "The source route reaches a public application-information endpoint with the required next-step details."},
+      {"task": "Check cost and learning-material details before applying", "starting_context": "Landing navigation exposes ‘Bookshop prices’ and ‘Learning materials’ as distinct task routes.", "steps": [{"url": "http://127.0.0.1:53097/c03-b/index.html", "action": "[source] Follow ‘Bookshop prices’. ", "observation": "The literal link destination is /c03-b/pricing.html."}, {"url": "http://127.0.0.1:53097/c03-b/pricing.html", "action": "[source] Inspect the pricing destination.", "observation": "It provides only general school information and points to the enrollment guide; no price is exposed."}, {"url": "http://127.0.0.1:53097/c03-b/index.html", "action": "[source] Return and follow ‘Learning materials’. ", "observation": "The literal link destination is /c03-b/products.html."}, {"url": "http://127.0.0.1:53097/c03-b/products.html", "action": "[source] Inspect the materials destination.", "observation": "It provides only general school information and points to the enrollment guide; no materials detail is exposed."}], "status": "friction", "reason": "Both labeled routes are reachable, but neither completes the decision task implied by its navigation label."}
+    ],
+    "visibility": {"status": "not_measured", "detail": "No assistant answer or citation runs were recorded; robots and source extraction observations do not measure provider visibility.", "cohorts": []}
+  }
+}

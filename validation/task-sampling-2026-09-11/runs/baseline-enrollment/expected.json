@@ -1,0 +1,10 @@
+{
+  "expected_roots": [
+    {
+      "id": "generic-navigation-destinations",
+      "severity": "medium"
+    }
+  ],
+  "ground_truth_complete": false,
+  "note": "Post-run discovery of unintended fixture defects; excluded from healthy false-positive statistics."
+}

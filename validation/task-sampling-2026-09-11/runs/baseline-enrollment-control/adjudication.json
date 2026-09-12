@@ -1,0 +1,47 @@
+{
+  "report_sha256": "ea1bb7bb88daf73bdb4c7e46539a2e0f810983eee0b0d9a32e044bf46374a69b",
+  "adjudications": [],
+  "answer_support": {
+    "0": {
+      "adult evening language courses": 2,
+      "12 Orchard Lane, Exampletown": 2,
+      "180 credits for the autumn term": 2,
+      "tax and required materials included": 2,
+      "refund until enrollment deadline": 2
+    },
+    "1": {
+      "learners aged 18 or older": 2,
+      "classes start 2 November 2026": 2,
+      "enrollment closes 18 October 2026 at 17:00 local time": 2
+    },
+    "2": {
+      "printed course reader included": 2,
+      "audio practice included at no additional charge": 2,
+      "beginner workbook 12 credits": 2,
+      "advanced workbook 15 credits": 2,
+      "prices include tax": 2,
+      "workbooks optional": 2
+    },
+    "3": {
+      "read enrollment guide": 2,
+      "choose a class": 2,
+      "visit public reception with proof of age": 2,
+      "no online submission required": 2,
+      "12 Orchard Lane, Exampletown": 2,
+      "weekdays 09:00\u201317:00": 2,
+      "Europe/London local time": 2
+    }
+  },
+  "runtime": {
+    "observer_start": "2026-09-11T15:47:34Z",
+    "delivery": "2026-09-11T15:54:38Z",
+    "completion": "completed",
+    "timestamp_kind": "observed_completion_upper_bound"
+  },
+  "review_notes": [
+    "All required answer elements are present in the selected verbatim quotes. No findings or opportunities on corrected healthy control.",
+    "Source journeys reach guide/application/materials endpoints. Calling an optional-workbook content branch a selected choice overstates the evidence; no interactive selector existed.",
+    "Public search was permitted but unused, not technically unavailable as report claims.",
+    "Observer completion was recorded after context transition: 424-second bound does not prove an actual delivery overrun; receipt finalization was 235.85 seconds from agent-recorded start."
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "report_sha256": "e55ec30a39148e20cf572659bd42f8f73409eda8056632cb05c7bb396eb81c50",
+  "adjudications": [
+    {
+      "item_id": "F-001",
+      "root_id": null,
+      "verdict": "unsubstantiated",
+      "scope": 2,
+      "evidence": 0,
+      "severity": 0,
+      "action_correctness": 0,
+      "action_mechanism": 1,
+      "action_specificity": 2,
+      "action_verification": 1
+    },
+    {
+      "item_id": "O-001",
+      "root_id": null,
+      "verdict": "partial",
+      "evidence": 2,
+      "action_correctness": 1,
+      "action_mechanism": 1,
+      "action_specificity": 2,
+      "action_verification": 2
+    }
+  ],
+  "answer_support": {
+    "0": {
+      "entity name": 2,
+      "Brooklyn location": 1,
+      "public garden context": 1
+    },
+    "1": {
+      "seasonal hours": 1,
+      "ticket prices": 1,
+      "last entry or ticket rule": 2,
+      "child/entry restrictions": 2
+    },
+    "2": {
+      "free admission benefit": 0,
+      "member-only access or discounts": 2,
+      "join/contact route": 2
+    },
+    "3": {
+      "audience and offer": 1,
+      "date/fee": 1,
+      "current registration status": 2,
+      "next step": 1
+    }
+  },
+  "runtime": {
+    "observer_start": "2026-09-11T15:47:34Z",
+    "delivery": "2026-09-11T15:51:58Z",
+    "completion": "completed",
+    "timestamp_kind": "observed_completion_upper_bound"
+  },
+  "review_notes": [
+    "F-001 ignores captured counterevidence on the same course page: class registration through BBG and credit registration through ASPDP are explicitly separate, with an additional credit fee. Closure plus an external credit link does not prove an invalid handoff. No destination response or rule establishes that credit registration should close simultaneously. Removing it could harm existing registrants.",
+    "O-001 rests on real visit facts, but hours/last-entry/entrance status and tickets are already grouped on the hours page; value of an additional block is only partial.",
+    "Question support grades the selected report quotes, not uncited facts elsewhere. Q0 does not fully establish Brooklyn/public access; Q1 omits September and box-office/online headers; Q2 free admission is uncited despite available captured text; Q3 omits course date and separates neither class nor credit next steps.",
+    "Membership journey records CTA availability, not opening a join endpoint; the completed endpoint claim is broader than its saved step.",
+    "Public ground truth is incomplete; recall is not estimated."
+  ]
+}

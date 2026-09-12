@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
 """Collect reusable source evidence, not an invented AI visibility score."""
 import argparse
+import copy
 import gzip
 import io
 import json
+import math
 import re
 import time
 import zlib
@@ -152,7 +154,63 @@ def page_type(url):
     return "home" if path == "/" else "other"
 
 
-def collect(url, max_pages=12, max_seconds=120):
+def resume_selection(previous, start, host, targets):
+    """Reuse this invocation's captures; only prioritize observed HTML links."""
+    if (not isinstance(previous, dict) or previous.get("site") != start
+            or previous.get("collector") != "static"
+            or previous.get("collector_version") != "2.1"):
+        raise ValueError("Resume evidence must be a current collector capture of the same supplied URL")
+    pages = previous.get("pages")
+    if not isinstance(pages, list) or not pages or len(pages) > 40:
+        raise ValueError("Resume evidence needs 1-40 captured page records")
+    for field in ("limits", "coverage"):
+        if not isinstance(previous.get(field), dict): raise ValueError(f"Resume {field} must be an object")
+    for field in ("sitemaps", "errors"):
+        if not isinstance(previous.get(field), list) or any(not isinstance(x, dict) or not isinstance(x.get("url"), str) for x in previous[field]):
+            raise ValueError(f"Resume {field} must contain URL records")
+    for container, field in (("limits", "max_seconds"), ("limits", "effective_request_interval_seconds"),
+                             ("coverage", "request_count"), ("coverage", "elapsed_seconds")):
+        value = previous[container].get(field)
+        if isinstance(value, bool) or not isinstance(value, (int, float)) or not math.isfinite(value) or value < 0:
+            raise ValueError(f"Resume {container}.{field} must be a finite nonnegative number")
+    if not isinstance(previous["coverage"].get("sample_types", {}), dict):
+        raise ValueError("Resume sample_types must be an object")
+    try:
+        age = (datetime.now(timezone.utc) - datetime.fromisoformat(previous["collected_at"])).total_seconds()
+    except (KeyError, TypeError, ValueError):
+        raise ValueError("Resume evidence needs its original UTC capture timestamp")
+    if not 0 <= age < 300:
+        raise ValueError("Resume evidence is only reusable within the original five-minute invocation")
+    observed, seen = [], set()
+    for page in pages:
+        if not isinstance(page, dict) or not normalize(start, page.get("url", ""), host):
+            raise ValueError("Resume page is outside the supplied authority")
+        for field in ("url", "final_url"):
+            if page.get(field):
+                normalized = normalize(start, page[field], host)
+                if normalized: seen.add(normalized)
+        base = page.get("link_base_url", page.get("final_url", page["url"]))
+        if not isinstance(base, str) or not isinstance(page.get("links", []), list):
+            raise ValueError("Resume page needs a URL base and link records")
+        for link in page.get("links", []):
+            if not isinstance(link, dict) or (link.get("href") is not None and not isinstance(link["href"], str)):
+                raise ValueError("Resume links must be captured link objects")
+            if not link.get("href"): continue
+            candidate = normalize(base, link["href"], host)
+            if candidate and candidate not in observed: observed.append(candidate)
+    selected = []
+    for target in targets:
+        candidate = normalize(start, target, host)
+        if candidate not in observed:
+            raise ValueError("Task targets must be observed same-authority HTML link destinations; inspect documents or other authorities with host tools")
+        if candidate not in selected: selected.append(candidate)
+    for error in previous.get("errors", []):
+        candidate = normalize(start, error.get("url", ""), host)
+        if candidate: seen.add(candidate)
+    return [item for item in observed if item not in seen], seen, selected
+
+
+def collect(url, max_pages=12, max_seconds=120, *, resume=None, target_urls=None):
     max_pages, max_seconds = max(1, min(max_pages, 40)), max(5, min(max_seconds, 180))
     supplied = url if "://" in url else "https://" + url
     parsed = urlparse(supplied)
@@ -161,14 +219,32 @@ def collect(url, max_pages=12, max_seconds=120):
     origin = f"{parsed.scheme.lower()}://{parsed.netloc.lower()}/"; host = parsed.netloc.lower()
     start = normalize(origin, supplied, host)
     if not start: raise ValueError("Starting URL must be an HTML page, not a media/archive file")
+    target_urls = target_urls or []
+    if target_urls and resume is None:
+        raise ValueError("Task targets require --resume-evidence from the landing-page pass")
+    queue, seen, selected = resume_selection(resume, start, host, target_urls) if resume is not None else ([start], set(), [])
+    if resume is not None and max_pages < len(resume["pages"]):
+        raise ValueError("--max-pages is the total page cap and cannot be below the saved page count")
     client = Client(origin, max_seconds)
     out = {"site": start, "origin": origin, "collected_at": datetime.now(timezone.utc).isoformat(),
-           "collector": "static", "collector_version": "2.0", "agent_roles": AGENT_ROLES,
+           "collector": "static", "collector_version": "2.1", "agent_roles": AGENT_ROLES,
            "limits": {"max_pages": max_pages, "max_seconds": max_seconds, "rate_per_second": 2, "max_bytes_per_page": 2_000_000},
            "robots": {}, "sitemaps": [], "pages": [], "errors": [],
            "ai_probe": {"status": "not_checked", "reason": "No bot impersonation: local requests do not verify provider IP access."},
            "coverage": {"rendered": "not_checked: collector is static", "off_site": "not_checked: requires search-capable agent",
                         "actual_ai_visibility": "not_measured: requires recorded assistant answers and citations", "deadline_reached": False}}
+    if resume is not None:
+        out = copy.deepcopy(resume)
+        out["limits"]["max_pages"] = max_pages
+        out["limits"]["max_seconds"] += max_seconds
+        # Recheck robots in the second pass; never treat a saved policy as new evidence.
+        # This delay also preserves throttling across immediately adjacent invocations.
+        client.next_request = time.monotonic() + max(.5, out["limits"].get("effective_request_interval_seconds", .5))
+    prior_requests = out["coverage"].get("request_count", 0)
+    prior_elapsed = out["coverage"].get("elapsed_seconds", 0)
+    out.setdefault("collection_passes", [])
+    out["coverage"]["selected_task_urls"] = list(dict.fromkeys(out["coverage"].get("selected_task_urls", []) + selected))
+    out["coverage"]["selected_already_attempted"] = [item for item in selected if item in seen]
     def record_error(target, error):
         item = {"url": target, "error": type(error).__name__, "detail": str(error)[:300]}
         if isinstance(error, HTTPError): item["status"] = error.code
@@ -205,11 +281,13 @@ def collect(url, max_pages=12, max_seconds=120):
             out["coverage"]["crawl"] = "not_checked: robots policy unavailable or supplied path is blocked for this collector"
         else:
             # Fetch the actual requested page first. Expensive inventories must not consume its budget.
-            queue, seen, types = [start], set(), {}
-            inventory_pending, sitemaps_seen = list(hints or [urljoin(origin, "sitemap.xml")]), set()
+            types = dict(out["coverage"].get("sample_types", {}))
+            sitemaps_seen = {item["url"] for item in out["sitemaps"]}
+            inventory_pending = [item for item in hints or [urljoin(origin, "sitemap.xml")] if item not in sitemaps_seen]
+            selected_order = {item: i for i, item in enumerate(selected)}
             while (queue or inventory_pending) and len(out["pages"]) < max_pages:
                 if time.monotonic() >= client.deadline: raise DeadlineReached()
-                if seen and inventory_pending and len(sitemaps_seen) < 3:
+                if seen and inventory_pending and len(sitemaps_seen) < 3 and not any(item in selected_order for item in queue):
                     sitemap = normalize(origin, inventory_pending.pop(0), host)
                     if not sitemap or sitemap in sitemaps_seen or not policy.can_fetch(UA, sitemap): continue
                     sitemaps_seen.add(sitemap)
@@ -226,7 +304,7 @@ def collect(url, max_pages=12, max_seconds=120):
                 if not queue:
                     if len(sitemaps_seen) >= 3: break
                     continue
-                if seen: queue.sort(key=lambda x: (types.get(page_type(x), 0), page_type(x) == "other"))
+                if seen: queue.sort(key=lambda x: (selected_order.get(x, len(selected_order)), types.get(page_type(x), 0), page_type(x) == "other"))
                 target = queue.pop(0)
                 if target in seen: continue
                 seen.add(target)
@@ -256,9 +334,10 @@ def collect(url, max_pages=12, max_seconds=120):
                                 link_base = declared_base
                         page["link_base_url"] = link_base
                         for link in page["links"]:
-                            link["url"] = resolve_link(link_base, link["href"])
-                            if link["url"] is None: link["resolution_error"] = "Malformed URL; not followed"
+                            link["url"] = resolve_link(link_base, link["href"]) if link.get("href") is not None else None
+                            if link["url"] is None: link["resolution_error"] = "Missing or malformed URL; not followed"
                         for href in parser.links:
+                            if not href: continue
                             candidate = normalize(link_base, href, host)
                             if candidate and candidate not in seen and candidate not in queue and len(queue) < max_pages * 10:
                                 queue.append(candidate)
@@ -269,8 +348,11 @@ def collect(url, max_pages=12, max_seconds=120):
     except DeadlineReached:
         out["coverage"]["deadline_reached"] = True
         out["coverage"]["crawl"] = "partial: collection budget reached; compose from saved evidence"
-    out["coverage"]["request_count"] = client.requests
-    out["coverage"]["elapsed_seconds"] = round(max_seconds - max(0, client.deadline - time.monotonic()), 2)
+    elapsed = round(max_seconds - max(0, client.deadline - time.monotonic()), 2)
+    out["collection_passes"].append({"max_seconds": max_seconds, "elapsed_seconds": elapsed,
+                                     "request_count": client.requests, "target_urls": selected})
+    out["coverage"]["request_count"] = prior_requests + client.requests
+    out["coverage"]["elapsed_seconds"] = round(prior_elapsed + elapsed, 2)
     return out
 
 
@@ -278,9 +360,14 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("url"); parser.add_argument("--output", default="-")
     parser.add_argument("--max-pages", type=int, default=12); parser.add_argument("--max-seconds", type=int, default=120)
+    parser.add_argument("--resume-evidence", help="Landing-page evidence from this same invocation")
+    parser.add_argument("--target-url", action="append", default=[], help="Observed task destination to fetch before inventory (repeatable)")
     args = parser.parse_args()
-    try: result = collect(args.url, args.max_pages, args.max_seconds)
-    except ValueError as error: parser.error(str(error))
+    try:
+        from pathlib import Path
+        previous = json.loads(Path(args.resume_evidence).read_text(encoding="utf-8")) if args.resume_evidence else None
+        result = collect(args.url, args.max_pages, args.max_seconds, resume=previous, target_urls=args.target_url)
+    except (ValueError, OSError) as error: parser.error(str(error))
     payload = json.dumps(result, indent=2, ensure_ascii=False)
     if args.output == "-": print(json.dumps(result, indent=2, ensure_ascii=True))
     else:

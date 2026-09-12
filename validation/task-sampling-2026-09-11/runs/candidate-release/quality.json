@@ -1,0 +1,30 @@
+{
+  "complete": true,
+  "quality": {
+    "actions": {
+      "action_correctness": 2.0,
+      "action_mechanism": 2.0,
+      "action_specificity": 2.0,
+      "action_verification": 2.0
+    },
+    "answer_requirement_support": 1.8,
+    "duplicate_findings": 0,
+    "evidence_fidelity": 2.0,
+    "false_findings": 0,
+    "finding_precision": 1.0,
+    "high_or_critical_recall": 1.0,
+    "root_recall": 1.0,
+    "root_recall_full": 1.0,
+    "root_recall_partial": 1.0,
+    "scope_agreement": 2.0,
+    "severity_agreement": 2.0
+  },
+  "report": "runs/candidate-release/final-report.json",
+  "runtime": {
+    "completion": 1,
+    "duration_seconds": null,
+    "reason": "Independent dispatch clock was not captured after task resume; finalizer reports 170.417265 seconds from agent-recorded start, not exact delivery timing.",
+    "timestamp_kind": "not_measured"
+  },
+  "validation_errors": []
+}

@@ -1,0 +1,29 @@
+{
+  "complete": true,
+  "quality": {
+    "actions": {
+      "action_correctness": 2.0,
+      "action_mechanism": 2.0,
+      "action_specificity": 2.0,
+      "action_verification": 2.0
+    },
+    "answer_requirement_support": 2.0,
+    "duplicate_findings": 0,
+    "evidence_fidelity": 2.0,
+    "false_findings": 0,
+    "finding_precision": 1.0,
+    "high_or_critical_recall": null,
+    "root_recall": null,
+    "root_recall_full": null,
+    "root_recall_partial": null,
+    "scope_agreement": 2.0,
+    "severity_agreement": 2.0
+  },
+  "report": "runs/baseline-enrollment/final-report.json",
+  "runtime": {
+    "completion": 1,
+    "duration_seconds": 273.0,
+    "timestamp_kind": "observed_completion_upper_bound"
+  },
+  "validation_errors": []
+}

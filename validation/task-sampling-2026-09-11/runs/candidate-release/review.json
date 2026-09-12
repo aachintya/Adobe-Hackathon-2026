@@ -1,0 +1,26 @@
+{
+  "review_version": "1",
+  "observations": [],
+  "claims": {
+    "F-001": {
+      "assertions": [
+        {"type": "quote", "ref": "page:1", "field": "main_text", "quote": "Release scope Branch Affected versions Fixed release 7.2 7.2.0 through 7.2.8 7.2.9 8.0 8.0.0 through 8.0.3 8.0.4"},
+        {"type": "quote", "ref": "page:1", "field": "main_text", "quote": "Version 7.2.9 remains affected by HM-42; no fix is available on branch 7.2."}
+      ],
+      "checked_refs": ["page:0", "page:1", "page:2"],
+      "affected_refs": ["page:1"]
+    }
+  },
+  "answers": [
+    {"test_index": 0, "evidence_index": 0, "ref": "page:0", "field": "main_text", "element_indices": [0, 1]},
+    {"test_index": 1, "evidence_index": 0, "ref": "page:1", "field": "main_text"},
+    {"test_index": 1, "evidence_index": 1, "ref": "page:1", "field": "main_text"},
+    {"test_index": 2, "evidence_index": 0, "ref": "page:2", "field": "main_text", "element_indices": [0, 1, 2]},
+    {"test_index": 3, "evidence_index": 0, "ref": "page:2", "field": "main_text", "element_indices": [0]}
+  ],
+  "journeys": [
+    {"journey_index": 0, "mode": "source", "steps": [{"step_index": 0, "ref": "page:0", "assertions": [{"type": "quote", "ref": "page:0", "field": "links.0.text", "quote": "Security bulletin: affected and fixed releases"}]}, {"step_index": 1, "ref": "page:1", "assertions": [{"type": "quote", "ref": "page:1", "field": "links.0.text", "quote": "Apply the update"}]}]},
+    {"journey_index": 1, "mode": "source", "steps": [{"step_index": 0, "ref": "page:1", "assertions": [{"type": "quote", "ref": "page:1", "field": "main_text", "quote": "Version 7.2.9 remains affected by HM-42; no fix is available on branch 7.2."}]}, {"step_index": 1, "ref": "page:2", "assertions": [{"type": "quote", "ref": "page:2", "field": "main_text", "quote": "Choose the fixed release for your branch from the current security bulletin."}]}]}
+  ],
+  "corroboration": []
+}

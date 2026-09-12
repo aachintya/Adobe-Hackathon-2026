@@ -1,0 +1,116 @@
+{
+  "schema_version": "1.2",
+  "site": "http://127.0.0.1:54278/c03-b/index.html",
+  "audited_at": "2026-09-11T15:55:23Z",
+  "executive_summary": {
+    "conclusion": "The inspected source pages make Mosaic Learning's autumn language-course offer, enrollment constraints, tuition, and public application route directly answerable. Source access and task routes were clear in this sample, while rendered behavior, independent corroboration, retrieval observations, and actual assistant visibility were unavailable in the controlled run.",
+    "top_action_ids": []
+  },
+  "summary": {
+    "total_findings": 0,
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0
+  },
+  "coverage": {
+    "pages_checked": 5,
+    "modes": ["static"],
+    "not_checked": [
+      "Rendered browser inspection prohibited for this controlled source-only run.",
+      "Off-site corroboration and retrieval search unavailable; no public-search tool was used.",
+      "Actual assistant visibility not measured because no recorded assistant answers or citations were supplied.",
+      "Interactive controls, mobile layout, keyboard behavior, and visual context retention were not checked without a browser."
+    ]
+  },
+  "findings": [],
+  "proactive_opportunities": [],
+  "assessment": {
+    "mode": "agent_composed",
+    "readiness": [
+      {
+        "stage": "access",
+        "status": "observed",
+        "detail": "The supplied landing page and four same-authority task pages returned readable source captures with HTTP 200. robots.txt is present and allows the wildcard path, including named crawler roles evaluated by the collector.",
+        "urls": ["http://127.0.0.1:54278/robots.txt", "http://127.0.0.1:54278/c03-b/index.html"]
+      },
+      {
+        "stage": "extraction",
+        "status": "observed",
+        "detail": "The source captures expose headings and contiguous passages for the offer, audience, tuition, refund condition, eligibility, dates, location, and application instructions. No rendered or media-equivalence check was available.",
+        "urls": ["http://127.0.0.1:54278/c03-b/index.html", "http://127.0.0.1:54278/c03-b/sable-archive.html", "http://127.0.0.1:54278/c03-b/apply.html"]
+      },
+      {
+        "stage": "answerability",
+        "status": "observed",
+        "detail": "Three site-specific visitor questions were checked against the landing, enrollment guide, application, and pricing/materials pages; each required element is supported in the inspected source passages.",
+        "urls": ["http://127.0.0.1:54278/c03-b/index.html", "http://127.0.0.1:54278/c03-b/sable-archive.html", "http://127.0.0.1:54278/c03-b/apply.html", "http://127.0.0.1:54278/c03-b/pricing.html", "http://127.0.0.1:54278/c03-b/products.html"]
+      },
+      {
+        "stage": "corroboration",
+        "status": "not_checked",
+        "detail": "Independent corroboration and bounded retrieval were unavailable in this source-only run.",
+        "urls": []
+      },
+      {
+        "stage": "engagement",
+        "status": "observed",
+        "detail": "Two source journeys reached public information or next-step destinations through observed same-authority links. Browser-rendered interaction and visual continuity were not checked.",
+        "urls": ["http://127.0.0.1:54278/c03-b/index.html", "http://127.0.0.1:54278/c03-b/sable-archive.html", "http://127.0.0.1:54278/c03-b/apply.html", "http://127.0.0.1:54278/c03-b/pricing.html"]
+      }
+    ],
+    "intent_tests": [
+      {
+        "question": "What does Mosaic Learning offer, who is it for, and what does enrollment include?",
+        "required_elements": ["autumn evening language courses", "adult learners", "12 Orchard Lane, Exampletown", "180 credits for the autumn term including tax and required materials"],
+        "status": "answered",
+        "evidence": [{"url": "http://127.0.0.1:54278/c03-b/index.html", "quote": "Autumn evening language courses for adult learners at 12 Orchard Lane, Exampletown. Tuition is 180 credits for the autumn term, including tax and required materials."}],
+        "reason": "The landing page states the offer, audience, location, tuition amount, term, tax, and included materials in one readable passage."
+      },
+      {
+        "question": "What eligibility, enrollment deadline, and class start date should a prospective learner know?",
+        "required_elements": ["learners aged 18 or older", "enrollment closes on 18 October 2026 at 17:00 local time", "classes start on 2 November 2026"],
+        "status": "answered",
+        "evidence": [{"url": "http://127.0.0.1:54278/c03-b/sable-archive.html", "quote": "Autumn courses are open to learners aged 18 or older. Classes start on 2 November 2026. La fecha límite de inscripción es el 18 de octubre de 2026 a las 17:00. Enrollment closes on 18 October 2026 at 17:00 local time."}],
+        "reason": "The enrollment guide provides the age threshold, class start date, and deadline with local-time qualifier."
+      },
+      {
+        "question": "How does an eligible learner apply, and where and when is the public next step?",
+        "required_elements": ["read the enrollment guide and choose a class", "visit the public reception desk with proof of age", "12 Orchard Lane, Exampletown", "weekdays 09:00–17:00", "no online submission is required", "published times use Europe/London local time"],
+        "status": "answered",
+        "evidence": [{"url": "http://127.0.0.1:54278/c03-b/apply.html", "quote": "Read the enrollment guide, choose a class, then visit our public reception desk with proof of age. No online submission is required. Reception at 12 Orchard Lane, Exampletown opens weekdays 09:00–17:00. All published times use Europe/London local time."}],
+        "reason": "The application page states the sequence, proof requirement, offline submission boundary, address, opening hours, and timezone."
+      }
+    ],
+    "journeys": [
+      {
+        "task": "Understand the autumn course and reach eligibility guidance before applying",
+        "starting_context": "A prospective adult learner starts on the Mosaic Learning landing page.",
+        "steps": [
+          {"url": "http://127.0.0.1:54278/c03-b/index.html", "action": "[source] Read the offer, audience, tuition, and prompt to check dates and eligibility.", "observation": "The landing page identifies autumn evening language courses for adult learners and links to enrollment dates and eligibility."},
+          {"url": "http://127.0.0.1:54278/c03-b/sable-archive.html", "action": "[source] Follow the observed link labeled \"Guía de inscripción — enrollment dates and eligibility\".", "observation": "The enrollment guide provides the age threshold, start date, and enrollment deadline, and exposes a \"How to apply\" link."},
+          {"url": "http://127.0.0.1:54278/c03-b/apply.html", "action": "[source] Follow \"How to apply\" to the public application instructions.", "observation": "The application steps page gives the reception route and explicitly says no online submission is required."}
+        ],
+        "status": "completed",
+        "reason": "The source journey reaches the public eligibility and application-information endpoints; rendered interaction was unavailable."
+      },
+      {
+        "task": "Check the optional workbook choice and return to enrollment guidance",
+        "starting_context": "A prospective learner starts on the landing page and needs to distinguish course tuition from optional workbook prices.",
+        "steps": [
+          {"url": "http://127.0.0.1:54278/c03-b/index.html", "action": "[source] Read the landing tuition statement and inspect the observed navigation label \"Bookshop prices\".", "observation": "The landing page states course tuition is 180 credits including required materials; the observed navigation includes Bookshop prices."},
+          {"url": "http://127.0.0.1:54278/c03-b/pricing.html", "action": "[source] Follow \"Bookshop prices\" and inspect the optional beginner and advanced workbook prices.", "observation": "The pricing page states beginner workbooks are 12 credits and advanced workbooks 15 credits, both tax-inclusive, and says workbooks are optional while required materials are included in enrollment."},
+          {"url": "http://127.0.0.1:54278/c03-b/pricing.html", "action": "[source] Follow the pricing page's \"Enrollment guide\" handoff.", "observation": "The pricing page exposes an Enrollment guide link to the public enrollment guidance."},
+          {"url": "http://127.0.0.1:54278/c03-b/sable-archive.html", "action": "[source] Arrive at the enrollment guide destination.", "observation": "The enrollment guide is reached and preserves the enrollment task context with eligibility and date guidance."}
+        ],
+        "status": "completed",
+        "reason": "The source route exercises the material optional-workbook choice and reaches the enrollment guide; no browser state-retention observation was possible."
+      }
+    ],
+    "visibility": {
+      "status": "not_measured",
+      "detail": "No recorded assistant runs, provider surfaces, prompts, or citation URLs were available; source evidence does not establish assistant mention or citation rates.",
+      "cohorts": []
+    }
+  }
+}

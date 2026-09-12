@@ -1,0 +1,188 @@
+{
+  "result": "PASS",
+  "marketplace": "brand-ai-readiness-audit",
+  "skills": [
+    "audit-orchestrator",
+    "crawl-extract-audit",
+    "entity-trust-audit",
+    "engagement-context-audit"
+  ],
+  "entrypoints": 1
+}
+127.0.0.1 - - [11/Sep/2026 21:26:35] code 404, message File not found
+127.0.0.1 - - [11/Sep/2026 21:26:35] "GET /robots.txt HTTP/1.1" 404 -
+127.0.0.1 - - [11/Sep/2026 21:26:35] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [11/Sep/2026 21:26:36] code 404, message File not found
+127.0.0.1 - - [11/Sep/2026 21:26:36] "GET /sitemap.xml HTTP/1.1" 404 -
+127.0.0.1 - - [11/Sep/2026 21:26:36] "GET /about.html HTTP/1.1" 200 -
+127.0.0.1 - - [11/Sep/2026 21:26:37] "GET /product.html HTTP/1.1" 200 -
+127.0.0.1 - - [11/Sep/2026 21:26:37] "GET /robots.txt HTTP/1.1" 200 -
+127.0.0.1 - - [11/Sep/2026 21:26:38] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [11/Sep/2026 21:26:38] code 404, message File not found
+127.0.0.1 - - [11/Sep/2026 21:26:38] "GET /sitemap.xml HTTP/1.1" 404 -
+127.0.0.1 - - [11/Sep/2026 21:26:39] "GET /offer.html HTTP/1.1" 200 -
+{
+  "result": "PASS",
+  "good_pages": 3,
+  "bad_triggers": {
+    "noindex": true,
+    "render_escalation": true
+  },
+  "uncertainty_preserved": true
+}
+{
+  "result": "PASS",
+  "scenarios": [
+    "named-agent block",
+    "401",
+    "403",
+    "404",
+    "503",
+    "malformed",
+    "wildcard root block",
+    "redirect"
+  ]
+}
+{
+  "result": "PASS",
+  "same_authority": true,
+  "cross_authority_blocked": true,
+  "robots_target_blocked": true,
+  "loop_bounded": true
+}
+{
+  "result": "PASS",
+  "path_preserved": true,
+  "sitemap_discovery": true,
+  "query_normalized": true,
+  "non_html_skipped": true,
+  "cross_site_redirect_blocked_before_fetch": true,
+  "path_agent_policies": true
+}
+....
+----------------------------------------------------------------------
+Ran 4 tests in 5.801s
+
+OK
+........
+----------------------------------------------------------------------
+Ran 8 tests in 0.003s
+
+OK
+...........
+----------------------------------------------------------------------
+Ran 11 tests in 0.048s
+
+OK
+{
+  "result": "PASS",
+  "forward_cases": 12,
+  "dimensions": [
+    "answerability",
+    "denominators",
+    "entity ambiguity",
+    "five-minute",
+    "healthy",
+    "images and pdfs",
+    "multilingual",
+    "path-preserving",
+    "rendered",
+    "sitemap",
+    "training",
+    "university"
+  ]
+}
+.................
+----------------------------------------------------------------------
+Ran 17 tests in 0.005s
+
+OK
+.......
+----------------------------------------------------------------------
+Ran 7 tests in 3.560s
+
+OK
+{
+  "valid": true,
+  "scope": "schema_and_report_consistency",
+  "errors": []
+}
+{
+  "result": "PASS",
+  "rejected": 6,
+  "failed": []
+}
+.................................
+----------------------------------------------------------------------
+Ran 33 tests in 0.192s
+
+OK
+........
+----------------------------------------------------------------------
+Ran 8 tests in 0.197s
+
+OK
+...............
+----------------------------------------------------------------------
+Ran 15 tests in 0.151s
+
+OK
+{
+  "passed": true,
+  "score": 100,
+  "checks": [
+    {
+      "name": "report contract",
+      "passed": true,
+      "weight": 30
+    },
+    {
+      "name": "page-level exclusion",
+      "passed": true,
+      "weight": 10
+    },
+    {
+      "name": "offer orientation",
+      "passed": true,
+      "weight": 10
+    },
+    {
+      "name": "not_checked: rendered",
+      "passed": true,
+      "weight": 5
+    },
+    {
+      "name": "not_checked: keyboard",
+      "passed": true,
+      "weight": 5
+    },
+    {
+      "name": "not_checked: off-site",
+      "passed": true,
+      "weight": 5
+    },
+    {
+      "name": "no prohibited overclaims",
+      "passed": true,
+      "weight": 15
+    },
+    {
+      "name": "non-expert executive summary",
+      "passed": true,
+      "weight": 10
+    },
+    {
+      "name": "evidence-linked proactive opportunity",
+      "passed": true,
+      "weight": 10
+    },
+    {
+      "name": "discoverability and engagement coverage",
+      "passed": true,
+      "weight": 10
+    }
+  ],
+  "failures": []
+}
+PASS: extracted ZIP runs with no install/API key from a different cwd and preserves honest coverage
+ALL VALIDATION CHECKS PASSED

@@ -1,0 +1,38 @@
+{
+  "report_sha256": "f1ad781114b29352df5ecf51f3406e339cfa811663ab27b1d3db56c1058e0379",
+  "adjudications": [],
+  "answer_support": {
+    "0": {
+      "autumn evening language courses": 2,
+      "adult learners": 2,
+      "12 Orchard Lane, Exampletown": 2,
+      "180 credits for the autumn term including tax and required materials": 2
+    },
+    "1": {
+      "learners aged 18 or older": 2,
+      "enrollment closes on 18 October 2026 at 17:00 local time": 2,
+      "classes start on 2 November 2026": 2
+    },
+    "2": {
+      "read the enrollment guide and choose a class": 2,
+      "visit the public reception desk with proof of age": 2,
+      "12 Orchard Lane, Exampletown": 2,
+      "weekdays 09:00\u201317:00": 2,
+      "no online submission is required": 2,
+      "published times use Europe/London local time": 2
+    }
+  },
+  "runtime": {
+    "observer_start": "2026-09-11T15:54:50Z",
+    "delivery": "2026-09-11T15:58:56Z",
+    "completion": "completed",
+    "timestamp_kind": "observed_completion_upper_bound"
+  },
+  "review_notes": [
+    "Three questions preserve 13 explicitly supported required elements; zero findings or opportunities on corrected healthy control.",
+    "Targeted collection includes the opaque multilingual enrollment guide and application page within five captured pages; baseline needed eight pages including host fetches.",
+    "Source routes reach the stated endpoints, but workbook choice is a content branch, not a selected interactive option.",
+    "Public search was permitted but unused. Describing it as unavailable remains an auditor capability-reporting error.",
+    "Finalization 187.45 seconds; independent dispatch-to-observed-completion upper bound 246 seconds."
+  ]
+}

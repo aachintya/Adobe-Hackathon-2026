@@ -1,0 +1,81 @@
+{
+  "schema_version": "1.2",
+  "site": "http://127.0.0.1:53097/c03-b/index.html",
+  "audited_at": "2026-09-11T15:32:38.199056+00:00",
+  "executive_summary": {
+    "conclusion": "Static baseline: 5 HTML pages inspected; 0 scoped technical observations for review. The full agent audit must assess buyer questions, trust and visitor journeys. AI visibility has not been measured.",
+    "top_action_ids": []
+  },
+  "summary": {
+    "total_findings": 0,
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0
+  },
+  "coverage": {
+    "pages_checked": 5,
+    "modes": [
+      "static"
+    ],
+    "not_checked": [
+      "Rendered extraction and interactive engagement not checked: static Python fallback has no browser.",
+      "Keyboard, focus, mobile layout, overlays and context retention not checked.",
+      "Off-site retrieval and independent corroboration not checked: search-capable agent required.",
+      "Buyer-question answerability and visitor journeys require agent review of saved passages and links.",
+      "Actual AI citations, provider IP access, Search Console settings and behavioral analytics not measured."
+    ]
+  },
+  "assessment": {
+    "mode": "static_baseline",
+    "readiness": [
+      {
+        "stage": "access",
+        "status": "observed",
+        "detail": "Published robots policy checked separately for search, training controls and user fetch; real provider access remains unverified.",
+        "urls": [
+          "http://127.0.0.1:53097/robots.txt"
+        ]
+      },
+      {
+        "stage": "extraction",
+        "status": "observed",
+        "detail": "Saved source text, passages and links from 5 HTML pages. Material answerability requires agent review.",
+        "urls": [
+          "http://127.0.0.1:53097/c03-b/index.html",
+          "http://127.0.0.1:53097/c03-b/pricing.html",
+          "http://127.0.0.1:53097/c03-b/products.html",
+          "http://127.0.0.1:53097/c03-b/team.html",
+          "http://127.0.0.1:53097/c03-b/security.html"
+        ]
+      },
+      {
+        "stage": "answerability",
+        "status": "not_checked",
+        "detail": "Agent must test representative buyer questions against evidence.",
+        "urls": []
+      },
+      {
+        "stage": "corroboration",
+        "status": "not_checked",
+        "detail": "Requires entity comparison and independent source review.",
+        "urls": []
+      },
+      {
+        "stage": "engagement",
+        "status": "not_checked",
+        "detail": "Agent must trace task journeys and inspect browser behavior.",
+        "urls": []
+      }
+    ],
+    "intent_tests": [],
+    "journeys": [],
+    "visibility": {
+      "status": "not_measured",
+      "detail": "No recorded assistant answer runs; crawl checks are not citation measurements.",
+      "cohorts": []
+    }
+  },
+  "findings": [],
+  "proactive_opportunities": []
+}

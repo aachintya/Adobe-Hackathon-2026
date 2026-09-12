@@ -74,6 +74,11 @@ def validate(doc):
         if len(assessment["journeys"]) != 2: errors.append("composed audit needs two journey records, including not_checked outcomes")
     stages = [r["stage"] for r in assessment["readiness"]]
     if sorted(stages) != sorted(["access", "extraction", "answerability", "corroboration", "engagement"]): errors.append("readiness must cover each of five stages exactly once")
+    stage_status = {r["stage"]: r["status"] for r in assessment["readiness"]}
+    if stage_status.get("answerability") == "observed" and not any(t["status"] != "not_checked" for t in assessment["intent_tests"]):
+        errors.append("observed answerability requires at least one assessed question; all questions are not_checked")
+    if stage_status.get("engagement") == "observed" and not any(j["steps"] for j in assessment["journeys"]):
+        errors.append("observed engagement requires recorded journey steps; empty journeys are not observed")
     for test in assessment["intent_tests"]:
         if test["status"] != "not_checked" and not test["evidence"]: errors.append("question outcome needs evidence")
         if not test["required_elements"]: errors.append("question needs required answer elements")

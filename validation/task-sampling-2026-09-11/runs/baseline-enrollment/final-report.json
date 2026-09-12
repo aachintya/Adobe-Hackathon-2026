@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.2",
+  "site": "http://127.0.0.1:53097/c03-b/index.html",
+  "audited_at": "2026-09-11T15:35:35Z",
+  "executive_summary": {
+    "conclusion": "The inspected source pages make the autumn course audience, eligibility, deadline, start date and public application handoff answerable. Four navigation destinations use specific labels but resolve to generic school information and the enrollment guide, creating a demonstrated orientation break for visitors seeking prices, materials, team or privacy information; rendered behavior, retrieval and independent corroboration were unavailable.",
+    "top_action_ids": ["F-001"]
+  },
+  "summary": {"total_findings": 1, "critical": 0, "high": 0, "medium": 1, "low": 0},
+  "coverage": {
+    "pages_checked": 7,
+    "modes": ["static"],
+    "not_checked": [
+      "Rendered extraction and interactive engagement were not checked because browser tools were unavailable.",
+      "Keyboard reachability, visible focus, mobile layout, overlays and client-side context retention were not checked.",
+      "Off-site retrieval and independent corroboration were not checked because search tools were unavailable.",
+      "Actual assistant answers, provider access, Search Console settings and behavioral analytics were not measured."
+    ]
+  },
+  "findings": [
+    {
+      "id": "F-001",
+      "title": "Specific navigation labels resolve to generic information and the enrollment guide",
+      "category": "engagement",
+      "severity": "medium",
+      "confidence": "high",
+      "evidence": {
+        "observation": "The homepage labels four navigation links as Bookshop prices, Learning materials, Our team and Privacy information. Each corresponding inspected page instead says \"General school information. For course enrollment dates and eligibility, use the enrollment guide.\" and links onward to the enrollment guide, so the destination does not match the visitor's selected information task.",
+        "affected": 4,
+        "checked": 4,
+        "urls": [
+          "http://127.0.0.1:53097/c03-b/pricing.html",
+          "http://127.0.0.1:53097/c03-b/products.html",
+          "http://127.0.0.1:53097/c03-b/team.html",
+          "http://127.0.0.1:53097/c03-b/security.html"
+        ]
+      },
+      "suggested_action": {
+        "summary": "Align each navigation label and destination with its actual public content, or rename the links to describe the enrollment-guide handoff.",
+        "priority": "medium",
+        "effort": "medium",
+        "owner_hint": "Site content and navigation owner",
+        "mechanism": "Matching labels to destination content preserves information scent and gives visitors a direct route to the task they selected.",
+        "verification": "Fetch each of the four linked URLs and confirm its title, heading and primary body content answer the linked task, or that the label explicitly identifies the enrollment-guide route."
+      }
+    }
+  ],
+  "proactive_opportunities": [],
+  "assessment": {
+    "mode": "agent_composed",
+    "readiness": [
+      {"stage":"access","status":"observed","detail":"robots.txt permits all paths for User-agent: *; the collector observed successful static responses for the sampled first-party pages. Actual provider access remains unverified.","urls":["http://127.0.0.1:53097/robots.txt"]},
+      {"stage":"extraction","status":"observed","detail":"Readable source text and links were captured for the homepage, four navigation destinations, the enrollment guide and application steps.","urls":["http://127.0.0.1:53097/c03-b/index.html","http://127.0.0.1:53097/c03-b/pricing.html","http://127.0.0.1:53097/c03-b/products.html","http://127.0.0.1:53097/c03-b/team.html","http://127.0.0.1:53097/c03-b/security.html","http://127.0.0.1:53097/c03-b/sable-archive.html","http://127.0.0.1:53097/c03-b/apply.html"]},
+      {"stage":"answerability","status":"observed","detail":"Three representative visitor questions were checked against relevant source passages and all required elements are supported.","urls":["http://127.0.0.1:53097/c03-b/index.html","http://127.0.0.1:53097/c03-b/sable-archive.html","http://127.0.0.1:53097/c03-b/apply.html"]},
+      {"stage":"corroboration","status":"not_checked","detail":"Independent external sources and retrieval results were unavailable in this HTTP-only run.","urls":[]},
+      {"stage":"engagement","status":"observed","detail":"Two source-link journeys were traced through public pages; rendered interaction and context retention were not checked.","urls":["http://127.0.0.1:53097/c03-b/index.html","http://127.0.0.1:53097/c03-b/sable-archive.html","http://127.0.0.1:53097/c03-b/apply.html","http://127.0.0.1:53097/c03-b/pricing.html"]}
+    ],
+    "intent_tests": [
+      {"question":"What does Mosaic Learning offer and who are the autumn courses for?","required_elements":["adult learners","autumn evening language courses"],"status":"answered","evidence":[{"url":"http://127.0.0.1:53097/c03-b/index.html","quote":"Autumn evening language courses for adult learners."}],"reason":"The homepage states both the offer and audience in one readable passage."},
+      {"question":"When do autumn courses start, what is the enrollment deadline, and who is eligible?","required_elements":["eligible age 18 or older","classes start 2 November 2026","enrollment closes 18 October 2026 at 17:00 local time"],"status":"answered","evidence":[{"url":"http://127.0.0.1:53097/c03-b/sable-archive.html","quote":"Autumn courses are open to learners aged 18 or older. Classes start on 2 November 2026."},{"url":"http://127.0.0.1:53097/c03-b/sable-archive.html","quote":"Enrollment closes on 18 October 2026 at 17:00 local time."}],"reason":"The enrollment guide supplies eligibility, start date, deadline, time and local-time qualifier."},
+      {"question":"How can an eligible learner apply?","required_elements":["read the enrollment guide","choose a class","visit the public reception desk with proof of age","no online submission","weekday reception hours 09:00–17:00"],"status":"answered","evidence":[{"url":"http://127.0.0.1:53097/c03-b/apply.html","quote":"Read the enrollment guide, choose a class, then visit our public reception desk with proof of age. No online submission is required. Reception opens weekdays 09:00–17:00."}],"reason":"The public application page states the complete next-step sequence and its no-online-submission constraint."}
+    ],
+    "journeys": [
+      {"task":"Understand eligibility and reach application instructions","starting_context":"Homepage visitor selecting the enrollment dates and eligibility task.","steps":[{"url":"http://127.0.0.1:53097/c03-b/index.html","action":"[source] Follow \"Guía de inscripción — enrollment dates and eligibility\".","observation":"The link destination is the enrollment guide."},{"url":"http://127.0.0.1:53097/c03-b/sable-archive.html","action":"[source] Read eligibility, dates and follow \"How to apply\".","observation":"The page states age 18+, the 2 November 2026 start, the 18 October 2026 17:00 local deadline, and links to application steps."},{"url":"http://127.0.0.1:53097/c03-b/apply.html","action":"[source] Read public application steps.","observation":"The destination gives the reception-desk handoff, proof-of-age requirement, weekday hours and no-online-submission instruction."}],"status":"completed","reason":"The public information and next-step destination were reached without submitting a form."},
+      {"task":"Find the site’s prices information from the main navigation","starting_context":"Homepage visitor selecting the navigation link labeled \"Bookshop prices\".","steps":[{"url":"http://127.0.0.1:53097/c03-b/index.html","action":"[source] Follow the \"Bookshop prices\" navigation link.","observation":"The literal destination is pricing.html."},{"url":"http://127.0.0.1:53097/c03-b/pricing.html","action":"[source] Inspect the destination page and follow its \"Enrollment guide\" link.","observation":"The page heading is Pricing, but its body only says \"General school information. For course enrollment dates and eligibility, use the enrollment guide.\"; it provides no bookshop price information and routes to the enrollment guide."}],"status":"friction","reason":"The observed source route reaches a page whose content does not explain the selected prices task, demonstrating a destination mismatch; rendered behavior was not checked."}
+    ],
+    "visibility": {"status":"not_measured","detail":"No recorded assistant answer runs or citations were available; static crawl evidence does not measure AI visibility.","cohorts":[]}
+  }
+}

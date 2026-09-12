@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.2",
+  "site": "http://127.0.0.1:53097/c02-b/index.html",
+  "audited_at": "2026-09-11T15:31:14Z",
+  "executive_summary": {
+    "conclusion": "Harbor Metrics is statically accessible and its core pages are readable, with a direct route from the home page to security and installation guidance. The security bulletin contains a material contradiction for branch 7.2, so an administrator and an answer system cannot reliably determine whether 7.2.9 is safe until the release status is corrected.",
+    "top_action_ids": ["F-001"]
+  },
+  "summary": {"total_findings": 1, "critical": 0, "high": 1, "medium": 0, "low": 0},
+  "coverage": {
+    "pages_checked": 3,
+    "modes": ["static"],
+    "not_checked": [
+      "Rendered extraction and interactive behavior were unavailable; source-only journeys were assessed.",
+      "Keyboard, focus, mobile layout, overlays and context retention were not checked.",
+      "Off-site retrieval and independent corroboration were not checked.",
+      "Actual assistant answers and citations were not measured; provider access was not verified."
+    ]
+  },
+  "findings": [
+    {
+      "id": "F-001",
+      "title": "Branch 7.2 release status is internally contradictory",
+      "category": "discoverability",
+      "severity": "high",
+      "confidence": "high",
+      "evidence": {
+        "observation": "The bulletin table states branch 7.2 has affected versions 7.2.0 through 7.2.8 and fixed release 7.2.9, but the immediately following text states that 7.2.9 remains affected by HM-42 and that no fix is available on branch 7.2.",
+        "affected": 1,
+        "checked": 3,
+        "urls": ["http://127.0.0.1:53097/c02-b/r/72.html"]
+      },
+      "suggested_action": {
+        "summary": "Correct the 7.2 table row or the follow-up warning so one authoritative status remains, and state the safe upgrade path for 7.2.",
+        "priority": "high",
+        "effort": "low",
+        "owner_hint": "Security bulletin maintainer",
+        "mechanism": "Align the affected-version range, fixed-release cell and explanatory warning, then mirror the resolved instruction on the installation page.",
+        "verification": "Fetch both pages and confirm that the 7.2 row and prose agree on whether 7.2.9 is affected, identify the fixed release or explicitly state that none exists, and provide one unambiguous update instruction."
+      }
+    }
+  ],
+  "proactive_opportunities": [],
+  "assessment": {
+    "mode": "agent_composed",
+    "readiness": [
+      {"stage": "access", "status": "observed", "detail": "robots.txt returned 200 with Allow: / for the tested crawler and user-fetch roles; all three selected pages returned 200.", "urls": ["http://127.0.0.1:53097/robots.txt", "http://127.0.0.1:53097/c02-b/index.html"]},
+      {"stage": "extraction", "status": "observed", "detail": "Readable titles, headings, prose and links were extracted from the home, security bulletin and installation pages.", "urls": ["http://127.0.0.1:53097/c02-b/index.html", "http://127.0.0.1:53097/c02-b/r/72.html", "http://127.0.0.1:53097/c02-b/install.html"]},
+      {"stage": "answerability", "status": "observed", "detail": "Product purpose, license and installation steps are stated; the branch 7.2 safety answer is materially unresolved by contradictory statements.", "urls": ["http://127.0.0.1:53097/c02-b/r/72.html", "http://127.0.0.1:53097/c02-b/install.html"]},
+      {"stage": "corroboration", "status": "not_checked", "detail": "No off-site search or independent source review was available within this source-only audit.", "urls": []},
+      {"stage": "engagement", "status": "observed", "detail": "Source links provide direct home-to-bulletin and bulletin-to-install routes; rendered interaction and choice retention were not checked.", "urls": ["http://127.0.0.1:53097/c02-b/index.html", "http://127.0.0.1:53097/c02-b/r/72.html", "http://127.0.0.1:53097/c02-b/install.html"]}
+    ],
+    "intent_tests": [
+      {"question": "What is Harbor Metrics and who is it for?", "required_elements": ["Harbor Metrics is open-source monitoring software", "administrators are the intended audience"], "status": "answered", "evidence": [{"url": "http://127.0.0.1:53097/c02-b/index.html", "quote": "Harbor Metrics is open-source monitoring software. Administrators should review the current security bulletin and update affected installations."}], "reason": "The home page states both the product type and administrator audience."},
+      {"question": "Which Harbor Metrics releases are affected by HM-42, and what fixes them?", "required_elements": ["issue HM-42", "branch 7.2 affected versions", "branch 7.2 fixed release or no fix", "branch 8.0 affected versions and fixed release"], "status": "partial", "evidence": [{"url": "http://127.0.0.1:53097/c02-b/r/72.html", "quote": "Issue HM-42 affects installations on the following branches. Release scope Branch Affected versions Fixed release 7.2 7.2.0 through 7.2.8 7.2.9 8.0 8.0.0 through 8.0.3 8.0.4"}, {"url": "http://127.0.0.1:53097/c02-b/r/72.html", "quote": "Version 7.2.9 remains affected by HM-42; no fix is available on branch 7.2."}], "reason": "The page supplies the required branch values but contradicts itself about 7.2.9, leaving the safe 7.2 release unresolved."},
+      {"question": "How should an administrator install or update Harbor Metrics?", "required_elements": ["choose the fixed release from the bulletin", "back up configuration", "install and restart the service"], "status": "answered", "evidence": [{"url": "http://127.0.0.1:53097/c02-b/install.html", "quote": "Choose the fixed release for your branch from the current security bulletin. Back up configuration, install that release and restart the service."}], "reason": "The installation page states the complete sequence."},
+      {"question": "What licence does Harbor Metrics use?", "required_elements": ["MIT licence"], "status": "answered", "evidence": [{"url": "http://127.0.0.1:53097/c02-b/install.html", "quote": "The software uses the MIT licence."}], "reason": "The installation page names the licence."}
+    ],
+    "journeys": [
+      {"task": "Understand the current security issue and reach update instructions", "starting_context": "Home page administrator notice", "steps": [{"url": "http://127.0.0.1:53097/c02-b/index.html", "action": "[source] Follow \"Security bulletin: affected and fixed releases\".", "observation": "The security bulletin destination is present and resolves to the dated HM-42 bulletin."}, {"url": "http://127.0.0.1:53097/c02-b/r/72.html", "action": "[source] Follow \"Apply the update\".", "observation": "The installation page is reached and gives backup, install and restart instructions."}], "status": "completed", "reason": "Both source links resolve and the expected public destination is reached."},
+      {"task": "Determine a safe update path for a branch 7.2 installation", "starting_context": "HM-42 bulletin table for branch 7.2", "steps": [{"url": "http://127.0.0.1:53097/c02-b/r/72.html", "action": "[source] Read the 7.2 affected-version and fixed-release row, then read the warning below it.", "observation": "The row names 7.2.9 as fixed, while the warning says 7.2.9 remains affected and no fix exists."}, {"url": "http://127.0.0.1:53097/c02-b/install.html", "action": "[source] Follow \"Apply the update\" and apply the bulletin's fixed-release instruction.", "observation": "The destination repeats a generic instruction to choose a fixed release, without resolving the 7.2 contradiction."}], "status": "friction", "reason": "The site reaches the handoff but its own release statements prevent a reliable branch 7.2 decision."}
+    ],
+    "visibility": {"status": "not_measured", "detail": "No unbiased assistant answer runs or citation observations were recorded; static crawl evidence does not measure AI visibility.", "cohorts": []}
+  }
+}

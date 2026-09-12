@@ -1,0 +1,1123 @@
+{
+  "site": "http://127.0.0.1:53097/c03-b/index.html",
+  "origin": "http://127.0.0.1:53097/",
+  "collected_at": "2026-09-11T15:36:10.790028+00:00",
+  "collector": "static",
+  "collector_version": "2.0",
+  "agent_roles": {
+    "search": [
+      "Googlebot",
+      "bingbot",
+      "OAI-SearchBot",
+      "Claude-SearchBot",
+      "PerplexityBot"
+    ],
+    "training_or_other_control": [
+      "GPTBot",
+      "ClaudeBot",
+      "Google-Extended",
+      "Applebot-Extended",
+      "meta-externalagent"
+    ],
+    "user_fetch": [
+      "ChatGPT-User",
+      "Claude-User",
+      "Perplexity-User"
+    ]
+  },
+  "limits": {
+    "max_pages": 5,
+    "max_seconds": 45,
+    "rate_per_second": 2,
+    "max_bytes_per_page": 2000000,
+    "effective_request_interval_seconds": 0.5
+  },
+  "robots": {
+    "url": "http://127.0.0.1:53097/robots.txt",
+    "status": 200,
+    "state": "present",
+    "final_url": "http://127.0.0.1:53097/robots.txt",
+    "content_type": "text/plain",
+    "response_truncated": false,
+    "redirects": [],
+    "read_error": null,
+    "rules_text": "User-agent: *\nAllow: /\n",
+    "wildcard_allowed": true,
+    "collector_allowed": true,
+    "ai_agent_allowed": {
+      "Googlebot": true,
+      "bingbot": true,
+      "OAI-SearchBot": true,
+      "Claude-SearchBot": true,
+      "PerplexityBot": true,
+      "GPTBot": true,
+      "ChatGPT-User": true,
+      "ClaudeBot": true,
+      "Claude-User": true,
+      "Perplexity-User": true,
+      "Google-Extended": true,
+      "Applebot-Extended": true,
+      "meta-externalagent": true
+    },
+    "decisions": {
+      "Googlebot": {
+        "allowed": true,
+        "matched_rule": "allow: /",
+        "group": "wildcard"
+      },
+      "bingbot": {
+        "allowed": true,
+        "matched_rule": "allow: /",
+        "group": "wildcard"
+      },
+      "OAI-SearchBot": {
+        "allowed": true,
+        "matched_rule": "allow: /",
+        "group": "wildcard"
+      },
+      "Claude-SearchBot": {
+        "allowed": true,
+        "matched_rule": "allow: /",
+        "group": "wildcard"
+      },
+      "PerplexityBot": {
+        "allowed": true,
+        "matched_rule": "allow: /",
+        "group": "wildcard"
+      },
+      "GPTBot": {
+        "allowed": true,
+        "matched_rule": "allow: /",
+        "group": "wildcard"
+      },
+      "ChatGPT-User": {
+        "allowed": true,
+        "matched_rule": "allow: /",
+        "group": "wildcard"
+      },
+      "ClaudeBot": {
+        "allowed": true,
+        "matched_rule": "allow: /",
+        "group": "wildcard"
+      },
+      "Claude-User": {
+        "allowed": true,
+        "matched_rule": "allow: /",
+        "group": "wildcard"
+      },
+      "Perplexity-User": {
+        "allowed": true,
+        "matched_rule": "allow: /",
+        "group": "wildcard"
+      },
+      "Google-Extended": {
+        "allowed": true,
+        "matched_rule": "allow: /",
+        "group": "wildcard"
+      },
+      "Applebot-Extended": {
+        "allowed": true,
+        "matched_rule": "allow: /",
+        "group": "wildcard"
+      },
+      "meta-externalagent": {
+        "allowed": true,
+        "matched_rule": "allow: /",
+        "group": "wildcard"
+      }
+    },
+    "sitemap_hints": []
+  },
+  "sitemaps": [],
+  "pages": [
+    {
+      "url": "http://127.0.0.1:53097/c03-b/index.html",
+      "robots_allowed": true,
+      "final_url": "http://127.0.0.1:53097/c03-b/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "latency_ms": 9,
+      "response_truncated": false,
+      "redirects": [],
+      "robots_ai_allowed": {
+        "Googlebot": true,
+        "bingbot": true,
+        "OAI-SearchBot": true,
+        "Claude-SearchBot": true,
+        "PerplexityBot": true,
+        "GPTBot": true,
+        "ChatGPT-User": true,
+        "ClaudeBot": true,
+        "Claude-User": true,
+        "Perplexity-User": true,
+        "Google-Extended": true,
+        "Applebot-Extended": true,
+        "meta-externalagent": true
+      },
+      "robots_decisions": {
+        "Googlebot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "bingbot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "OAI-SearchBot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "Claude-SearchBot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "PerplexityBot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "GPTBot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "ChatGPT-User": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "ClaudeBot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "Claude-User": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "Perplexity-User": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "Google-Extended": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "Applebot-Extended": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "meta-externalagent": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        }
+      },
+      "final_robots_ai_allowed": {
+        "Googlebot": true,
+        "bingbot": true,
+        "OAI-SearchBot": true,
+        "Claude-SearchBot": true,
+        "PerplexityBot": true,
+        "GPTBot": true,
+        "ChatGPT-User": true,
+        "ClaudeBot": true,
+        "Claude-User": true,
+        "Perplexity-User": true,
+        "Google-Extended": true,
+        "Applebot-Extended": true,
+        "meta-externalagent": true
+      },
+      "x_robots_tag": "",
+      "x_robots_tags": [],
+      "last_modified": "",
+      "sample_type": "other",
+      "title": "Mosaic Learning",
+      "h1": [
+        "Mosaic Learning"
+      ],
+      "language": "en",
+      "base_href": null,
+      "hreflang": [],
+      "word_count": 30,
+      "text_length": 228,
+      "landmarks": [
+        "footer",
+        "main",
+        "nav"
+      ],
+      "meta_robots": "",
+      "meta_robot_directives": {
+        "robots": "",
+        "googlebot": "",
+        "bingbot": ""
+      },
+      "description": "",
+      "canonical": [],
+      "links_count": 8,
+      "links": [
+        {
+          "href": "/c03-b/pricing.html",
+          "text": "Bookshop prices",
+          "aria_label": "",
+          "selector": "a [source occurrence 1]",
+          "region": "navigation",
+          "url": "http://127.0.0.1:53097/c03-b/pricing.html"
+        },
+        {
+          "href": "/c03-b/products.html",
+          "text": "Learning materials",
+          "aria_label": "",
+          "selector": "a [source occurrence 2]",
+          "region": "navigation",
+          "url": "http://127.0.0.1:53097/c03-b/products.html"
+        },
+        {
+          "href": "/c03-b/team.html",
+          "text": "Our team",
+          "aria_label": "",
+          "selector": "a [source occurrence 3]",
+          "region": "navigation",
+          "url": "http://127.0.0.1:53097/c03-b/team.html"
+        },
+        {
+          "href": "/c03-b/security.html",
+          "text": "Privacy information",
+          "aria_label": "",
+          "selector": "a [source occurrence 4]",
+          "region": "navigation",
+          "url": "http://127.0.0.1:53097/c03-b/security.html"
+        },
+        {
+          "href": "/c03-b/news.html",
+          "text": "News",
+          "aria_label": "",
+          "selector": "a [source occurrence 5]",
+          "region": "navigation",
+          "url": "http://127.0.0.1:53097/c03-b/news.html"
+        },
+        {
+          "href": "/c03-b/sable-archive.html",
+          "text": "Guía de inscripción — enrollment dates and eligibility",
+          "aria_label": "",
+          "selector": "a [source occurrence 6]",
+          "region": "content",
+          "url": "http://127.0.0.1:53097/c03-b/sable-archive.html"
+        },
+        {
+          "href": "/c03-b/apply.html",
+          "text": "Application steps",
+          "aria_label": "",
+          "selector": "a [source occurrence 7]",
+          "region": "content",
+          "url": "http://127.0.0.1:53097/c03-b/apply.html"
+        },
+        {
+          "href": "/c03-b/index.html",
+          "text": "Home",
+          "aria_label": "",
+          "selector": "a [source occurrence 8]",
+          "region": "navigation",
+          "url": "http://127.0.0.1:53097/c03-b/index.html"
+        }
+      ],
+      "controls": [],
+      "images": {
+        "count": 0,
+        "missing_alt": 0,
+        "empty_alt": 0,
+        "items": []
+      },
+      "jsonld": {
+        "blocks": 0,
+        "parse_errors": 0,
+        "errors": [],
+        "types": [],
+        "data": [],
+        "data_omitted": false
+      },
+      "text_sample": "Mosaic Learning Autumn evening language courses for adult learners. Before applying, check the enrollment deadline and eligibility in our enrollment guide. Guía de inscripción — enrollment dates and eligibility Application steps",
+      "main_text": "Mosaic Learning Autumn evening language courses for adult learners. Before applying, check the enrollment deadline and eligibility in our enrollment guide. Guía de inscripción — enrollment dates and eligibility Application steps",
+      "passages": [
+        {
+          "selector": "h1 [source occurrence 1]",
+          "heading": "",
+          "text": "Mosaic Learning"
+        },
+        {
+          "selector": "p [source occurrence 1]",
+          "heading": "Mosaic Learning",
+          "text": "Autumn evening language courses for adult learners. Before applying, check the enrollment deadline and eligibility in our enrollment guide."
+        }
+      ],
+      "evidence_truncated": false,
+      "extraction_note": "Source HTML including noscript fallback; excludes semantic navigation/footer, scripts and explicit inline hidden content. CSS and JavaScript-enabled visibility require a browser.",
+      "parse_status": "parsed_html",
+      "link_base_url": "http://127.0.0.1:53097/c03-b/index.html"
+    },
+    {
+      "url": "http://127.0.0.1:53097/c03-b/pricing.html",
+      "robots_allowed": true,
+      "final_url": "http://127.0.0.1:53097/c03-b/pricing.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "latency_ms": 9,
+      "response_truncated": false,
+      "redirects": [],
+      "robots_ai_allowed": {
+        "Googlebot": true,
+        "bingbot": true,
+        "OAI-SearchBot": true,
+        "Claude-SearchBot": true,
+        "PerplexityBot": true,
+        "GPTBot": true,
+        "ChatGPT-User": true,
+        "ClaudeBot": true,
+        "Claude-User": true,
+        "Perplexity-User": true,
+        "Google-Extended": true,
+        "Applebot-Extended": true,
+        "meta-externalagent": true
+      },
+      "robots_decisions": {
+        "Googlebot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "bingbot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "OAI-SearchBot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "Claude-SearchBot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "PerplexityBot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "GPTBot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "ChatGPT-User": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "ClaudeBot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "Claude-User": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "Perplexity-User": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "Google-Extended": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "Applebot-Extended": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "meta-externalagent": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        }
+      },
+      "final_robots_ai_allowed": {
+        "Googlebot": true,
+        "bingbot": true,
+        "OAI-SearchBot": true,
+        "Claude-SearchBot": true,
+        "PerplexityBot": true,
+        "GPTBot": true,
+        "ChatGPT-User": true,
+        "ClaudeBot": true,
+        "Claude-User": true,
+        "Perplexity-User": true,
+        "Google-Extended": true,
+        "Applebot-Extended": true,
+        "meta-externalagent": true
+      },
+      "x_robots_tag": "",
+      "x_robots_tags": [],
+      "last_modified": "",
+      "sample_type": "decision",
+      "title": "Mosaic Learning",
+      "h1": [
+        "Pricing"
+      ],
+      "language": "en",
+      "base_href": null,
+      "hreflang": [],
+      "word_count": 16,
+      "text_length": 123,
+      "landmarks": [
+        "footer",
+        "main"
+      ],
+      "meta_robots": "",
+      "meta_robot_directives": {
+        "robots": "",
+        "googlebot": "",
+        "bingbot": ""
+      },
+      "description": "",
+      "canonical": [],
+      "links_count": 2,
+      "links": [
+        {
+          "href": "/c03-b/sable-archive.html",
+          "text": "Enrollment guide",
+          "aria_label": "",
+          "selector": "a [source occurrence 1]",
+          "region": "content",
+          "url": "http://127.0.0.1:53097/c03-b/sable-archive.html"
+        },
+        {
+          "href": "/c03-b/index.html",
+          "text": "Home",
+          "aria_label": "",
+          "selector": "a [source occurrence 2]",
+          "region": "navigation",
+          "url": "http://127.0.0.1:53097/c03-b/index.html"
+        }
+      ],
+      "controls": [],
+      "images": {
+        "count": 0,
+        "missing_alt": 0,
+        "empty_alt": 0,
+        "items": []
+      },
+      "jsonld": {
+        "blocks": 0,
+        "parse_errors": 0,
+        "errors": [],
+        "types": [],
+        "data": [],
+        "data_omitted": false
+      },
+      "text_sample": "Pricing General school information. For course enrollment dates and eligibility, use the enrollment guide. Enrollment guide",
+      "main_text": "Pricing General school information. For course enrollment dates and eligibility, use the enrollment guide. Enrollment guide",
+      "passages": [
+        {
+          "selector": "h1 [source occurrence 1]",
+          "heading": "",
+          "text": "Pricing"
+        },
+        {
+          "selector": "p [source occurrence 1]",
+          "heading": "Pricing",
+          "text": "General school information. For course enrollment dates and eligibility, use the enrollment guide."
+        }
+      ],
+      "evidence_truncated": false,
+      "extraction_note": "Source HTML including noscript fallback; excludes semantic navigation/footer, scripts and explicit inline hidden content. CSS and JavaScript-enabled visibility require a browser.",
+      "parse_status": "parsed_html",
+      "link_base_url": "http://127.0.0.1:53097/c03-b/pricing.html"
+    },
+    {
+      "url": "http://127.0.0.1:53097/c03-b/products.html",
+      "robots_allowed": true,
+      "final_url": "http://127.0.0.1:53097/c03-b/products.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "latency_ms": 11,
+      "response_truncated": false,
+      "redirects": [],
+      "robots_ai_allowed": {
+        "Googlebot": true,
+        "bingbot": true,
+        "OAI-SearchBot": true,
+        "Claude-SearchBot": true,
+        "PerplexityBot": true,
+        "GPTBot": true,
+        "ChatGPT-User": true,
+        "ClaudeBot": true,
+        "Claude-User": true,
+        "Perplexity-User": true,
+        "Google-Extended": true,
+        "Applebot-Extended": true,
+        "meta-externalagent": true
+      },
+      "robots_decisions": {
+        "Googlebot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "bingbot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "OAI-SearchBot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "Claude-SearchBot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "PerplexityBot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "GPTBot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "ChatGPT-User": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "ClaudeBot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "Claude-User": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "Perplexity-User": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "Google-Extended": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "Applebot-Extended": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "meta-externalagent": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        }
+      },
+      "final_robots_ai_allowed": {
+        "Googlebot": true,
+        "bingbot": true,
+        "OAI-SearchBot": true,
+        "Claude-SearchBot": true,
+        "PerplexityBot": true,
+        "GPTBot": true,
+        "ChatGPT-User": true,
+        "ClaudeBot": true,
+        "Claude-User": true,
+        "Perplexity-User": true,
+        "Google-Extended": true,
+        "Applebot-Extended": true,
+        "meta-externalagent": true
+      },
+      "x_robots_tag": "",
+      "x_robots_tags": [],
+      "last_modified": "",
+      "sample_type": "offering",
+      "title": "Mosaic Learning",
+      "h1": [
+        "Products"
+      ],
+      "language": "en",
+      "base_href": null,
+      "hreflang": [],
+      "word_count": 16,
+      "text_length": 124,
+      "landmarks": [
+        "footer",
+        "main"
+      ],
+      "meta_robots": "",
+      "meta_robot_directives": {
+        "robots": "",
+        "googlebot": "",
+        "bingbot": ""
+      },
+      "description": "",
+      "canonical": [],
+      "links_count": 2,
+      "links": [
+        {
+          "href": "/c03-b/sable-archive.html",
+          "text": "Enrollment guide",
+          "aria_label": "",
+          "selector": "a [source occurrence 1]",
+          "region": "content",
+          "url": "http://127.0.0.1:53097/c03-b/sable-archive.html"
+        },
+        {
+          "href": "/c03-b/index.html",
+          "text": "Home",
+          "aria_label": "",
+          "selector": "a [source occurrence 2]",
+          "region": "navigation",
+          "url": "http://127.0.0.1:53097/c03-b/index.html"
+        }
+      ],
+      "controls": [],
+      "images": {
+        "count": 0,
+        "missing_alt": 0,
+        "empty_alt": 0,
+        "items": []
+      },
+      "jsonld": {
+        "blocks": 0,
+        "parse_errors": 0,
+        "errors": [],
+        "types": [],
+        "data": [],
+        "data_omitted": false
+      },
+      "text_sample": "Products General school information. For course enrollment dates and eligibility, use the enrollment guide. Enrollment guide",
+      "main_text": "Products General school information. For course enrollment dates and eligibility, use the enrollment guide. Enrollment guide",
+      "passages": [
+        {
+          "selector": "h1 [source occurrence 1]",
+          "heading": "",
+          "text": "Products"
+        },
+        {
+          "selector": "p [source occurrence 1]",
+          "heading": "Products",
+          "text": "General school information. For course enrollment dates and eligibility, use the enrollment guide."
+        }
+      ],
+      "evidence_truncated": false,
+      "extraction_note": "Source HTML including noscript fallback; excludes semantic navigation/footer, scripts and explicit inline hidden content. CSS and JavaScript-enabled visibility require a browser.",
+      "parse_status": "parsed_html",
+      "link_base_url": "http://127.0.0.1:53097/c03-b/products.html"
+    },
+    {
+      "url": "http://127.0.0.1:53097/c03-b/team.html",
+      "robots_allowed": true,
+      "final_url": "http://127.0.0.1:53097/c03-b/team.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "latency_ms": 8,
+      "response_truncated": false,
+      "redirects": [],
+      "robots_ai_allowed": {
+        "Googlebot": true,
+        "bingbot": true,
+        "OAI-SearchBot": true,
+        "Claude-SearchBot": true,
+        "PerplexityBot": true,
+        "GPTBot": true,
+        "ChatGPT-User": true,
+        "ClaudeBot": true,
+        "Claude-User": true,
+        "Perplexity-User": true,
+        "Google-Extended": true,
+        "Applebot-Extended": true,
+        "meta-externalagent": true
+      },
+      "robots_decisions": {
+        "Googlebot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "bingbot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "OAI-SearchBot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "Claude-SearchBot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "PerplexityBot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "GPTBot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "ChatGPT-User": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "ClaudeBot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "Claude-User": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "Perplexity-User": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "Google-Extended": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "Applebot-Extended": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "meta-externalagent": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        }
+      },
+      "final_robots_ai_allowed": {
+        "Googlebot": true,
+        "bingbot": true,
+        "OAI-SearchBot": true,
+        "Claude-SearchBot": true,
+        "PerplexityBot": true,
+        "GPTBot": true,
+        "ChatGPT-User": true,
+        "ClaudeBot": true,
+        "Claude-User": true,
+        "Perplexity-User": true,
+        "Google-Extended": true,
+        "Applebot-Extended": true,
+        "meta-externalagent": true
+      },
+      "x_robots_tag": "",
+      "x_robots_tags": [],
+      "last_modified": "",
+      "sample_type": "entity",
+      "title": "Mosaic Learning",
+      "h1": [
+        "Team"
+      ],
+      "language": "en",
+      "base_href": null,
+      "hreflang": [],
+      "word_count": 16,
+      "text_length": 120,
+      "landmarks": [
+        "footer",
+        "main"
+      ],
+      "meta_robots": "",
+      "meta_robot_directives": {
+        "robots": "",
+        "googlebot": "",
+        "bingbot": ""
+      },
+      "description": "",
+      "canonical": [],
+      "links_count": 2,
+      "links": [
+        {
+          "href": "/c03-b/sable-archive.html",
+          "text": "Enrollment guide",
+          "aria_label": "",
+          "selector": "a [source occurrence 1]",
+          "region": "content",
+          "url": "http://127.0.0.1:53097/c03-b/sable-archive.html"
+        },
+        {
+          "href": "/c03-b/index.html",
+          "text": "Home",
+          "aria_label": "",
+          "selector": "a [source occurrence 2]",
+          "region": "navigation",
+          "url": "http://127.0.0.1:53097/c03-b/index.html"
+        }
+      ],
+      "controls": [],
+      "images": {
+        "count": 0,
+        "missing_alt": 0,
+        "empty_alt": 0,
+        "items": []
+      },
+      "jsonld": {
+        "blocks": 0,
+        "parse_errors": 0,
+        "errors": [],
+        "types": [],
+        "data": [],
+        "data_omitted": false
+      },
+      "text_sample": "Team General school information. For course enrollment dates and eligibility, use the enrollment guide. Enrollment guide",
+      "main_text": "Team General school information. For course enrollment dates and eligibility, use the enrollment guide. Enrollment guide",
+      "passages": [
+        {
+          "selector": "h1 [source occurrence 1]",
+          "heading": "",
+          "text": "Team"
+        },
+        {
+          "selector": "p [source occurrence 1]",
+          "heading": "Team",
+          "text": "General school information. For course enrollment dates and eligibility, use the enrollment guide."
+        }
+      ],
+      "evidence_truncated": false,
+      "extraction_note": "Source HTML including noscript fallback; excludes semantic navigation/footer, scripts and explicit inline hidden content. CSS and JavaScript-enabled visibility require a browser.",
+      "parse_status": "parsed_html",
+      "link_base_url": "http://127.0.0.1:53097/c03-b/team.html"
+    },
+    {
+      "url": "http://127.0.0.1:53097/c03-b/security.html",
+      "robots_allowed": true,
+      "final_url": "http://127.0.0.1:53097/c03-b/security.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "latency_ms": 9,
+      "response_truncated": false,
+      "redirects": [],
+      "robots_ai_allowed": {
+        "Googlebot": true,
+        "bingbot": true,
+        "OAI-SearchBot": true,
+        "Claude-SearchBot": true,
+        "PerplexityBot": true,
+        "GPTBot": true,
+        "ChatGPT-User": true,
+        "ClaudeBot": true,
+        "Claude-User": true,
+        "Perplexity-User": true,
+        "Google-Extended": true,
+        "Applebot-Extended": true,
+        "meta-externalagent": true
+      },
+      "robots_decisions": {
+        "Googlebot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "bingbot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "OAI-SearchBot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "Claude-SearchBot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "PerplexityBot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "GPTBot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "ChatGPT-User": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "ClaudeBot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "Claude-User": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "Perplexity-User": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "Google-Extended": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "Applebot-Extended": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "meta-externalagent": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        }
+      },
+      "final_robots_ai_allowed": {
+        "Googlebot": true,
+        "bingbot": true,
+        "OAI-SearchBot": true,
+        "Claude-SearchBot": true,
+        "PerplexityBot": true,
+        "GPTBot": true,
+        "ChatGPT-User": true,
+        "ClaudeBot": true,
+        "Claude-User": true,
+        "Perplexity-User": true,
+        "Google-Extended": true,
+        "Applebot-Extended": true,
+        "meta-externalagent": true
+      },
+      "x_robots_tag": "",
+      "x_robots_tags": [],
+      "last_modified": "",
+      "sample_type": "proof",
+      "title": "Mosaic Learning",
+      "h1": [
+        "Security"
+      ],
+      "language": "en",
+      "base_href": null,
+      "hreflang": [],
+      "word_count": 16,
+      "text_length": 124,
+      "landmarks": [
+        "footer",
+        "main"
+      ],
+      "meta_robots": "",
+      "meta_robot_directives": {
+        "robots": "",
+        "googlebot": "",
+        "bingbot": ""
+      },
+      "description": "",
+      "canonical": [],
+      "links_count": 2,
+      "links": [
+        {
+          "href": "/c03-b/sable-archive.html",
+          "text": "Enrollment guide",
+          "aria_label": "",
+          "selector": "a [source occurrence 1]",
+          "region": "content",
+          "url": "http://127.0.0.1:53097/c03-b/sable-archive.html"
+        },
+        {
+          "href": "/c03-b/index.html",
+          "text": "Home",
+          "aria_label": "",
+          "selector": "a [source occurrence 2]",
+          "region": "navigation",
+          "url": "http://127.0.0.1:53097/c03-b/index.html"
+        }
+      ],
+      "controls": [],
+      "images": {
+        "count": 0,
+        "missing_alt": 0,
+        "empty_alt": 0,
+        "items": []
+      },
+      "jsonld": {
+        "blocks": 0,
+        "parse_errors": 0,
+        "errors": [],
+        "types": [],
+        "data": [],
+        "data_omitted": false
+      },
+      "text_sample": "Security General school information. For course enrollment dates and eligibility, use the enrollment guide. Enrollment guide",
+      "main_text": "Security General school information. For course enrollment dates and eligibility, use the enrollment guide. Enrollment guide",
+      "passages": [
+        {
+          "selector": "h1 [source occurrence 1]",
+          "heading": "",
+          "text": "Security"
+        },
+        {
+          "selector": "p [source occurrence 1]",
+          "heading": "Security",
+          "text": "General school information. For course enrollment dates and eligibility, use the enrollment guide."
+        }
+      ],
+      "evidence_truncated": false,
+      "extraction_note": "Source HTML including noscript fallback; excludes semantic navigation/footer, scripts and explicit inline hidden content. CSS and JavaScript-enabled visibility require a browser.",
+      "parse_status": "parsed_html",
+      "link_base_url": "http://127.0.0.1:53097/c03-b/security.html"
+    }
+  ],
+  "errors": [],
+  "ai_probe": {
+    "status": "not_checked",
+    "reason": "No bot impersonation: local requests do not verify provider IP access."
+  },
+  "coverage": {
+    "rendered": "not_checked: collector is static",
+    "off_site": "not_checked: requires search-capable agent",
+    "actual_ai_visibility": "not_measured: requires recorded assistant answers and citations",
+    "deadline_reached": false,
+    "sample_types": {
+      "other": 1,
+      "decision": 1,
+      "offering": 1,
+      "entity": 1,
+      "proof": 1
+    },
+    "request_count": 7,
+    "elapsed_seconds": 3.03
+  }
+}

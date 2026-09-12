@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.2",
+  "site": "https://www.bbg.org/",
+  "audited_at": "2026-09-11T15:55:09.300Z",
+  "executive_summary": {
+    "conclusion": "BBG's sampled public pages provide clear, current visitor answers for what the Garden is, when to visit, admission constraints, and how to reach the entrances. The directions route resolves to the hours page's directions section, which remains usable in the rendered journey; no material discoverability or engagement defect was established in the bounded sample.",
+    "top_action_ids": []
+  },
+  "summary": {"total_findings": 0, "critical": 0, "high": 0, "medium": 0, "low": 0},
+  "coverage": {
+    "pages_checked": 4,
+    "modes": ["static", "rendered", "retrieval"],
+    "not_checked": [
+      "Independent corroborating pages were retrieved in search but not opened as external sources.",
+      "Provider assistant citations, provider IP access, Search Console settings, behavioral analytics, keyboard focus, mobile layout and form submission were not measured.",
+      "The collector's capped source fields limit absence claims beyond the inspected passages."
+    ]
+  },
+  "findings": [],
+  "proactive_opportunities": [],
+  "assessment": {
+    "mode": "agent_composed",
+    "readiness": [
+      {"stage":"access","status":"observed","detail":"The supplied page and robots policy were fetched successfully; named crawler roles were allowed in the captured policy and actual provider access was not verified.","urls":["https://www.bbg.org/","https://www.bbg.org/robots.txt"]},
+      {"stage":"extraction","status":"observed","detail":"Readable first-party facts, links, headings and ticket tables were captured across five pages, with rendered confirmation on the landing and hours destinations.","urls":["https://www.bbg.org/","https://www.bbg.org/visit","https://www.bbg.org/visit/hours","https://www.bbg.org/visit/faq"]},
+      {"stage":"answerability","status":"observed","detail":"Three representative visitor questions were checked against the supplied landing, visit, hours and FAQ pages and all required elements were supported.","urls":["https://www.bbg.org/","https://www.bbg.org/visit","https://www.bbg.org/visit/hours","https://www.bbg.org/visit/faq"]},
+      {"stage":"corroboration","status":"not_checked","detail":"A focused retrieval baseline found first-party and independent leads, but independent sources were not opened for entity corroboration within the bounded run.","urls":["https://www.bbg.org/visit/hours"]},
+      {"stage":"engagement","status":"observed","detail":"Two safe rendered visitor journeys reached public information destinations; the directions route visibly retained the entrances context through an hours-page anchor.","urls":["https://www.bbg.org/","https://www.bbg.org/visit/hours","https://www.bbg.org/visit/directions"]}
+    ],
+    "intent_tests": [
+      {"question":"What is Brooklyn Botanic Garden and what can a visitor do there?","required_elements":["identity and offer","visitor activities"],"status":"answered","evidence":[{"url":"https://www.bbg.org/","quote":"Welcome to Brooklyn Botanic Garden. Stroll 52 acres of plants and flowers displayed in a variety of landscapes and engage with nature programs and special events."}],"reason":"The landing page states the Garden identity, 52-acre offer, landscapes, programs and events."},
+      {"question":"When can I visit and what ticket constraints and prices apply?","required_elements":["seasonal hours","ticket requirement and advance timing","material ticket prices and child eligibility"],"status":"answered","evidence":[{"url":"https://www.bbg.org/visit/hours","quote":"Advance tickets are recommended. Tickets are available 30 days in advance of visit dates. Same-day tickets may be obtained at Garden admission booths."},{"url":"https://www.bbg.org/visit/hours","quote":"Adults $22 $23.67 ($22 + $1.67 Fee)"},{"url":"https://www.bbg.org/visit/hours","quote":"Children under 12 are free. Children under 14 must be supervised by an adult 18 or over."}],"reason":"The hours page supplies September and October schedules, ticket timing, prices, fees, child eligibility and supervision conditions."},
+      {"question":"How do I reach the Garden and what entrance condition should I know?","required_elements":["open entrances and address","temporary closure notice","directions or parking route"],"status":"answered","evidence":[{"url":"https://www.bbg.org/visit","quote":"Entrances: 455 Flatbush Avenue 990 Washington Avenue Brooklyn, NY 11225 Directions & Parking ›"},{"url":"https://www.bbg.org/visit/hours","quote":"150 Eastern Parkway is temporarily closed."}],"reason":"The visit and hours pages identify the open addresses, closure and a directions/parking route."}
+    ],
+    "journeys": [
+      {"task":"Plan a general garden visit and reach hours/admission information","starting_context":"Rendered BBG homepage with Plan a Visit and Full Hours & Admission links.","steps":[{"url":"https://www.bbg.org/","action":"[rendered] Follow Full Hours & Admission from the Visit section.","observation":"The link is visibly present and targets /visit/hours."},{"url":"https://www.bbg.org/visit/hours","action":"[rendered] Read the hours, admission rules and ticket links.","observation":"Hours & Admission renders with seasonal hours, admission requirements, ticket prices, and Get Tickets/Member Tickets links."}],"status":"completed","reason":"The public hours/admission destination was reached and answered the planning task without submission or authentication."},
+      {"task":"Check entrance access and directions after choosing the directions route","starting_context":"Rendered hours/admission page showing the temporary Eastern Parkway closure and Entrances, Directions & Parking link.","steps":[{"url":"https://www.bbg.org/visit/directions","action":"[rendered] Follow the Directions & Parking route from the hours page.","observation":"The requested route resolves to https://www.bbg.org/visit/hours#directions."},{"url":"https://www.bbg.org/visit/hours#directions","action":"[rendered] Inspect the anchored entrances section.","observation":"The rendered section shows 990 Washington Avenue and 455 Flatbush Avenue, Brooklyn NY 11225, and states 150 Eastern Parkway is temporarily closed."}],"status":"completed","reason":"The directions handoff reaches the relevant public entrances section; no material context loss was observed."}
+    ],
+    "visibility": {"status":"not_measured","detail":"No assistant answer runs were recorded. Crawl, browser and retrieval observations do not establish citation rates.","cohorts":[]}
+  }
+}

@@ -10,9 +10,12 @@ from zipfile import ZIP_DEFLATED, ZipFile
 
 ROOT = Path(__file__).resolve().parents[1]
 PACKAGE_ROOT = "brand-ai-readiness-audit"
-INCLUDED_FILES = ("marketplace.json", "README.md", "VALIDATION.md", "DESIGN.md", "LICENSE")
-INCLUDED_DIRECTORIES = ("skills", "evals", "examples", "tests", "scripts")
-EXCLUDED_PARTS = {"__pycache__", ".pytest_cache"}
+# These two validators are runtime dependencies of the report finalizer.
+# Development tests, evaluations and change history stay in the repository.
+INCLUDED_FILES = ("marketplace.json", "README.md", "LICENSE",
+                  "tests/validate_report.py", "tests/report_evidence.py")
+INCLUDED_DIRECTORIES = ("skills", "examples")
+EXCLUDED_PARTS = {"__pycache__", ".pytest_cache", ".DS_Store", "Thumbs.db", "__MACOSX"}
 EXCLUDED_SUFFIXES = {".pyc", ".pyo"}
 
 
@@ -38,8 +41,12 @@ def verify_archive(path: Path) -> dict[str, object]:
         prefix = f"{PACKAGE_ROOT}/"
         if not names or any(not name.startswith(prefix) for name in names):
             raise RuntimeError("Archive must contain exactly one marketplace root directory")
-        if any("__pycache__" in name or name.endswith((".pyc", ".pyo")) for name in names):
-            raise RuntimeError("Archive contains generated Python cache files")
+        if any(EXCLUDED_PARTS.intersection(Path(name).parts)
+               or Path(name).suffix.lower() in EXCLUDED_SUFFIXES for name in names):
+            raise RuntimeError("Archive contains generated cache or operating-system files")
+        expected = {f"{prefix}{source.relative_to(ROOT).as_posix()}" for source in source_files()}
+        if set(names) != expected:
+            raise RuntimeError("Archive does not match the submission file allowlist")
 
         manifest_name = f"{prefix}marketplace.json"
         readme_name = f"{prefix}README.md"

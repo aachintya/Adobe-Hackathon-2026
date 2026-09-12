@@ -116,6 +116,10 @@ class EdgeCaseTests(unittest.TestCase):
             question.update(status='not_checked', evidence=[])
         for journey in limited['assessment']['journeys']:
             journey.update(status='not_checked', steps=[])
+        self.assertTrue(validate(limited), 'empty checks cannot retain observed readiness')
+        for stage in limited['assessment']['readiness']:
+            if stage['stage'] in {'answerability', 'engagement'}:
+                stage.update(status='not_checked', detail='This lane was not exercised.', urls=[])
         self.assertEqual(validate(limited), [])
 
     def test_visibility_run_cannot_be_counted_in_multiple_cohorts(self):

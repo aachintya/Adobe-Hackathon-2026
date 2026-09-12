@@ -1,0 +1,24 @@
+{
+  "review_version": "1",
+  "observations": [],
+  "claims": {},
+  "answers": [
+    {"test_index": 0, "evidence_index": 0, "ref": "page:0", "field": "main_text", "element_indices": [0, 1, 2, 3]},
+    {"test_index": 1, "evidence_index": 0, "ref": "page:1", "field": "main_text", "element_indices": [0, 1, 2]},
+    {"test_index": 2, "evidence_index": 0, "ref": "page:2", "field": "main_text", "element_indices": [0, 1, 2, 3, 4, 5]}
+  ],
+  "journeys": [
+    {"journey_index": 0, "mode": "source", "steps": [
+      {"step_index": 0, "ref": "page:0", "assertions": [{"type": "quote", "ref": "page:0", "field": "links.5.text", "quote": "Guía de inscripción — enrollment dates and eligibility"}]},
+      {"step_index": 1, "ref": "page:1", "assertions": [{"type": "quote", "ref": "page:1", "field": "links.0.text", "quote": "How to apply"}]},
+      {"step_index": 2, "ref": "page:2", "assertions": [{"type": "quote", "ref": "page:2", "field": "main_text", "quote": "No online submission is required."}]}
+    ]},
+    {"journey_index": 1, "mode": "source", "steps": [
+      {"step_index": 0, "ref": "page:0", "assertions": [{"type": "quote", "ref": "page:0", "field": "links.0.text", "quote": "Bookshop prices"}]},
+      {"step_index": 1, "ref": "page:3", "assertions": [{"type": "quote", "ref": "page:3", "field": "main_text", "quote": "Workbooks are optional; all required course materials are included in course enrollment."}]},
+      {"step_index": 2, "ref": "page:3", "assertions": [{"type": "quote", "ref": "page:3", "field": "links.0.text", "quote": "Enrollment guide"}]},
+      {"step_index": 3, "ref": "page:1", "assertions": [{"type": "quote", "ref": "page:1", "field": "main_text", "quote": "Enrollment closes on 18 October 2026 at 17:00 local time."}]}
+    ]}
+  ],
+  "corroboration": []
+}

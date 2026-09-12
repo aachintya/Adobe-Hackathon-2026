@@ -1,0 +1,46 @@
+{
+  "report_sha256": "ff834a2165c010a63166ee35e1593b79b71ee31651d8291f2d5431b7c1775cc6",
+  "adjudications": [
+    {
+      "item_id": "F-001",
+      "verdict": "correct",
+      "root_id": "generic-navigation-destinations",
+      "scope": 2,
+      "evidence": 2,
+      "severity": 2,
+      "action_correctness": 2,
+      "action_mechanism": 2,
+      "action_specificity": 2,
+      "action_verification": 2
+    }
+  ],
+  "answer_support": {
+    "0": {
+      "adult learners": 2,
+      "autumn evening language courses": 2
+    },
+    "1": {
+      "eligible age 18 or older": 2,
+      "classes start 2 November 2026": 2,
+      "enrollment closes 18 October 2026 at 17:00 local time": 2
+    },
+    "2": {
+      "read the enrollment guide": 2,
+      "choose a class": 2,
+      "visit the public reception desk with proof of age": 2,
+      "no online submission": 2,
+      "weekday reception hours 09:00\u201317:00": 2
+    }
+  },
+  "runtime": {
+    "completion": "completed",
+    "timestamp_kind": "observed_completion_upper_bound",
+    "observer_start": "2026-09-11T15:35:14Z",
+    "delivery": "2026-09-11T15:39:47Z"
+  },
+  "review_notes": [
+    "Both reports found real unintended placeholder-page gaps, so this is not a healthy-control result.",
+    "The baseline consolidated this shared placeholder/navigation cause; the candidate split it into two findings. Candidate F-002 is scored as a duplicate root, not a false factual observation.",
+    "The candidate recovered the enrollment deadline in its five-page capture. Baseline independently inspected the guide via a host observation after initial collection."
+  ]
+}

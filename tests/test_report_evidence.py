@@ -62,6 +62,28 @@ class EvidenceReviewTests(unittest.TestCase):
         self.assertEqual(validate(self.report), [])
         self.assertEqual(self.errors(), [])
 
+    def test_derived_table_context_is_not_a_website_quote(self):
+        self.evidence['pages'][1]['tables'] = [{'records': [{'context': '7.2 | Fixed release | 7.2.9', 'context_is_derived': True}]}]
+        self.review['claims']['O-001']['assertions'] = [{'type': 'quote', 'ref': 'page:1', 'field': 'tables.0.records.0.context', 'quote': '7.2 | Fixed release | 7.2.9'}]
+        self.assertRejected('derived table context')
+
+    def test_quote_field_hint_does_not_relax_verification(self):
+        self.review['claims']['O-001']['assertions'] = [{'type': 'quote', 'ref': 'page:1', 'field': 'main_text', 'quote': 'A captured description'}]
+        self.assertRejected('same-record exact matches: description')
+        self.review['claims']['O-001']['assertions'][0]['field'] = 'description'
+        self.assertEqual(self.errors(), [])
+
+    def test_empty_assessments_cannot_claim_observed_stages(self):
+        for q in self.report['assessment']['intent_tests']:
+            q.update(status='not_checked', evidence=[])
+        for j in self.report['assessment']['journeys']:
+            j.update(status='not_checked', steps=[])
+        for stage in self.report['assessment']['readiness']:
+            if stage['stage'] in {'answerability', 'engagement'}: stage['status']='observed'
+        errors = validate(self.report)
+        self.assertTrue(any('observed answerability' in e for e in errors))
+        self.assertTrue(any('observed engagement' in e for e in errors))
+
     def test_every_finding_and_opportunity_requires_support(self):
         for ident in ("F-001", "O-001"):
             with self.subTest(ident=ident):

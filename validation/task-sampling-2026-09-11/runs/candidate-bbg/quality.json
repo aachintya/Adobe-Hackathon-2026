@@ -1,0 +1,29 @@
+{
+  "report": "runs/candidate-bbg/draft-report.json",
+  "complete": true,
+  "validation_errors": [],
+  "quality": {
+    "finding_precision": null,
+    "root_recall": null,
+    "root_recall_full": null,
+    "root_recall_partial": null,
+    "high_or_critical_recall": null,
+    "false_findings": 0,
+    "duplicate_findings": 0,
+    "scope_agreement": null,
+    "evidence_fidelity": 1.5,
+    "severity_agreement": null,
+    "actions": {
+      "action_correctness": 1.0,
+      "action_mechanism": 2.0,
+      "action_specificity": 2.0,
+      "action_verification": 2.0
+    },
+    "answer_requirement_support": 1.6667
+  },
+  "runtime": {
+    "completion": 0,
+    "duration_seconds": 352.0,
+    "timestamp_kind": "observed_completion_upper_bound"
+  }
+}

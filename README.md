@@ -19,9 +19,7 @@ Ask the host agent:
 
 > Use the entrypoint in `skills/audit-orchestrator/SKILL.md` to audit https://example.com for AI discoverability and on-site engagement. Return the composed JSON report.
 
-The agent derives 3-5 relevant visitor questions, evaluates supporting facts, traces two safe public journeys, checks source credibility and returns prioritized fixes. It uses the same evidence across all skills. Paths resolve from the installed skill, so invocation does not depend on the working directory.
-
-For a friend testing in Cursor or another file-capable agent, see [the manual setup and paired-test guide](evals/MANUAL-TESTING.md). It includes copy-paste prompts, browser/no-browser modes and an evidence-review checklist.
+The agent derives three priority visitor questions by default (up to five for specific needs), evaluates supporting facts, traces two safe public journeys, checks source credibility and returns prioritized fixes. It uses the same evidence across all skills. Paths resolve from the installed skill, so invocation does not depend on the working directory.
 
 ## Run the optional Python fallback
 
@@ -40,8 +38,6 @@ The report includes findings, evidence, severity, suggested actions, coverage an
 
 An optional [answer-locality experiment](skills/audit-orchestrator/references/answer-locality.md) shows whether selected answer facts and their qualifiers fit together in short text windows. It runs offline on saved evidence and includes a reproducible synthetic before/proposed answer-card example. It measures exact-quote separation in words, not model tokens, semantic correctness or citation likelihood, and adds no mandatory work to the five-minute audit.
 
-See [live usage evaluation](https://github.com/aachintya/Adobe-Hackathon-2026/blob/main/validation/LIVE-USAGE-2026-09-09.md) for real browser journeys, independent agent reports, observed misses, instruction improvements and measured coverage limits. Evaluation evidence stays in the repository and is excluded from the submission ZIP. Schema-valid static collection is not a completed agent audit.
-
 ## Host environments
 
 | Browser | Python | Supported behavior |
@@ -53,15 +49,10 @@ See [live usage evaluation](https://github.com/aachintya/Adobe-Hackathon-2026/bl
 
 Python means Python 3.10+ with permission to execute; an installed but prohibited runtime is unavailable. All paths require reachable site evidence. Without network tools or supplied evidence, a live audit cannot run. Search, source HTML/headers, a clock or supplied UTC timestamp, and writable output each have separate capability requirements. The host can return the JSON report in chat when it cannot write files. See [the capability and fallback rules](skills/audit-orchestrator/references/tool-availability.md).
 
-These are supported execution paths, not a guarantee of identical coverage or of Adobe's judging environment. The handout permits bundled scripts but does not guarantee a browser, Python runtime, or particular model. The live evaluation records what was actually exercised; runtime and detection quality still depend on the host and site.
+Coverage and runtime depend on the host's permitted tools and the target site.
 
-## Verify and package
+## Package contents
 
-```text
-python3 tests/run_all.py
-python3 scripts/package_submission.py
-```
+Keep the complete `brand-ai-readiness-audit/` folder together. It contains the manifest, four skills with their references and helpers, synthetic usage examples, this README and the license. The two files under `tests/` are runtime report validators used by the finalizer; retain them.
 
-Submit `dist/brand-ai-readiness-audit.zip`. It contains one folder, `brand-ai-readiness-audit/`, with the manifest, skills, references, helpers, examples and validation tools. The package excludes caches, live crawl outputs and other archives. Both compressed and uncompressed sizes are checked against a 50 MB cap.
-
-Standalone collection defaults to 12 pages, 2 requests/second and 120 seconds. The timed skill starts with 5 pages and a 45-second collector cap, stops evidence gathering by 120 seconds, and targets 280 seconds through composition, verification and delivery. The finalization gate checks its own deadline; enforcing cancellation and the full request-to-delivery deadline requires host support. The audit respects robots, uses its own crawler identity and recommends changes without modifying live sites. See [design](DESIGN.md) and [validation](VALIDATION.md).
+Standalone collection defaults to 12 pages, 2 requests/second and 120 seconds. The timed skill starts with 1 page/15 seconds, selects visitor questions and observed task links, then resumes to a total of 5 pages with up to 30 further seconds. It stops evidence gathering by 120 seconds, and targets 280 seconds through composition, verification and delivery. The finalization gate checks its own deadline; enforcing cancellation and the full request-to-delivery deadline requires host support. The audit respects robots, uses its own crawler identity and recommends changes without modifying live sites.

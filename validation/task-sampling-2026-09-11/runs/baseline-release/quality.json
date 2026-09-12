@@ -1,0 +1,29 @@
+{
+  "complete": true,
+  "quality": {
+    "actions": {
+      "action_correctness": 2.0,
+      "action_mechanism": 2.0,
+      "action_specificity": 2.0,
+      "action_verification": 2.0
+    },
+    "answer_requirement_support": 0.0,
+    "duplicate_findings": 0,
+    "evidence_fidelity": 2.0,
+    "false_findings": 0,
+    "finding_precision": 1.0,
+    "high_or_critical_recall": 1.0,
+    "root_recall": 1.0,
+    "root_recall_full": 1.0,
+    "root_recall_partial": 1.0,
+    "scope_agreement": 2.0,
+    "severity_agreement": 2.0
+  },
+  "report": "runs/baseline-release/final-report.json",
+  "runtime": {
+    "completion": 1,
+    "duration_seconds": 263.0,
+    "timestamp_kind": "observed_completion_upper_bound"
+  },
+  "validation_errors": []
+}

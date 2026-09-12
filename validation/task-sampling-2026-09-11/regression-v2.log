@@ -1,0 +1,133 @@
+Publication note: local machine paths are normalized; test outcomes are unchanged.
+{
+  "result": "PASS",
+  "marketplace": "brand-ai-readiness-audit",
+  "skills": [
+    "audit-orchestrator",
+    "crawl-extract-audit",
+    "entity-trust-audit",
+    "engagement-context-audit"
+  ],
+  "entrypoints": 1
+}
+127.0.0.1 - - [11/Sep/2026 21:25:24] code 404, message File not found
+127.0.0.1 - - [11/Sep/2026 21:25:24] "GET /robots.txt HTTP/1.1" 404 -
+127.0.0.1 - - [11/Sep/2026 21:25:24] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [11/Sep/2026 21:25:25] code 404, message File not found
+127.0.0.1 - - [11/Sep/2026 21:25:25] "GET /sitemap.xml HTTP/1.1" 404 -
+127.0.0.1 - - [11/Sep/2026 21:25:26] "GET /about.html HTTP/1.1" 200 -
+127.0.0.1 - - [11/Sep/2026 21:25:26] "GET /product.html HTTP/1.1" 200 -
+127.0.0.1 - - [11/Sep/2026 21:25:27] "GET /robots.txt HTTP/1.1" 200 -
+127.0.0.1 - - [11/Sep/2026 21:25:27] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [11/Sep/2026 21:25:28] code 404, message File not found
+127.0.0.1 - - [11/Sep/2026 21:25:28] "GET /sitemap.xml HTTP/1.1" 404 -
+127.0.0.1 - - [11/Sep/2026 21:25:28] "GET /offer.html HTTP/1.1" 200 -
+{
+  "result": "PASS",
+  "good_pages": 3,
+  "bad_triggers": {
+    "noindex": true,
+    "render_escalation": true
+  },
+  "uncertainty_preserved": true
+}
+{
+  "result": "PASS",
+  "scenarios": [
+    "named-agent block",
+    "401",
+    "403",
+    "404",
+    "503",
+    "malformed",
+    "wildcard root block",
+    "redirect"
+  ]
+}
+{
+  "result": "PASS",
+  "same_authority": true,
+  "cross_authority_blocked": true,
+  "robots_target_blocked": true,
+  "loop_bounded": true
+}
+{
+  "result": "PASS",
+  "path_preserved": true,
+  "sitemap_discovery": true,
+  "query_normalized": true,
+  "non_html_skipped": true,
+  "cross_site_redirect_blocked_before_fetch": true,
+  "path_agent_policies": true
+}
+....
+----------------------------------------------------------------------
+Ran 4 tests in 5.781s
+
+OK
+........
+----------------------------------------------------------------------
+Ran 8 tests in 0.003s
+
+OK
+...........
+----------------------------------------------------------------------
+Ran 11 tests in 0.045s
+
+OK
+{
+  "result": "PASS",
+  "forward_cases": 12,
+  "dimensions": [
+    "answerability",
+    "denominators",
+    "entity ambiguity",
+    "five-minute",
+    "healthy",
+    "images and pdfs",
+    "multilingual",
+    "path-preserving",
+    "rendered",
+    "sitemap",
+    "training",
+    "university"
+  ]
+}
+.................
+----------------------------------------------------------------------
+Ran 17 tests in 0.004s
+
+OK
+...F...
+======================================================================
+FAIL: test_composed_report_requires_question_and_journey_records (__main__.EdgeCaseTests.test_composed_report_requires_question_and_journey_records)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repository-root>/tests/test_edge_cases.py", line 119, in test_composed_report_requires_question_and_journey_records
+    self.assertEqual(validate(limited), [])
+AssertionError: Lists differ: ['observed answerability requires at least[138 chars]ved'] != []
+
+First list contains 2 additional elements.
+First extra element 0:
+'observed answerability requires at least one assessed question; all questions are not_checked'
+
++ []
+- ['observed answerability requires at least one assessed question; all '
+-  'questions are not_checked',
+-  'observed engagement requires recorded journey steps; empty journeys are not '
+-  'observed']
+
+----------------------------------------------------------------------
+Ran 7 tests in 3.556s
+
+FAILED (failures=1)
+Traceback (most recent call last):
+  File "<repository-root>/tests/run_all.py", line 32, in <module>
+    if __name__ == "__main__": main()
+                               ^^^^^^
+  File "<repository-root>/tests/run_all.py", line 29, in main
+    for command in COMMANDS: subprocess.run(command, check=True)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<python-runtime>/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['<python-runtime>/bin/python3', '<repository-root>/tests/test_edge_cases.py']' returned non-zero exit status 1.

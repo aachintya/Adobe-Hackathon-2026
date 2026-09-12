@@ -97,9 +97,13 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("url"); parser.add_argument("--output-dir", default="audit-output")
     parser.add_argument("--max-pages", type=int, default=12); parser.add_argument("--max-seconds", type=int, default=120)
+    parser.add_argument("--resume-evidence", help="Reuse the landing-page capture from this invocation")
+    parser.add_argument("--target-url", action="append", default=[], help="Observed task destination to prioritize (repeatable)")
     args = parser.parse_args()
-    try: evidence = collect(args.url, args.max_pages, args.max_seconds)
-    except ValueError as error: parser.error(str(error))
+    try:
+        previous = json.loads(Path(args.resume_evidence).read_text(encoding="utf-8")) if args.resume_evidence else None
+        evidence = collect(args.url, args.max_pages, args.max_seconds, resume=previous, target_urls=args.target_url)
+    except (ValueError, OSError) as error: parser.error(str(error))
     destination = Path(args.output_dir); destination.mkdir(parents=True, exist_ok=True)
     for name, value in (("evidence.json", evidence), ("report.json", baseline(evidence))):
         (destination / name).write_text(json.dumps(value, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")

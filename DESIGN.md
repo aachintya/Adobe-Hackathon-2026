@@ -17,7 +17,8 @@ No overall AI visibility score is inferred from HTML counts, markup, training co
 
 - Standard-library helpers keep the package portable. A browser-capable host agent supplies rendered review.
 - Capability declarations do not provision tools. Select the available collection path before starting; source fetch, search, browser interaction, execution, a trustworthy clock and writable output are separate capabilities. Return the report in chat if files cannot be written, and disclose any unavailable check.
-- Source extraction retains material passages, link labels and destinations, structured values and indexing directives. External CSS and JavaScript behavior require a browser.
+- The timed collector captures the landing page before the agent chooses its questions. Resumption reuses captured pages and prioritizes observed task destinations within the total page cap, with fresh robots checks and cumulative request/time records.
+- Source extraction retains material passages, link labels and destinations (including empty/missing targets), structured values and indexing directives. Simple table records preserve row/column relationships; complex tables remain explicit review cases. Literal email-recipient mismatches and empty CTA anchors are candidates for review. External CSS and JavaScript behavior require a browser.
 - Requests use a dedicated crawler identity, respect applicable robots rules and stay within bounded public navigation. Redirects to another authority are left for explicit agent review of the destination's policy and scope.
 - The Python report is a `static_baseline`. The agent completes answerability, trust and visitor-journey analysis and records unavailable checks explicitly.
 - The composed draft keeps schema 1.2. A compact review sidecar references collector records and additional host observations; typed assertions check factual fields, exact quotes and observed broken destinations. Finding scopes, answer quotes, reading modes and external corroboration are checked against those records. Semantic entailment, source independence and observation authenticity remain reviewer responsibilities.
@@ -25,6 +26,12 @@ No overall AI visibility score is inferred from HTML counts, markup, training co
 - The optional offline answer-locality probe measures the shortest span containing reviewer-selected answer/qualifier quotes and tests two word-window alignments. It preserves capture limits and input hashes; its results are review candidates, not automated visibility scores or website defects.
 - When Python, files and an observed invocation start are available, `finalize_report.py` publishes a distinct final report and a receipt only after schema/evidence checks and the strict 300-second finalization gate pass. Failed drafts remain available. Hashes bind the checked artifact versions. The command cannot enforce the host's collection cutoff or user-visible delivery deadline; tool-only/manual paths disclose their validation limits.
 - The collector defaults to 120 seconds. The full skill targets 280 seconds across collection, browser review, search and composition; missing coverage remains visible when time expires.
-- The ZIP has one marketplace root and includes its validators and controlled fixtures. Tests run the extracted fallback from an unrelated working directory.
+- The ZIP has one marketplace root containing the runtime skills, validators and synthetic usage examples. Development tests, controlled test fixtures, evaluations, design notes and validation history stay in the repository. Tests run the extracted fallback and composed-report finalizer from an unrelated working directory.
 
 Schema and collector identifiers are machine-readable compatibility metadata. Package names and documentation do not carry release numbers.
+
+## Repository development
+
+Run `python3 tests/run_all.py` to verify the implementation, then `python3 scripts/package_submission.py` to rebuild `dist/brand-ai-readiness-audit.zip`. The package builder uses an explicit file allowlist and checks both compressed and uncompressed size against 50 MB.
+
+The [manual testing guide](evals/MANUAL-TESTING.md), [evaluation protocol](evals/README.md) and [validation history](VALIDATION.md) document development checks and their limitations. These files are not shipped in the submission ZIP.

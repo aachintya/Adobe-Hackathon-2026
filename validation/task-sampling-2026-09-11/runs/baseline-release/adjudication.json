@@ -1,0 +1,47 @@
+{
+  "report_sha256": "6c55cde18a6b66364fce4c819b1b08a8b16eb3a202d2f5d53ce1e82102f168ac",
+  "adjudications": [
+    {
+      "item_id": "F-001",
+      "verdict": "correct",
+      "root_id": "release-scope-contradiction",
+      "scope": 2,
+      "evidence": 2,
+      "severity": 2,
+      "action_correctness": 2,
+      "action_mechanism": 2,
+      "action_specificity": 2,
+      "action_verification": 2
+    }
+  ],
+  "answer_support": {
+    "0": {
+      "product identity": 0,
+      "intended audience/use": 0
+    },
+    "1": {
+      "affected versions": 0,
+      "fixed release": 0,
+      "7.2.9 status": 0
+    },
+    "2": {
+      "licence name": 0
+    },
+    "3": {
+      "choose release": 0,
+      "back up configuration": 0,
+      "install and restart": 0
+    }
+  },
+  "runtime": {
+    "completion": "completed",
+    "timestamp_kind": "observed_completion_upper_bound",
+    "observer_start": "2026-09-11T15:30:37Z",
+    "delivery": "2026-09-11T15:35:00Z"
+  },
+  "review_notes": [
+    "Both quoted table and prose support the planted release contradiction; severity and scoped action accepted.",
+    "Search was permitted but unused; unavailable-search wording in coverage overstates a capability limit.",
+    "Baseline leaves all four question records not_checked despite summary claiming answerability."
+  ]
+}

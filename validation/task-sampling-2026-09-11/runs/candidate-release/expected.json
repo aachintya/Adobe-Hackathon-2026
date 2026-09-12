@@ -1,0 +1,8 @@
+{
+  "expected_roots": [
+    {
+      "id": "release-scope-contradiction",
+      "severity": "high"
+    }
+  ]
+}

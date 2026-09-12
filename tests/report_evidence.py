@@ -58,6 +58,21 @@ def _quote(quote, value):
             and isinstance(value, str) and " ".join(quote.split()) in " ".join(value.split()))
 
 
+def _quote_fields(data, quote):
+    """Locator hints only: never rewrite a quote or infer semantic support."""
+    fields = []
+    for name in ("main_text", "text", "description", "title"):
+        if _quote(quote, data.get(name)): fields.append(name)
+    for name in ("h1", "passages"):
+        items = data.get(name, [])
+        if not isinstance(items, list): continue
+        for i, item in enumerate(items):
+            path = f"{name}.{i}"
+            if isinstance(item, dict): item, path = item.get("text"), path + ".text"
+            if _quote(quote, item): fields.append(path)
+    return fields[:4]
+
+
 def _record(data, mode="static", kind="resource", complete=False):
     aliases = {_url(data.get("url")), _url(data.get("final_url"))} - {""}
     for redirect in data.get("redirects", []):
@@ -169,8 +184,14 @@ def _validate(doc, evidence, review):
             data, kind = record["data"], assertion.get("type")
             value = _field(data, assertion.get("field"))
             if kind == "quote":
+                field = assertion.get("field")
+                parent = _field(data, field.rsplit(".", 1)[0]) if isinstance(field, str) else MISSING
+                if isinstance(parent, dict) and parent.get("context_is_derived") is True and field.endswith(".context"):
+                    errors.append(f"{label}: derived table context is not a verbatim website quote; cite raw headers and cells")
                 if not record["readable"] or not _quote(assertion.get("quote"), value):
-                    errors.append(f"{label}: quote is not a short verbatim excerpt from readable captured evidence")
+                    hints = _quote_fields(data, assertion.get("quote")) if record["readable"] else []
+                    suffix = f"; same-record exact matches: {', '.join(hints)} (review context before changing the field)" if hints else ""
+                    errors.append(f"{label}: quote is not a short verbatim excerpt from readable captured evidence{suffix}")
             elif kind == "field_equals":
                 expected = assertion.get("value", MISSING)
                 if value is MISSING or type(value) is not type(expected) or value != expected:

@@ -1,0 +1,71 @@
+{
+  "schema_version": "1.2",
+  "site": "https://www.bbg.org/",
+  "audited_at": "2026-09-11T15:47:55Z",
+  "executive_summary": {
+    "conclusion": "Brooklyn Botanic Garden exposes clear, readable visitor and membership information, and the tested public routes reached useful destinations. One education page presents a closed 2026 course alongside an active-looking external registration link, so time-sensitive offer states need clearer handoff maintenance; actual AI visibility was not measured.",
+    "top_action_ids": ["F-001"]
+  },
+  "summary": {"total_findings": 1, "critical": 0, "high": 0, "medium": 1, "low": 0},
+  "coverage": {
+    "pages_checked": 5,
+    "modes": ["static", "rendered", "off_site"],
+    "not_checked": ["Actual assistant citations, provider logs, Search Console settings and behavioral analytics were not measured.", "Keyboard focus, mobile breakpoints and form submission were not exercised.", "Collector text is capped on sampled pages; absence claims outside inspected passages are not supported."]
+  },
+  "findings": [
+    {
+      "id": "F-001",
+      "title": "Closed teacher course retains an active-looking credit-registration handoff",
+      "category": "engagement",
+      "severity": "medium",
+      "confidence": "medium",
+      "evidence": {
+        "observation": "The Teacher Professional Learning page says registration has closed for the dated 2026 course, then presents a live-looking external link labeled “Register with ASPDP to receive ‘P’ credits”. A visitor seeking the current course state can reasonably interpret the handoff as an available next step.",
+        "affected": 1,
+        "checked": 1,
+        "urls": ["https://www.bbg.org/learn/doe_inservice_course"]
+      },
+      "suggested_action": {
+        "summary": "Archive the closed course CTA or label it explicitly as historical, and route educators to the current professional-learning option.",
+        "priority": "medium",
+        "effort": "low",
+        "owner_hint": "Education program content owner",
+        "mechanism": "Align the course status, date, and ASPDP handoff so the page exposes one unambiguous next step for the current enrollment period.",
+        "verification": "With the course marked closed, the page no longer presents an unlabeled enrollment action; a current course or workshop route is visibly linked and its status matches the destination."
+      }
+    }
+  ],
+  "proactive_opportunities": [
+    {
+      "id": "O-001",
+      "title": "Publish compact, date-qualified visitor answer blocks",
+      "rationale": "The rendered homepage and Hours & Admission page already expose high-value facts such as current hours, last entry, admission prices, child rules, and the temporarily closed Eastern Parkway entrance. Grouping those facts in a maintained, date-qualified summary on the primary visit route would make extraction and visitor handoff more resilient.",
+      "priority": "low",
+      "effort": "medium",
+      "owner_hint": "Visitor services and web content owners",
+      "mechanism": "Keep the current date/season qualifier adjacent to hours, closures, ticket rules, and the ticket CTA so readers and retrieval systems can associate each fact with its scope.",
+      "verification": "A fresh visit-page review finds one contiguous summary containing hours, last entry, ticket rule, current entrance status, and a next-step link, with qualifiers matching the detailed page."
+    }
+  ],
+  "assessment": {
+    "mode": "agent_composed",
+    "readiness": [
+      {"stage": "access", "status": "observed", "detail": "robots.txt allows the named search, user-fetch, and training agents for the sampled public paths; provider access itself remains unverified.", "urls": ["https://www.bbg.org/robots.txt"]},
+      {"stage": "extraction", "status": "observed", "detail": "Five first-party HTML pages yielded readable headings, passages, links, current visitor facts, and course details; rendered checks confirmed the homepage and two task destinations.", "urls": ["https://www.bbg.org/", "https://www.bbg.org/visit", "https://www.bbg.org/visit/hours", "https://www.bbg.org/support/member_events_and_discounts", "https://www.bbg.org/learn/doe_inservice_course"]},
+      {"stage": "answerability", "status": "observed", "detail": "Four representative questions were tested against the sampled visitor, membership, and education pages; one course-state handoff remains ambiguous and is captured as F-001.", "urls": ["https://www.bbg.org/visit/hours", "https://www.bbg.org/support/member_events_and_discounts", "https://www.bbg.org/learn/doe_inservice_course"]},
+      {"stage": "corroboration", "status": "observed", "detail": "Exact-entity retrieval returned BBG first-party pages; an opened National Park Service page independently identifies Brooklyn Botanic Garden in New York City and says it is managed by BBG. An EEAC listing corroborates the teacher-learning offering but is older and fee values are not treated as current.", "urls": ["https://www.nps.gov/places/brooklyn-botanic-garden.htm", "https://eeac-nyc.org/eepl-opportunities/list-of-eepl-programs/custom-professional-learning-workshops-3-p-credit-courses"]},
+      {"stage": "engagement", "status": "observed", "detail": "Two rendered journeys completed: homepage to hours/admission, and membership benefits to a public join/contact route. No form was submitted.", "urls": ["https://www.bbg.org/", "https://www.bbg.org/visit/hours", "https://www.bbg.org/support/member_events_and_discounts"]}
+    ],
+    "intent_tests": [
+      {"question": "What is Brooklyn Botanic Garden and where is it?", "required_elements": ["entity name", "Brooklyn location", "public garden context"], "status": "answered", "evidence": [{"url": "https://www.bbg.org/", "quote": "Brooklyn Botanic Garden"}, {"url": "https://www.nps.gov/places/brooklyn-botanic-garden.htm", "quote": "Location: New York City, NY"}], "reason": "The first-party title and rendered brand identity establish the entity; the independent NPS record supplies the location and identifies BBG as manager."},
+      {"question": "When can a visitor go, what does admission cost, and what restrictions matter?", "required_elements": ["seasonal hours", "ticket prices", "last entry or ticket rule", "child/entry restrictions"], "status": "answered", "evidence": [{"url": "https://www.bbg.org/visit/hours", "quote": "Tuesday–Thursday: 10 a.m.–7 p.m. Friday–Sunday: 10 a.m.–6 p.m."}, {"url": "https://www.bbg.org/visit/hours", "quote": "Adults $22 $23.67 ($22 + $1.67 Fee)"}, {"url": "https://www.bbg.org/visit/hours", "quote": "Last entry 30 minutes before closing"}, {"url": "https://www.bbg.org/visit/hours", "quote": "Children under 12 are free. Children under 14 must be supervised by an adult 18 or over."}], "reason": "The rendered Hours & Admission page provides each required element with qualifiers."},
+      {"question": "What do members receive and how do I take the next step?", "required_elements": ["free admission benefit", "member-only access or discounts", "join/contact route"], "status": "answered", "evidence": [{"url": "https://www.bbg.org/support/member_events_and_discounts", "quote": "Garden members enjoy perks including discounts and special members-only hours."}, {"url": "https://www.bbg.org/support/member_events_and_discounts", "quote": "BECOME A MEMBER"}, {"url": "https://www.bbg.org/support/member_events_and_discounts", "quote": "call Membership at 718-623-7210 or email membership@bbg.org"}], "reason": "Benefits, a join CTA, and contact details are present on the rendered page."},
+      {"question": "Is the teacher professional-learning course currently available and what should an educator do?", "required_elements": ["audience and offer", "date/fee", "current registration status", "next step"], "status": "partial", "evidence": [{"url": "https://www.bbg.org/learn/doe_inservice_course", "quote": "Pre-K–12 Teachers Fee: $262"}, {"url": "https://www.bbg.org/learn/doe_inservice_course", "quote": "Registration has closed."}, {"url": "https://www.bbg.org/learn/doe_inservice_course", "quote": "Register with ASPDP to receive “P” credits ›"}], "reason": "Audience, fee and closure are explicit, but the relationship between the closed BBG course and the remaining ASPDP link is not explained; this creates the handoff ambiguity in F-001."}
+    ],
+    "journeys": [
+      {"task": "Plan a garden visit and confirm hours, admission, and entrance status", "starting_context": "Rendered BBG homepage visitor sees Today’s Hours, the temporary Eastern Parkway closure, and the Full Hours & Admission link.", "steps": [{"url": "https://www.bbg.org/", "action": "[rendered] Select Full Hours & Admission from the Plan a Visit section.", "observation": "Hours & Admission loads and preserves the visit context."}, {"url": "https://www.bbg.org/visit/hours", "action": "[rendered] Review seasonal hours, admission table, and entrance notice.", "observation": "Hours, prices, last-entry rule, child restrictions, and the two open entrances are readable; GET TICKETS is available."}], "status": "completed", "reason": "The public information and next-step destination were reached without submitting a form."},
+      {"task": "Evaluate membership benefits and find a join or contact route", "starting_context": "Rendered membership benefits page exposes member-only hours, discounts, upcoming events, and a Become a Member CTA.", "steps": [{"url": "https://www.bbg.org/support/member_events_and_discounts", "action": "[rendered] Review benefits and choose Become a Member or Join today.", "observation": "The page provides member-only hours, a 10% dining/Terrain discount, reciprocal privileges, phone/email contact, and a public join link."}], "status": "completed", "reason": "A distinct non-default support task reached a public join/contact endpoint without authentication or submission; no choice-retention requirement was exposed."}
+    ],
+    "visibility": {"status": "not_measured", "detail": "Search retrieval and opened corroborating pages were observed, but no unbiased assistant answer runs with recorded citations were executed.", "cohorts": []}
+  }
+}

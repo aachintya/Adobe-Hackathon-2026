@@ -1,0 +1,21 @@
+{
+  "review_version": "1",
+  "observations": [],
+  "claims": {
+    "F-001": {"assertions": [{"type": "quote", "ref": "page:0", "field": "links.0.text", "quote": "Bookshop prices"}, {"type": "quote", "ref": "page:1", "field": "main_text", "quote": "General school information. For course enrollment dates and eligibility, use the enrollment guide."}], "checked_refs": ["page:0", "page:1"], "affected_refs": ["page:1"]},
+    "F-002": {"assertions": [{"type": "quote", "ref": "page:0", "field": "links.1.text", "quote": "Learning materials"}, {"type": "quote", "ref": "page:2", "field": "main_text", "quote": "General school information. For course enrollment dates and eligibility, use the enrollment guide."}], "checked_refs": ["page:0", "page:2"], "affected_refs": ["page:2"]}
+  },
+  "answers": [
+    {"test_index": 0, "evidence_index": 0, "ref": "page:0", "field": "main_text", "element_indices": [0, 1]},
+    {"test_index": 1, "evidence_index": 0, "ref": "page:3", "field": "main_text", "element_indices": [0, 1]},
+    {"test_index": 1, "evidence_index": 1, "ref": "page:3", "field": "main_text", "element_indices": [2]},
+    {"test_index": 2, "evidence_index": 0, "ref": "page:4", "field": "main_text", "element_indices": [0, 1, 2, 3]},
+    {"test_index": 3, "evidence_index": 0, "ref": "page:1", "field": "main_text"},
+    {"test_index": 4, "evidence_index": 0, "ref": "page:2", "field": "main_text"}
+  ],
+  "journeys": [
+    {"journey_index": 0, "mode": "source", "steps": [{"step_index": 0, "ref": "page:0", "assertions": [{"type": "quote", "ref": "page:0", "field": "links.5.text", "quote": "Guía de inscripción — enrollment dates and eligibility"}]}, {"step_index": 1, "ref": "page:3", "assertions": [{"type": "quote", "ref": "page:3", "field": "links.0.text", "quote": "How to apply"}]}, {"step_index": 2, "ref": "page:4", "assertions": [{"type": "quote", "ref": "page:4", "field": "main_text", "quote": "No online submission is required. Reception opens weekdays 09:00–17:00."}]}]},
+    {"journey_index": 1, "mode": "source", "steps": [{"step_index": 0, "ref": "page:0", "assertions": [{"type": "quote", "ref": "page:0", "field": "links.0.text", "quote": "Bookshop prices"}, {"type": "quote", "ref": "page:0", "field": "links.1.text", "quote": "Learning materials"}]}, {"step_index": 1, "ref": "page:1", "assertions": [{"type": "quote", "ref": "page:1", "field": "main_text", "quote": "General school information. For course enrollment dates and eligibility, use the enrollment guide."}]}, {"step_index": 2, "ref": "page:0", "assertions": [{"type": "quote", "ref": "page:0", "field": "links.1.text", "quote": "Learning materials"}]}, {"step_index": 3, "ref": "page:2", "assertions": [{"type": "quote", "ref": "page:2", "field": "main_text", "quote": "General school information. For course enrollment dates and eligibility, use the enrollment guide."}]}]}
+  ],
+  "corroboration": []
+}

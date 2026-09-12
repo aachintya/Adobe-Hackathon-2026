@@ -1,0 +1,27 @@
+{
+  "baseline": {
+    "pages": [
+      "http://127.0.0.1:53097/c03-b/index.html",
+      "http://127.0.0.1:53097/c03-b/pricing.html",
+      "http://127.0.0.1:53097/c03-b/products.html",
+      "http://127.0.0.1:53097/c03-b/team.html",
+      "http://127.0.0.1:53097/c03-b/security.html"
+    ],
+    "contains_known_deadline": false,
+    "request_count": 7,
+    "collection_elapsed": 3.04
+  },
+  "candidate": {
+    "pages": [
+      "http://127.0.0.1:53097/c03-b/index.html",
+      "http://127.0.0.1:53097/c03-b/sable-archive.html",
+      "http://127.0.0.1:53097/c03-b/apply.html",
+      "http://127.0.0.1:53097/c03-b/pricing.html",
+      "http://127.0.0.1:53097/c03-b/products.html"
+    ],
+    "contains_known_deadline": true,
+    "request_count": 8,
+    "collection_elapsed": 3.56
+  },
+  "scope": "Mechanical capture comparison with evaluator-selected observed destinations; not a blind agent-quality or recall measurement."
+}

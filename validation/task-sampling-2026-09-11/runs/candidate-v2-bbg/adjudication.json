@@ -1,0 +1,34 @@
+{
+  "report_sha256": "f1794ebdb12f547c25087846e84b9de1237b394458dad1f0c0c8a4228cbc00e5",
+  "adjudications": [],
+  "answer_support": {
+    "0": {
+      "identity and offer": 2,
+      "visitor activities": 2
+    },
+    "1": {
+      "seasonal hours": 0,
+      "ticket requirement and advance timing": 1,
+      "material ticket prices and child eligibility": 1
+    },
+    "2": {
+      "open entrances and address": 2,
+      "temporary closure notice": 2,
+      "directions or parking route": 2
+    }
+  },
+  "runtime": {
+    "observer_start": "2026-09-11T15:54:50Z",
+    "delivery": "2026-09-11T15:59:27Z",
+    "completion": "completed",
+    "timestamp_kind": "observed_completion_upper_bound"
+  },
+  "review_notes": [
+    "No findings or opportunities; public recall and zero-finding precision remain unknown, not perfect scores.",
+    "Question 1 (zero-based) claims all requirements answered but quotes no seasonal hours. Its sidecar assigns advance-ticket guidance to seasonal hours and adult prices to ticket timing. Those mappings are structurally complete but semantically wrong.",
+    "Ticket guidance quote omits the required-ticket condition; adult price quote omits box-office/online column headers. These composite elements receive partial support.",
+    "Coverage count four reflects a duplicate final URL in five collector records, but extraction prose still says five pages. Exact retrieval query is not saved and the retrieval text is a paraphrase, not a verbatim search result.",
+    "Rendered directions observation records the route resolving to the relevant hours-page anchor. Corroboration is explicitly not_checked; no independent source was opened.",
+    "Finalization 216.35 seconds; independent dispatch-to-observed-completion upper bound 277 seconds. The successful runtime is for a narrower three-question sample than baseline."
+  ]
+}

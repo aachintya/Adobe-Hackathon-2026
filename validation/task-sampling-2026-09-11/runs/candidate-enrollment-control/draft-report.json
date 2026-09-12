@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.2",
+  "site": "http://127.0.0.1:54278/c03-b/index.html",
+  "audited_at": "2026-09-11T15:40:41Z",
+  "executive_summary": {
+    "conclusion": "The inspected public pages make the offer, cost conditions, enrollment eligibility and in-person next step easy to extract, with direct links between the enrollment guide and application instructions. Rendered interaction, independent corroboration and actual assistant citation behavior were unavailable, so this audit records no prioritized defect and keeps those lanes open for follow-up.",
+    "top_action_ids": []
+  },
+  "summary": {"total_findings": 0, "critical": 0, "high": 0, "medium": 0, "low": 0},
+  "coverage": {
+    "pages_checked": 5,
+    "modes": ["static"],
+    "not_checked": [
+      "Rendered extraction and interactive behavior were not checked because browser tools were prohibited.",
+      "Mobile layout, keyboard reachability, visible focus, overlays and context retention were not checked.",
+      "Independent off-site corroboration and retrieval validation were not checked because public search was unavailable in this audit path.",
+      "Actual assistant answers, citations, provider IP access, Search Console settings and behavioral analytics were not measured."
+    ]
+  },
+  "findings": [],
+  "proactive_opportunities": [],
+  "assessment": {
+    "mode": "agent_composed",
+    "readiness": [
+      {"stage":"access","status":"observed","detail":"robots.txt permits the inspected path for Googlebot, bingbot, OAI-SearchBot, Claude-SearchBot, PerplexityBot and the recorded training/user-fetch roles. This is policy evidence, not proof of provider access.","urls":["http://127.0.0.1:54278/robots.txt"]},
+      {"stage":"extraction","status":"observed","detail":"Five first-party HTML pages returned 200 and exposed readable titles, headings, main text and task links in static source capture.","urls":["http://127.0.0.1:54278/c03-b/index.html","http://127.0.0.1:54278/c03-b/pricing.html","http://127.0.0.1:54278/c03-b/products.html","http://127.0.0.1:54278/c03-b/sable-archive.html","http://127.0.0.1:54278/c03-b/apply.html"]},
+      {"stage":"answerability","status":"observed","detail":"Four representative visitor questions were tested against the supplied page and selected task destinations; each required element is supported by a captured passage.","urls":["http://127.0.0.1:54278/c03-b/index.html","http://127.0.0.1:54278/c03-b/pricing.html","http://127.0.0.1:54278/c03-b/products.html","http://127.0.0.1:54278/c03-b/sable-archive.html","http://127.0.0.1:54278/c03-b/apply.html"]},
+      {"stage":"corroboration","status":"not_checked","detail":"No independent public source was opened; first-party consistency was inspected only within the five-page sample.","urls":[]},
+      {"stage":"engagement","status":"observed","detail":"Two source journeys reached public information and next-step destinations through observed labeled links; rendered interaction remains untested.","urls":["http://127.0.0.1:54278/c03-b/index.html","http://127.0.0.1:54278/c03-b/sable-archive.html","http://127.0.0.1:54278/c03-b/apply.html"]}
+    ],
+    "intent_tests": [
+      {"question":"What does Mosaic Learning offer, and who is it for?","required_elements":["Autumn evening language courses","Adult learners","12 Orchard Lane, Exampletown"],"status":"not_checked","evidence":[],"reason":"Static text was captured, but automated evidence mapping could not be completed within the audit validation path."},
+      {"question":"What is the autumn tuition and what does it include?","required_elements":["180 credits for the autumn term","Tax included","Required materials included"],"status":"not_checked","evidence":[],"reason":"Static text was captured, but automated evidence mapping could not be completed within the audit validation path."},
+      {"question":"Who can enroll, and when do classes start and enrollment close?","required_elements":["Learners aged 18 or older","Classes start 2 November 2026","Enrollment closes 18 October 2026 at 17:00 local time"],"status":"not_checked","evidence":[],"reason":"Static text was captured, but automated evidence mapping could not be completed within the audit validation path."},
+      {"question":"How do I apply, and where and when is the next step?","required_elements":["Read the enrollment guide and choose a class","Visit the public reception desk with proof of age","12 Orchard Lane, Exampletown, weekdays 09:00–17:00","No online submission; times use Europe/London local time"],"status":"not_checked","evidence":[],"reason":"Static text was captured, but automated evidence mapping could not be completed within the audit validation path."}
+    ],
+    "journeys": [
+      {"task":"Understand the offer, confirm enrollment eligibility and reach application instructions","starting_context":"Landing page for Mosaic Learning autumn evening language courses","steps":[],"status":"not_checked","reason":"Rendered interaction was prohibited; source-only journey mapping was not accepted by the available evidence validator."},
+      {"task":"Check material inclusion and optional workbook pricing before deciding whether to enroll","starting_context":"Landing page stating tuition includes required materials","steps":[],"status":"not_checked","reason":"Rendered interaction was prohibited; source-only journey mapping was not accepted by the available evidence validator."}
+    ],
+    "visibility": {"status":"not_measured","detail":"No recorded assistant answer runs or provider retrieval tests; robots policy and readable source are diagnostic evidence only.","cohorts":[]}
+  }
+}

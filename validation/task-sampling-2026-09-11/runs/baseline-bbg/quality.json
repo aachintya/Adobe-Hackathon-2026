@@ -1,0 +1,29 @@
+{
+  "report": "runs/baseline-bbg/final-report.json",
+  "complete": true,
+  "validation_errors": [],
+  "quality": {
+    "finding_precision": 0.0,
+    "root_recall": null,
+    "root_recall_full": null,
+    "root_recall_partial": null,
+    "high_or_critical_recall": null,
+    "false_findings": 1,
+    "duplicate_findings": 0,
+    "scope_agreement": 2.0,
+    "evidence_fidelity": 1.0,
+    "severity_agreement": 0.0,
+    "actions": {
+      "action_correctness": 0.5,
+      "action_mechanism": 1.0,
+      "action_specificity": 2.0,
+      "action_verification": 1.5
+    },
+    "answer_requirement_support": 1.3571
+  },
+  "runtime": {
+    "completion": 1,
+    "duration_seconds": 264.0,
+    "timestamp_kind": "observed_completion_upper_bound"
+  }
+}

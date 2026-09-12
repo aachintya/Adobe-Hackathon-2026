@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.2",
+  "site": "http://127.0.0.1:53097/c02-b/index.html",
+  "audited_at": "2026-09-11T15:31:11.985372+00:00",
+  "executive_summary": {
+    "conclusion": "Harbor Metrics is statically accessible and its core installation and security bulletin routes are readable. The bulletin contains a material contradiction about whether 7.2.9 is fixed, so administrators and machine readers cannot reliably determine the safe release from the sampled page.",
+    "top_action_ids": ["F-001"]
+  },
+  "summary": {"total_findings": 1, "critical": 0, "high": 1, "medium": 0, "low": 0},
+  "coverage": {
+    "pages_checked": 3,
+    "modes": ["static"],
+    "not_checked": [
+      "Rendered extraction and interactive engagement not checked: browser prohibited for this run.",
+      "Keyboard, focus, mobile layout, overlays and context retention not checked.",
+      "Off-site retrieval and independent corroboration not checked: search was unavailable for this run.",
+      "Actual AI citations, provider access, Search Console settings and behavioral analytics not measured."
+    ]
+  },
+  "findings": [
+    {
+      "id": "F-001",
+      "title": "Security bulletin conflicts on whether release 7.2.9 is fixed",
+      "category": "discoverability",
+      "severity": "high",
+      "confidence": "high",
+      "evidence": {
+        "observation": "On the dated security bulletin, the release table lists branch 7.2 affected versions 7.2.0 through 7.2.8 and fixed release 7.2.9, but the following paragraph states that version 7.2.9 remains affected and that no fix is available on branch 7.2. This leaves the decision-critical status of 7.2.9 unresolved for readers and extractors.",
+        "affected": 1,
+        "checked": 1,
+        "urls": ["http://127.0.0.1:53097/c02-b/r/72.html"]
+      },
+      "suggested_action": {
+        "summary": "Reconcile the 7.2.9 table row and explanatory paragraph, then publish one unambiguous affected and fixed status.",
+        "priority": "high",
+        "effort": "low",
+        "owner_hint": "Security documentation or release engineering",
+        "mechanism": "Use a single authoritative status for 7.2.9 and state the supported upgrade path directly in the bulletin and installation instructions.",
+        "verification": "Fetch the bulletin and confirm the table and prose agree on 7.2.9, with an explicit fixed release or explicit statement that no fix exists."
+      }
+    }
+  ],
+  "proactive_opportunities": [],
+  "assessment": {
+    "mode": "agent_composed",
+    "readiness": [
+      {"stage":"access","status":"observed","detail":"robots.txt permits wildcard access and all sampled AI/search roles; three requested first party pages returned 200.","urls":["http://127.0.0.1:53097/robots.txt"]},
+      {"stage":"extraction","status":"observed","detail":"Readable source text, headings, links and the security table were captured from three HTML pages.","urls":["http://127.0.0.1:53097/c02-b/index.html","http://127.0.0.1:53097/c02-b/r/72.html","http://127.0.0.1:53097/c02-b/install.html"]},
+      {"stage":"answerability","status":"observed","detail":"Core offer, licence and installation questions are answerable; the 7.2.9 security-status question is partial because the bulletin contradicts itself.","urls":["http://127.0.0.1:53097/c02-b/r/72.html","http://127.0.0.1:53097/c02-b/install.html"]},
+      {"stage":"corroboration","status":"not_checked","detail":"Independent external corroboration was unavailable within this source-only run.","urls":[]},
+      {"stage":"engagement","status":"observed","detail":"Two source journeys reached the bulletin and installation endpoint through labeled same-site links; rendered interaction and continuity were not checked.","urls":["http://127.0.0.1:53097/c02-b/index.html","http://127.0.0.1:53097/c02-b/r/72.html","http://127.0.0.1:53097/c02-b/install.html"]}
+    ],
+    "intent_tests": [
+      {"question":"What is Harbor Metrics and who is it for?","required_elements":["product identity","intended audience/use"],"status":"not_checked","evidence":[],"reason":"Question review was not completed in the source-only time budget."},
+      {"question":"Which release should an administrator use for branch 7.2, especially 7.2.9?","required_elements":["affected versions","fixed release","7.2.9 status"],"status":"not_checked","evidence":[],"reason":"The bulletin was inspected, but the conflicting values require follow-up before assigning an answer outcome."},
+      {"question":"What licence does Harbor Metrics use?","required_elements":["licence name"],"status":"not_checked","evidence":[],"reason":"Question review was not completed in the source-only time budget."},
+      {"question":"How should an administrator apply the update?","required_elements":["choose release","back up configuration","install and restart"],"status":"not_checked","evidence":[],"reason":"Question review was not completed in the source-only time budget."}
+    ],
+    "journeys": [
+      {"task":"Understand the current security issue and reach update instructions","starting_context":"Landing page for Harbor Metrics","steps":[{"url":"http://127.0.0.1:53097/c02-b/index.html","action":"[source] Follow ‘Security bulletin: affected and fixed releases’","observation":"Link resolves to the dated security bulletin."},{"url":"http://127.0.0.1:53097/c02-b/r/72.html","action":"[source] Follow ‘Apply the update’","observation":"Link resolves to installation instructions."}],"status":"completed","reason":"The source route reaches both intended public endpoints."},
+      {"task":"Reach installation guidance and verify the current bulletin handoff","starting_context":"Landing page for Harbor Metrics","steps":[{"url":"http://127.0.0.1:53097/c02-b/index.html","action":"[source] Follow ‘Installation instructions’","observation":"Link resolves to the install page."},{"url":"http://127.0.0.1:53097/c02-b/install.html","action":"[source] Follow ‘Current security bulletin’","observation":"Link returns to the dated bulletin for release selection; no material selector is exposed in source."}],"status":"completed","reason":"A distinct information task reaches the install page and its bulletin handoff; no non-default choice was available to exercise."}
+    ],
+    "visibility": {"status":"not_measured","detail":"No assistant answer or citation runs were recorded; crawl evidence does not measure citation behavior.","cohorts":[]}
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "baseline-bbg": {
+    "artifact": "runs/baseline-bbg/final-report.json",
+    "current_gate_passed": true,
+    "stdout": "{\n  \"valid\": true,\n  \"scope\": \"schema_and_evidence_consistency\",\n  \"errors\": []\n}\n",
+    "stderr": "",
+    "receipt_hashes_match": true,
+    "original_validator_hashes_match_snapshot": true
+  },
+  "baseline-enrollment": {
+    "artifact": "runs/baseline-enrollment/final-report.json",
+    "current_gate_passed": true,
+    "stdout": "{\n  \"valid\": true,\n  \"scope\": \"schema_and_evidence_consistency\",\n  \"errors\": []\n}\n",
+    "stderr": "",
+    "receipt_hashes_match": true,
+    "original_validator_hashes_match_snapshot": true
+  },
+  "baseline-enrollment-control": {
+    "artifact": "runs/baseline-enrollment-control/final-report.json",
+    "current_gate_passed": true,
+    "stdout": "{\n  \"valid\": true,\n  \"scope\": \"schema_and_evidence_consistency\",\n  \"errors\": []\n}\n",
+    "stderr": "",
+    "receipt_hashes_match": true,
+    "original_validator_hashes_match_snapshot": true
+  },
+  "baseline-release": {
+    "artifact": "runs/baseline-release/final-report.json",
+    "current_gate_passed": false,
+    "stdout": "{\n  \"valid\": false,\n  \"scope\": \"schema_and_report_consistency\",\n  \"errors\": [\n    \"observed answerability requires at least one assessed question; all questions are not_checked\"\n  ]\n}\n",
+    "stderr": "",
+    "receipt_hashes_match": true,
+    "original_validator_hashes_match_snapshot": true
+  },
+  "candidate-bbg": {
+    "artifact": "runs/candidate-bbg/draft-report.json",
+    "current_gate_passed": false,
+    "stdout": "{\n  \"valid\": false,\n  \"scope\": \"schema_and_evidence_consistency\",\n  \"errors\": [\n    \"answer (0, 0).assertions[0]: quote is not a short verbatim excerpt from readable captured evidence; same-record exact matches: description (review context before changing the field)\",\n    \"answer (2, 3).assertions[0]: quote is not a short verbatim excerpt from readable captured evidence\"\n  ]\n}\n",
+    "stderr": ""
+  },
+  "candidate-enrollment": {
+    "artifact": "runs/candidate-enrollment/final-report.json",
+    "current_gate_passed": true,
+    "stdout": "{\n  \"valid\": true,\n  \"scope\": \"schema_and_evidence_consistency\",\n  \"errors\": []\n}\n",
+    "stderr": "",
+    "receipt_hashes_match": true,
+    "original_validator_hashes_match_snapshot": true
+  },
+  "candidate-enrollment-control": {
+    "artifact": "runs/candidate-enrollment-control/final-report.json",
+    "current_gate_passed": false,
+    "stdout": "{\n  \"valid\": false,\n  \"scope\": \"schema_and_report_consistency\",\n  \"errors\": [\n    \"observed answerability requires at least one assessed question; all questions are not_checked\",\n    \"observed engagement requires recorded journey steps; empty journeys are not observed\"\n  ]\n}\n",
+    "stderr": "",
+    "receipt_hashes_match": true,
+    "original_validator_hashes_match_snapshot": true
+  },
+  "candidate-release": {
+    "artifact": "runs/candidate-release/final-report.json",
+    "current_gate_passed": true,
+    "stdout": "{\n  \"valid\": true,\n  \"scope\": \"schema_and_evidence_consistency\",\n  \"errors\": []\n}\n",
+    "stderr": "",
+    "receipt_hashes_match": true,
+    "original_validator_hashes_match_snapshot": true
+  },
+  "candidate-v2-bbg": {
+    "artifact": "runs/candidate-v2-bbg/final-report.json",
+    "current_gate_passed": true,
+    "stdout": "{\n  \"valid\": true,\n  \"scope\": \"schema_and_evidence_consistency\",\n  \"errors\": []\n}\n",
+    "stderr": "",
+    "receipt_hashes_match": true,
+    "original_validator_hashes_match_snapshot": true
+  },
+  "candidate-v2-enrollment-control": {
+    "artifact": "runs/candidate-v2-enrollment-control/final-report.json",
+    "current_gate_passed": true,
+    "stdout": "{\n  \"valid\": true,\n  \"scope\": \"schema_and_evidence_consistency\",\n  \"errors\": []\n}\n",
+    "stderr": "",
+    "receipt_hashes_match": true,
+    "original_validator_hashes_match_snapshot": true
+  }
+}

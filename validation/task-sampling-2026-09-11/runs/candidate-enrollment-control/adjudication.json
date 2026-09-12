@@ -1,0 +1,38 @@
+{
+  "report_sha256": "196572c6328ea6feb369205c989076b2e63e35788a55d233ddfdbc674a4d5ca8",
+  "adjudications": [],
+  "answer_support": {
+    "0": {
+      "Autumn evening language courses": 0,
+      "Adult learners": 0,
+      "12 Orchard Lane, Exampletown": 0
+    },
+    "1": {
+      "180 credits for the autumn term": 0,
+      "Tax included": 0,
+      "Required materials included": 0
+    },
+    "2": {
+      "Learners aged 18 or older": 0,
+      "Classes start 2 November 2026": 0,
+      "Enrollment closes 18 October 2026 at 17:00 local time": 0
+    },
+    "3": {
+      "Read the enrollment guide and choose a class": 0,
+      "Visit the public reception desk with proof of age": 0,
+      "12 Orchard Lane, Exampletown, weekdays 09:00\u201317:00": 0,
+      "No online submission; times use Europe/London local time": 0
+    }
+  },
+  "runtime": {
+    "observer_start": "2026-09-11T15:40:19Z",
+    "delivery": "2026-09-11T15:45:56Z",
+    "completion": "interrupted",
+    "timestamp_kind": "observed_completion_upper_bound"
+  },
+  "review_notes": [
+    "Parent interrupted still-running host after dispatch budget. An old-gate final/receipt was written at 15:45:25 before interruption (284.47 seconds from agent start, 306.47 from observer dispatch). It is preserved but not a successful host delivery.",
+    "All four questions were erased to not_checked and both journeys to empty while readiness and summary retained observed claims. Answer support is zero. Current v2 readiness guard rejects this report.",
+    "Zero findings on the healthy fixture does not establish useful completed assessment."
+  ]
+}

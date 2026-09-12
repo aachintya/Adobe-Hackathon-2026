@@ -1,0 +1,148 @@
+[
+  {
+    "id": "baseline-release-initial",
+    "status": "failed",
+    "reason": "Luna account usage limit before report creation",
+    "observer_start": "2026-09-11T10:49:13Z",
+    "delivery": null
+  },
+  {
+    "id": "baseline-bbg",
+    "status": "completed",
+    "artifact": "final",
+    "runtime": {
+      "observer_start": "2026-09-11T15:47:34Z",
+      "delivery": "2026-09-11T15:51:58Z",
+      "completion": "completed",
+      "timestamp_kind": "observed_completion_upper_bound"
+    },
+    "agent_finalization_seconds": 218.914126,
+    "current_gate_passed": true,
+    "answer_requirement_support": 1.3571
+  },
+  {
+    "id": "baseline-enrollment",
+    "status": "completed",
+    "artifact": "final",
+    "runtime": {
+      "completion": "completed",
+      "timestamp_kind": "observed_completion_upper_bound",
+      "observer_start": "2026-09-11T15:35:14Z",
+      "delivery": "2026-09-11T15:39:47Z"
+    },
+    "agent_finalization_seconds": 203.778767,
+    "current_gate_passed": true,
+    "answer_requirement_support": 2.0
+  },
+  {
+    "id": "baseline-enrollment-control",
+    "status": "completed",
+    "artifact": "final",
+    "runtime": {
+      "observer_start": "2026-09-11T15:47:34Z",
+      "delivery": "2026-09-11T15:54:38Z",
+      "completion": "completed",
+      "timestamp_kind": "observed_completion_upper_bound"
+    },
+    "agent_finalization_seconds": 235.847962,
+    "current_gate_passed": true,
+    "answer_requirement_support": 2.0
+  },
+  {
+    "id": "baseline-release",
+    "status": "completed",
+    "artifact": "final",
+    "runtime": {
+      "completion": "completed",
+      "timestamp_kind": "observed_completion_upper_bound",
+      "observer_start": "2026-09-11T15:30:37Z",
+      "delivery": "2026-09-11T15:35:00Z"
+    },
+    "agent_finalization_seconds": 220.291576,
+    "current_gate_passed": false,
+    "answer_requirement_support": 0.0
+  },
+  {
+    "id": "candidate-bbg",
+    "status": "interrupted",
+    "artifact": "draft",
+    "runtime": {
+      "observer_start": "2026-09-11T15:39:02Z",
+      "delivery": "2026-09-11T15:44:54Z",
+      "completion": "interrupted",
+      "timestamp_kind": "observed_completion_upper_bound"
+    },
+    "agent_finalization_seconds": null,
+    "current_gate_passed": false,
+    "answer_requirement_support": 1.6667
+  },
+  {
+    "id": "candidate-enrollment",
+    "status": "completed",
+    "artifact": "final",
+    "runtime": {
+      "completion": "completed",
+      "timestamp_kind": "observed_completion_upper_bound",
+      "observer_start": "2026-09-11T15:33:51Z",
+      "delivery": "2026-09-11T15:38:18Z"
+    },
+    "agent_finalization_seconds": 215.905213,
+    "current_gate_passed": true,
+    "answer_requirement_support": 1.3846
+  },
+  {
+    "id": "candidate-enrollment-control",
+    "status": "interrupted",
+    "artifact": "final",
+    "runtime": {
+      "observer_start": "2026-09-11T15:40:19Z",
+      "delivery": "2026-09-11T15:45:56Z",
+      "completion": "interrupted",
+      "timestamp_kind": "observed_completion_upper_bound"
+    },
+    "agent_finalization_seconds": 284.467383,
+    "current_gate_passed": false,
+    "answer_requirement_support": 0.0
+  },
+  {
+    "id": "candidate-release",
+    "status": "completed",
+    "artifact": "final",
+    "runtime": {
+      "completion": "completed",
+      "timestamp_kind": "not_measured",
+      "reason": "Independent dispatch clock was not captured after task resume; finalizer reports 170.417265 seconds from agent-recorded start, not exact delivery timing."
+    },
+    "agent_finalization_seconds": 170.417265,
+    "current_gate_passed": true,
+    "answer_requirement_support": 1.8
+  },
+  {
+    "id": "candidate-v2-bbg",
+    "status": "completed",
+    "artifact": "final",
+    "runtime": {
+      "observer_start": "2026-09-11T15:54:50Z",
+      "delivery": "2026-09-11T15:59:27Z",
+      "completion": "completed",
+      "timestamp_kind": "observed_completion_upper_bound"
+    },
+    "agent_finalization_seconds": 216.352776,
+    "current_gate_passed": true,
+    "answer_requirement_support": 1.5
+  },
+  {
+    "id": "candidate-v2-enrollment-control",
+    "status": "completed",
+    "artifact": "final",
+    "runtime": {
+      "observer_start": "2026-09-11T15:54:50Z",
+      "delivery": "2026-09-11T15:58:56Z",
+      "completion": "completed",
+      "timestamp_kind": "observed_completion_upper_bound"
+    },
+    "agent_finalization_seconds": 187.446964,
+    "current_gate_passed": true,
+    "answer_requirement_support": 2.0
+  }
+]

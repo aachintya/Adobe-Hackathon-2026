@@ -27,6 +27,8 @@ Freeze the URL, collection time, capability set, and expected observations for e
 
 Require observed question tests and journey steps in the composed report. Assess missing-in-sample conclusions against actual inspected coverage. Do not require a finding in both categories on every site: verified passes and explicit untested lanes are valid outcomes. For citation measurement, preserve raw assistant answers and evaluate cohorts separately; a search-tool result is not a consumer assistant-answer test.
 
+Use the [agent quality evaluator](AGENT-QUALITY.md) to score hash-bound private adjudications of fresh reports. The older `tests/evaluate_report_quality.py` is an authored-example smoke test, not a general accuracy metric.
+
 ## Metrics
 
 Record these values per case and in aggregate:

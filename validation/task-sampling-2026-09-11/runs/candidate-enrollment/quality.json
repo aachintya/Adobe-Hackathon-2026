@@ -1,0 +1,29 @@
+{
+  "complete": true,
+  "quality": {
+    "actions": {
+      "action_correctness": 1.5,
+      "action_mechanism": 2.0,
+      "action_specificity": 2.0,
+      "action_verification": 2.0
+    },
+    "answer_requirement_support": 1.3846,
+    "duplicate_findings": 1,
+    "evidence_fidelity": 2.0,
+    "false_findings": 0,
+    "finding_precision": 0.5,
+    "high_or_critical_recall": null,
+    "root_recall": null,
+    "root_recall_full": null,
+    "root_recall_partial": null,
+    "scope_agreement": 2.0,
+    "severity_agreement": 2.0
+  },
+  "report": "runs/candidate-enrollment/final-report.json",
+  "runtime": {
+    "completion": 1,
+    "duration_seconds": 267.0,
+    "timestamp_kind": "observed_completion_upper_bound"
+  },
+  "validation_errors": []
+}

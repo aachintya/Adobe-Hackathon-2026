@@ -1,0 +1,917 @@
+{
+  "site": "http://127.0.0.1:53097/c02-b/index.html",
+  "origin": "http://127.0.0.1:53097/",
+  "collected_at": "2026-09-11T15:30:31.057167+00:00",
+  "collector": "static",
+  "collector_version": "2.1",
+  "agent_roles": {
+    "search": [
+      "Googlebot",
+      "bingbot",
+      "OAI-SearchBot",
+      "Claude-SearchBot",
+      "PerplexityBot"
+    ],
+    "training_or_other_control": [
+      "GPTBot",
+      "ClaudeBot",
+      "Google-Extended",
+      "Applebot-Extended",
+      "meta-externalagent"
+    ],
+    "user_fetch": [
+      "ChatGPT-User",
+      "Claude-User",
+      "Perplexity-User"
+    ]
+  },
+  "limits": {
+    "max_pages": 5,
+    "max_seconds": 45,
+    "rate_per_second": 2,
+    "max_bytes_per_page": 2000000,
+    "effective_request_interval_seconds": 0.5
+  },
+  "robots": {
+    "url": "http://127.0.0.1:53097/robots.txt",
+    "status": 200,
+    "state": "present",
+    "final_url": "http://127.0.0.1:53097/robots.txt",
+    "content_type": "text/plain",
+    "response_truncated": false,
+    "redirects": [],
+    "read_error": null,
+    "rules_text": "User-agent: *\nAllow: /\n",
+    "wildcard_allowed": true,
+    "collector_allowed": true,
+    "ai_agent_allowed": {
+      "Googlebot": true,
+      "bingbot": true,
+      "OAI-SearchBot": true,
+      "Claude-SearchBot": true,
+      "PerplexityBot": true,
+      "GPTBot": true,
+      "ChatGPT-User": true,
+      "ClaudeBot": true,
+      "Claude-User": true,
+      "Perplexity-User": true,
+      "Google-Extended": true,
+      "Applebot-Extended": true,
+      "meta-externalagent": true
+    },
+    "decisions": {
+      "Googlebot": {
+        "allowed": true,
+        "matched_rule": "allow: /",
+        "group": "wildcard"
+      },
+      "bingbot": {
+        "allowed": true,
+        "matched_rule": "allow: /",
+        "group": "wildcard"
+      },
+      "OAI-SearchBot": {
+        "allowed": true,
+        "matched_rule": "allow: /",
+        "group": "wildcard"
+      },
+      "Claude-SearchBot": {
+        "allowed": true,
+        "matched_rule": "allow: /",
+        "group": "wildcard"
+      },
+      "PerplexityBot": {
+        "allowed": true,
+        "matched_rule": "allow: /",
+        "group": "wildcard"
+      },
+      "GPTBot": {
+        "allowed": true,
+        "matched_rule": "allow: /",
+        "group": "wildcard"
+      },
+      "ChatGPT-User": {
+        "allowed": true,
+        "matched_rule": "allow: /",
+        "group": "wildcard"
+      },
+      "ClaudeBot": {
+        "allowed": true,
+        "matched_rule": "allow: /",
+        "group": "wildcard"
+      },
+      "Claude-User": {
+        "allowed": true,
+        "matched_rule": "allow: /",
+        "group": "wildcard"
+      },
+      "Perplexity-User": {
+        "allowed": true,
+        "matched_rule": "allow: /",
+        "group": "wildcard"
+      },
+      "Google-Extended": {
+        "allowed": true,
+        "matched_rule": "allow: /",
+        "group": "wildcard"
+      },
+      "Applebot-Extended": {
+        "allowed": true,
+        "matched_rule": "allow: /",
+        "group": "wildcard"
+      },
+      "meta-externalagent": {
+        "allowed": true,
+        "matched_rule": "allow: /",
+        "group": "wildcard"
+      }
+    },
+    "sitemap_hints": []
+  },
+  "sitemaps": [],
+  "pages": [
+    {
+      "url": "http://127.0.0.1:53097/c02-b/index.html",
+      "robots_allowed": true,
+      "final_url": "http://127.0.0.1:53097/c02-b/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "latency_ms": 12,
+      "response_truncated": false,
+      "redirects": [],
+      "robots_ai_allowed": {
+        "Googlebot": true,
+        "bingbot": true,
+        "OAI-SearchBot": true,
+        "Claude-SearchBot": true,
+        "PerplexityBot": true,
+        "GPTBot": true,
+        "ChatGPT-User": true,
+        "ClaudeBot": true,
+        "Claude-User": true,
+        "Perplexity-User": true,
+        "Google-Extended": true,
+        "Applebot-Extended": true,
+        "meta-externalagent": true
+      },
+      "robots_decisions": {
+        "Googlebot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "bingbot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "OAI-SearchBot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "Claude-SearchBot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "PerplexityBot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "GPTBot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "ChatGPT-User": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "ClaudeBot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "Claude-User": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "Perplexity-User": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "Google-Extended": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "Applebot-Extended": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "meta-externalagent": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        }
+      },
+      "final_robots_ai_allowed": {
+        "Googlebot": true,
+        "bingbot": true,
+        "OAI-SearchBot": true,
+        "Claude-SearchBot": true,
+        "PerplexityBot": true,
+        "GPTBot": true,
+        "ChatGPT-User": true,
+        "ClaudeBot": true,
+        "Claude-User": true,
+        "Perplexity-User": true,
+        "Google-Extended": true,
+        "Applebot-Extended": true,
+        "meta-externalagent": true
+      },
+      "x_robots_tag": "",
+      "x_robots_tags": [],
+      "last_modified": "",
+      "sample_type": "other",
+      "title": "Harbor Metrics",
+      "h1": [
+        "Harbor Metrics"
+      ],
+      "language": "en",
+      "base_href": null,
+      "hreflang": [],
+      "word_count": 27,
+      "text_length": 232,
+      "landmarks": [
+        "footer",
+        "main"
+      ],
+      "meta_robots": "",
+      "meta_robot_directives": {
+        "robots": "",
+        "googlebot": "",
+        "bingbot": ""
+      },
+      "description": "",
+      "canonical": [],
+      "links_count": 3,
+      "links": [
+        {
+          "href": "/c02-b/r/72.html",
+          "text": "Security bulletin: affected and fixed releases",
+          "aria_label": "",
+          "selector": "a [source occurrence 1]",
+          "region": "content",
+          "url": "http://127.0.0.1:53097/c02-b/r/72.html"
+        },
+        {
+          "href": "/c02-b/install.html",
+          "text": "Installation instructions",
+          "aria_label": "",
+          "selector": "a [source occurrence 2]",
+          "region": "content",
+          "url": "http://127.0.0.1:53097/c02-b/install.html"
+        },
+        {
+          "href": "/c02-b/index.html",
+          "text": "Home",
+          "aria_label": "",
+          "selector": "a [source occurrence 3]",
+          "region": "navigation",
+          "url": "http://127.0.0.1:53097/c02-b/index.html"
+        }
+      ],
+      "controls": [],
+      "tables": [],
+      "relationship_candidates": [],
+      "images": {
+        "count": 0,
+        "missing_alt": 0,
+        "empty_alt": 0,
+        "items": []
+      },
+      "jsonld": {
+        "blocks": 0,
+        "parse_errors": 0,
+        "errors": [],
+        "types": [],
+        "data": [],
+        "data_omitted": false
+      },
+      "text_sample": "Harbor Metrics Harbor Metrics is open-source monitoring software. Administrators should review the current security bulletin and update affected installations. Security bulletin: affected and fixed releases Installation instructions",
+      "main_text": "Harbor Metrics Harbor Metrics is open-source monitoring software. Administrators should review the current security bulletin and update affected installations. Security bulletin: affected and fixed releases Installation instructions",
+      "passages": [
+        {
+          "selector": "h1 [source occurrence 1]",
+          "heading": "",
+          "text": "Harbor Metrics"
+        },
+        {
+          "selector": "p [source occurrence 1]",
+          "heading": "Harbor Metrics",
+          "text": "Harbor Metrics is open-source monitoring software. Administrators should review the current security bulletin and update affected installations."
+        }
+      ],
+      "evidence_truncated": false,
+      "extraction_note": "Source HTML including noscript fallback; excludes semantic navigation/footer, scripts and explicit inline hidden content. CSS and JavaScript-enabled visibility require a browser.",
+      "parse_status": "parsed_html",
+      "link_base_url": "http://127.0.0.1:53097/c02-b/index.html"
+    },
+    {
+      "url": "http://127.0.0.1:53097/c02-b/r/72.html",
+      "robots_allowed": true,
+      "final_url": "http://127.0.0.1:53097/c02-b/r/72.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "latency_ms": 13,
+      "response_truncated": false,
+      "redirects": [],
+      "robots_ai_allowed": {
+        "Googlebot": true,
+        "bingbot": true,
+        "OAI-SearchBot": true,
+        "Claude-SearchBot": true,
+        "PerplexityBot": true,
+        "GPTBot": true,
+        "ChatGPT-User": true,
+        "ClaudeBot": true,
+        "Claude-User": true,
+        "Perplexity-User": true,
+        "Google-Extended": true,
+        "Applebot-Extended": true,
+        "meta-externalagent": true
+      },
+      "robots_decisions": {
+        "Googlebot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "bingbot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "OAI-SearchBot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "Claude-SearchBot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "PerplexityBot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "GPTBot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "ChatGPT-User": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "ClaudeBot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "Claude-User": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "Perplexity-User": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "Google-Extended": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "Applebot-Extended": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "meta-externalagent": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        }
+      },
+      "final_robots_ai_allowed": {
+        "Googlebot": true,
+        "bingbot": true,
+        "OAI-SearchBot": true,
+        "Claude-SearchBot": true,
+        "PerplexityBot": true,
+        "GPTBot": true,
+        "ChatGPT-User": true,
+        "ClaudeBot": true,
+        "Claude-User": true,
+        "Perplexity-User": true,
+        "Google-Extended": true,
+        "Applebot-Extended": true,
+        "meta-externalagent": true
+      },
+      "x_robots_tag": "",
+      "x_robots_tags": [],
+      "last_modified": "",
+      "sample_type": "other",
+      "title": "Harbor Metrics",
+      "h1": [
+        "Security bulletin — 11 September 2026"
+      ],
+      "language": "en",
+      "base_href": null,
+      "hreflang": [],
+      "word_count": 63,
+      "text_length": 304,
+      "landmarks": [
+        "footer",
+        "main"
+      ],
+      "meta_robots": "",
+      "meta_robot_directives": {
+        "robots": "",
+        "googlebot": "",
+        "bingbot": ""
+      },
+      "description": "",
+      "canonical": [],
+      "links_count": 2,
+      "links": [
+        {
+          "href": "/c02-b/install.html",
+          "text": "Apply the update",
+          "aria_label": "",
+          "selector": "a [source occurrence 1]",
+          "region": "content",
+          "url": "http://127.0.0.1:53097/c02-b/install.html"
+        },
+        {
+          "href": "/c02-b/index.html",
+          "text": "Home",
+          "aria_label": "",
+          "selector": "a [source occurrence 2]",
+          "region": "navigation",
+          "url": "http://127.0.0.1:53097/c02-b/index.html"
+        }
+      ],
+      "controls": [],
+      "tables": [
+        {
+          "selector": "table [source occurrence 1]",
+          "caption": "Release scope",
+          "rows": [
+            [
+              {
+                "value": "Branch",
+                "tag": "th",
+                "scope": "col",
+                "selector": "th [source occurrence 1]"
+              },
+              {
+                "value": "Affected versions",
+                "tag": "th",
+                "scope": "col",
+                "selector": "th [source occurrence 2]"
+              },
+              {
+                "value": "Fixed release",
+                "tag": "th",
+                "scope": "col",
+                "selector": "th [source occurrence 3]"
+              }
+            ],
+            [
+              {
+                "value": "7.2",
+                "tag": "th",
+                "scope": "row",
+                "selector": "th [source occurrence 4]"
+              },
+              {
+                "value": "7.2.0 through 7.2.8",
+                "tag": "td",
+                "scope": "",
+                "selector": "td [source occurrence 1]"
+              },
+              {
+                "value": "7.2.9",
+                "tag": "td",
+                "scope": "",
+                "selector": "td [source occurrence 2]"
+              }
+            ],
+            [
+              {
+                "value": "8.0",
+                "tag": "th",
+                "scope": "row",
+                "selector": "th [source occurrence 5]"
+              },
+              {
+                "value": "8.0.0 through 8.0.3",
+                "tag": "td",
+                "scope": "",
+                "selector": "td [source occurrence 3]"
+              },
+              {
+                "value": "8.0.4",
+                "tag": "td",
+                "scope": "",
+                "selector": "td [source occurrence 4]"
+              }
+            ]
+          ],
+          "ambiguities": [],
+          "truncated": false,
+          "records": [
+            {
+              "row": 1,
+              "column": 1,
+              "value": "7.2.0 through 7.2.8",
+              "row_header": "7.2",
+              "column_header": "Affected versions",
+              "qualifiers": [
+                "7.2",
+                "Affected versions"
+              ],
+              "value_path": "rows.1.1.value",
+              "context": "7.2 | Affected versions | 7.2.0 through 7.2.8",
+              "context_is_derived": true
+            },
+            {
+              "row": 1,
+              "column": 2,
+              "value": "7.2.9",
+              "row_header": "7.2",
+              "column_header": "Fixed release",
+              "qualifiers": [
+                "7.2",
+                "Fixed release"
+              ],
+              "value_path": "rows.1.2.value",
+              "context": "7.2 | Fixed release | 7.2.9",
+              "context_is_derived": true
+            },
+            {
+              "row": 2,
+              "column": 1,
+              "value": "8.0.0 through 8.0.3",
+              "row_header": "8.0",
+              "column_header": "Affected versions",
+              "qualifiers": [
+                "8.0",
+                "Affected versions"
+              ],
+              "value_path": "rows.2.1.value",
+              "context": "8.0 | Affected versions | 8.0.0 through 8.0.3",
+              "context_is_derived": true
+            },
+            {
+              "row": 2,
+              "column": 2,
+              "value": "8.0.4",
+              "row_header": "8.0",
+              "column_header": "Fixed release",
+              "qualifiers": [
+                "8.0",
+                "Fixed release"
+              ],
+              "value_path": "rows.2.2.value",
+              "context": "8.0 | Fixed release | 8.0.4",
+              "context_is_derived": true
+            }
+          ],
+          "relationship_status": "simple_headers",
+          "note": "Context joins captured header/cell values; it is not a contiguous website quote. Cite raw cells and headers separately."
+        }
+      ],
+      "relationship_candidates": [],
+      "images": {
+        "count": 0,
+        "missing_alt": 0,
+        "empty_alt": 0,
+        "items": []
+      },
+      "jsonld": {
+        "blocks": 0,
+        "parse_errors": 0,
+        "errors": [],
+        "types": [],
+        "data": [],
+        "data_omitted": false
+      },
+      "text_sample": "Security bulletin — 11 September 2026 Issue HM-42 affects installations on the following branches. Release scope Branch Affected versions Fixed release 7.2 7.2.0 through 7.2.8 7.2.9 8.0 8.0.0 through 8.0.3 8.0.4 Version 7.2.9 remains affected by HM-42; no fix is available on branch 7.2. Apply the update",
+      "main_text": "Security bulletin — 11 September 2026 Issue HM-42 affects installations on the following branches. Release scope Branch Affected versions Fixed release 7.2 7.2.0 through 7.2.8 7.2.9 8.0 8.0.0 through 8.0.3 8.0.4 Version 7.2.9 remains affected by HM-42; no fix is available on branch 7.2. Apply the update",
+      "passages": [
+        {
+          "selector": "h1 [source occurrence 1]",
+          "heading": "",
+          "text": "Security bulletin — 11 September 2026"
+        },
+        {
+          "selector": "p [source occurrence 1]",
+          "heading": "Security bulletin — 11 September 2026",
+          "text": "Issue HM-42 affects installations on the following branches."
+        },
+        {
+          "selector": "th [source occurrence 1]",
+          "heading": "Security bulletin — 11 September 2026",
+          "text": "Branch"
+        },
+        {
+          "selector": "th [source occurrence 2]",
+          "heading": "Security bulletin — 11 September 2026",
+          "text": "Affected versions"
+        },
+        {
+          "selector": "th [source occurrence 3]",
+          "heading": "Security bulletin — 11 September 2026",
+          "text": "Fixed release"
+        },
+        {
+          "selector": "th [source occurrence 4]",
+          "heading": "Security bulletin — 11 September 2026",
+          "text": "7.2"
+        },
+        {
+          "selector": "td [source occurrence 1]",
+          "heading": "Security bulletin — 11 September 2026",
+          "text": "7.2.0 through 7.2.8"
+        },
+        {
+          "selector": "td [source occurrence 2]",
+          "heading": "Security bulletin — 11 September 2026",
+          "text": "7.2.9"
+        },
+        {
+          "selector": "th [source occurrence 5]",
+          "heading": "Security bulletin — 11 September 2026",
+          "text": "8.0"
+        },
+        {
+          "selector": "td [source occurrence 3]",
+          "heading": "Security bulletin — 11 September 2026",
+          "text": "8.0.0 through 8.0.3"
+        },
+        {
+          "selector": "td [source occurrence 4]",
+          "heading": "Security bulletin — 11 September 2026",
+          "text": "8.0.4"
+        },
+        {
+          "selector": "p [source occurrence 2]",
+          "heading": "Security bulletin — 11 September 2026",
+          "text": "Version 7.2.9 remains affected by HM-42; no fix is available on branch 7.2."
+        }
+      ],
+      "evidence_truncated": false,
+      "extraction_note": "Source HTML including noscript fallback; excludes semantic navigation/footer, scripts and explicit inline hidden content. CSS and JavaScript-enabled visibility require a browser.",
+      "parse_status": "parsed_html",
+      "link_base_url": "http://127.0.0.1:53097/c02-b/r/72.html"
+    },
+    {
+      "url": "http://127.0.0.1:53097/c02-b/install.html",
+      "robots_allowed": true,
+      "final_url": "http://127.0.0.1:53097/c02-b/install.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "latency_ms": 12,
+      "response_truncated": false,
+      "redirects": [],
+      "robots_ai_allowed": {
+        "Googlebot": true,
+        "bingbot": true,
+        "OAI-SearchBot": true,
+        "Claude-SearchBot": true,
+        "PerplexityBot": true,
+        "GPTBot": true,
+        "ChatGPT-User": true,
+        "ClaudeBot": true,
+        "Claude-User": true,
+        "Perplexity-User": true,
+        "Google-Extended": true,
+        "Applebot-Extended": true,
+        "meta-externalagent": true
+      },
+      "robots_decisions": {
+        "Googlebot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "bingbot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "OAI-SearchBot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "Claude-SearchBot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "PerplexityBot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "GPTBot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "ChatGPT-User": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "ClaudeBot": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "Claude-User": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "Perplexity-User": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "Google-Extended": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "Applebot-Extended": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        },
+        "meta-externalagent": {
+          "allowed": true,
+          "matched_rule": "allow: /",
+          "group": "wildcard"
+        }
+      },
+      "final_robots_ai_allowed": {
+        "Googlebot": true,
+        "bingbot": true,
+        "OAI-SearchBot": true,
+        "Claude-SearchBot": true,
+        "PerplexityBot": true,
+        "GPTBot": true,
+        "ChatGPT-User": true,
+        "ClaudeBot": true,
+        "Claude-User": true,
+        "Perplexity-User": true,
+        "Google-Extended": true,
+        "Applebot-Extended": true,
+        "meta-externalagent": true
+      },
+      "x_robots_tag": "",
+      "x_robots_tags": [],
+      "last_modified": "",
+      "sample_type": "other",
+      "title": "Harbor Metrics",
+      "h1": [
+        "Install Harbor Metrics"
+      ],
+      "language": "en",
+      "base_href": null,
+      "hreflang": [],
+      "word_count": 34,
+      "text_length": 229,
+      "landmarks": [
+        "footer",
+        "main"
+      ],
+      "meta_robots": "",
+      "meta_robot_directives": {
+        "robots": "",
+        "googlebot": "",
+        "bingbot": ""
+      },
+      "description": "",
+      "canonical": [],
+      "links_count": 2,
+      "links": [
+        {
+          "href": "/c02-b/r/72.html",
+          "text": "Current security bulletin",
+          "aria_label": "",
+          "selector": "a [source occurrence 1]",
+          "region": "content",
+          "url": "http://127.0.0.1:53097/c02-b/r/72.html"
+        },
+        {
+          "href": "/c02-b/index.html",
+          "text": "Home",
+          "aria_label": "",
+          "selector": "a [source occurrence 2]",
+          "region": "navigation",
+          "url": "http://127.0.0.1:53097/c02-b/index.html"
+        }
+      ],
+      "controls": [],
+      "tables": [],
+      "relationship_candidates": [],
+      "images": {
+        "count": 0,
+        "missing_alt": 0,
+        "empty_alt": 0,
+        "items": []
+      },
+      "jsonld": {
+        "blocks": 0,
+        "parse_errors": 0,
+        "errors": [],
+        "types": [],
+        "data": [],
+        "data_omitted": false
+      },
+      "text_sample": "Install Harbor Metrics Choose the fixed release for your branch from the current security bulletin. Back up configuration, install that release and restart the service. The software uses the MIT licence. Current security bulletin",
+      "main_text": "Install Harbor Metrics Choose the fixed release for your branch from the current security bulletin. Back up configuration, install that release and restart the service. The software uses the MIT licence. Current security bulletin",
+      "passages": [
+        {
+          "selector": "h1 [source occurrence 1]",
+          "heading": "",
+          "text": "Install Harbor Metrics"
+        },
+        {
+          "selector": "p [source occurrence 1]",
+          "heading": "Install Harbor Metrics",
+          "text": "Choose the fixed release for your branch from the current security bulletin. Back up configuration, install that release and restart the service. The software uses the MIT licence."
+        }
+      ],
+      "evidence_truncated": false,
+      "extraction_note": "Source HTML including noscript fallback; excludes semantic navigation/footer, scripts and explicit inline hidden content. CSS and JavaScript-enabled visibility require a browser.",
+      "parse_status": "parsed_html",
+      "link_base_url": "http://127.0.0.1:53097/c02-b/install.html"
+    }
+  ],
+  "errors": [],
+  "ai_probe": {
+    "status": "not_checked",
+    "reason": "No bot impersonation: local requests do not verify provider IP access."
+  },
+  "coverage": {
+    "rendered": "not_checked: collector is static",
+    "off_site": "not_checked: requires search-capable agent",
+    "actual_ai_visibility": "not_measured: requires recorded assistant answers and citations",
+    "deadline_reached": false,
+    "selected_task_urls": [
+      "http://127.0.0.1:53097/c02-b/r/72.html",
+      "http://127.0.0.1:53097/c02-b/install.html"
+    ],
+    "selected_already_attempted": [],
+    "sample_types": {
+      "other": 3
+    },
+    "request_count": 6,
+    "elapsed_seconds": 2.55
+  },
+  "collection_passes": [
+    {
+      "max_seconds": 15,
+      "elapsed_seconds": 0.52,
+      "request_count": 2,
+      "target_urls": []
+    },
+    {
+      "max_seconds": 30,
+      "elapsed_seconds": 2.03,
+      "request_count": 4,
+      "target_urls": [
+        "http://127.0.0.1:53097/c02-b/r/72.html",
+        "http://127.0.0.1:53097/c02-b/install.html"
+      ]
+    }
+  ]
+}
